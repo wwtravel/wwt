@@ -1,0 +1,62 @@
+{
+  "NavBar": {
+    "titleMD": "Телефон Молдова",
+    "titleSW": "Телефон Швейцария",
+    "titleEmail": "Адрес электронной почты",
+    "navHome" : "Главная",
+    "navSchedule" : "Расписание маршрутов",
+    "navAbout" : "О нас",
+    "navContact" : "Контакты",
+    "navCart" : "Корзина"
+  },
+  "Header": {
+    "ticketsWord1" : "Автобусные",
+    "ticketsWord2" : "билеты",
+    "country1": "Австрия",
+    "country2": "Германия",
+    "country3": "Франция",
+    "country4": "Швейцария",
+    "headerBtn": "Узнать больше",
+    "combobox1placeholder": "Город отправления",
+    "combobox2placeholder": "Город прибытия",
+    "comboboxNothingFound": "Ничего не найдено",
+    "calendar1placeholder": "Дата отправления",
+    "calendar2placeholder": "Дата возвращения",
+    "search": "Поиск"
+  },
+  "Destinations" : {
+    "lowOpacityTitle": "Маршруты",
+    "title": "Популярные направления",
+
+    "cardDeparture": "Следующий выезд",
+    "features": "Преимущества",
+
+    "card1title": "Кишинев - Вена",
+    "card2title": "Кишинев - Шамбери",
+    "card3title": "Кишинев - Цюрих",
+    "card4title": "Кишинев - Вена",
+    "card5title": "Кишинев - Шамбери",
+    "card6title": "Кишинев - Цюрих",
+    "card7title": "Кишинев - Вена",
+    "card8title": "Кишинев - Шамбери",
+    "card9title": "Кишинев - Цюрих",
+    "card10title": "Кишинев - Вена",
+    "card11title": "Кишинев - Шамбери",
+    "card12title": "Кишинев - Цюрих",
+
+    "card1StartPoint": "Место отправления - Северный вокзал",
+    "card2StartPoint": "Место отправления - Южный вокзал",
+    "card3StartPoint": "Место отправления - Северный вокзал",
+    "card4StartPoint": "Место отправления - Северный вокзал",
+    "card5StartPoint": "Место отправления - Южный вокзал",
+    "card6StartPoint": "Место отправления - Северный вокзал",
+    "card7StartPoint": "Место отправления - Северный вокзал",
+    "card8StartPoint": "Место отправления - Южный вокзал",
+    "card9StartPoint": "Место отправления - Северный вокзал",
+    "card10StartPoint": "Место отправления - Северный вокзал",
+    "card11StartPoint": "Место отправления - Южный вокзал",
+    "card12StartPoint": "Место отправления - Северный вокзал",
+
+    "cardButtonText": "Забронировать билет"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "NavBar": {
+    "titleMD": "Telefon Moldova",
+    "titleSW": "Telefon Elveția",
+    "titleEmail": "Adresa Email",
+    "navHome" : "Acasă",
+    "navSchedule" : "Orarul Rutelor",
+    "navAbout" : "Despre Noi",
+    "navContact" : "Contacte",
+    "navCart" : "Coș"
+  },
+  "Header": {
+    "ticketsWord1" : "bilete",
+    "ticketsWord2" : "autocar",
+    "country1" : "Austria",
+    "country2" : "Germania",
+    "country3" : "Franța",
+    "country4" : "Elveția",
+    "headerBtn": "Află mai multe",
+    "combobox1placeholder" : "Orașul de Plecare",
+    "combobox2placeholder" : "Orașul de Sosire",
+    "comboboxNothingFound" : "Nici un rezultat găsit",
+    "calendar1placeholder" : "Data de Plecare",
+    "calendar2placeholder" : "Data de Retur",
+    "search" : "Caută"
+  },
+  "Destinations" : {
+    "lowOpacityTitle" : "Rute",
+    "title" : "Destinații Populare",
+
+    "cardDeparture" : "Următoarea plecare pe",
+    "features" : "Beneficii",
+
+    "card1title" : "Chișinău - Viena",
+    "card2title" : "Chișinău - Chambery",
+    "card3title" : "Chișinău - Zurich",
+    "card4title" : "Chișinău - Viena",
+    "card5title" : "Chișinău - Chambery",
+    "card6title" : "Chișinău - Zurich",
+    "card7title" : "Chișinău - Viena",
+    "card8title" : "Chișinău - Chambery",
+    "card9title" : "Chișinău - Zurich",
+    "card10title" : "Chișinău - Viena",
+    "card11title" : "Chișinău - Chambery",
+    "card12title" : "Chișinău - Zurich",
+
+    "card1StartPoint" : "Punctul de start - Gara de Nord",
+    "card2StartPoint" : "Punctul de start - Gara de Sud",
+    "card3StartPoint" : "Punctul de start - Gara de Nord",
+    "card4StartPoint" : "Punctul de start - Gara de Nord",
+    "card5StartPoint" : "Punctul de start - Gara de Sud",
+    "card6StartPoint" : "Punctul de start - Gara de Nord",
+    "card7StartPoint" : "Punctul de start - Gara de Nord",
+    "card8StartPoint" : "Punctul de start - Gara de Sud",
+    "card9StartPoint" : "Punctul de start - Gara de Nord",
+    "card10StartPoint" : "Punctul de start - Gara de Nord",
+    "card11StartPoint" : "Punctul de start - Gara de Sud",
+    "card12StartPoint" : "Punctul de start - Gara de Nord",
+
+    "cardButtonText" : "Rezervează Bilet"
+  }
+}

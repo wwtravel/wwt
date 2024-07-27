@@ -1,0 +1,62 @@
+{
+  "NavBar": {
+    "titleMD": "Téléphone Moldavie",
+    "titleSW": "Téléphone Suisse",
+    "titleEmail": "Adresse Email",
+    "navHome" : "Accueil",
+    "navSchedule" : "Horaire des Routes",
+    "navAbout" : "À Propos",
+    "navContact" : "Contact",
+    "navCart" : "Panier"
+  },
+  "Header": {
+    "ticketsWord1" : "Billets",
+    "ticketsWord2" : "de bus",
+    "country1": "Autriche",
+    "country2": "Allemagne",
+    "country3": "France",
+    "country4": "Suisse",
+    "headerBtn": "En savoir plus",
+    "combobox1placeholder": "Ville de départ",
+    "combobox2placeholder": "Ville d'arrivée",
+    "comboboxNothingFound": "Aucun résultat trouvé",
+    "calendar1placeholder": "Date de départ",
+    "calendar2placeholder": "Date de retour",
+    "search": "Rechercher"
+  },
+  "Destinations" : {
+    "lowOpacityTitle": "Itinéraires",
+    "title": "Destinations Populaires",
+
+    "cardDeparture": "Prochain départ le",
+    "features": "Avantages",
+
+    "card1title": "Chișinău - Vienne",
+    "card2title": "Chișinău - Chambéry",
+    "card3title": "Chișinău - Zurich",
+    "card4title": "Chișinău - Vienne",
+    "card5title": "Chișinău - Chambéry",
+    "card6title": "Chișinău - Zurich",
+    "card7title": "Chișinău - Vienne",
+    "card8title": "Chișinău - Chambéry",
+    "card9title": "Chișinău - Zurich",
+    "card10title": "Chișinău - Vienne",
+    "card11title": "Chișinău - Chambéry",
+    "card12title": "Chișinău - Zurich",
+
+    "card1StartPoint": "Point de départ - Gare du Nord",
+    "card2StartPoint": "Point de départ - Gare du Sud",
+    "card3StartPoint": "Point de départ - Gare du Nord",
+    "card4StartPoint": "Point de départ - Gare du Nord",
+    "card5StartPoint": "Point de départ - Gare du Sud",
+    "card6StartPoint": "Point de départ - Gare du Nord",
+    "card7StartPoint": "Point de départ - Gare du Nord",
+    "card8StartPoint": "Point de départ - Gare du Sud",
+    "card9StartPoint": "Point de départ - Gare du Nord",
+    "card10StartPoint": "Point de départ - Gare du Nord",
+    "card11StartPoint": "Point de départ - Gare du Sud",
+    "card12StartPoint": "Point de départ - Gare du Nord",
+
+    "cardButtonText": "Réserver un billet"
+  }
+}

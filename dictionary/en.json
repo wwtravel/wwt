@@ -1,0 +1,62 @@
+{
+  "NavBar": {
+    "titleMD": "Phone Moldova",
+    "titleSW": "Phone Switzerland",
+    "titleEmail": "Email Address",
+    "navHome" : "Home",
+    "navSchedule" : "Route Schedule",
+    "navAbout" : "About Us",
+    "navContact" : "Contact",
+    "navCart" : "Cart"
+  },
+  "Header": {
+    "ticketsWord1" : "bus",
+    "ticketsWord2" : "tickets",
+    "country1": "Austria",
+    "country2": "Germany",
+    "country3": "France",
+    "country4": "Switzerland",
+    "headerBtn": "Find out more",
+    "combobox1placeholder": "Departure City",
+    "combobox2placeholder": "Arrival City",
+    "comboboxNothingFound": "No results found",
+    "calendar1placeholder": "Departure Date",
+    "calendar2placeholder": "Return Date",
+    "search": "Search"
+  },
+  "Destinations" : {
+    "lowOpacityTitle": "Routes",
+    "title": "Popular Destinations",
+    
+    "cardDeparture": "Next departure on",
+    "features": "Benefits",
+
+    "card1title": "Chișinău - Vienna",
+    "card2title": "Chișinău - Chambery",
+    "card3title": "Chișinău - Zurich",
+    "card4title": "Chișinău - Vienna",
+    "card5title": "Chișinău - Chambery",
+    "card6title": "Chișinău - Zurich",
+    "card7title": "Chișinău - Vienna",
+    "card8title": "Chișinău - Chambery",
+    "card9title": "Chișinău - Zurich",
+    "card10title": "Chișinău - Vienna",
+    "card11title": "Chișinău - Chambery",
+    "card12title": "Chișinău - Zurich",
+
+    "card1StartPoint": "Starting point - North Station",
+    "card2StartPoint": "Starting point - South Station",
+    "card3StartPoint": "Starting point - North Station",
+    "card4StartPoint": "Starting point - North Station",
+    "card5StartPoint": "Starting point - South Station",
+    "card6StartPoint": "Starting point - North Station",
+    "card7StartPoint": "Starting point - North Station",
+    "card8StartPoint": "Starting point - South Station",
+    "card9StartPoint": "Starting point - North Station",
+    "card10StartPoint": "Starting point - North Station",
+    "card11StartPoint": "Starting point - South Station",
+    "card12StartPoint": "Starting point - North Station",
+
+    "cardButtonText": "Book Ticket"
+  }
+}
