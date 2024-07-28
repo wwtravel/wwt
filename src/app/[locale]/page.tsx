@@ -4,9 +4,7 @@ export default function HomePage() {
   return (
     <div>
       <Header />
-      <div className="px-[12rem]">
-        <Destinations />
-      </div>
+      <Destinations />
     </div>
   )
 }

@@ -24,7 +24,7 @@ const NavBar = () => {
           </div>
         </div>
 
-        <div className='absolute bottom-0 translate-y-[50%] left-0 right-0 h-[4rem] bg-white rounded-[1rem] mx-[8.4375rem] px-[3.5rem] flex justify-between items-center'>
+        <div className='absolute bottom-0 translate-y-[50%] left-0 right-0 h-[4rem] bg-light-white rounded-[1rem] mx-[8.4375rem] px-[3.5rem] flex justify-between items-center'>
           <div className='flex gap-[1.5rem]'>
             <Link href="/" className='font-bold text-[1rem] text-dark-gray'>{t('navHome')}</Link>
             <Link href="/" className='font-bold text-[1rem] text-dark-gray'>{t('navSchedule')}</Link>

@@ -32,7 +32,7 @@ export default async function LocaleLayout({
  
   return (
     <html lang={locale} className={`${openSans.variable} ${montserrat.variable}`}>
-      <body>
+      <body className='bg-[#F1F8FD]'>
         <NextIntlClientProvider messages={dictionary}>
           <NavBar />
           {children}

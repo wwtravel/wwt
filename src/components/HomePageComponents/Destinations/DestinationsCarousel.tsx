@@ -1,4 +1,6 @@
+'use client'
 
+import { useState, useEffect, useCallback } from "react"
 import { carouselData } from "@/constants/carouselData"
 
 import { Card, CardContent } from "@/components/ui/card"
@@ -8,17 +10,42 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  CarouselApi
 } from "@/components/ui/carousel"
 import { useTranslations } from "next-intl"
 import RedButton from "@/components/SharedComponents/RedButton"
 import DestinationPrice from "./DestinationPrice"
 
+import Autoplay from "embla-carousel-autoplay"
+import CarouselDots from "./CarouselDots"
+
 const DestinationsCarousel = () => {
 
+  const [api, setApi] = useState<CarouselApi>()
+  const [activeSlide, setActiveSlide] = useState(0)
+ 
+  useEffect(() => {
+    if (!api) {
+      return
+    }
+ 
+    api.on("select", () => {
+      setActiveSlide(api.selectedScrollSnap())
+    })
+  }, [api])
   const t = useTranslations("Destinations")
 
   return (
-    <Carousel className="w-full select-none">
+    <Carousel 
+      className="w-full select-none"
+      setApi={setApi}
+      plugins={[
+        Autoplay({
+          delay: 5000,
+          stopOnInteraction: false
+        })
+      ]}
+    >
       <CarouselContent>
 
           <CarouselItem>
@@ -26,7 +53,7 @@ const DestinationsCarousel = () => {
                 <CardContent className="p-0 flex justify-between">
                   {
                     carouselData['slide1'].map((item, index) => (
-                        <div key={index} className="w-[25rem] rounded-[1rem] overflow-hidden border border-gray/25 relative">
+                        <div key={index} className="bg-light-white w-[25rem] rounded-[1rem] overflow-hidden border border-gray/25 relative">
                             <DestinationPrice price={item.price}/>
                             <img className="h-[16rem]" src={item.imageURL} alt="carouse-image" draggable={false} />
                             <div className="mt-[2rem] px-[1.5rem] pb-[1.5rem]">
@@ -53,7 +80,8 @@ const DestinationsCarousel = () => {
                 <CardContent className="p-0 flex justify-between">
                   {
                       carouselData['slide2'].map((item, index) => (
-                          <div key={index} className="w-[25rem] rounded-[1rem] overflow-hidden border border-gray/25">
+                          <div key={index} className="bg-light-white w-[25rem] rounded-[1rem] overflow-hidden border border-gray/25 relative">
+                              <DestinationPrice price={item.price}/>
                               <img className="h-[16rem]" src={item.imageURL} alt="carouse-image" draggable={false} />
                               <div className="mt-[2rem] px-[1.5rem] pb-[1.5rem]">
                                   <h3 className="text-[1.5rem] text-dark-gray font-montserrat font-bold">{ t(item.title) }</h3>
@@ -79,7 +107,8 @@ const DestinationsCarousel = () => {
                 <CardContent className="p-0 flex justify-between">
                   {
                       carouselData['slide3'].map((item, index) => (
-                          <div key={index} className="w-[25rem] rounded-[1rem] overflow-hidden border border-gray/25">
+                          <div key={index} className="bg-light-white w-[25rem] rounded-[1rem] overflow-hidden border border-gray/25 relative">
+                              <DestinationPrice price={item.price}/>
                               <img className="h-[16rem]" src={item.imageURL} alt="carouse-image" draggable={false} />
                               <div className="mt-[2rem] px-[1.5rem] pb-[1.5rem]">
                                   <h3 className="text-[1.5rem] text-dark-gray font-montserrat font-bold">{ t(item.title) }</h3>
@@ -105,7 +134,8 @@ const DestinationsCarousel = () => {
                 <CardContent className="p-0 flex justify-between">
                   {
                       carouselData['slide4'].map((item, index) => (
-                          <div key={index} className="w-[25rem] rounded-[1rem] overflow-hidden border border-gray/25">
+                          <div key={index} className="bg-light-white w-[25rem] rounded-[1rem] overflow-hidden border border-gray/25 relative">
+                              <DestinationPrice price={item.price}/>
                               <img className="h-[16rem]" src={item.imageURL} alt="carouse-image" draggable={false} />
                               <div className="mt-[2rem] px-[1.5rem] pb-[1.5rem]">
                                   <h3 className="text-[1.5rem] text-dark-gray font-montserrat font-bold">{ t(item.title) }</h3>
@@ -129,6 +159,7 @@ const DestinationsCarousel = () => {
       </CarouselContent>
       {/* <CarouselPrevious />
       <CarouselNext /> */}
+      <CarouselDots itemsLength={Object.keys(carouselData).length} activeSlide={activeSlide} />
     </Carousel>
   )
 }
