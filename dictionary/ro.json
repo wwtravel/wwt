@@ -58,5 +58,38 @@
     "card12StartPoint" : "Punctul de start - Gara de Nord",
 
     "cardButtonText" : "Rezervează Bilet"
+  },
+  "Services" : {
+    "lowOpacityTitle" : "SERVICII",
+    "title" : "CE SERVICII OFERIM?",
+    "subtitle1" : "TRANSPORTARE PASAGERI",
+    "subtitle2" : "TRANSPORTARE COLETE",
+    "description1" : "La World Wide Travel, vă oferim călătorii confortabile și sigure din Chișinău către destinațiile dvs. preferate din Europa. Microbuzele și autobuzele noastre moderne sunt echipate pentru a vă asigura o călătorie relaxantă. Șoferii noștri experimentați vă vor duce la destinație în siguranță și la timp.",
+    "description2" : "Cu serviciul nostru de transport colete, puteți trimite pachete rapid și în siguranță din Chișinău către orașele din Austria, Germania, Franța și Elveția. Asigurăm livrare promptă și tratăm fiecare colet cu atenție și grijă.",
+    "servicesCountry1" : "Franța",
+    "servicesCountry2" : "Austria",
+    "servicesCountry3" : "Germania",
+    "servicesCountry4" : "Elveția",
+
+    "passenger1Title" : "Adult",
+    "passenger2Title" : "Copil",
+    "passenger3Title" : "Student",
+    "passenger4Title" : "Bagaj",
+
+    "passenger2info" : "până la 10 ani",
+    "passenger3info" : "carnet de elev",
+    "passenger4info" : "până la 50kg",
+    "free" : "Gratuit",
+    "bookBtnText" : "Rezervează Bilet",
+
+    "parcelInfoText1" : "Pentru coletele de dimensiuni mai mari, tariful se calculează per unitate, iar pentru stabilirea acestuia vă rugăm să contactați sediul nostru sau să veniți în persoană.",
+    "parcelInfoText2" : "Colectarea și livrarea coletelor se efectuează pe tot teritoriul Republicii Moldova si al Elveției. În funcție de necesități, transportul se poate realiza în camere frigorifice.",
+    "send" : "Trimite",
+    "nameInputPlaceholder" : "Nume, Prenume",
+    "phoneInputPlaceholder" : "Telefon",
+    "selectBox1Placeholder" : "Trimit colet din",
+    "selectBox2Placeholder" : "Trimit colet spre",
+    "selectBoxNothingFound" : "Nici un rezultat găsit",
+    "selectBoxSearchPlaceholder" : "Caută..."
   }
 }

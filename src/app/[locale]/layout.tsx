@@ -1,6 +1,7 @@
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import '@/styles/globals.css'
+import 'leaflet/dist/leaflet.css';
 
 import { Open_Sans, Montserrat } from 'next/font/google'
 

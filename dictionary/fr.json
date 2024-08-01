@@ -58,5 +58,38 @@
     "card12StartPoint": "Point de départ - Gare du Nord",
 
     "cardButtonText": "Réserver un billet"
+  },
+  "Services" : {
+    "lowOpacityTitle": "SERVICES",
+    "title": "QUELS SERVICES OFFRONS-NOUS ?",
+    "subtitle1": "TRANSPORT DE PASSAGERS",
+    "subtitle2": "LIVRAISON DE COLIS",
+    "description1": "Chez World Wide Travel, nous vous proposons des voyages confortables et sécurisés de Chișinău vers vos destinations préférées en Europe. Nos minibus et bus modernes sont équipés pour vous garantir un voyage relaxant. Nos chauffeurs expérimentés vous conduiront à destination en toute sécurité et à l'heure.",
+    "description2": "Avec notre service de livraison de colis, vous pouvez envoyer des paquets rapidement et en toute sécurité de Chișinău vers des villes en Autriche, en Allemagne, en France et en Suisse. Nous assurons une livraison rapide et traitons chaque colis avec soin et attention.",
+    "servicesCountry1": "France",
+    "servicesCountry2": "Autriche",
+    "servicesCountry3": "Allemagne",
+    "servicesCountry4": "Suisse",
+
+    "passenger1Title": "Adulte",
+    "passenger2Title": "Enfant",
+    "passenger3Title": "Étudiant",
+    "passenger4Title": "Bagage",
+
+    "passenger2info": "jusqu'à 10 ans",
+    "passenger3info": "carte d'étudiant",
+    "passenger4info": "jusqu'à 50kg",
+    "free": "Gratuit",
+    "bookBtnText": "Réserver un billet",
+
+    "parcelInfoText1": "Pour les colis plus volumineux, le tarif est calculé par unité. Veuillez contacter notre bureau ou nous rendre visite en personne pour déterminer le tarif.",
+    "parcelInfoText2": "La collecte et la livraison des colis sont effectuées sur tout le territoire de la République de Moldavie et de la Suisse. Selon les besoins, le transport peut se faire dans des chambres frigorifiques.",
+    "send": "Envoyer",
+    "nameInputPlaceholder": "Nom, Prénom",
+    "phoneInputPlaceholder": "Téléphone",
+    "selectBox1Placeholder": "Envoyer le colis de",
+    "selectBox2Placeholder": "Envoyer le colis à",
+    "selectBoxNothingFound": "Aucun résultat trouvé",
+    "selectBoxSearchPlaceholder": "Recherche..."
   }
 }

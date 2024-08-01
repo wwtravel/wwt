@@ -10,7 +10,7 @@ const NavBar = () => {
   const t = useTranslations('NavBar');
 
   return (
-    <div className='fixed z-[10] w-full'>
+    <div className='fixed z-[10000] w-full'>
       <div className='relative h-[7.3125rem] w-full bg-red rounded-b-[1rem] pt-[1rem] px-[12rem] font-open-sans'>
         <div className='flex justify-between'>
           <Link href='/'>

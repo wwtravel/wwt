@@ -3,6 +3,7 @@ import DestinationsCarousel from './DestinationsCarousel'
 import { useTranslations } from 'next-intl'
 
 import Image from 'next/image'
+import SectionTitle from '@/components/SharedComponents/SectionTitle'
 
 const Destinations = () => {
 
@@ -18,11 +19,8 @@ const Destinations = () => {
         height={658}
         className='absolute bottom-0 left-[2rem]'
       />
-        <div className='w-full relative font-montserrat flex flex-col items-center'>
-            <p className='text-[10rem] leading-[0.7] text-dark-gray/5 font-bold uppercase select-none'>{ t('lowOpacityTitle') }</p>
-            <h2 className='absolute left-[50%] -translate-x-[50%] uppercase top-[50%] -translate-y-[50%] text-[2.5rem] font-bold text-dark-gray'>{ t('title') }</h2>
-            <div className='h-[0.25rem] w-[6rem] bg-red mt-[1rem]'/>
-        </div>
+      
+        <SectionTitle lowOpacityTitle={t('lowOpacityTitle')} title={t('title')}/>
 
         <div className='mt-[4rem] px-[7.5rem]'>
           <DestinationsCarousel />

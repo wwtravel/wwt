@@ -58,5 +58,38 @@
     "card12StartPoint": "Starting point - North Station",
 
     "cardButtonText": "Book Ticket"
+  },
+  "Services" : {
+    "lowOpacityTitle": "SERVICES",
+    "title": "WHAT SERVICES DO WE OFFER?",
+    "subtitle1": "PASSENGER TRANSPORT",
+    "subtitle2": "PARCEL DELIVERY",
+    "description1": "At World Wide Travel, we offer comfortable and safe trips from Chișinău to your favorite destinations in Europe. Our modern minibuses and buses are equipped to ensure you have a relaxing journey. Our experienced drivers will get you to your destination safely and on time.",
+    "description2": "With our parcel delivery service, you can send packages quickly and safely from Chișinău to cities in Austria, Germany, France, and Switzerland. We ensure prompt delivery and treat each parcel with care and attention.",
+    "servicesCountry1": "France",
+    "servicesCountry2": "Austria",
+    "servicesCountry3": "Germany",
+    "servicesCountry4": "Switzerland",
+
+    "passenger1Title": "Adult",
+    "passenger2Title": "Child",
+    "passenger3Title": "Student",
+    "passenger4Title": "Luggage",
+
+    "passenger2info": "up to 10 years old",
+    "passenger3info": "student card",
+    "passenger4info": "up to 50kg",
+    "free": "Free",
+    "bookBtnText": "Book Ticket",
+
+    "parcelInfoText1": "For larger parcels, the rate is calculated per unit. Please contact our office or visit us in person to determine the rate.",
+    "parcelInfoText2": "Collection and delivery of parcels are carried out throughout the territory of the Republic of Moldova and Switzerland. Depending on the needs, transportation can be done in refrigerated chambers.",
+    "send": "Send",
+    "nameInputPlaceholder": "First Name, Last Name",
+    "phoneInputPlaceholder": "Phone",
+    "selectBox1Placeholder": "Send parcel from",
+    "selectBox2Placeholder": "Send parcel to",
+    "selectBoxNothingFound": "No results found",
+    "selectBoxSearchPlaceholder": "Search..."
   }
 }
