@@ -1,4 +1,4 @@
-import { Destinations, Header, Services } from "@/components";
+import { Destinations, Features, Header, Services } from "@/components";
 
 export default function HomePage() {
   return (
@@ -7,6 +7,7 @@ export default function HomePage() {
       <Destinations />
       <div className="px-[12rem]">
         <Services />
+        <Features />
       </div>
     </div>
   )

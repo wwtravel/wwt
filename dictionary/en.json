@@ -91,5 +91,38 @@
     "selectBox2Placeholder": "Send parcel to",
     "selectBoxNothingFound": "No results found",
     "selectBoxSearchPlaceholder": "Search..."
+  },
+  "Features" : {
+    "lowOpacityTitle": "BENEFITS",
+    "title": "WHY OUR TEAM?",
+
+    "featureCard1": "Satisfaction Rate",
+    "featureCard2": "Passengers Transported",
+    "featureCard3": "Years of Experience",
+
+    "featuresBoldText": "At World Wide Travel, we are dedicated to providing you with high-quality passenger and parcel transportation services, with regular departures from Chișinău.",
+    "featuresCheckText_1_Title": "Safety and Comfort",
+    "featuresCheckText_2_Title": "Professionalism",
+    "featuresCheckText_3_Title": "Affordable Prices",
+    "featuresCheckText_1_Description": "We ensure that every trip is safe and comfortable for you.",
+    "featuresCheckText_2_Description": "Our drivers are experienced and dedicated to providing you with the best service.",
+    "featuresCheckText_3_Description": "We offer high-quality services at competitive prices.",
+
+    "featuresBtn": "Learn More"
+  },
+  "Footer" : {
+    "footerInfo": "For more information about our services or to make a reservation, please do not hesitate to contact us.",
+    "usefulLinks": "Useful Links",
+    "home": "Home",
+    "schedule": "Route Schedule",
+    "about": "About Us",
+    "contact": "Contact",
+    "adress": "Address",
+    "adressText": "2/2 Tighina Street, Chișinău, Moldova",
+    "passengerDetails": "Passenger Details",
+    "parcelDetails": "Parcel Details",
+    "newsLetter": "Newsletter",
+    "send": "Send",
+    "copyright": "Copyright © World Wide Travel all rights reserved."
   }
 }

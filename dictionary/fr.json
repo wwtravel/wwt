@@ -91,5 +91,38 @@
     "selectBox2Placeholder": "Envoyer le colis à",
     "selectBoxNothingFound": "Aucun résultat trouvé",
     "selectBoxSearchPlaceholder": "Recherche..."
+  },
+  "Features" : {
+    "lowOpacityTitle": "AVANTAGES",
+    "title": "POURQUOI NOTRE ÉQUIPE ?",
+
+    "featureCard1": "Taux de Satisfaction",
+    "featureCard2": "Passagers Transportés",
+    "featureCard3": "Années d'Expérience",
+
+    "featuresBoldText": "Chez World Wide Travel, nous nous engageons à vous fournir des services de transport de passagers et de colis de haute qualité, avec des départs réguliers depuis Chișinău.",
+    "featuresCheckText_1_Title": "Sécurité et Confort",
+    "featuresCheckText_2_Title": "Professionnalisme",
+    "featuresCheckText_3_Title": "Prix Abordables",
+    "featuresCheckText_1_Description": "Nous veillons à ce que chaque voyage soit sûr et confortable pour vous.",
+    "featuresCheckText_2_Description": "Nos chauffeurs sont expérimentés et dévoués à vous offrir le meilleur service.",
+    "featuresCheckText_3_Description": "Nous offrons des services de haute qualité à des prix compétitifs.",
+
+    "featuresBtn": "En Savoir Plus"
+  },
+  "Footer" : {
+    "footerInfo": "Pour plus d'informations sur nos services ou pour effectuer une réservation, n'hésitez pas à nous contacter.",
+    "usefulLinks": "Liens Utiles",
+    "home": "Accueil",
+    "schedule": "Horaires des Itinéraires",
+    "about": "À Propos de Nous",
+    "contact": "Contact",
+    "adress": "Adresse",
+    "adressText": "2/2 Rue Tighina, Chișinău, Moldavie",
+    "passengerDetails": "Détails Passagers",
+    "parcelDetails": "Détails Colis",
+    "newsLetter": "Newsletter",
+    "send": "Envoyer",
+    "copyright": "Droits d'auteur © World Wide Travel tous droits réservés."
   }
 }

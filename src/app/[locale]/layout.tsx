@@ -5,7 +5,7 @@ import 'leaflet/dist/leaflet.css';
 
 import { Open_Sans, Montserrat } from 'next/font/google'
 
-import { NavBar } from "@/components";
+import { NavBar, Footer } from "@/components";
 
 
 const openSans = Open_Sans({
@@ -37,6 +37,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={dictionary}>
           <NavBar />
           {children}
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

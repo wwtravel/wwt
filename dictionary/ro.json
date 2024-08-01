@@ -91,5 +91,39 @@
     "selectBox2Placeholder" : "Trimit colet spre",
     "selectBoxNothingFound" : "Nici un rezultat găsit",
     "selectBoxSearchPlaceholder" : "Caută..."
+  },
+  "Features" : {
+    "lowOpacityTitle" : "BENEFICII",
+    "title" : "DE CE ECHIPA NOASTRĂ?",
+
+    "featureCard1" : "Rata de Satisfacție",
+    "featureCard2" : "Pasageri Transportați",
+    "featureCard3" : "Ani de Experiență",
+
+    "featuresBoldText" : "La World Wide Travel, suntem dedicați să vă oferim servicii de transport pasageri și colete de înaltă calitate, cu plecări regulate din Chișinău.",
+    "featuresCheckText_1_Title" : "Siguranță și Confort",
+    "featuresCheckText_2_Title" : "Profesionalism",
+    "featuresCheckText_3_Title" : "Prețuri Accesibile",
+    "featuresCheckText_1_Description" : "Ne asigurăm că fiecare călătorie este sigură și confortabilă pentru dvs.",
+    "featuresCheckText_2_Description" : "Șoferii noștri au experiență și sunt dedicați să vă ofere cel mai bun serviciu.",
+    "featuresCheckText_3_Description" : "Oferim servicii de înaltă calitate la prețuri competitive.",
+
+    "featuresBtn" : "Află mai multe"
+  },
+  "Footer" : {
+    "footerInfo" : "Pentru mai multe informații despre serviciile noastre sau pentru a face o rezervare, nu ezitați să ne contactați.",
+    "usefulLinks" : "Link-uri Utile",
+    "home" : "Acasă",
+    "schedule" : "Orarul Rutelor",
+    "about" : "Despre Noi",
+    "contact" : "Contacte",
+    "adress" : "Adresa",
+    "adressText" : "Strada Tighina 2/2, Chișinău, Moldova",
+    "passengerDetails" : "Detalii Pasageri",
+    "parcelDetails" : "Detalii Colete",
+    "newsLetter" : "News Letter",
+    "send" : "Trimite",
+    "copyright" : "Copyright ©World Wide Travel all rights reserved."
   }
+
 }

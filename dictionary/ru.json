@@ -91,5 +91,38 @@
     "selectBox2Placeholder": "Отправить посылку в",
     "selectBoxNothingFound": "Результатов не найдено",
     "selectBoxSearchPlaceholder": "Поиск..."
+  },
+  "Features" : {
+    "lowOpacityTitle": "ПРЕИМУЩЕСТВА",
+    "title": "ПОЧЕМУ НАША КОМАНДА?",
+
+    "featureCard1": "Довольных Клиентов",
+    "featureCard2": "Перевезенных Пассажиров",
+    "featureCard3": "Лет Опыта",
+
+    "featuresBoldText": "В World Wide Travel мы стремимся предоставлять вам высококачественные услуги по перевозке пассажиров и посылок с регулярными отправлениями из Кишинева.",
+    "featuresCheckText_1_Title": "Безопасность и Комфорт",
+    "featuresCheckText_2_Title": "Профессионализм",
+    "featuresCheckText_3_Title": "Доступные Цены",
+    "featuresCheckText_1_Description": "Мы гарантируем, что каждая поездка будет безопасной и комфортной для вас.",
+    "featuresCheckText_2_Description": "Наши водители имеют опыт и стремятся предоставить вам лучший сервис.",
+    "featuresCheckText_3_Description": "Мы предлагаем высококачественные услуги по конкурентным ценам.",
+
+    "featuresBtn": "Узнать больше"
+  },
+  "Footer" : {
+    "footerInfo": "Для получения дополнительной информации о наших услугах или для бронирования, пожалуйста, не стесняйтесь обращаться к нам.",
+    "usefulLinks": "Полезные Ссылки",
+    "home": "Главная",
+    "schedule": "Расписание Маршрутов",
+    "about": "О Нас",
+    "contact": "Контакты",
+    "adress": "Адрес",
+    "adressText": "Улица Тигина 2/2, Кишинев, Молдова",
+    "passengerDetails": "Детали о Пассажиров",
+    "parcelDetails": "Детали о Посылках",
+    "newsLetter": "Рассылка",
+    "send": "Отправить",
+    "copyright": "Авторское право © World Wide Travel все права защищены."
   }
 }

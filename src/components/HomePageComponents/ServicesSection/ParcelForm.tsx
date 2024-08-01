@@ -52,7 +52,7 @@ const ParcelForm = () => {
         <ParcelFormSelect options={CITIES} placeholder={ t('selectBox2Placeholder') } onChange={() => {}}/>
         
         <div>
-          <RedButton text='Trimite'/>
+          <RedButton text={t('send')}/>
         </div>
         
     </div>
