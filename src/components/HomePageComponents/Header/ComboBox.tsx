@@ -42,7 +42,7 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
 
   return (
     <div>
-      <Command>
+      <Command className="bg-[transparent]">
         <Popover open={isFocused} onOpenChange={setIsFocused}>
           <PopoverTrigger asChild onClick={(e) => { e.preventDefault() }}>
             <div className="relative">
@@ -51,7 +51,7 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
                 onValueChange={(value) => handleInputChange(value)}
                 onClick={() => setIsFocused(true)} 
                 onBlur={() => setIsFocused(false)} 
-                className="bg-light-white w-[15rem] h-[3.5rem] outline-none border border-gray/25 rounded-[0.5rem] text-[1rem] font-[400] text-dark-gray px-[1.5rem]" 
+                className="bg-light-white lg:min-w-[15rem] min-w-full lg:h-[3.5rem] h-[4.667rem] outline-none border border-gray/25 rounded-[0.5rem] text-[1rem] font-[400] text-dark-gray px-[1.5rem]" 
                 placeholder={placeholder}
               />
               <img
@@ -67,7 +67,7 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
             </div>
           </PopoverTrigger>
 
-          <PopoverContent className="w-[15rem] bg-light-white border border-gray/25 rounded-[0.5rem] py-[0.75rem]" onOpenAutoFocus={(e) => e.preventDefault()}>
+          <PopoverContent className="lg:w-[15rem] w-[calc(100vw-2.875rem)] bg-light-white border border-gray/25 rounded-[0.5rem] py-[0.75rem]" onOpenAutoFocus={(e) => e.preventDefault()}>
             <CommandList>
               <CommandEmpty>{ t('comboboxNothingFound') }</CommandEmpty>
               <CommandGroup>

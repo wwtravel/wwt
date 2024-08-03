@@ -57,21 +57,25 @@ const RouteSearch = () => {
 
   return (
     <div className='absolute bottom-0 left-[50%] -translate-x-[50%] w-fit h-[9.5rem] bg-light-white shadow-lg rounded-[1rem] translate-y-[50%] flex gap-[1rem] items-center px-[4rem]'>
+      <div className='w-[15rem]'>
         <ComboBox 
           options={CITIES}
           placeholder={t('combobox1placeholder')}
           value={departureCity}
           onChange={setDepartureCity}
         />
+      </div>
 
         <img onClick={interchangeValues} className='size-[1.5rem] cursor-pointer' src="/icons/icon-reverse.svg" alt="reverse" draggable={false} />
 
-        <ComboBox 
-          options={CITIES}
-          placeholder={t('combobox2placeholder')}
-          value={arrivalCity}
-          onChange={setArrivalCity}
-        />
+        <div className='w-[15rem]'>
+          <ComboBox 
+            options={CITIES}
+            placeholder={t('combobox2placeholder')}
+            value={arrivalCity}
+            onChange={setArrivalCity}
+          />
+        </div>
 
         <DatePicker placeholder={t('calendar1placeholder')}/>
         <DatePicker placeholder={t('calendar2placeholder')}/>

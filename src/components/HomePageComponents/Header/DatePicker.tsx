@@ -40,7 +40,7 @@ const DatePicker:React.FC<DatePickerProps> = ({ placeholder }) => {
         <Button
           variant={"outline"}
           className={cn(
-            "p-[1.5rem] text-[1rem] min-w-[15rem] h-[3.5rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal",
+            "p-[1.5rem] text-[1rem] bg-light-white min-w-[15rem] lg:h-[3.5rem] h-[4.667rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal",
             !date && "text-muted-foreground"
           )}
         >
