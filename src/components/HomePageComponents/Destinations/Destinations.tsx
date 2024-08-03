@@ -4,13 +4,14 @@ import { useTranslations } from 'next-intl'
 
 import Image from 'next/image'
 import SectionTitle from '@/components/SharedComponents/SectionTitle'
+import MobileDestinationsCarousel from './MobileDestinationsCarousel'
 
 const Destinations = () => {
 
   const t = useTranslations("Destinations")
 
   return (
-    <div className="mt-[11.5rem] relative pb-[6rem] px-[12rem]">
+    <div className="bg-[#F1F8FD] lg:mt-[11.5rem] mt-[-1.333rem] max-lg:pt-[2.667rem] rounded-[0.667rem] overflow-hidden relative pb-[6rem]">
       <Image 
         src="/images/dotted-map-bg.png"
         alt='dotted-map'
@@ -22,8 +23,12 @@ const Destinations = () => {
       
         <SectionTitle lowOpacityTitle={t('lowOpacityTitle')} title={t('title')}/>
 
-        <div className='mt-[4rem] px-[5.5rem]'>
+        <div className='mt-[4rem] max-lg:hidden'>
           <DestinationsCarousel />
+        </div>
+
+        <div className='lg:hidden mt-[2.667rem]'>
+          <MobileDestinationsCarousel />
         </div>
     </div>
   )

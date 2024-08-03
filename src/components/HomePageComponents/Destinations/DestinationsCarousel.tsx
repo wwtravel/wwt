@@ -38,11 +38,11 @@ const DestinationsCarousel = () => {
 
   return (
     <Carousel 
-      className="w-full select-none"
+      className="max-w-[85rem] w-full mx-auto select-none"
       setApi={setApi}
       plugins={[
         Autoplay({
-          delay: 5000,
+          delay: 8000,
           stopOnInteraction: false
         })
       ]}
@@ -51,8 +51,7 @@ const DestinationsCarousel = () => {
       }}
     >
       <CarouselContent>
-
-          <CarouselItem>
+          <CarouselItem >
               <Card className="rounded-[1rem] border-none"> 
                 <CardContent className="p-0 flex justify-between px-[2rem] pb-[2rem]">
                   {
@@ -79,7 +78,7 @@ const DestinationsCarousel = () => {
               </Card>
           </CarouselItem>
 
-          <CarouselItem>
+          <CarouselItem >
               <Card className="rounded-[1rem] border-none"> 
                 <CardContent className="p-0 flex justify-between px-[2rem] pb-[2rem]">
                   {
@@ -106,7 +105,7 @@ const DestinationsCarousel = () => {
               </Card>
           </CarouselItem>
 
-          <CarouselItem>
+          <CarouselItem >
               <Card className="rounded-[1rem] border-none"> 
                 <CardContent className="p-0 flex justify-between px-[2rem] pb-[2rem]">
                   {
@@ -133,7 +132,7 @@ const DestinationsCarousel = () => {
               </Card>
           </CarouselItem>
 
-          <CarouselItem>
+          <CarouselItem >
               <Card className="rounded-[1rem] border-none"> 
                 <CardContent className="p-0 flex justify-between px-[2rem] pb-[2rem]">
                   {

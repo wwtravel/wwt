@@ -141,3 +141,51 @@ export const carouselData = {
         },
     ]
 }
+
+
+export const carouselDataMobile = [
+    {
+        imageURL : "/images/carousel-images/viena.png",
+        price : 100, // in EUR
+        title : "card1title",
+        departureText : "cardDeparture",
+        startPoint : "card1StartPoint",
+        features: "features",
+        wifi: true,
+        food: true,
+        luggage: true
+    },
+    {
+        imageURL : "/images/carousel-images/chambery.png",
+        price : 120, // in EUR
+        title : "card2title",
+        departureText : "cardDeparture",
+        startPoint : "card2StartPoint",
+        features: "features",
+        wifi: true,
+        food: false,
+        luggage: true
+    },
+    {
+        imageURL : "/images/carousel-images/zurich.png",
+        price : 80, // in EUR
+        title : "card3title",
+        departureText : "cardDeparture",
+        startPoint : "card3StartPoint",
+        features: "features",
+        wifi: true,
+        food: false,
+        luggage: false
+    },
+    {
+        imageURL : "/images/carousel-images/viena.png",
+        price : 100, // in EUR
+        title : "card4title",
+        departureText : "cardDeparture",
+        startPoint : "card4StartPoint",
+        features: "features",
+        wifi: true,
+        food: true,
+        luggage: true
+    },
+]

@@ -26,6 +26,9 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+html{
+    font-size: 16px;
+}
 
 @media only screen and (min-width: 2500px){
     html{
