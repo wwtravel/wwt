@@ -18,8 +18,9 @@ const CurrencyPicker = () => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
     >
-        <p className='uppercase text-[1rem] font-bold'>{ currency }</p>
-        <img src="/icons/icon-arrow.svg" alt="arrow" draggable={false} />
+        <p className='uppercase text-[1rem] font-bold font-open-sans xl:text-dark-gray text-light-white'>{ currency }</p>
+        <img src="/icons/icon-arrow.svg" alt="arrow" className='size-[1rem] max-xl:hidden' draggable={false} />
+        <img src="/icons/icon-arrow-white.svg" alt="arrow" className='size-[1rem] xl:hidden' draggable={false} />
 
         {
             isHovered && (

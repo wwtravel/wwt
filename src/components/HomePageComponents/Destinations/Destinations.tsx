@@ -22,7 +22,7 @@ const Destinations = () => {
       
         <SectionTitle lowOpacityTitle={t('lowOpacityTitle')} title={t('title')}/>
 
-        <div className='mt-[4rem] px-[7.5rem]'>
+        <div className='mt-[4rem] px-[5.5rem]'>
           <DestinationsCarousel />
         </div>
     </div>

@@ -25,6 +25,19 @@ const config = {
       },
     },
     extend: {
+      boxShadow: {
+        custom: '4px 4px 24px 0 rgba(14, 14, 14, 0.05)',
+      },
+      screens: {
+        'xxs': '320px',
+        'xs': '375px',
+        'sm': '425px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+        '4k': '3840px',
+      },
       fontFamily: {
         "open-sans" : ['var(--font-open-sans)'],
         "montserrat": ['var(--font-montserrat)'],

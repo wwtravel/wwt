@@ -56,7 +56,10 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
               />
               <img
                 onClick={() => { setIsFocused(false); handleInputChange("")} }
-                className="cursor-pointer absolute top-[50%] -translate-y-[50%] right-0 mr-[1.5rem]" 
+                className="cursor-pointer transition-opacity duration-300 absolute top-[50%] -translate-y-[50%] right-0 mr-[1.5rem]" 
+                style={{
+                  opacity : inputContent === "" ? 0 : 1
+                }}
                 src="/icons/icon-close.svg" 
                 alt="close" 
                 draggable={false} 

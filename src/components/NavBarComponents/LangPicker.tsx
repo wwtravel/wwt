@@ -21,8 +21,9 @@ const LangPicker = () => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
     >
-        <p className='uppercase text-[1rem] font-bold'>{ locale }</p>
-        <img src="/icons/icon-arrow.svg" alt="arrow" draggable={false} />
+        <p className='uppercase text-[1rem] font-open-sans font-bold xl:text-dark-gray text-light-white'>{ locale }</p>
+        <img src="/icons/icon-arrow.svg" alt="arrow" className='size-[1rem] max-xl:hidden' draggable={false} />
+        <img src="/icons/icon-arrow-white.svg" alt="arrow" className='size-[1rem] xl:hidden' draggable={false} />
 
         {
             isHovered && (
