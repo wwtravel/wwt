@@ -18,7 +18,9 @@ const Destinations = () => {
         draggable={false}
         width={1358}
         height={658}
-        className='absolute bottom-0 left-[2rem]'
+        objectPosition='left'
+        objectFit='cover'
+        className='absolute min-w-[84.875rem] bottom-0 md:left-[2rem] left-[-14rem]'
       />
       
         <SectionTitle lowOpacityTitle={t('lowOpacityTitle')} title={t('title')}/>

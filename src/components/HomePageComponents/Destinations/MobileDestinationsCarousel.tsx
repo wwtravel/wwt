@@ -56,7 +56,7 @@ const MobileDestinationsCarousel = () => {
                 carouselDataMobile.map((item, index) => (
                     <CarouselItem key={index}>
                         <Card className="rounded-[1rem] border-none"> 
-                            <CardContent className="p-0 px-[2rem] pb-[2rem]">
+                            <CardContent className="p-0 px-[2rem] pb-[1.333rem]">
                                     <div className="bg-light-white rounded-[1rem] overflow-hidden border border-gray/25 relative shadow-custom">
                                         <DestinationPrice price={item.price}/>
                                         <img className="h-[16rem]" src={item.imageURL} alt="carouse-image" draggable={false} />
