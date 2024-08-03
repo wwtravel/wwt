@@ -23,23 +23,23 @@ function Calendar({
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
         month: "space-y-4",
         caption: "flex justify-center pt-1 relative items-center",
-        caption_label: "text-sm font-medium",
+        caption_label: "lg:text-sm text-[1.167rem] font-medium",
         nav: "space-x-1 flex items-center",
         nav_button: cn(
           buttonVariants({ variant: "outline" }),
-          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-90 fill-dark-gray transition-opacity duration-300"
+          "lg:size-[1.5rem] size-[2rem] bg-transparent p-0 opacity-50 hover:opacity-90 fill-dark-gray transition-opacity duration-300"
         ),
         nav_button_previous: "absolute left-1",
         nav_button_next: "absolute right-1",
         table: "w-full border-collapse space-y-1",
         head_row: "flex",
         head_cell:
-          "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
+          "text-muted-foreground rounded-md w-9 font-normal lg:text-[0.8rem] text-[1.083rem]",
         row: "flex w-full mt-2",
-        cell: "h-9 w-9 hover:bg-gray/25 transition-colors duration-300 text-center rounded-[0.5rem] text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-gray/10 [&:has([aria-selected])]:bg-gray/25 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+        cell: "h-9 w-9 hover:bg-gray/25 transition-colors duration-300 text-center rounded-[0.5rem] p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-gray/10 [&:has([aria-selected])]:bg-gray/25 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
         day: cn(
           buttonVariants({ variant: "ghost" }),
-          "h-9 w-9 p-0 font-normal aria-selected:opacity-100"
+          "h-9 w-9 p-0 font-normal aria-selected:opacity-100 lg:text-sm text-base"
         ),
         day_range_end: "day-range-end",
         day_selected:
@@ -54,8 +54,8 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
-        IconRight: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
+        IconLeft: ({ ...props }) => <ChevronLeft className="lg:size-[1rem] size-[1.333rem]" />,
+        IconRight: ({ ...props }) => <ChevronRight className="lg:size-[1rem] size-[1.333rem]" />,
       }}
       {...props}
     />

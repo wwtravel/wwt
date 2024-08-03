@@ -40,23 +40,23 @@ const DatePicker:React.FC<DatePickerProps> = ({ placeholder }) => {
         <Button
           variant={"outline"}
           className={cn(
-            "p-[1.5rem] text-[1rem] bg-light-white min-w-[15rem] lg:h-[3.5rem] h-[4.667rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal",
+            "p-[1.5rem] lg:text-[1rem] text-[1.333rem] bg-light-white min-w-[15rem] lg:h-[3.5rem] h-[4.667rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal",
             !date && "text-muted-foreground"
           )}
         >
-          {date ? format(date, "MM.dd.yyyy") : <span className="text-gray/75 text-[1rem]">{ placeholder }</span>}
+          {date ? format(date, "MM.dd.yyyy") : <span className="text-gray/75 lg:text-[1rem] text-[1.333rem]">{ placeholder }</span>}
           <CalendarIcon className="h-4 w-4" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto border border-gray/25 bg-light-white p-0">
-        <Calendar
-          mode="single"
-          selected={date}
-          onSelect={setDate}
-          initialFocus
-          locale={calLocale}
-        />
-      </PopoverContent>
+        <PopoverContent align="center" className="w-auto border border-gray/25 bg-light-white p-0">
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={setDate}
+            initialFocus
+            locale={calLocale}
+          />
+        </PopoverContent>
     </Popover>
   )
 }

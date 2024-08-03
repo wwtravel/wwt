@@ -4,11 +4,11 @@ export default function HomePage() {
   return (
     <div>
       <Header />
-      <Destinations />
+      {/* <Destinations />
       <div className="px-[12rem]">
         <Services />
         <Features />
-      </div>
+      </div> */}
     </div>
   )
 }
