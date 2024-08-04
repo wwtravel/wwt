@@ -10,7 +10,7 @@ const Services = () => {
   const t = useTranslations('Services')
 
   return (
-    <div className='px-[7.5rem] mt-[2rem]'>
+    <div className='px-[1rem] mt-[2rem]'>
         <SectionTitle lowOpacityTitle={ t('lowOpacityTitle') } title={ t('title') }/>
 
         <div className='mt-[4rem] flex justify-center'>
@@ -19,7 +19,7 @@ const Services = () => {
 
         <PassengerInfo />
 
-        <div className='mt-[8rem] flex justify-center'>
+        <div className='md:mt-[8rem] mt-[6.667rem] flex justify-center'>
             <ServiceSubSectionTitle title={ t('subtitle2') } description={t('description2')}/>
         </div>
 

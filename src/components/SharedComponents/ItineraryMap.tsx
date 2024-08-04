@@ -66,7 +66,7 @@ const MapEvents:React.FC<MapEventsProps> = ({ coordinates }) => {
 const ItineraryMap:React.FC<MapProps> = ({ coordinates, center }) => {
   return (
     <div className="h-full w-full">
-      <MapContainer center={center} scrollWheelZoom={false} zoom={10} style={{ height: "100%", width: "100%" }}>
+      <MapContainer center={center} scrollWheelZoom={false} zoom={10} style={{ height: "100%", width: "100%", zIndex: 0 }}>
         <TileLayer
           attribution='Map tiles by <a href="https://carto.com/attributions">CARTO</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. Data by <a href="https://www.openstreetmap.org">OpenStreetMap</a>, under ODbL.'
           url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"

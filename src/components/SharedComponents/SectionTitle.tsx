@@ -7,7 +7,7 @@ interface SectionTitleProps{
 
 const SectionTitle:React.FC<SectionTitleProps> = ({ lowOpacityTitle, title }) => {
   return (
-    <div className='w-full font-montserrat flex flex-col items-center'>
+    <div className='w-full font-montserrat flex flex-col items-center border px-[1rem]'>
       <div className='relative w-full flex justify-center'>
         <p className='md:text-[10rem] text-[5.333rem] leading-[0.7] text-dark-gray/5 font-bold uppercase select-none'>{ lowOpacityTitle }</p>
         <h2 className='w-full text-center absolute left-[50%] -translate-x-[50%] uppercase top-[50%] -translate-y-[50%] md:text-[2.5rem] text-[2rem] leading-[0.7] font-bold text-dark-gray'>{ title }</h2>

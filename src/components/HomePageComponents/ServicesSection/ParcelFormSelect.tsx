@@ -42,17 +42,17 @@ const ParcelFormSelect:React.FC<ParcelFormSelectProps> = ({ placeholder, options
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-full h-[3.5rem] justify-between border border-gray/25 rounded-[0.5rem] text-[1rem]"
+          className="w-full sm:h-[3.5rem] h-[4.667rem] justify-between border border-gray/25 rounded-[0.5rem] sm:text-[1rem] text-[1.333rem]"
         >
           {value
             ? options.find((option) => option.value === value)?.label
             : (<p className="text-gray/75"> {placeholder} </p>)}
-          <ChevronDown className="ml-2 h-4 w-4 shrink-0 text-dark-gray" />
+          <ChevronDown className="ml-2 sm:size-[1rem] size-[1.333rem] shrink-0 text-dark-gray" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[15rem] bg-light-white border border-gray/25 rounded-[0.5rem] py-[0.5rem]">
         <Command>
-          <CommandInput required placeholder={ t('selectBoxSearchPlaceholder') } className="bg-light-white w-full h-[3.5rem] outline-none text-[1rem] font-[400] text-dark-gray pl-[1rem] border-b border-gray/25 rounded-none mb-[0.5rem] py-[0.5rem]" />
+          <CommandInput required placeholder={ t('selectBoxSearchPlaceholder') } className="bg-light-white w-full h-[3.5rem] outline-none sm:text-[1rem] text-[1.333rem] font-[400] text-dark-gray pl-[1rem] border-b border-gray/25 rounded-none mb-[0.5rem] py-[0.5rem]" />
           <CommandEmpty >{ t('selectBoxNothingFound') }</CommandEmpty>
           <CommandGroup className="max-h-[9.5rem] overflow-y-scroll">
             {options.map((option) => (
@@ -63,7 +63,7 @@ const ParcelFormSelect:React.FC<ParcelFormSelectProps> = ({ placeholder, options
                   setValue(currentValue === value ? "" : currentValue)
                   setOpen(false)
                 }}
-                className={`hover:bg-gray/10 transition-colors duration-300 text-[1rem] rounded-[0.5rem] p-[0.5rem] ${ value === option.value ? "bg-gray/10" : "" }`}
+                className={`hover:bg-gray/10 transition-colors duration-300 sm:text-[1rem] text-[1.333rem] rounded-[0.5rem] p-[0.5rem] ${ value === option.value ? "bg-gray/10" : "" }`}
               >
                 {option.label}
               </CommandItem>

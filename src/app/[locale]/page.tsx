@@ -5,10 +5,8 @@ export default function HomePage() {
     <div>
       <Header />
       <Destinations />
-      {/* <div className="px-[12rem]">
-        <Services />
-        <Features />
-      </div> */}
+      <Services />
+      <Features />
     </div>
   )
 }

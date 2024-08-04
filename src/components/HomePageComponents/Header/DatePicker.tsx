@@ -45,7 +45,7 @@ const DatePicker:React.FC<DatePickerProps> = ({ placeholder }) => {
           )}
         >
           {date ? format(date, "MM.dd.yyyy") : <span className="text-gray/75 lg:text-[1rem] text-[1.333rem]">{ placeholder }</span>}
-          <CalendarIcon className="h-4 w-4" />
+          <CalendarIcon className="lg:size-[1rem] size-[1.333rem]" />
         </Button>
       </PopoverTrigger>
         <PopoverContent align="center" className="w-auto border border-gray/25 bg-light-white p-0">
