@@ -25,25 +25,25 @@ const Footer = () => {
                     </div>
 
                     <div className='flex flex-col'>
-                        <h3 className='font-bold font-open-sans text-[1.5rem] text-light-white mb-[1.5rem]'>{ t('contact') }</h3>
-                        <p className='font-open-sans text-[1rem] font-[300] text-light-white mb-[1rem] cursor-pointer w-[16rem]'><span className='font-bold'>{ t('adress') }: </span>{ t('adressText') }</p>
+                        <h3 className='font-bold font-open-sans md:text-[1.5rem] text-[1.333rem] text-light-white mb-[1.5rem]'>{ t('contact') }</h3>
+                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer w-[16rem]'><span className='font-bold'>{ t('adress') }: </span>{ t('adressText') }</p>
 
-                        <p className='font-open-sans text-[1rem] font-bold text-light-white cursor-pointer'>{ t('passengerDetails') }</p>
-                        <p className='font-open-sans text-[1rem] font-[300] text-light-white cursor-pointer flex gap-[0.5rem]'><span>+373 60 262 525</span> <span>+41 762 333 452</span></p>
-                        <p className='font-open-sans text-[1rem] font-[300] text-light-white mb-[1rem] cursor-pointer flex gap-[0.5rem]'><span>+373 60 262 525</span> <span>+41 766 023 886</span></p>
+                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-bold text-light-white cursor-pointer'>{ t('passengerDetails') }</p>
+                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white cursor-pointer flex gap-[0.5rem]'><span>+373 60 262 525</span> <span>+41 762 333 452</span></p>
+                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer flex gap-[0.5rem]'><span>+373 60 262 525</span> <span>+41 766 023 886</span></p>
 
-                        <p className='font-open-sans text-[1rem] font-bold text-light-white cursor-pointer'>{ t('parcelDetails') }</p>
-                        <p className='font-open-sans text-[1rem] font-[300] text-light-white cursor-pointer'>+373 68 213 292</p>
+                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-bold text-light-white cursor-pointer'>{ t('parcelDetails') }</p>
+                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white cursor-pointer'>+373 68 213 292</p>
                     </div>
 
                     <FooterNewsLetter />
 
                     <div className='flex flex-col md:hidden'>
-                        <h3 className='font-bold font-open-sans text-[1.5rem] text-light-white mb-[1.5rem] whitespace-nowrap'>{ t('usefulLinks') }</h3>
-                        <p className='font-open-sans text-[1rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('home') }</p>
-                        <p className='font-open-sans text-[1rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('schedule') }</p>
-                        <p className='font-open-sans text-[1rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('about') }</p>
-                        <p className='font-open-sans text-[1rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('contact') }</p>
+                        <h3 className='font-bold font-open-sans md:text-[1.5rem] text-[1.333rem] text-light-white mb-[1.5rem] whitespace-nowrap'>{ t('usefulLinks') }</h3>
+                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('home') }</p>
+                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('schedule') }</p>
+                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('about') }</p>
+                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('contact') }</p>
                     </div>
                 </div>
             </div>
