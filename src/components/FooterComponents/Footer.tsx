@@ -30,7 +30,7 @@ const Footer = () => {
 
                         <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-bold text-light-white cursor-pointer'>{ t('passengerDetails') }</p>
                         <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white cursor-pointer flex gap-[0.5rem]'><span>+373 60 262 525</span> <span>+41 762 333 452</span></p>
-                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer flex gap-[0.5rem]'><span>+373 60 262 525</span> <span>+41 766 023 886</span></p>
+                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer flex gap-[0.5rem]'><span>+373 60 629 009</span> <span>+41 766 023 886</span></p>
 
                         <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-bold text-light-white cursor-pointer'>{ t('parcelDetails') }</p>
                         <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white cursor-pointer'>+373 68 213 292</p>

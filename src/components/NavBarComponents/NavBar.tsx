@@ -19,7 +19,7 @@ const NavBar = () => {
           </Link>
 
           <div className='flex xl:gap-[1.5rem] justify-between max-xl:w-full'>
-              <NavContact imageUrl='/icons/icon-phone.svg' darkImageUrl='/icons/icon-phone-dark.svg' title={t('titleMD')} info={['+373 60 262 525', '+373 60 262 525']}/>
+              <NavContact imageUrl='/icons/icon-phone.svg' darkImageUrl='/icons/icon-phone-dark.svg' title={t('titleMD')} info={['+373 60 262 525', '+373 60 629 009']}/>
               <NavContact imageUrl='/icons/icon-phone.svg' darkImageUrl='/icons/icon-phone-dark.svg' title={t('titleSW')} info={['+41 762 333 452', '+41 766 023 886']}/>
               <div className='max-md:hidden'>
                 <NavContact imageUrl='/icons/icon-email.svg' darkImageUrl='/icons/icon-email-dark.svg' title={t('titleEmail')} info={['wwtravelmd@gmail.com']}/>
