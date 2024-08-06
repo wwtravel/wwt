@@ -32,7 +32,7 @@ const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
             />
 
             <motion.div 
-              className='fixed z-[20001] top-0 right-0 h-screen w-[24.5rem] bg-light-white pl-[2.667rem] pr-[1.333rem] pb-[2.667rem] flex flex-col justify-between'
+              className='fixed z-[20001] top-0 right-0 h-[100dvh] w-[24.5rem] bg-light-white pl-[2.667rem] pr-[1.333rem] pb-[2.667rem] flex flex-col justify-between'
               initial={{ x: '100%' }}
               animate={{ x: '0%' }}
               exit={{ x: '100%' }}
@@ -41,7 +41,7 @@ const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
 
 
                 <div className='relative'>
-                  <img onClick={() => {setIsOpen(false); enableScroll() }} src="/icons/icon-close.svg" alt="close" draggable={false} className='w-[2.667rem] absolute right-[2rem] top-[2rem] cursor-pointer' />
+                  <img onClick={() => {setIsOpen(false); document.body.style.overflow = 'visible' }} src="/icons/icon-close.svg" alt="close" draggable={false} className='w-[2.667rem] absolute right-[2rem] top-[2rem] cursor-pointer' />
                   <div className='mt-[8rem] flex flex-col gap-[1.333rem] font-bold text-[2rem] text-dark-gray'>
                     <Link href="/">{t('navHome')}</Link>
                     <Link href="/">{t('navSchedule')}</Link>

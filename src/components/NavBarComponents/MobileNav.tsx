@@ -29,7 +29,7 @@ const MobileNav = () => {
         <div className='flex gap-[0.5rem]'>
             <LangPicker />
             <CurrencyPicker />
-            <img onClick={() => {setIsOpen(true); disableScroll()}} src="/icons/icon-menu.svg" draggable={false} alt="menu" className='size-[2rem] ml-[0.5rem] cursor-pointer' />
+            <img onClick={() => {setIsOpen(true); document.body.style.overflow = 'hidden' }} src="/icons/icon-menu.svg" draggable={false} alt="menu" className='size-[2rem] ml-[0.5rem] cursor-pointer' />
         </div>
 
         <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen}/>
