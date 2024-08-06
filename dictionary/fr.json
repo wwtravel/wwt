@@ -7,7 +7,9 @@
     "navSchedule" : "Horaire des Routes",
     "navAbout" : "À Propos",
     "navContact" : "Contact",
-    "navCart" : "Panier"
+    "navCart" : "Panier",
+    "passengerDetails": "Détails Passagers",
+    "parcelDetails": "Détails Colis"
   },
   "Header": {
     "ticketsWord1" : "Billets",

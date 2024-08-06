@@ -7,7 +7,9 @@
     "navSchedule" : "Orarul Rutelor",
     "navAbout" : "Despre Noi",
     "navContact" : "Contacte",
-    "navCart" : "Coș"
+    "navCart" : "Coș",
+    "passengerDetails" : "Detalii Pasageri",
+    "parcelDetails" : "Detalii Colete"
   },
   "Header": {
     "ticketsWord1" : "bilete",

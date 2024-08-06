@@ -7,7 +7,9 @@
     "navSchedule" : "Расписание маршрутов",
     "navAbout" : "О нас",
     "navContact" : "Контакты",
-    "navCart" : "Корзина"
+    "navCart" : "Корзина",
+    "passengerDetails": "Детали о Пассажиров",
+    "parcelDetails": "Детали о Посылках"
   },
   "Header": {
     "ticketsWord1" : "Автобусные",

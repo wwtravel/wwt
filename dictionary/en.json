@@ -7,7 +7,9 @@
     "navSchedule" : "Route Schedule",
     "navAbout" : "About Us",
     "navContact" : "Contact",
-    "navCart" : "Cart"
+    "navCart" : "Cart",
+    "passengerDetails": "Passenger Details",
+    "parcelDetails": "Parcel Details"
   },
   "Header": {
     "ticketsWord1" : "bus",
