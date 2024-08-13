@@ -126,6 +126,50 @@
     "newsLetter" : "News Letter",
     "send" : "Trimite",
     "copyright" : "Copyright ©World Wide Travel all rights reserved."
+  },
+  "AboutHeader" : {
+    "aboutWord1" : "despre",
+    "aboutWord2" : "companie",
+    "headerDesc" : "Fiecare călătorie este o experiență unică, plină de confort și siguranță, având destinații în Germania, Elveția, Franța și Austria.",
+    "headerBtn": "Află mai multe"
+  },
+  "AboutPage_About" : {
+    "lowOpacityTitle" : "DESPRE",
+    "title" : "CINE SUNTEM?",
+
+    "AboutBoldText" : "Suntem World Wide Travel, o companie de transport internațional de pasageri și colete cu sediul în Chișinău.",
+    "AboutParagraph_1" : "Cu o experiență de peste 10 ani, ne dedicăm să oferim servicii de înaltă calitate, asigurând călătorii sigure și confortabile pentru toți pasagerii noștri.",
+    "AboutParagraph_2" : "Ne mândrim cu flota noastră modernă de autobuze și cu echipa noastră profesionistă care are grijă să ajungeți la destinație în cele mai bune condiții. Ne adresăm cu precădere persoanelor în vârstă, oferindu-le tot suportul necesar pentru o călătorie fără griji.",
+    "AboutBtn" : "Află mai multe"
+  },
+  "AboutFeatures" : {
+    "lowOpacityTitle" : "BENEFICII",
+    "title" : "DE CE ECHIPA NOASTRĂ?",
+
+    "featureCard_1_Title" : "Siguranță și Confort",
+    "featureCard_2_Title" : "Profesionalism",
+    "featureCard_3_Title" : "Prețuri Accesibile",
+    "featureCard_4_Title" : "Punctualitate și Fiabilitate",
+    "featureCard_5_Title" : "Inovație și Tehnologie",
+    "featureCard_6_Title" : "Comunicare",
+
+    "featureCard_1_Description" : "Ne asigurăm că fiecare călătorie este sigură și confortabilă pentru dvs.",
+    "featureCard_2_Description" : "Șoferii au experiență și sunt dedicați să vă ofere cel mai bun serviciu.",
+    "featureCard_3_Description" : "Oferim servicii de înaltă calitate la prețuri competitive.",
+    "featureCard_4_Description" : "Respectăm orele de plecare și sosire, asigurându-ne că ajungeți la timp.",
+    "featureCard_5_Description" : "Investim continuu pentru a îmbunătăți calitatea serviciilor.",
+    "featureCard_6_Description" : "Oferim toate informațiile necesare pentru o călătorie fără surprize."
+  },
+  "AboutPage_Testimonials" : {
+    "lowOpacityTitle" : "RECENZII",
+    "title" : "CE SPUN CLIENȚII?",
+
+
+    "test_1_text" : "Am călătorit de mai multe ori cu World Wide Travel și sunt mereu impresionată de confortul și siguranța oferită. Recomand cu încredere!",
+    "test_2_text" : "Am avut ocazia să călătoresc de câteva ori cu World Wide Travel și pot spune că serviciile lor sunt impecabile. Fiecare călătorie a fost o experiență plăcută și fără griji.",
+
+    "test_1_role" : "Studentă",
+    "test_2_role" : "Manager"
   }
 
 }

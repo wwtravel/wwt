@@ -1,4 +1,9 @@
 import { Destinations, Features, Header, Services } from "@/components";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Home | World Wide Travel',
+}
 
 export default function HomePage() {
   return (

@@ -10,7 +10,7 @@ const ParcelInfo = () => {
   const t = useTranslations("Services")
 
   return (
-    <div className='max-w-[81rem] w-full mx-auto rounded-[1rem] bg-light-white border border-[#DADBDD] overflow-hidden mt-[3rem] flex lg:flex-row flex-col'>
+    <div className='max-w-[81rem] w-full mx-auto rounded-[1rem] bg-light-white border border-[#DADBDD] overflow-hidden mt-[3rem] flex lg:flex-row flex-col shadow-custom'>
 
         <div className="lg:w-[50%] w-full md:px-[4rem] md:py-[3rem] xs:p-[2rem] p-[1rem]">
             <div className='flex items-end w-full'>

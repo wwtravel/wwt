@@ -7,6 +7,12 @@ import { default as Destinations } from './HomePageComponents/Destinations/Desti
 import { default as Services } from './HomePageComponents/ServicesSection/Services'
 import { default as Features } from './HomePageComponents/Features/Features'
 
+//About Page
+import { default as AboutHeader } from './AboutPageComponents/Header/AboutHeader'
+import { default as AboutFeatures } from './AboutPageComponents/Features/AboutFeatures'
+import { default as About } from './AboutPageComponents/About/About'
+import { default as Testimonials } from './AboutPageComponents/Testimonials/Testimonials'
+
 export {
     NavBar,
     Footer,
@@ -14,5 +20,10 @@ export {
     Header,
     Destinations,
     Services,
-    Features
+    Features,
+
+    AboutHeader,
+    AboutFeatures,
+    About,
+    Testimonials
 }

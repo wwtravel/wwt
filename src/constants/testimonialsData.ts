@@ -1,0 +1,26 @@
+export const testimonialsData = [
+    {
+        imgUrl: "/images/aboutPage/testimonials-images/testimonials1.png",
+        text: "test_1_text",
+        name: "Valeria C.",
+        role: "test_1_role"
+    },
+    {
+        imgUrl: "/images/aboutPage/testimonials-images/testimonials2.png",
+        text: "test_2_text",
+        name: "Elena M.",
+        role: "test_2_role"
+    },
+    {
+        imgUrl: "/images/aboutPage/testimonials-images/testimonials1.png",
+        text: "test_1_text",
+        name: "Valeria C.",
+        role: "test_1_role"
+    },
+    {
+        imgUrl: "/images/aboutPage/testimonials-images/testimonials2.png",
+        text: "test_2_text",
+        name: "Elena M.",
+        role: "test_2_role"
+    },
+]

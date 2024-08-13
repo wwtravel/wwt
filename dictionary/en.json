@@ -126,5 +126,48 @@
     "newsLetter": "Newsletter",
     "send": "Send",
     "copyright": "Copyright © World Wide Travel all rights reserved."
+  },
+  "AboutHeader" : {
+    "aboutWord1": "about",
+    "aboutWord2": "company",
+    "headerDesc": "Every journey is a unique experience, filled with comfort and safety, with destinations in Germany, Switzerland, France, and Austria.",
+    "headerBtn": "Find out more"
+  },
+  "AboutPage_About" : {
+    "lowOpacityTitle": "ABOUT",
+    "title": "WHO ARE WE?",
+
+    "AboutBoldText": "We are World Wide Travel, an international passenger and parcel transport company based in Chișinău.",
+    "AboutParagraph_1": "With over 10 years of experience, we are dedicated to providing high-quality services, ensuring safe and comfortable journeys for all our passengers.",
+    "AboutParagraph_2": "We take pride in our modern fleet of buses and our professional team that ensures you reach your destination in the best conditions. We specifically cater to elderly individuals, offering them all the support they need for a worry-free journey.",
+    "AboutBtn": "Find out more"
+  },
+  "AboutFeatures" : {
+    "lowOpacityTitle": "BENEFITS",
+    "title": "WHY OUR TEAM?",
+
+    "featureCard_1_Title": "Safety and Comfort",
+    "featureCard_2_Title": "Professionalism",
+    "featureCard_3_Title": "Affordable Prices",
+    "featureCard_4_Title": "Punctuality and Reliability",
+    "featureCard_5_Title": "Innovation and Technology",
+    "featureCard_6_Title": "Communication",
+
+    "featureCard_1_Description": "We ensure that every trip is safe and comfortable for you.",
+    "featureCard_2_Description": "Our drivers are experienced and dedicated to providing you with the best service.",
+    "featureCard_3_Description": "We offer high-quality services at competitive prices.",
+    "featureCard_4_Description": "We adhere to departure and arrival times, ensuring you arrive on time.",
+    "featureCard_5_Description": "We continually invest in improving service quality.",
+    "featureCard_6_Description": "We provide all the necessary information for a trip with no surprises."
+  },
+  "AboutPage_Testimonials" : {
+    "lowOpacityTitle": "REVIEWS",
+    "title": "WHAT DO OUR CLIENTS SAY?",
+
+    "test_1_text": "I have traveled several times with World Wide Travel and I am always impressed by the comfort and safety provided. I highly recommend it!",
+    "test_2_text": "I have had the opportunity to travel a few times with World Wide Travel and I can say that their services are impeccable. Every trip was a pleasant and worry-free experience.",
+
+    "test_1_role": "Student",
+    "test_2_role": "Manager"
   }
 }

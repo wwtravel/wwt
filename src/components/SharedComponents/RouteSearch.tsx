@@ -56,7 +56,7 @@ const RouteSearch = () => {
   }
 
   return (
-    <div className='absolute bottom-0 left-[50%] -translate-x-[50%] w-fit h-[9.5rem] bg-light-white shadow-lg rounded-[1rem] translate-y-[50%] flex gap-[1rem] items-center px-[4rem]'>
+    <div className='absolute bottom-0 left-[50%] -translate-x-[50%] w-fit h-[9.5rem] bg-light-white shadow-custom rounded-[1rem] translate-y-[50%] flex gap-[1rem] items-center px-[4rem]'>
       <div className='w-[15rem]'>
         <ComboBox 
           options={CITIES}
