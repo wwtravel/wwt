@@ -13,10 +13,6 @@ const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
 
   const t = useTranslations("NavBar")
 
-  function enableScroll() {
-    window.onscroll = function() {};
-  }
-
   return (
     <AnimatePresence>
 
@@ -43,10 +39,10 @@ const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
                 <div className='relative'>
                   <img onClick={() => {setIsOpen(false); document.body.style.overflow = 'visible' }} src="/icons/icon-close.svg" alt="close" draggable={false} className='w-[2.667rem] absolute right-[2rem] top-[2rem] cursor-pointer' />
                   <div className='mt-[8rem] flex flex-col gap-[1.333rem] font-bold text-[2rem] text-dark-gray'>
-                    <Link href="/">{t('navHome')}</Link>
-                    <Link href="/">{t('navSchedule')}</Link>
-                    <Link href="/about">{t('navAbout')}</Link>
-                    <Link href="/">{t('navContact')}</Link>
+                    <Link href="/" onClick={() => {setIsOpen(false)}}>{t('navHome')}</Link>
+                    <Link href="/" onClick={() => {setIsOpen(false)}}>{t('navSchedule')}</Link>
+                    <Link href="/about" onClick={() => {setIsOpen(false)}}>{t('navAbout')}</Link>
+                    <Link href="/" onClick={() => {setIsOpen(false)}}>{t('navContact')}</Link>
                   </div>
 
                   <div className='bg-red rounded-[0.5rem] w-fit px-[5.333rem] h-[3.333rem] flex justify-center items-center gap-[0.667rem] cursor-pointer mt-[2rem]'>

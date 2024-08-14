@@ -1,7 +1,7 @@
 import SectionTitle from '@/components/SharedComponents/SectionTitle'
 import { useTranslations } from 'next-intl'
-import React from 'react'
 import TestimonialsCarousel from './TestimonialsCarousel'
+import MobileTestimonialsCarousel from './MobileTestimonialsCarousel'
 
 const Testimonials = () => {
 
@@ -12,7 +12,12 @@ const Testimonials = () => {
         <SectionTitle lowOpacityTitle={ t('lowOpacityTitle') } title={ t('title') }/>
 
         <div className='mt-[5.375rem]'>
+          <div className='max-lg:hidden'>
             <TestimonialsCarousel />
+          </div>
+          <div className='lg:hidden'>
+            <MobileTestimonialsCarousel />
+          </div>
         </div>
     </div>
   )

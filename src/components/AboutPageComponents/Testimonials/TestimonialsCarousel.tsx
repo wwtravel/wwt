@@ -65,8 +65,8 @@ const TestimonialsCarousel = () => {
           <CarouselItem >
               <Card className="rounded-[1rem] border-none"> 
                 <CardContent className="p-0 flex justify-between pl-[6rem] pb-[2rem] pr-[2rem]">
-                    <CarouselCard imgUrl={ testimonialsData[0].imgUrl } name={ testimonialsData[0].name } text={ t(testimonialsData[0].text) } role={t(testimonialsData[0].role)}/>
-                    <CarouselCard imgUrl={ testimonialsData[1].imgUrl } name={ testimonialsData[1].name } text={ t(testimonialsData[1].text) } role={t(testimonialsData[1].role)}/>
+                    <CarouselCard imgUrl={ testimonialsData[2].imgUrl } name={ testimonialsData[2].name } text={ t(testimonialsData[2].text) } role={t(testimonialsData[2].role)}/>
+                    <CarouselCard imgUrl={ testimonialsData[3].imgUrl } name={ testimonialsData[3].name } text={ t(testimonialsData[3].text) } role={t(testimonialsData[3].role)}/>
                 </CardContent>
               </Card>
           </CarouselItem>

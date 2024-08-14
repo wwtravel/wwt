@@ -162,10 +162,10 @@
   },
   "AboutPage_Testimonials" : {
     "lowOpacityTitle": "REVIEWS",
-    "title": "WHAT DO OUR CLIENTS SAY?",
+    "title": "WHAT DO CLIENTS SAY?",
 
-    "test_1_text": "I have traveled several times with World Wide Travel and I am always impressed by the comfort and safety provided. I highly recommend it!",
-    "test_2_text": "I have had the opportunity to travel a few times with World Wide Travel and I can say that their services are impeccable. Every trip was a pleasant and worry-free experience.",
+    "test_1_text": "I have traveled several times with World Wide Travel and I am always impressed by the comfort and safety provided.",
+    "test_2_text": "I have had the opportunity to travel a few times with World Wide Travel and I can say that their services are impeccable.",
 
     "test_1_role": "Student",
     "test_2_role": "Manager"
