@@ -9,7 +9,7 @@ interface CarouselCardProps{
 
 const CarouselCard:React.FC<CarouselCardProps> = ({ imgUrl, text, name, role }) => {
   return (
-    <div className='relative bg-light-white rounded-[0.5rem] border border-gray/25 py-[1.5rem] pl-[4rem] pr-[2rem] shadow-custom font-open-sans w-[31.75rem]'>
+    <div className='relative bg-light-white rounded-[0.5rem] border-gray/25 py-[1.5rem] pl-[4rem] pr-[2rem] shadow-custom font-open-sans h-full max-w-[31.75rem] border'>
         <img src={imgUrl} alt="avatar" className='sm:size-[6rem] size-[5.333rem] absolute top-[50%] -translate-y-[50%] left-0 -translate-x-2/3 rounded-[0.5rem]' draggable={false} />
         <img src="/icons/icon-quote.svg" alt="quote" draggable={false} className='sm:size-[4.5rem] size-[4rem]' />
         <p className='text-dark-gray sm:text-[1.125rem] text-[1.167rem] font-[400] italic sm:mt-[0.5rem] mt-[0.333rem]'>{ text }</p>
