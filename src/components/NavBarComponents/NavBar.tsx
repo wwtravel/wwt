@@ -6,12 +6,14 @@ import { useTranslations } from "next-intl";
 import LangPicker from './LangPicker';
 import CurrencyPicker from './CurrencyPicker';
 import MobileNav from './MobileNav';
+import AnimatedDesktopNav from './AnimatedDesktopNav';
+import AnimatedMobileNav from './AnimatedMobileNav';
 
 const NavBar = () => {
   const t = useTranslations('NavBar');
 
   return (
-    <div className='fixed z-[10000] left-0 right-0'>
+    <div className='absolute z-[10000] left-0 right-0'>
       <div className='relative xl:h-[7.3125rem] w-full xl:bg-red bg-light-white xl:rounded-b-[1rem] pt-[1rem] max-xl:pb-[1rem] lg:px-[12rem] px-[1rem] font-open-sans'>
         <div className='flex xl:justify-between'>
           <Link className='max-xl:hidden' href='/'>
@@ -54,11 +56,14 @@ const NavBar = () => {
           </div>
         </div>
 
+        <AnimatedDesktopNav />
+
         {/* desktop nav */}
 
       </div>
 
       <MobileNav />
+      <AnimatedMobileNav />
     </div>
   )
 }
