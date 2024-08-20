@@ -1,4 +1,10 @@
 {
+  "PageTitles" : {
+    "home" : "Accueil",
+    "about" : "À Propos",
+    "contact" : "Contact",
+    "schedule" : "Horaire des Routes"
+  },
   "NavBar": {
     "titleMD": "Téléphone Moldavie",
     "titleSW": "Téléphone Suisse",

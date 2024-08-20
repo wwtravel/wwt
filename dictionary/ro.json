@@ -1,4 +1,10 @@
 {
+  "PageTitles" : {
+    "home" : "Acasă",
+    "about" : "Despre Noi",
+    "contact" : "Contacte",
+    "schedule" : "Orarul Rutelor"
+  },
   "NavBar": {
     "titleMD": "Telefon Moldova",
     "titleSW": "Telefon Elveția",

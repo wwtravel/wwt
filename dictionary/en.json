@@ -1,4 +1,10 @@
 {
+  "PageTitles" : {
+    "home" : "Home",
+    "about" : "About Us",
+    "contact" : "Contact",
+    "schedule" : "Route Schedule"
+  },
   "NavBar": {
     "titleMD": "Phone Moldova",
     "titleSW": "Phone Switzerland",
