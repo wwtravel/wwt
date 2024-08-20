@@ -13,6 +13,9 @@ import { default as AboutFeatures } from './AboutPageComponents/Features/AboutFe
 import { default as About } from './AboutPageComponents/About/About'
 import { default as Testimonials } from './AboutPageComponents/Testimonials/Testimonials'
 
+//Contacts Page
+import { default as Contacts } from './ContactsPageComponents/Contacts'
+
 export {
     NavBar,
     Footer,
@@ -25,5 +28,7 @@ export {
     AboutHeader,
     AboutFeatures,
     About,
-    Testimonials
+    Testimonials,
+
+    Contacts
 }

@@ -10,7 +10,13 @@ export const pathnames: Pathnames<typeof locales> = {
     ro: '/despre-noi',
     ru: '/o-nas',
     fr: '/a-propos'
-  }
+  },
+  '/contacts': {
+    "en": '/contact',
+    "ro": '/contacte',
+    "ru": '/kontakty',
+    "fr": '/contact'
+  },
 };
 
 export const localePrefix: LocalePrefix<typeof locales> = 'always';

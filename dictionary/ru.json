@@ -173,5 +173,19 @@
     "test_2_role": "Менеджер",
     "test_3_role": "Пенсионерка",
     "test_4_role": "Предприниматель"
+  },
+  "ContactsPage" : {
+    "lowOpacityTitle": "КОНТАКТЫ",
+    "title": "КОНТАКТНЫЕ ДЕТАЛИ",
+
+    "contactPhones": "Контактные телефоны",
+    "phoneMD": "ТЕЛЕФОН МОЛДОВА",
+    "phoneSW": "ТЕЛЕФОН ШВЕЙЦАРИЯ",
+    "parcelDelivery": "ДОСТАВКА ПОСЫЛОК",
+
+    "officeAdress": "Адрес офиса",
+    "street": "ул. Тигина 2/2",
+    "city-country": "Кишинёв, Республика Молдова",
+    "email": "Эл. Почта"
   }
 }

@@ -173,5 +173,19 @@
     "test_2_role": "Manager",
     "test_3_role": "Retiree",
     "test_4_role": "Entrepreneur"
+  },
+  "ContactsPage" : {
+    "lowOpacityTitle": "CONTACT",
+    "title": "CONTACT DETAILS",
+
+    "contactPhones": "Contact Phones",
+    "phoneMD": "PHONE MOLDOVA",
+    "phoneSW": "PHONE SWITZERLAND",
+    "parcelDelivery": "PARCEL DELIVERY",
+
+    "officeAdress": "Office Address",
+    "street": "Tighina St. 2/2",
+    "city-country": "Chișinău, Republic of Moldova",
+    "email": "E-Mail"
   }
 }

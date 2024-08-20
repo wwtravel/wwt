@@ -42,7 +42,7 @@ const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
                     <Link href="/" onClick={() => {setIsOpen(false); document.body.style.overflow = 'visible'}}>{t('navHome')}</Link>
                     <Link href="/" onClick={() => {setIsOpen(false); document.body.style.overflow = 'visible'}}>{t('navSchedule')}</Link>
                     <Link href="/about" onClick={() => {setIsOpen(false); document.body.style.overflow = 'visible'}}>{t('navAbout')}</Link>
-                    <Link href="/" onClick={() => {setIsOpen(false); document.body.style.overflow = 'visible'}}>{t('navContact')}</Link>
+                    <Link href="/contacts" onClick={() => {setIsOpen(false); document.body.style.overflow = 'visible'}}>{t('navContact')}</Link>
                   </div>
 
                   <div className='bg-red rounded-[0.5rem] w-fit px-[5.333rem] h-[3.333rem] flex justify-center items-center gap-[0.667rem] cursor-pointer mt-[2rem]'>

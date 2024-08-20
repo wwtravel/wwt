@@ -32,8 +32,6 @@ const FooterNewsLetter = () => {
     }
   }, [])
 
-  console.log(btnWidth)
-
   return (
     <div className='flex flex-col'>
         <h3 className='font-bold font-open-sans text-[1.5rem] text-light-white mb-[1.5rem]'>{ t('newsLetter') }</h3>

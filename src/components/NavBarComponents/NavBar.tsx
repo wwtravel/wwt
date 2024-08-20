@@ -35,7 +35,7 @@ const NavBar = () => {
             <Link href="/" className='font-bold text-[1rem] text-dark-gray'>{t('navHome')}</Link>
             <Link href="/" className='font-bold text-[1rem] text-dark-gray'>{t('navSchedule')}</Link>
             <Link href="/about" className='font-bold text-[1rem] text-dark-gray'>{t('navAbout')}</Link>
-            <Link href="/" className='font-bold text-[1rem] text-dark-gray'>{t('navContact')}</Link>
+            <Link href="/contacts" className='font-bold text-[1rem] text-dark-gray'>{t('navContact')}</Link>
           </div>
 
           <div className='flex'>
