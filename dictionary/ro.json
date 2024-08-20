@@ -14,6 +14,7 @@
     "navAbout" : "Despre Noi",
     "navContact" : "Contacte",
     "navCart" : "Coș",
+    "log-in" : "conectează-te",
     "passengerDetails" : "Detalii Pasageri",
     "parcelDetails" : "Detalii Colete"
   },
@@ -194,6 +195,26 @@
     "street" : "str. Tighina 2/2",
     "city-country" : "Chișinău, Republica Moldova",
     "email" : "E-Mail"
+  },
+  "LogInModal" : {
+    "greetings" : "BUN VENIT ÎNAPOI",
+    "message" : "Suntem încântați că ați revenit. Introduceți adresa de email și parola",
+    "email" : "Email",
+    "password" : "Parola",
+    "log-in" : "Conectează-te",
+    "forgot-pass" : "Ați uitat parola?",
+    "question" : "Nu aveți cont?",
+    "sign-up" : "Înregistrați-vă acum"
+  },
+  "SignUpModal" : {
+    "createAccTitle" : "CREAȚI UN CONT",
+    "message" : "Înregistrați-vă acum, e foarte simplu. Introduceți adresa de email",
+    "last-name" : "Nume",
+    "first-name" : "Prenume",
+    "email" : "Email",
+    "sign-up" : "Înregistrați-vă",
+    "question" : "Deja aveți cont?",
+    "log-in" : "Conectați-vă acum"
   }
 
 }

@@ -14,6 +14,7 @@
     "navAbout" : "À Propos",
     "navContact" : "Contact",
     "navCart" : "Panier",
+    "log-in": "se connecter",
     "passengerDetails": "Détails Passagers",
     "parcelDetails": "Détails Colis"
   },
@@ -193,5 +194,25 @@
     "street": "Rue Tighina 2/2",
     "city-country": "Chișinău, République de Moldavie",
     "email": "E-Mail"
+  },
+  "LogInModal": {
+    "greetings": "BON RETOUR",
+    "message": "Nous sommes ravis de vous revoir. Veuillez entrer votre adresse e-mail et votre mot de passe",
+    "email": "Email",
+    "password": "Mot de passe",
+    "log-in": "Se connecter",
+    "forgot-pass": "Mot de passe oublié?",
+    "question": "Vous n'avez pas de compte?",
+    "sign-up": "Inscrivez-vous maintenant"
+  },
+  "SignUpModal": {
+    "createAccTitle": "CRÉER UN COMPTE",
+    "message": "Inscrivez-vous maintenant, c'est très simple. Entrez votre adresse e-mail",
+    "last-name": "Nom",
+    "first-name": "Prénom",
+    "email": "Email",
+    "sign-up": "S'inscrire",
+    "question": "Vous avez déjà un compte ?",
+    "log-in": "Connectez-vous maintenant"
   }
 }

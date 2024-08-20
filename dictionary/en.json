@@ -14,6 +14,7 @@
     "navAbout" : "About Us",
     "navContact" : "Contact",
     "navCart" : "Cart",
+    "log-in": "log in",
     "passengerDetails": "Passenger Details",
     "parcelDetails": "Parcel Details"
   },
@@ -193,5 +194,25 @@
     "street": "Tighina St. 2/2",
     "city-country": "Chișinău, Republic of Moldova",
     "email": "E-Mail"
+  },
+  "LogInModal": {
+    "greetings": "WELCOME BACK",
+    "message": "We're excited to have you back. Please enter your email address and password",
+    "email": "Email",
+    "password": "Password",
+    "log-in": "Log In",
+    "forgot-pass": "Forgot your password?",
+    "question": "Don't have an account?",
+    "sign-up": "Sign up now"
+  },
+  "SignUpModal": {
+    "createAccTitle": "CREATE AN ACCOUNT",
+    "message": "Sign up now, it's very simple. Enter your email address",
+    "last-name": "Last Name",
+    "first-name": "First Name",
+    "email": "Email",
+    "sign-up": "Sign Up",
+    "question": "Already have an account?",
+    "log-in": "Log In Now"
   }
 }

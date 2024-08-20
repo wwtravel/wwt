@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+
 import { Link } from '../../navigation'
 import NavContact from './NavContact'
 
@@ -9,8 +11,14 @@ import MobileNav from './MobileNav';
 import AnimatedDesktopNav from './AnimatedDesktopNav';
 import AnimatedMobileNav from './AnimatedMobileNav';
 
+import { useState } from 'react';
+import ModalWindow from '../SharedComponents/ModalWindow';
+import LogInModal from './LogInModal/LogInModal';
+
 const NavBar = () => {
   const t = useTranslations('NavBar');
+
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div className='absolute z-[10000] left-0 right-0'>
@@ -49,14 +57,18 @@ const NavBar = () => {
               <p className='font-bold text-dark-gray text-[1rem]'>{ t('navCart') }</p>
             </Link>
 
-            <div className='bg-red rounded-[0.5rem] px-[1.5rem] h-[2.5rem] flex justify-center items-center gap-[0.5rem] cursor-pointer'>
+            <div onClick={() => setIsOpen(true)} className='bg-red rounded-[0.5rem] px-[1.5rem] h-[2.5rem] flex justify-center items-center gap-[0.5rem] cursor-pointer'>
               <img src="/icons/icon-profile.svg" alt="profile" draggable={false} className='size-[1rem]' />
-              <p className='text-white font-bold text-[1rem]'>Cătălin P.</p>
+              <p className='text-white font-bold text-[1rem]'>{ t('log-in') }</p>
             </div>
+            
+
           </div>
         </div>
 
         <AnimatedDesktopNav />
+
+        <LogInModal isOpen={isOpen} setIsOpen={setIsOpen}/>
 
         {/* desktop nav */}
 

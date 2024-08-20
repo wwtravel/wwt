@@ -47,7 +47,7 @@ const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
 
                   <div className='bg-red rounded-[0.5rem] w-fit px-[5.333rem] h-[3.333rem] flex justify-center items-center gap-[0.667rem] cursor-pointer mt-[2rem]'>
                     <img src="/icons/icon-profile.svg" alt="profile" draggable={false} className='size-[1.333rem]' />
-                    <p className='text-white font-bold text-[1.333rem]'>Cătălin P.</p>
+                    <p className='text-white font-bold text-[1.333rem]'>{ t('log-in') }</p>
                   </div>
                 </div>
 
