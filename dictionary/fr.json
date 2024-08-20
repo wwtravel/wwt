@@ -164,10 +164,14 @@
     "lowOpacityTitle": "AVIS",
     "title": "QUE DISENT NOS CLIENTS?",
 
-    "test_1_text": "J'ai voyagé plusieurs fois avec World Wide Travel et je suis toujours impressionnée par le confort et la sécurité offerts. Je le recommande vivement",
+    "test_1_text": "J'ai voyagé plusieurs fois avec World Wide Travel et je suis toujours impressionnée par le confort et la sécurité offerts. Je le recommande vivement !",
     "test_2_text": "J'ai eu l'occasion de voyager plusieurs fois avec World Wide Travel et je peux dire que leurs services sont impeccables.",
+    "test_3_text": "Les bus sont modernes et propres, et les voyages sont très agréables. Merci pour les excellents services !",
+    "test_4_text": "Tout a été parfait, de la réservation à l'arrivée. Une équipe de vrais professionnels, je recommande vivement !",
 
     "test_1_role": "Étudiante",
-    "test_2_role": "Manager"
+    "test_2_role": "Manager",
+    "test_3_role": "Retraitée",
+    "test_4_role": "Entrepreneur"
   }
 }

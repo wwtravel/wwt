@@ -167,9 +167,13 @@
 
     "test_1_text" : "Am călătorit de mai multe ori cu World Wide Travel și sunt mereu impresionată de confortul și siguranța oferită. Recomand cu încredere!",
     "test_2_text" : "Am avut ocazia să călătoresc de câteva ori cu World Wide Travel și pot spune că serviciile lor sunt impecabile.",
+    "test_3_text" : "Autobuzele sunt moderne și curate, iar călătoriile sunt foarte plăcute. Mulțumesc pentru servicii excelente!",
+    "test_4_text" : "Totul a fost perfect de la rezervare pana la sosire. O echipa de profesionisti adevarati, recomand!",
 
     "test_1_role" : "Studentă",
-    "test_2_role" : "Manager"
+    "test_2_role" : "Manager",
+    "test_3_role" : "Pensionară",
+    "test_4_role" : "Antreprenor"
   }
 
 }

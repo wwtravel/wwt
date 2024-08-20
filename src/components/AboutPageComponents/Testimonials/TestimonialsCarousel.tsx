@@ -53,18 +53,18 @@ const TestimonialsCarousel = () => {
     >
       <img src="/icons/icon-dotted-square.svg" alt="dots" draggable={false} className='absolute -translate-y-1/3 translate-x-1/3 top-0 right-0 size-[6rem]' />
       <CarouselContent>
-          <CarouselItem>
-              <Card className="rounded-[1rem] border-none"> 
-                <CardContent className="p-0 flex justify-between pl-[6rem] pr-[2rem] pb-[2rem]">
+          <CarouselItem className="flex items-stretch">
+              <Card className="rounded-[1rem] border-none flex items-stretch w-full"> 
+                <CardContent className="p-0 flex justify-between pl-[6rem] pr-[2rem] pb-[2rem] w-full">
                   <CarouselCard imgUrl={ testimonialsData[0].imgUrl } name={ testimonialsData[0].name } text={ t(testimonialsData[0].text) } role={t(testimonialsData[0].role)}/>
                   <CarouselCard imgUrl={ testimonialsData[1].imgUrl } name={ testimonialsData[1].name } text={ t(testimonialsData[1].text) } role={t(testimonialsData[1].role)}/>
                 </CardContent>
               </Card>
           </CarouselItem>
 
-          <CarouselItem >
-              <Card className="rounded-[1rem] border-none"> 
-                <CardContent className="p-0 flex justify-between pl-[6rem] pb-[2rem] pr-[2rem]">
+          <CarouselItem className="flex items-stretch">
+              <Card className="rounded-[1rem] border-none flex items-stretch w-full"> 
+                <CardContent className="p-0 flex justify-between pl-[6rem] pb-[2rem] pr-[2rem] w-full">
                     <CarouselCard imgUrl={ testimonialsData[2].imgUrl } name={ testimonialsData[2].name } text={ t(testimonialsData[2].text) } role={t(testimonialsData[2].role)}/>
                     <CarouselCard imgUrl={ testimonialsData[3].imgUrl } name={ testimonialsData[3].name } text={ t(testimonialsData[3].text) } role={t(testimonialsData[3].role)}/>
                 </CardContent>

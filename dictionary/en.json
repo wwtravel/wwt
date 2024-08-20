@@ -164,10 +164,14 @@
     "lowOpacityTitle": "REVIEWS",
     "title": "WHAT DO CLIENTS SAY?",
 
-    "test_1_text": "I have traveled several times with World Wide Travel and I am always impressed by the comfort and safety provided.",
+    "test_1_text": "I have traveled several times with World Wide Travel and I am always impressed by the comfort and safety provided. I highly recommend it!",
     "test_2_text": "I have had the opportunity to travel a few times with World Wide Travel and I can say that their services are impeccable.",
+    "test_3_text": "The buses are modern and clean, and the trips are very pleasant. Thank you for the excellent services!",
+    "test_4_text": "Everything was perfect from booking to arrival. A team of true professionals, I highly recommend!",
 
     "test_1_role": "Student",
-    "test_2_role": "Manager"
+    "test_2_role": "Manager",
+    "test_3_role": "Retiree",
+    "test_4_role": "Entrepreneur"
   }
 }

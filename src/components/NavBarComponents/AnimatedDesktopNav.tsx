@@ -34,7 +34,7 @@ const AnimatedDesktopNav = () => {
         {
             showNav && (
                 <motion.div 
-                    className='max-xl:hidden shadow-custom fixed z-[20000] top-0 left-0 right-0 h-[4rem] bg-light-white rounded-[1rem] mx-[8.4375rem] px-[3.5rem] flex justify-between items-center'
+                    className='max-xl:hidden shadow-custom fixed z-[20000] top-0 left-0 right-0 h-[4rem] bg-light-white rounded-[1rem] mx-[8.4375rem] px-[3.5rem] flex justify-between items-center border border-gray/25'
                     initial={{ top: '-4rem' }}
                     animate={{ top: '1rem' }}
                     exit={{ top: '-4rem' }}
