@@ -66,7 +66,7 @@ const NavBar = () => {
           </div>
         </div>
 
-        <AnimatedDesktopNav />
+        <AnimatedDesktopNav isOpen={isOpen} setIsOpen={setIsOpen}/>
 
         <LogInModal isOpen={isOpen} setIsOpen={setIsOpen}/>
 

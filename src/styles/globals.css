@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    box-sizing: border-box;
+}
 
 *::-webkit-scrollbar {
     display: block;
@@ -22,16 +25,13 @@ body::-webkit-scrollbar {
     width: 10px;
 }
 
-html {
-    scrollbar-gutter: stable;
-}
-
 .itinerary{
   display: none;
 }
 
 html{
     font-size: 16px;
+    scrollbar-gutter: stable;
 }
 
 @media only screen and (min-width: 2500px){

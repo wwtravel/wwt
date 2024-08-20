@@ -3,6 +3,8 @@
 import { Link } from '@/navigation'
 import { useTranslations } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
+import LogInModal from './LogInModal/LogInModal';
+import { useState } from 'react';
 
 interface MobileMenuProps{
   isOpen: boolean;
@@ -12,6 +14,8 @@ interface MobileMenuProps{
 const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
 
   const t = useTranslations("NavBar")
+
+  const [isOpenModal, setIsOpenModal] = useState(false)
 
   return (
     <AnimatePresence>
@@ -45,10 +49,12 @@ const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
                     <Link href="/contacts" onClick={() => {setIsOpen(false); document.body.style.overflow = 'visible'}}>{t('navContact')}</Link>
                   </div>
 
-                  <div className='bg-red rounded-[0.5rem] w-fit px-[5.333rem] h-[3.333rem] flex justify-center items-center gap-[0.667rem] cursor-pointer mt-[2rem]'>
+                  <div className='bg-red rounded-[0.5rem] w-fit px-[5.333rem] h-[3.333rem] flex justify-center items-center gap-[0.667rem] cursor-pointer mt-[2rem]' onClick={() => setIsOpenModal(true)}>
                     <img src="/icons/icon-profile.svg" alt="profile" draggable={false} className='size-[1.333rem]' />
                     <p className='text-white font-bold text-[1.333rem]'>{ t('log-in') }</p>
                   </div>
+
+                  <LogInModal isOpen={ isOpenModal } setIsOpen={ setIsOpenModal }/>
                 </div>
 
                 <div className='text-[1.167rem] font-open-sans'>
