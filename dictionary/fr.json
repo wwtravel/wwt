@@ -14,7 +14,7 @@
     "navAbout" : "À Propos",
     "navContact" : "Contact",
     "navCart" : "Panier",
-    "log-in": "se connecter",
+    "log-in": "Se connecter",
     "passengerDetails": "Détails Passagers",
     "parcelDetails": "Détails Colis"
   },
@@ -31,7 +31,9 @@
     "comboboxNothingFound": "Aucun résultat trouvé",
     "calendar1placeholder": "Date de départ",
     "calendar2placeholder": "Date de retour",
-    "search": "Rechercher"
+    "search": "Rechercher",
+    "radioBtn_1": "Aller-retour",
+    "radioBtn_2": "Aller simple"
   },
   "Destinations" : {
     "lowOpacityTitle": "Itinéraires",

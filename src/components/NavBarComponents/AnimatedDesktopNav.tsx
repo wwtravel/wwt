@@ -7,6 +7,8 @@ import { Link } from '../../navigation'
 import LangPicker from './LangPicker';
 import CurrencyPicker from './CurrencyPicker';
 
+import { zeroRightClassName } from 'react-remove-scroll-bar';
+
 interface LogInModalProps{
   isOpen: boolean;
   setIsOpen : React.Dispatch<React.SetStateAction<boolean>>
@@ -39,7 +41,7 @@ const AnimatedDesktopNav:React.FC<LogInModalProps> = ({ setIsOpen, isOpen }) => 
         {
             showNav && (
                 <motion.div 
-                    className={`max-xl:hidden shadow-custom fixed z-[20000] top-0 left-0 ${ isOpen ? 'right-[10px]' : 'right-0' } h-[4rem] bg-light-white rounded-[1rem] mx-[8.4375rem] px-[3.5rem] flex justify-between items-center border border-gray/25`}
+                    className={`${ zeroRightClassName } max-xl:hidden shadow-custom fixed z-[20000] top-0 left-0 right-0 h-[4rem] bg-light-white rounded-[1rem] mx-[8.4375rem] px-[3.5rem] flex justify-between items-center border border-gray/25`}
                     initial={{ top: '-4rem' }}
                     animate={{ top: '1rem' }}
                     exit={{ top: '-4rem' }}

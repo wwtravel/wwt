@@ -14,7 +14,7 @@
     "navAbout" : "О нас",
     "navContact" : "Контакты",
     "navCart" : "Корзина",
-    "log-in": "войти",
+    "log-in": "Войти",
     "passengerDetails": "Детали о Пассажиров",
     "parcelDetails": "Детали о Посылках"
   },
@@ -31,7 +31,9 @@
     "comboboxNothingFound": "Ничего не найдено",
     "calendar1placeholder": "Дата отправления",
     "calendar2placeholder": "Дата возвращения",
-    "search": "Поиск"
+    "search": "Поиск",
+    "radioBtn_1": "Туда и обратно",
+    "radioBtn_2": "Только туда"
   },
   "Destinations" : {
     "lowOpacityTitle": "Маршруты",

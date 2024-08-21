@@ -8,6 +8,8 @@ import MobileMenu from './MobileMenu';
 
 import { motion, AnimatePresence } from "framer-motion"
 
+import { zeroRightClassName } from 'react-remove-scroll-bar';
+
 const AnimatedMobileNav = () => {
 
   const [isOpen, setIsOpen] = useState(false)
@@ -35,7 +37,7 @@ const AnimatedMobileNav = () => {
         {
             showNav && (
               <motion.div 
-                className='xl:hidden fixed top-0 left-0 w-full bg-red flex items-center justify-between py-[1rem] lg:px-[12rem] px-[1rem] rounded-b-[0.5rem]'
+                className={`${ zeroRightClassName } xl:hidden fixed top-0 left-0 right-0 bg-red flex items-center justify-between py-[1rem] lg:px-[12rem] px-[1rem] rounded-b-[0.5rem]`}
                 initial={{ translateY: '-100%' }}
                 animate={{ translateY: '0%' }}
                 exit={{ translateY: '-100%' }}
@@ -48,7 +50,7 @@ const AnimatedMobileNav = () => {
                   <div className='flex gap-[0.5rem]'>
                       <LangPicker />
                       <CurrencyPicker />
-                      <img onClick={() => {setIsOpen(true); document.body.style.overflow = 'hidden' }} src="/icons/icon-menu.svg" draggable={false} alt="menu" className='size-[2rem] ml-[0.5rem] cursor-pointer' />
+                      <img onClick={() => setIsOpen(true) } src="/icons/icon-menu.svg" draggable={false} alt="menu" className='size-[2rem] ml-[0.5rem] cursor-pointer' />
                   </div>
 
                   <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen}/>

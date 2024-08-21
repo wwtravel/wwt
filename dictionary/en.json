@@ -14,7 +14,7 @@
     "navAbout" : "About Us",
     "navContact" : "Contact",
     "navCart" : "Cart",
-    "log-in": "log in",
+    "log-in": "Log in",
     "passengerDetails": "Passenger Details",
     "parcelDetails": "Parcel Details"
   },
@@ -31,7 +31,9 @@
     "comboboxNothingFound": "No results found",
     "calendar1placeholder": "Departure Date",
     "calendar2placeholder": "Return Date",
-    "search": "Search"
+    "search": "Search",
+    "radioBtn_1": "Round Trip",
+    "radioBtn_2": "One Way"
   },
   "Destinations" : {
     "lowOpacityTitle": "Routes",

@@ -14,6 +14,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
+import { motion } from "framer-motion"
+
 import { fr, ro, enUS, ru } from "date-fns/locale"
  
 interface DatePickerProps{
@@ -22,6 +24,8 @@ interface DatePickerProps{
 
 const DatePicker:React.FC<DatePickerProps> = ({ placeholder }) => {
   const [date, setDate] = React.useState<Date>()
+
+  const [openCal, setOpenCal] = React.useState(false)
 
   const locale = useLocale()
 
@@ -35,17 +39,32 @@ const DatePicker:React.FC<DatePickerProps> = ({ placeholder }) => {
   }
  
   return (
-    <Popover>
+    <Popover open={openCal} onOpenChange={setOpenCal}>
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
           className={cn(
-            "p-[1.5rem] lg:text-[1rem] text-[1.333rem] bg-light-white min-w-[15rem] lg:h-[3.5rem] h-[4.667rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal",
+            "px-[1.5rem] pb-0 lg:pt-[1rem] pt-[1.5rem] relative lg:text-[1rem] text-[1.333rem] bg-light-white min-w-[15rem] lg:h-[3.5rem] h-[4.667rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal",
             !date && "text-muted-foreground"
           )}
         >
-          {date ? format(date, "MM.dd.yyyy") : <span className="text-gray/75 lg:text-[1rem] text-[1.333rem]">{ placeholder }</span>}
-          <CalendarIcon className="lg:size-[1rem] size-[1.333rem]" />
+          {date && format(date, "MM.dd.yyyy")}
+
+            <div className="absolute origin-top-left h-full flex items-center left-[1.5rem] top-0 text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]">
+              <motion.p
+                className="origin-top-left "
+                initial={{ scale: 1, y: '0%' }}
+                animate={{
+                  scale: date || openCal ? 0.7 : 1,
+                  y: date || openCal ? '-30%' : '0%'
+                }}
+                transition={{ type: 'tween', ease: 'easeInOut', duration: 0.2 }}
+              >
+                { placeholder }
+              </motion.p>
+            </div>
+          
+          <CalendarIcon className="lg:size-[1rem] size-[1.333rem] absolute right-[1.5rem] top-[50%] -translate-y-[50%]" />
         </Button>
       </PopoverTrigger>
         <PopoverContent align="center" className="w-auto border border-gray/25 bg-light-white p-0">

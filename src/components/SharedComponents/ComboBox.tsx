@@ -12,8 +12,10 @@ import {
 } from "@/components/ui/command"
 
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
+
+import { motion } from "framer-motion";
 
 export type Option = Record<"value" | "label", string> & Record<string, string>
 
@@ -27,6 +29,8 @@ interface ComboBoxProps{
 const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChange }) => {
 
   const t = useTranslations("Header")
+
+  const inputRef = useRef<HTMLInputElement>(null)
   
   const [isFocused, setIsFocused] = useState(false)
   const [inputContent, setInputContent] = useState(value)
@@ -46,14 +50,33 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
         <Popover open={isFocused} onOpenChange={setIsFocused}>
           <PopoverTrigger asChild onClick={(e) => { e.preventDefault() }}>
             <div className="relative">
-              <CommandInput
-                value={inputContent}
-                onValueChange={(value) => handleInputChange(value)}
-                onClick={() => setIsFocused(true)} 
-                onBlur={() => setIsFocused(false)} 
-                className="bg-light-white lg:min-w-[15rem] min-w-full lg:h-[3.5rem] h-[4.667rem] outline-none border border-gray/25 rounded-[0.5rem] lg:text-[1rem] text-[1.333rem] font-[400] text-dark-gray px-[1.5rem]" 
-                placeholder={placeholder}
-              />
+              <div 
+                className="relative"
+                onClick={() => {setIsFocused(true); inputRef.current?.focus() }} 
+              >
+                <CommandInput
+                  value={inputContent}
+                  onValueChange={(value) => handleInputChange(value)}
+                  onBlur={() => setIsFocused(false)} 
+                  className="bg-light-white lg:min-w-[15rem] min-w-full lg:h-[3.5rem] h-[4.667rem] outline-none border border-gray/25 rounded-[0.5rem] lg:text-[1rem] text-[1.333rem] font-[400] text-dark-gray px-[1.5rem] lg:pt-[1rem] pt-[1.5rem]"
+                  ref={ inputRef }
+                />
+
+                <div className="absolute origin-top-left h-full flex items-center left-[1.5rem] top-0 text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]">
+                  <motion.p
+                    className="origin-top-left "
+                    initial={{ scale: 1, y: '0%' }}
+                    animate={{
+                      scale: isFocused || inputContent !== '' ? 0.7 : 1,
+                      y: isFocused || inputContent !== '' ? '-30%' : '0%'
+                    }}
+                    transition={{ type: 'tween', ease: 'easeInOut', duration: 0.2 }}
+                  >
+                    { placeholder }
+                  </motion.p>
+                </div>
+
+              </div>
               <img
                 onClick={() => { setIsFocused(false); handleInputChange("")} }
                 className="cursor-pointer transition-opacity duration-300 absolute top-[50%] -translate-y-[50%] right-0 mr-[1.5rem]" 

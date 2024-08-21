@@ -14,7 +14,7 @@
     "navAbout" : "Despre Noi",
     "navContact" : "Contacte",
     "navCart" : "Coș",
-    "log-in" : "conectează-te",
+    "log-in" : "Conectează-te",
     "passengerDetails" : "Detalii Pasageri",
     "parcelDetails" : "Detalii Colete"
   },
@@ -31,7 +31,9 @@
     "comboboxNothingFound" : "Nici un rezultat găsit",
     "calendar1placeholder" : "Data de Plecare",
     "calendar2placeholder" : "Data de Retur",
-    "search" : "Caută"
+    "search" : "Caută",
+    "radioBtn_1" : "Dus-întors",
+    "radioBtn_2" : "Doar dus"
   },
   "Destinations" : {
     "lowOpacityTitle" : "Rute",

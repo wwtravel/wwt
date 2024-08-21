@@ -1,7 +1,8 @@
 'use client'
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect } from "react";
+
+import {RemoveScrollBar} from 'react-remove-scroll-bar';
 
 interface ModalWindowProps{
     children : React.ReactNode;
@@ -17,12 +18,13 @@ const ModalWindow:React.FC<ModalWindowProps> = ({ children, isOpen, setIsOpen, m
         {
             isOpen && (
                 <>
+                    <RemoveScrollBar />
                     <motion.div 
                         className='fixed z-[30000] left-0 top-0 w-screen h-screen bg-dark-gray/50'
                         initial={{ opacity: 0 }}
                         animate= {{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ type: 'tween', ease: 'backInOut', duration: 0.3 }}
+                        transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
                         onClick={() => setIsOpen(false)}
                     />
 
@@ -31,10 +33,10 @@ const ModalWindow:React.FC<ModalWindowProps> = ({ children, isOpen, setIsOpen, m
                         >
                             <motion.div 
                                 className="bg-light-white rounded-[1rem] overflow-hidden"
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                exit={{ scale: 0 }}
-                                transition={{ type: 'tween', ease: 'backInOut', duration: 0.3 }}
+                                initial={{ y: '-5%', opacity: 0 }}
+                                animate={{ y: '0%', opacity: 1 }}
+                                exit={{ y: '-5%', opacity: 0 }}
+                                transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
                             >
                                 { children }
                             </motion.div>
