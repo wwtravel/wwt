@@ -66,7 +66,7 @@ const RouteSearch = () => {
             <rect className={`transition-colors duration-300 ${ retour ? "stroke-red" : "stroke-gray/25" }`} x="0.5" y="0.5" width="17" height="17" rx="8.5"/>
             <rect className={`transition-opacity duration-300 ${ retour ? "opacity-100" : "opacity-0" }`} x="3" y="3" width="12" height="12" rx="6" fill="#ED1C24"/>
           </svg>
-          <p className='text-dark-gray text-[1.333rem] font-open-sans font-[400]'>{ t('radioBtn_1') }</p>
+          <p className='text-dark-gray text-[1rem] font-open-sans font-[400]'>{ t('radioBtn_1') }</p>
         </div>
 
         <div className='flex gap-[0.5rem] items-center cursor-pointer' onClick={() => setRetour(false)}>
@@ -74,7 +74,7 @@ const RouteSearch = () => {
             <rect className={`transition-colors duration-300 ${ !retour ? "stroke-red" : "stroke-gray/25" }`} x="0.5" y="0.5" width="17" height="17" rx="8.5"/>
             <rect className={`transition-opacity duration-300 ${ !retour ? "opacity-100" : "opacity-0" }`} x="3" y="3" width="12" height="12" rx="6" fill="#ED1C24"/>
           </svg>
-          <p className='text-dark-gray text-[1.333rem] font-open-sans font-[400]'>{ t('radioBtn_2') }</p>
+          <p className='text-dark-gray text-[1rem] font-open-sans font-[400]'>{ t('radioBtn_2') }</p>
         </div>
       </div>
 
