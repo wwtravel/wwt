@@ -62,19 +62,17 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
                   ref={ inputRef }
                 />
 
-                <div className="absolute origin-top-left h-full flex items-center left-[1.5rem] top-0 text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]">
                   <motion.p
-                    className="origin-top-left "
-                    initial={{ scale: 1, y: '0%' }}
+                    className="origin-top-left absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
+                    initial={{ scale: 1, y: '-50%' }}
                     animate={{
                       scale: isFocused || inputContent !== '' ? 0.7 : 1,
-                      y: isFocused || inputContent !== '' ? '-30%' : '0%'
+                      y: isFocused || inputContent !== '' ? '-80%' : '-50%'
                     }}
                     transition={{ type: 'tween', ease: 'easeInOut', duration: 0.2 }}
                   >
                     { placeholder }
                   </motion.p>
-                </div>
 
               </div>
               <img

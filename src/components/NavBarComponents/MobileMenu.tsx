@@ -48,13 +48,13 @@ const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
                 <div className='relative'>
                   <img onClick={() => setIsOpen(false)} src="/icons/icon-close.svg" alt="close" draggable={false} className='w-[2.667rem] absolute right-[2rem] top-[2rem] cursor-pointer' />
                   <div className='mt-[8rem] flex flex-col gap-[1.333rem] font-bold text-[2rem] text-dark-gray'>
-                    <Link href="/" onClick={() => setIsOpen(false)}>{t('navHome')}</Link>
-                    <Link href="/" onClick={() => setIsOpen(false)}>{t('navSchedule')}</Link>
-                    <Link href="/about" onClick={() => setIsOpen(false)}>{t('navAbout')}</Link>
-                    <Link href="/contacts" onClick={() => setIsOpen(false)}>{t('navContact')}</Link>
+                    <Link href="/" className='hover:opacity-75 transition-opacity duration-300' onClick={() => setIsOpen(false)}>{t('navHome')}</Link>
+                    <Link href="/" className='hover:opacity-75 transition-opacity duration-300' onClick={() => setIsOpen(false)}>{t('navSchedule')}</Link>
+                    <Link href="/about" className='hover:opacity-75 transition-opacity duration-300' onClick={() => setIsOpen(false)}>{t('navAbout')}</Link>
+                    <Link href="/contacts" className='hover:opacity-75 transition-opacity duration-300' onClick={() => setIsOpen(false)}>{t('navContact')}</Link>
                   </div>
 
-                  <div className='bg-red rounded-[0.5rem] w-fit px-[4rem] h-[3.333rem] flex justify-center items-center gap-[0.667rem] cursor-pointer mt-[2rem]' onClick={() => setIsOpenModal(true)}>
+                  <div className='bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] w-fit px-[4rem] h-[3.333rem] flex justify-center items-center gap-[0.667rem] cursor-pointer mt-[2rem]' onClick={() => setIsOpenModal(true)}>
                     <img src="/icons/icon-profile.svg" alt="profile" draggable={false} className='size-[1.333rem]' />
                     <p className='text-white font-bold text-[1.333rem]'>{ t('log-in') }</p>
                   </div>

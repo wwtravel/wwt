@@ -37,7 +37,7 @@ const AnimatedMobileNav = () => {
         {
             showNav && (
               <motion.div 
-                className={`${ zeroRightClassName } xl:hidden fixed top-0 left-0 right-0 bg-red flex items-center justify-between py-[1rem] lg:px-[12rem] px-[1rem] rounded-b-[0.5rem]`}
+                className={`${ zeroRightClassName } shadow-custom xl:hidden fixed top-0 left-0 right-0 bg-red flex items-center justify-between py-[1rem] lg:px-[12rem] px-[1rem] rounded-b-[0.5rem]`}
                 initial={{ translateY: '-100%' }}
                 animate={{ translateY: '0%' }}
                 exit={{ translateY: '-100%' }}

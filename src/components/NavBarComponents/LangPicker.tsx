@@ -27,7 +27,7 @@ const LangPicker = () => {
 
         {
             isHovered && (
-                <div className='absolute top-[100%] pt-[0.5rem] left-[50%] -translate-x-[50%] flex flex-col items-center'>
+                <div className='absolute top-[100%] pt-[0.5rem] left-[50%] -translate-x-[50%] flex flex-col items-center shadow-custom'>
                     <div className='bg-[#FFF] p-[0.25rem] flex flex-col items-center rounded-[0.5rem]'>
                         <Link href={nolLocalePathname} locale='ro' className='hover:bg-gray/10 w-full text-center leading-[2.5] px-[0.75rem] rounded-[0.5rem] transition-colors duration-300'>Română</Link>
                         <Link href={nolLocalePathname} locale='ru' className='hover:bg-gray/10 w-full text-center leading-[2.5] px-[0.75rem] rounded-[0.5rem] transition-colors duration-300'>Русский</Link>

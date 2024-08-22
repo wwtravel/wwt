@@ -48,10 +48,10 @@ const AnimatedDesktopNav:React.FC<LogInModalProps> = ({ setIsOpen, isOpen }) => 
                     transition={{ type: 'tween', ease: 'linear', duration: 0.3 }}
                 >
                     <div className='flex gap-[1.5rem]'>
-                        <Link href="/" className='font-bold text-[1rem] text-dark-gray'>{t('navHome')}</Link>
-                        <Link href="/" className='font-bold text-[1rem] text-dark-gray'>{t('navSchedule')}</Link>
-                        <Link href="/about" className='font-bold text-[1rem] text-dark-gray'>{t('navAbout')}</Link>
-                        <Link href="/contacts" className='font-bold text-[1rem] text-dark-gray'>{t('navContact')}</Link>
+                        <Link href="/" className='font-bold text-[1rem] text-dark-gray hover:opacity-75 transition-opacity duration-300'>{t('navHome')}</Link>
+                        <Link href="/" className='font-bold text-[1rem] text-dark-gray hover:opacity-75 transition-opacity duration-300'>{t('navSchedule')}</Link>
+                        <Link href="/about" className='font-bold text-[1rem] text-dark-gray hover:opacity-75 transition-opacity duration-300'>{t('navAbout')}</Link>
+                        <Link href="/contacts" className='font-bold text-[1rem] text-dark-gray hover:opacity-75 transition-opacity duration-300'>{t('navContact')}</Link>
                     </div>
 
                     <div className='flex'>
@@ -60,12 +60,12 @@ const AnimatedDesktopNav:React.FC<LogInModalProps> = ({ setIsOpen, isOpen }) => 
                         <CurrencyPicker />
                         </div>
 
-                        <Link className='flex items-center gap-[0.5rem] mr-[1.5rem]' href="/">
+                        <Link className='flex items-center gap-[0.5rem] mr-[1.5rem] hover:opacity-75 transition-opacity duration-300' href="/">
                         <img src="/icons/icon-cart.svg" alt="cart" draggable={false} className='size-[1rem]'/>
                         <p className='font-bold text-dark-gray text-[1rem]'>{ t('navCart') }</p>
                         </Link>
 
-                        <div className='bg-red rounded-[0.5rem] px-[1.5rem] h-[2.5rem] flex justify-center items-center gap-[0.5rem] cursor-pointer' onClick={() => setIsOpen(true)}>
+                        <div className='bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] px-[1.5rem] h-[2.5rem] flex justify-center items-center gap-[0.5rem] cursor-pointer' onClick={() => setIsOpen(true)}>
                         <img src="/icons/icon-profile.svg" alt="profile" draggable={false} className='size-[1rem]' />
                         <p className='text-white font-bold text-[1rem]'>{ t('log-in') }</p>
                         </div>
