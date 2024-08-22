@@ -16,6 +16,7 @@ import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
+import { RemoveScrollBar } from "react-remove-scroll-bar";
 
 export type Option = Record<"value" | "label", string> & Record<string, string>
 
