@@ -40,10 +40,10 @@ const NavBar = () => {
         {/* desktop nav */}
         <div className='max-xl:hidden absolute bottom-0 translate-y-[50%] left-0 right-0 h-[4rem] bg-light-white rounded-[1rem] mx-[8.4375rem] px-[3.5rem] flex justify-between items-center'>
           <div className='flex gap-[1.5rem]'>
-            <Link href="/" className='font-bold text-[1rem] text-dark-gray'>{t('navHome')}</Link>
-            <Link href="/" className='font-bold text-[1rem] text-dark-gray'>{t('navSchedule')}</Link>
-            <Link href="/about" className='font-bold text-[1rem] text-dark-gray'>{t('navAbout')}</Link>
-            <Link href="/contacts" className='font-bold text-[1rem] text-dark-gray'>{t('navContact')}</Link>
+            <Link href="/" className='font-bold text-[1rem] text-dark-gray hover:opacity-75 transition-opacity duration-300'>{t('navHome')}</Link>
+            <Link href="/" className='font-bold text-[1rem] text-dark-gray hover:opacity-75 transition-opacity duration-300'>{t('navSchedule')}</Link>
+            <Link href="/about" className='font-bold text-[1rem] text-dark-gray hover:opacity-75 transition-opacity duration-300'>{t('navAbout')}</Link>
+            <Link href="/contacts" className='font-bold text-[1rem] text-dark-gray hover:opacity-75 transition-opacity duration-300'>{t('navContact')}</Link>
           </div>
 
           <div className='flex'>

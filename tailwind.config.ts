@@ -12,6 +12,7 @@ const config = {
   theme: {
     colors: {
       "red" : "#ED1C24",
+      "dark-red" : "#CC1B21",
       "dark-gray" : "#363739",
       "gray" : "#757678",
       "white" : "#F1F8FD",

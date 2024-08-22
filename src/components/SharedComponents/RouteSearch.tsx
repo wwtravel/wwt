@@ -88,7 +88,7 @@ const RouteSearch = () => {
           />
         </div>
 
-          <img onClick={interchangeValues} className='size-[1.5rem] cursor-pointer' src="/icons/icon-reverse.svg" alt="reverse" draggable={false} />
+          <img onClick={interchangeValues} className='size-[1.5rem] cursor-pointer hover:rotate-180 transition-transform duration-300' src="/icons/icon-reverse.svg" alt="reverse" draggable={false} />
 
           <div className='w-[15rem]'>
             <ComboBox 
