@@ -1,0 +1,112 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_LINK")
+}
+
+// Bus model
+
+model Bus {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  image String
+  services String[]
+  nr_of_seats Int
+
+  routes Route[]
+}
+
+// Route model
+
+model Route {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  stops Stop[]
+  bus_id String @db.ObjectId
+
+  bus Bus @relation(fields: [bus_id], references: [id])
+  travels Travel[] @relation()
+}
+
+type Stop {
+  country String
+  city String
+  lat String?
+  lon String?
+  hours Int
+  is_destination Boolean
+}
+
+// Travel model
+
+model Travel {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  departure DateTime
+  route_id String @db.ObjectId
+
+  route Route @relation(fields: [route_id], references: [id])
+  orders Order[] @relation()
+}
+
+// User model
+
+model User {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  firstname String
+  lastname String
+  email String @unique
+  password String
+  dob String?
+  phone_number String?
+  role Role @default(USER)
+  
+  orders Order[]
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+// Price model
+
+model Price {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    from String
+    to String
+    price_sheet PriceSheet
+}
+
+type PriceSheet {
+  adult Int
+  student Int
+  child Int
+}
+
+// Order model
+
+model Order {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  travel_id String @db.ObjectId
+  passengers Passanger[]
+  user_id String? @db.ObjectId
+  contact_details ContactDetails
+
+  travel Travel @relation(fields: [travel_id], references: [id])
+  user User? @relation(fields: [user_id], references: [id])
+}
+
+type Passanger {
+  firstname String
+  lastname String
+  price Int
+}
+
+type ContactDetails {
+  phone_number String
+  email String
+  notes String?
+}

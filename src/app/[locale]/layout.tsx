@@ -7,7 +7,7 @@ import { Open_Sans, Montserrat } from 'next/font/google'
 
 import { NavBar, Footer } from "@/components";
 
-import {zeroRightClassName,fullWidthClassName, noScrollbarsClassName} from 'react-remove-scroll-bar';
+import Providers from '@/components/Providers';
 
 
 const openSans = Open_Sans({
@@ -43,9 +43,11 @@ export default async function LocaleLayout({
       </head>
       <body className={`bg-[#F1F8FD] `}>
         <NextIntlClientProvider messages={dictionary}>
-          <NavBar />
-          {children}
-          <Footer />
+          <Providers>
+            <NavBar />
+            {children}
+            <Footer />
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>
