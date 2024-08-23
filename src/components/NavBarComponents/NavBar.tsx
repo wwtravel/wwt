@@ -16,13 +16,15 @@ import ModalWindow from '../SharedComponents/ModalWindow';
 import LogInModal from './LogInModal/LogInModal';
 
 import { useSession } from 'next-auth/react';
+import UserModal from './UserModal/UserModal';
 
 const NavBar = () => {
   const t = useTranslations('NavBar');
 
   const { data } = useSession()
+  const user = data?.user
 
-  console.log(data)
+  console.log(user)
 
 
   const [isOpen, setIsOpen] = useState(false)
@@ -66,7 +68,7 @@ const NavBar = () => {
 
             <div onClick={() => setIsOpen(true)} className='bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] px-[1.5rem] h-[2.5rem] flex justify-center items-center gap-[0.5rem] cursor-pointer'>
               <img src="/icons/icon-profile.svg" alt="profile" draggable={false} className='size-[1rem]' />
-              <p className='text-white font-bold text-[1rem]'>{ t('log-in') }</p>
+              <p className='text-white font-bold text-[1rem]'>{ user ? `${user.firstname} ${user.lastname![0]}.` : t('log-in') }</p>
             </div>
             
 
@@ -75,7 +77,8 @@ const NavBar = () => {
 
         <AnimatedDesktopNav isOpen={isOpen} setIsOpen={setIsOpen}/>
 
-        <LogInModal isOpen={isOpen} setIsOpen={setIsOpen}/>
+        { !user && <LogInModal isOpen={isOpen} setIsOpen={setIsOpen}/>}
+        { user && <UserModal isOpen={isOpen} setIsOpen={setIsOpen}/>}
 
         {/* desktop nav */}
 

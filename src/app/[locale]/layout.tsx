@@ -9,6 +9,8 @@ import { NavBar, Footer } from "@/components";
 
 import Providers from '@/components/Providers';
 
+import { Toaster } from "@/components/ui/sonner"
+
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -47,6 +49,8 @@ export default async function LocaleLayout({
             <NavBar />
             {children}
             <Footer />
+
+            <Toaster />
           </Providers>
         </NextIntlClientProvider>
       </body>

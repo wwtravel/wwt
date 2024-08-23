@@ -217,6 +217,27 @@
     "sign-up" : "Înregistrați-vă",
     "question" : "Deja aveți cont?",
     "log-in" : "Conectați-vă acum"
-  }
+  },
+  "UserModal" : {
+    "tab_1_text" : "COMENZI & Rezervări",
+    "tab_2_text" : "SETĂRI CONT",
+    "signOut" : "Ieșire din cont",
+    
+    "accDet" : "DETALIILE CONTULUI",
+    "lastName" : "Nume",
+    "firstName" : "Prenume",
+    "email" : "Email",
+    "phone" : "Număr de Telefon",
+    "dob" : "Data de Naștere",
+    "pass" : "Parola",
+    "saveCh" : "Salvează schimbările",
 
+    "orders" : "COMENZI & REZERVĂRI",
+    "id" : "ID",
+    "route" : "Ruta",
+    "date" : "Data comandei",
+    "passengers" : "Pasageri",
+    "price" : "Preț bilet"
+  }
+  
 }

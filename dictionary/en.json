@@ -216,5 +216,26 @@
     "sign-up": "Sign Up",
     "question": "Already have an account?",
     "log-in": "Log In Now"
+  },
+  "UserModal": {
+    "tab_1_text": "ORDERS & BOOKings",
+    "tab_2_text": "ACCOUNT SETTINGS",
+    "signOut": "Sign Out",
+    
+    "accDet": "ACCOUNT DETAILS",
+    "lastName": "Last Name",
+    "firstName": "First Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "dob": "Date of Birth",
+    "pass": "Password",
+    "saveCh": "Save Changes",
+
+    "orders": "ORDERS & BOOKings",
+    "id": "ID",
+    "route": "Route",
+    "date": "Order Date",
+    "passengers": "Passengers",
+    "price": "Ticket Price"
   }
 }

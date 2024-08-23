@@ -4,7 +4,11 @@ import { useTranslations } from "next-intl"
 import { useState } from "react"
 import { motion } from "framer-motion"
 
+import { toast } from "sonner"
+
 import { signIn } from "next-auth/react";
+
+import { useRouter } from "@/navigation";
 
 interface LogInProps{
     setIsOpen : React.Dispatch<React.SetStateAction<boolean>>
@@ -12,6 +16,8 @@ interface LogInProps{
 }
 
 const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
+
+  const router = useRouter()
 
   const t = useTranslations('LogInModal')
 
@@ -45,7 +51,7 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
       });
 
       if (!response?.error) {
-        // error case
+        router.push("/");
       }
 
       if (!response.ok) {
@@ -53,9 +59,15 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
       }
 
       // Process response here
-      console.log("Login Successful", response);
+      setIsOpen(false)
     } catch (error: any) {
-      console.error("Login Failed:", error);
+      toast("Oh no! Something went wrong!", {
+        description: "Incorrect password or email",
+        action: {
+          label: 'Close',
+          onClick: () => {}
+        }
+      })
     }
   };
 
@@ -66,7 +78,7 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
         <div className='bg-red h-[2px] w-[3rem] mt-[1rem] mx-auto'/>
         <p className='text-dark-gray font-open-sans font-[400] text-[1.125rem] text-center mt-[1rem]'>{ t('message') }</p>
 
-        <form className='mt-[2rem] w-full' onSubmit={onSignIn}>
+        <form className='mt-[2rem] w-full' onSubmit={(e) => { e.preventDefault(); onSignIn() }}>
 
           <div className="relative">
             <input id="loginFormEmail" onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} name="email" value={formData.email} onChange={handleChange} className='w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]' required type="email"/>
@@ -110,7 +122,7 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
 
         <p className='text-gray text-[1rem] text-center font-open-sans font-[400] mt-[1rem] cursor-pointer hover:opacity-75 transition-opacity duration-300'>{ t('forgot-pass') }</p>
 
-        <p className='font-open-sans text-gray text-[1.125rem] font-[400] text-center mt-[2rem]'>
+        <div className='font-open-sans text-gray text-[1.125rem] font-[400] text-center mt-[2rem] flex flex-wrap justify-center'>
             <span className='text-dark-gray'>{ t('question') }</span> &nbsp;
             <span onMouseEnter={() => setMouseHover(true)} onMouseLeave={() => setMouseHover(false)} className="relative">
               <span onClick={() => setModalContent('SignUp')} className='cursor-pointer'>{ t('sign-up') }</span>
@@ -121,7 +133,7 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
                 transition={{ type: 'tween', ease: 'linear', duration: 0.3 }}
               />
             </span>
-        </p>
+        </div>
     </div>
   )
 }

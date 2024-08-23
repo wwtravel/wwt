@@ -216,5 +216,26 @@
     "sign-up": "S'inscrire",
     "question": "Vous avez déjà un compte ?",
     "log-in": "Connectez-vous maintenant"
+  },
+  "UserModal": {
+    "tab_1_text": "Réservations",
+    "tab_2_text": "PARAMÈTRES",
+    "signOut": "Déconnexion",
+    
+    "accDet": "DÉTAILS DU COMPTE",
+    "lastName": "Nom",
+    "firstName": "Prénom",
+    "email": "Email",
+    "phone": "Numéro de téléphone",
+    "dob": "Date de naissance",
+    "pass": "Mot de passe",
+    "saveCh": "Enregistrer les modifications",
+
+    "orders": "RÉSERVATIONS",
+    "id": "ID",
+    "route": "Itinéraire",
+    "date": "Date de la commande",
+    "passengers": "Passagers",
+    "price": "Prix du billet"
   }
 }
