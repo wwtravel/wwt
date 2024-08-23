@@ -11,12 +11,19 @@ import MobileNav from './MobileNav';
 import AnimatedDesktopNav from './AnimatedDesktopNav';
 import AnimatedMobileNav from './AnimatedMobileNav';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ModalWindow from '../SharedComponents/ModalWindow';
 import LogInModal from './LogInModal/LogInModal';
 
+import { useSession } from 'next-auth/react';
+
 const NavBar = () => {
   const t = useTranslations('NavBar');
+
+  const { data } = useSession()
+
+  console.log(data)
+
 
   const [isOpen, setIsOpen] = useState(false)
 
