@@ -4,6 +4,8 @@ import { useTranslations } from "next-intl"
 import { useState } from "react"
 import { motion } from "framer-motion"
 
+import { signIn } from "next-auth/react";
+
 interface LogInProps{
     setIsOpen : React.Dispatch<React.SetStateAction<boolean>>
     setModalContent : React.Dispatch<React.SetStateAction<"LogIn" | "SignUp" | "EmailSent">>
@@ -32,6 +34,31 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
     });
   };
 
+  // Auth
+
+  const onSignIn = async () => {
+    try {
+      const response: any = await signIn("credentials", {
+        email: formData.email,
+        password: formData.password,
+        redirect: false,
+      });
+
+      if (!response?.error) {
+        // error case
+      }
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      // Process response here
+      console.log("Login Successful", response);
+    } catch (error: any) {
+      console.error("Login Failed:", error);
+    }
+  };
+
   return (
     <div className='py-[4rem] px-[3rem] relative'>
         <img src="/icons/icon-close.svg" alt="close" draggable={false} className='absolute right-[1rem] top-[1rem] size-[2rem] cursor-pointer' onClick={() => setIsOpen(false)}/>
@@ -39,7 +66,7 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
         <div className='bg-red h-[2px] w-[3rem] mt-[1rem] mx-auto'/>
         <p className='text-dark-gray font-open-sans font-[400] text-[1.125rem] text-center mt-[1rem]'>{ t('message') }</p>
 
-        <form className='mt-[2rem] w-full'>
+        <form className='mt-[2rem] w-full' onSubmit={onSignIn}>
 
           <div className="relative">
             <input id="loginFormEmail" onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} name="email" value={formData.email} onChange={handleChange} className='w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]' required type="email"/>
