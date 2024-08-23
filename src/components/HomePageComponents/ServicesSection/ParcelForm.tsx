@@ -75,8 +75,6 @@ const ParcelForm = () => {
     });
   }, [toCityValue, fromCityValue])
 
-  console.log(formData)
-
   return (
     <div className='mt-[2rem] grid sm:grid-cols-2 grid-cols-1 gap-x-[1.5rem] sm:gap-y-[1rem] gap-y-[0.667rem] font-open-sans text-dark-gray text-[1rem] font-[400]'>
 
