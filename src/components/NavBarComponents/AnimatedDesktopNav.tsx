@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { Link } from '../../navigation'
 import LangPicker from './LangPicker';
 import CurrencyPicker from './CurrencyPicker';
+import { useSession } from 'next-auth/react';
 
 import { zeroRightClassName } from 'react-remove-scroll-bar';
 
@@ -19,6 +20,9 @@ const AnimatedDesktopNav:React.FC<LogInModalProps> = ({ setIsOpen, isOpen }) => 
   const t = useTranslations('NavBar');
 
   const [showNav, setShowNav] = useState(false)
+
+  const { data } = useSession()
+  const user = data?.user
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,7 +71,7 @@ const AnimatedDesktopNav:React.FC<LogInModalProps> = ({ setIsOpen, isOpen }) => 
 
                         <div className='bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] px-[1.5rem] h-[2.5rem] flex justify-center items-center gap-[0.5rem] cursor-pointer' onClick={() => setIsOpen(true)}>
                         <img src="/icons/icon-profile.svg" alt="profile" draggable={false} className='size-[1rem]' />
-                        <p className='text-white font-bold text-[1rem]'>{ t('log-in') }</p>
+                        <p className='text-white font-bold text-[1rem]'>{ user ? `${user.firstname} ${user.lastname![0]}.` : t('log-in') }</p>
                         </div>
                     </div>
                 </motion.div>

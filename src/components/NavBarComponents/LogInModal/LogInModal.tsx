@@ -14,6 +14,7 @@ const LogInModal:React.FC<LogInModalProps> = ({ isOpen, setIsOpen }) => {
 
   const [modalContent, setModalContent] = useState<"LogIn" | "SignUp" | "EmailSent">("LogIn")
 
+
   useEffect(() => {
     if(isOpen === false){
       setModalContent("LogIn")

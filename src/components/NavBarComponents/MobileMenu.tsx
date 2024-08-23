@@ -8,6 +8,9 @@ import { useState } from 'react';
 
 import {RemoveScrollBar} from 'react-remove-scroll-bar';
 
+import { useSession } from 'next-auth/react';
+import UserModal from './UserModal/UserModal';
+
 interface MobileMenuProps{
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -18,6 +21,9 @@ const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
   const t = useTranslations("NavBar")
 
   const [isOpenModal, setIsOpenModal] = useState(false)
+
+  const { data } = useSession()
+  const user = data?.user
 
   return (
     <AnimatePresence>
@@ -56,10 +62,11 @@ const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
 
                   <div className='bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] w-fit px-[4rem] h-[3.333rem] flex justify-center items-center gap-[0.667rem] cursor-pointer mt-[2rem]' onClick={() => setIsOpenModal(true)}>
                     <img src="/icons/icon-profile.svg" alt="profile" draggable={false} className='size-[1.333rem]' />
-                    <p className='text-white font-bold text-[1.333rem]'>{ t('log-in') }</p>
+                    <p className='text-white font-bold text-[1.333rem]'>{ user ? `${user.firstname} ${user.lastname![0]}.` : t('log-in') }</p>
                   </div>
 
-                  <LogInModal isOpen={ isOpenModal } setIsOpen={ setIsOpenModal }/>
+                  { !user && <LogInModal isOpen={isOpen} setIsOpen={setIsOpen}/>}
+                  { user && <UserModal isOpen={isOpen} setIsOpen={setIsOpen}/>}
                 </div>
 
                 <div className='text-[1.167rem] font-open-sans'>

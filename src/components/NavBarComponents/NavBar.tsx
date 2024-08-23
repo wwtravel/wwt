@@ -17,6 +17,7 @@ import LogInModal from './LogInModal/LogInModal';
 
 import { useSession } from 'next-auth/react';
 import UserModal from './UserModal/UserModal';
+import { AnimatePresence } from 'framer-motion';
 
 const NavBar = () => {
   const t = useTranslations('NavBar');

@@ -8,7 +8,7 @@ import { toast } from "sonner"
 
 import { signIn } from "next-auth/react";
 
-import { useRouter } from "@/navigation";
+import { useRouter } from "next/navigation";
 
 interface LogInProps{
     setIsOpen : React.Dispatch<React.SetStateAction<boolean>>
@@ -51,15 +51,21 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
       });
 
       if (!response?.error) {
-        router.push("/");
+        if (response.ok) {
+          // Close the modal immediately
+          setIsOpen(false);
+          
+          // Delay the session update
+          setTimeout(() => {
+            // This will trigger a re-render and update the session
+            //router.replace(router.asPath);
+          }, 3000); // Adjust this delay as needed (1000ms = 1 second)
+        } else {
+          throw new Error("Network response was not ok");
+        }
+      } else {
+        throw new Error(response.error);
       }
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      // Process response here
-      setIsOpen(false)
     } catch (error: any) {
       toast("Oh no! Something went wrong!", {
         description: "Incorrect password or email",
