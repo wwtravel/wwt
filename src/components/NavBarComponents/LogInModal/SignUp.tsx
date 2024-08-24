@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { useState } from "react"
 import { motion } from "framer-motion"
 
@@ -20,6 +20,8 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
     email: '',
   })
 
+  const locale = useLocale()
+
   const [firstNameFocus, setFirstNameFocus] = useState(false)
   const [lastNameFocus, setLastNameFocus] = useState(false)
   const [emailFocus, setEmailFocus] = useState(false)
@@ -33,6 +35,36 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
     });
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+        const response = await fetch('/api/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                firstname: formData.firstName,
+                lastname: formData.lastName,
+                email: formData.email,
+                lang: locale,
+            }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            console.log("Email Sent")
+            setIsOpen(false)
+        } else {
+            console.log(data.msg, "  Something went wrong");
+        }
+    } catch (error) {
+        console.log("An unexpected error occurred. Please try again.");
+    }
+};
+
   return (
     <div className='py-[4rem] px-[3rem] relative'>
         <img src="/icons/icon-close.svg" alt="close" draggable={false} className='absolute right-[1rem] top-[1rem] size-[2rem] cursor-pointer' onClick={() => setIsOpen(false)}/>
@@ -40,13 +72,13 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
         <div className='bg-red h-[2px] w-[3rem] mt-[1rem] mx-auto'/>
         <p className='text-dark-gray font-open-sans font-[400] text-[1.125rem] text-center mt-[1rem]'>{ t('message') }</p>
 
-        <form className='mt-[2rem] w-full'>
+        <form className='mt-[2rem] w-full' onSubmit={handleSubmit}>
           <div className="relative">
             <input id="signUpFormLastName" name="lastName" onFocus={() => setLastNameFocus(true)} onBlur={() => setLastNameFocus(false)} value={formData.lastName} onChange={handleChange} className='w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]' required type="text"/>
 
             <motion.label
               htmlFor='signUpFormLastName'
-              className="origin-top-left absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
+              className="origin-top-left cursor-text absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
               initial={{ scale: 1, y: '-50%' }}
               animate={{
                 scale: lastNameFocus || formData.lastName !== '' ? 0.7 : 1,
@@ -63,7 +95,7 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
 
             <motion.label
               htmlFor='signUpFormFirstName'
-              className="origin-top-left absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
+              className="origin-top-left cursor-text absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
               initial={{ scale: 1, y: '-50%' }}
               animate={{
                 scale: firstNameFocus || formData.firstName !== '' ? 0.7 : 1,
@@ -80,7 +112,7 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
 
             <motion.label
               htmlFor='signUpFormEmail'
-              className="origin-top-left absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
+              className="origin-top-left cursor-text absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
               initial={{ scale: 1, y: '-50%' }}
               animate={{
                 scale: emailFocus || formData.email !== '' ? 0.7 : 1,

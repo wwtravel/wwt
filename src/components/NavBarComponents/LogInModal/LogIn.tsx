@@ -91,7 +91,7 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
 
             <motion.label
               htmlFor='loginFormEmail'
-              className="origin-top-left absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
+              className="origin-top-left cursor-text absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
               initial={{ scale: 1, y: '-50%' }}
               animate={{
                 scale: emailFocus || formData.email !== '' ? 0.7 : 1,
@@ -109,7 +109,7 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
                 <input id="passwordLogInInput" name="password" onFocus={() => setPassFocus(true)} onBlur={() => setPassFocus(false)} value={formData.password} onChange={handleChange} className='w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none pl-[1.5rem] pt-[1rem] pr-[4rem] text-dark-gray font-open-sans text-[1rem] font-[400]' required type={ showPass ? "text" : "password" }/>
                 <motion.label
                   htmlFor='passwordLogInInput'
-                  className="origin-top-left absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
+                  className="origin-top-left cursor-text absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
                   initial={{ scale: 1, y: '-50%' }}
                   animate={{
                     scale: passFocus || formData.password !== '' ? 0.7 : 1,

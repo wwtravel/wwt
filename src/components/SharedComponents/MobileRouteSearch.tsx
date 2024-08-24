@@ -55,9 +55,9 @@ const MobileRouteSearch = () => {
 
       <div className='flex gap-[1rem] items-center'>
         <div className='flex gap-[0.5rem] items-center cursor-pointer' onClick={() => setRetour(true)}>
-          <svg className='size-[1.125rem]' width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect className={`transition-colors duration-300 ${ retour ? "stroke-red" : "stroke-light-white" }`} x="0.5" y="0.5" width="17" height="17" rx="8.5"/>
-            <rect className={`transition-opacity duration-300 ${ retour ? "opacity-100" : "opacity-0" }`} x="3" y="3" width="12" height="12" rx="6" fill="#ED1C24"/>
+          <svg className='size-[1.375rem]' width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect className={`transition-colors duration-300 ${ retour ? "stroke-red" : "stroke-light-white" }`} x="2" y="2" width="18" height="18" rx="9"/>
+            <rect className={`transition-opacity duration-300 ${ retour ? "opacity-100" : "opacity-0" }`} x="4.5" y="4.5" width="13" height="13" rx="6.5" fill="#ED1C24"/>
           </svg>
           <p className='text-light-white text-[1.333rem] font-open-sans font-[400]'>{ t('radioBtn_1') }</p>
         </div>
