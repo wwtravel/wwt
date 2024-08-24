@@ -29,7 +29,7 @@ const ParcelInfo = () => {
         </div>
 
         <div className="lg:w-[50%] max-lg:w-full max-lg:h-[26rem]">
-          <ItineraryMap coordinates={parcelCoordinates} center={[parcelCoordinates[0].latitude, parcelCoordinates[0].longitude]}/>
+          <ItineraryMap coordinates={parcelCoordinates} center={[parcelCoordinates[1].latitude, parcelCoordinates[1].longitude]}/>
         </div>
 
     </div>

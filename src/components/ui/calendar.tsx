@@ -36,7 +36,7 @@ function Calendar({
         head_cell:
           "text-muted-foreground rounded-md w-9 font-normal lg:text-[0.8rem] text-[1.083rem]",
         row: "flex w-full mt-2",
-        cell: "h-9 w-9 hover:bg-gray/25 transition-colors duration-300 text-center rounded-[0.5rem] p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-gray/10 [&:has([aria-selected])]:bg-gray/25 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+        cell: "h-9 w-9 cursor-not-allowed hover:bg-gray/25 transition-colors duration-300 text-center rounded-[0.5rem] p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-gray/10 [&:has([aria-selected])]:bg-gray/25 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
         day: cn(
           buttonVariants({ variant: "ghost" }),
           "h-9 w-9 p-0 font-normal aria-selected:opacity-100 lg:text-sm text-base"

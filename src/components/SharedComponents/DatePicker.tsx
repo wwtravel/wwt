@@ -29,6 +29,9 @@ const DatePicker:React.FC<DatePickerProps> = ({ placeholder }) => {
 
   const locale = useLocale()
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   let calLocale : Locale;
   switch(locale){
     case 'ro' : calLocale = ro; break;
@@ -48,7 +51,7 @@ const DatePicker:React.FC<DatePickerProps> = ({ placeholder }) => {
             !date && "text-muted-foreground"
           )}
         >
-          {date && format(date, "MM.dd.yyyy")}
+          {date && format(date, "dd/MM/yyyy")}
 
             <div className="absolute origin-top-left h-full flex items-center left-[1.5rem] top-0 text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]">
               <motion.p
@@ -74,6 +77,7 @@ const DatePicker:React.FC<DatePickerProps> = ({ placeholder }) => {
             onSelect={setDate}
             initialFocus
             locale={calLocale}
+            disabled={(date) => date < today}
           />
         </PopoverContent>
     </Popover>

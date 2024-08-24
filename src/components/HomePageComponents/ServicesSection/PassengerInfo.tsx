@@ -12,17 +12,17 @@ import { passengerCoordinates } from '@/constants/coordinates'
 
 const PassengerInfo = () => {
 
-  const [activeCountry, setActiveCountry] = useState<"france" | "austria" | "germany" | "switzerland">("france")
+  const [activeCountry, setActiveCountry] = useState<"france" | "austria" | "germany" | "switzerland">("switzerland")
 
   const t = useTranslations("Services")
 
   return (
     <div className='max-w-[81rem] w-full mx-auto rounded-[1rem] bg-light-white border border-[#DADBDD] overflow-hidden mt-[3rem] shadow-custom'>
         <div className='flex'>
-            <CountryTab country="france" activeCountry={activeCountry} setActiveCountry={setActiveCountry} text={t('servicesCountry1')} imageURL='icons/country-icons/icon-flag-france.svg' shouldAddBorder={true}/>
+            <CountryTab country="switzerland" activeCountry={activeCountry} setActiveCountry={setActiveCountry} text={t('servicesCountry4')} imageURL='icons/country-icons/icon-flag-switzerland.svg' shouldAddBorder={false}/>
             <CountryTab country="austria" activeCountry={activeCountry} setActiveCountry={setActiveCountry} text={t('servicesCountry2')} imageURL='icons/country-icons/icon-flag-austria.svg' shouldAddBorder={true}/>
             <CountryTab country="germany" activeCountry={activeCountry} setActiveCountry={setActiveCountry} text={t('servicesCountry3')} imageURL='icons/country-icons/icon-flag-germany.svg' shouldAddBorder={true}/>
-            <CountryTab country="switzerland" activeCountry={activeCountry} setActiveCountry={setActiveCountry} text={t('servicesCountry4')} imageURL='icons/country-icons/icon-flag-switzerland.svg' shouldAddBorder={false}/>
+            <CountryTab country="france" activeCountry={activeCountry} setActiveCountry={setActiveCountry} text={t('servicesCountry1')} imageURL='icons/country-icons/icon-flag-france.svg' shouldAddBorder={true}/>
         </div>
         <div className='flex lg:flex-row flex-col'>
             <div className='lg:w-[50%] w-full md:px-[4rem] md:py-[3rem] xs:p-[2rem] p-[1rem]'>
@@ -62,7 +62,7 @@ const PassengerInfo = () => {
             </div>
 
             <div className='lg:w-[50%] max-lg:w-full max-lg:h-[26rem]'>
-                <ItineraryMap coordinates={passengerCoordinates} center={[passengerCoordinates[0].latitude, passengerCoordinates[0].longitude]}/>
+                <ItineraryMap coordinates={passengerCoordinates} center={[passengerCoordinates[1].latitude, passengerCoordinates[1].longitude]}/>
             </div>
         </div>
     </div>

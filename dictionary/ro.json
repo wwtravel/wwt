@@ -68,7 +68,7 @@
     "card11StartPoint" : "Punctul de start - Gara de Sud",
     "card12StartPoint" : "Punctul de start - Gara de Nord",
 
-    "cardButtonText" : "Rezervează Bilet"
+    "cardButtonText" : "Rezervă Bilet"
   },
   "Services" : {
     "lowOpacityTitle" : "SERVICII",
@@ -91,11 +91,11 @@
     "passenger3info" : "carnet de elev",
     "passenger4info" : "până la 50kg",
     "free" : "Gratuit",
-    "bookBtnText" : "Rezervează Bilet",
+    "bookBtnText" : "Rezervă Bilet",
 
     "parcelInfoText1" : "Pentru coletele de dimensiuni mai mari, tariful se calculează per unitate, iar pentru stabilirea acestuia vă rugăm să contactați sediul nostru sau să veniți în persoană.",
     "parcelInfoText2" : "Colectarea și livrarea coletelor se efectuează pe tot teritoriul Republicii Moldova si al Elveției. În funcție de necesități, transportul se poate realiza în camere frigorifice.",
-    "send" : "Trimite",
+    "send" : "Trimite cerere",
     "nameInputPlaceholder" : "Nume, Prenume",
     "phoneInputPlaceholder" : "Telefon",
     "selectBox1Placeholder" : "Trimit colet din",

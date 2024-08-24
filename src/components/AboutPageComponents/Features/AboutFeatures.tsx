@@ -8,7 +8,8 @@ const AboutFeatures = () => {
   const t = useTranslations("AboutFeatures")
 
   return (
-    <div className='bg-red pt-[4.75rem] pb-[4.5rem] mt-[8rem] px-[1rem]'>
+    <div className='bg-[url("/images/aboutPage/about-features-bg.png")] bg-cover bg-center mt-[8rem]'>
+      <div className='bg-red/95 w-full h-full pt-[4.75rem] pb-[4.5rem] px-[1rem]'>
         <SectionTitleWhite lowOpacityTitle={t('lowOpacityTitle')} title={ t('title') }/>
 
         <div className='mt-[4rem] grid md:grid-cols-3 grid-cols-1 gap-[1.5rem] max-w-[79.5rem] mx-auto'>
@@ -25,6 +26,7 @@ const AboutFeatures = () => {
             <FeatureCard imageUrl='/icons/about-page-icons/about-features-icons/icon-sms.svg' title={ t('featureCard_6_Title') } description={ t('featureCard_6_Description') }/>
           </div>
         </div>
+      </div>
     </div>
   )
 }

@@ -15,7 +15,7 @@
 
 .loader:before {
   animation: ball1 1s infinite;
-  background-color: #CC1B21;
+  background-color: #ED1C24;
   box-shadow: 2.25rem 0 0 #363739; /* 1.875rem * 1.2 */
   margin-bottom: 0.75rem; /* 0.625rem * 1.2 */
 }
@@ -23,7 +23,7 @@
 .loader:after {
   animation: ball2 1s infinite;
   background-color: #363739;
-  box-shadow: 2.25rem 0 0 #CC1B21; /* 1.875rem * 1.2 */
+  box-shadow: 2.25rem 0 0 #ED1C24; /* 1.875rem * 1.2 */
 }
 
 @keyframes rotate {
@@ -59,16 +59,16 @@
 
 @keyframes ball2 {
   0% {
-    box-shadow: 2.25rem 0 0 #CC1B21; /* 1.875rem * 1.2 */
+    box-shadow: 2.25rem 0 0 #ED1C24; /* 1.875rem * 1.2 */
   }
   50% {
-    box-shadow: 0 0 0 #CC1B21;
+    box-shadow: 0 0 0 #ED1C24;
     margin-top: -1.5rem; /* -1.25rem * 1.2 */
     -webkit-transform: translate(1.125rem, 1.125rem); /* 0.9375rem * 1.2 */
     -moz-transform: translate(1.125rem, 1.125rem); /* 0.9375rem * 1.2 */
   }
   100% {
-    box-shadow: 2.25rem 0 0 #CC1B21; /* 1.875rem * 1.2 */
+    box-shadow: 2.25rem 0 0 #ED1C24; /* 1.875rem * 1.2 */
     margin-top: 0;
   }
 }

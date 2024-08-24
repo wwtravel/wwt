@@ -15,7 +15,7 @@ export const testimonialsData = [
         imgUrl: "/images/aboutPage/testimonials-images/testimonials3.png",
         text: "test_3_text",
         name: "Maria T.",
-        role: "test_4_role"
+        role: "test_3_role"
     },
     {
         imgUrl: "/images/aboutPage/testimonials-images/testimonials4.png",
