@@ -65,8 +65,8 @@ const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
                     <p className='text-white font-bold text-[1.333rem]'>{ user ? `${user.firstname} ${user.lastname![0]}.` : t('log-in') }</p>
                   </div>
 
-                  { !user && <LogInModal isOpen={isOpen} setIsOpen={setIsOpen}/>}
-                  { user && <UserModal isOpen={isOpen} setIsOpen={setIsOpen}/>}
+                  { !user && <LogInModal isOpen={isOpenModal} setIsOpen={setIsOpenModal}/>}
+                  { user && <UserModal isOpen={isOpenModal} setIsOpen={setIsOpenModal}/>}
                 </div>
 
                 <div className='text-[1.167rem] font-open-sans'>
