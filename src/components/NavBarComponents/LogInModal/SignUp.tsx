@@ -4,6 +4,8 @@ import { useLocale, useTranslations } from "next-intl"
 import { useState } from "react"
 import { motion } from "framer-motion"
 
+import PulseLoader from 'react-spinners/PulseLoader'
+
 
 interface SignUpProps{
     setIsOpen : React.Dispatch<React.SetStateAction<boolean>>
@@ -13,6 +15,8 @@ interface SignUpProps{
 const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
 
   const t = useTranslations('SignUpModal')
+
+  const [loading, setLoading] = useState(false)
 
   const [formData, setFormData] = useState({
     firstName : '',
@@ -38,6 +42,8 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    setLoading(true);
+
     try {
         const response = await fetch('/api/user', {
             method: 'POST',
@@ -62,6 +68,8 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
         }
     } catch (error) {
         console.log("An unexpected error occurred. Please try again.");
+    } finally {
+      setLoading(false); // Stop the loader
     }
 };
 
@@ -124,7 +132,16 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
             </motion.label>
           </div>
 
-            <input type="submit" value={ t('sign-up') } className='bg-red hover:bg-dark-red transition-colors duration-300 w-full h-[3.5rem] rounded-[0.5rem] text-light-white text-[1.125rem] font-bold font-open-sans mt-[2rem] cursor-pointer'/>
+            <button type="submit" className='bg-red hover:bg-dark-red transition-colors duration-300 w-full h-[3.5rem] rounded-[0.5rem] text-light-white text-[1.125rem] font-bold font-open-sans mt-[2rem] cursor-pointer'>
+              { 
+                loading 
+                  ? <PulseLoader 
+                      size={5}
+                      color="#FCFEFF"
+                    />
+                  : t('sign-up') 
+              }
+            </button>
         </form>
 
         <p className='font-open-sans text-gray text-[1.125rem] font-[400] text-center mt-[2rem]'>
