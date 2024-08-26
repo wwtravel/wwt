@@ -47,6 +47,5 @@ export const checkIfAdmin = async () => {
     if (user?.role !== "ADMIN") {
         return Response.json({ msg: "You are not authorized to be here!"}, {status: 403});
     }
-
     return null;
 }
