@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Html, Tailwind, Img, Hr, Text, Section, Row, Heading, Head, Font, Button } from "@react-email/components";
-import { WelcomeEmailProps } from '@/lib/types';
+import { WelcomeEmailProps } from '@/src/lib/types';
 
 const langText = new Map([
-    ["en", ["REGISTRATION SUCCESSFUL", "For more details, access the information below.", "ACCOUNT ACCESS DETAILS", "Login:", "Password:", "Buy tickets", "Sincerely, the team"]],
-    ["ro", ["ÎNREGISTRARE CU SUCCES", "Pentru mai multe detalii, accesați informațiile de mai jos.", "DATELE DE ACCES ALE CONTULUI", "Autentificare:", "Parola:", "Cumpără bilete", "Cu stimă, echipa"]],
-    ["fr", ["INSCRIPTION RÉUSSIE", "Pour plus de détails, accédez aux informations ci-dessous.", "DÉTAILS D'ACCÈS AU COMPTE", "Connexion:", "Mot de passe:", "Acheter des billets", "Cordialement, l'équipe"]],
-    ["ru", ["РЕГИСТРАЦИЯ УСПЕШНА", "Для получения дополнительной информации, обратитесь к данным ниже.", "ДАННЫЕ ДЛЯ ДОСТУПА К УЧЕТНОЙ ЗАПИСИ", "Логин:", "Пароль:", "Купить билеты", "С уважением, команда"]]
+    ["en", ["PASSWORD RESET", "For more details, access the information below.", "NEW ACCOUNT ACCESS DATA", "Login:", "Password:", "Buy tickets", "Sincerely, the team"]],
+    ["ro", ["RESTABILIRE PAROLĂ", "Pentru mai multe detalii, accesați informațiile de mai jos.", "NOILE DATE DE ACCES ALE CONTULUI", "Autentificare:", "Parola:", "Cumpără bilete", "Cu stimă, echipa"]],
+    ["fr", ["RÉINITIALISATION DU MOT DE PASSE", "Pour plus de détails, accédez aux informations ci-dessous.", "NOUVEAUX DÉTAILS DE CONNEXION AU COMPTE", "Connexion:", "Mot de passe:", "Acheter des billets", "Cordialement, l'équipe"]],
+    ["ru", ["ВОССТАНОВЛЕНИЕ ПАРОЛЯ", "Для получения дополнительной информации, обратитесь к данным ниже.", "ДАННЫЕ ДЛЯ ВХОДА В НОВЫЙ АККАУНТ", "Логин:", "Пароль:", "Купить билеты", "С уважением, команда"]]
 ])
 
-export default function WelcomeEmail({details}: {details: WelcomeEmailProps}) {
+export default function ResetPassword({details}: {details: WelcomeEmailProps}) {
     const lang = langText.get(details.lang);
   return (
     <Html lang="en">

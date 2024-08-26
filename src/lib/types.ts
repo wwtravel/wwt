@@ -32,6 +32,13 @@ export const PatchUserSchema = z.object({
 export interface WelcomeEmailProps {
     email: string,
     password: string,
+    lang: string,
+    link: string | undefined
+}
+
+export interface ResetPasswordProps {
+    email: string,
+    link: string,
     lang: string
 }
 
@@ -126,5 +133,10 @@ export const OrderSchema = z.object({
         email: z.string().trim().min(1).max(50).regex(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g),
         notes: z.string().optional()
     }),
+    lang: z.enum(["fr", "en", "ro", "ru"])
+})
+
+export const ResetPasswordSchema = z.object({
+    email: z.string().trim().min(1).max(50).regex(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g),
     lang: z.enum(["fr", "en", "ro", "ru"])
 })

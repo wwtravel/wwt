@@ -17,7 +17,7 @@ const mailConfig = {
         user: "studiomodvis@gmail.com",
         pass: process.env.EMAIL_PASSWORD
     }
-};
+}; 
 
 const subjectLang = new Map([
     ["en", "REGISTRATION SUCCESSFUL | World Wide Travel"],
@@ -58,7 +58,7 @@ export async function POST (request: Request) {
         }
     }
 
-    const emailHtml = render(WelcomeEmail({details: {email: result.data.email, password: password, lang: result.data.lang}}))
+    const emailHtml = render(WelcomeEmail({details: {email: result.data.email, password: password, lang: result.data.lang, link: process.env.URL}}))
 
     const data = {
         to: result.data.email, 

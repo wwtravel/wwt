@@ -110,3 +110,19 @@ type ContactDetails {
   email String
   notes String?
 }
+
+// Reset password token model
+
+model Token {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  email String
+  lang Lang
+  expiresAt DateTime
+}
+
+enum Lang {
+  en
+  ro
+  fr
+  ru
+}
