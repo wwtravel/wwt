@@ -200,23 +200,59 @@
   },
   "LogInModal" : {
     "greetings" : "BUN VENIT ÎNAPOI",
-    "message" : "Suntem încântați că ați revenit. Introduceți adresa de email și parola",
+    "message" : "Suntem încântați că ai revenit. Introdu adresa de email și parola",
     "email" : "Email",
     "password" : "Parola",
     "log-in" : "Conectează-te",
-    "forgot-pass" : "Ați uitat parola?",
-    "question" : "Nu aveți cont?",
-    "sign-up" : "Înregistrați-vă acum"
+    "forgot-pass" : "Ai uitat parola?",
+    "question" : "Nu ai un cont?",
+    "sign-up" : "Înregistrează-te acum",
+
+    "email-req-title": "Adresă de email necesară",
+    "email-req-desc": "Te rugăm să introduci adresa ta de e-mail pentru a continua.",
+    "pass-req-title": "Parolă necesară",
+    "pass-req-desc": "Te rugăm să introduci parola ta pentru a continua.",
+    "fields-req-title": "Informații lipsă",
+    "fields-req-desc": "Te rugăm să introduci atât adresa ta de e-mail, cât și parola pentru a te conecta.",
+    "login-fail-title": "Autentificare nereușită",
+    "login-fail-desc": "Adresa de e-mail sau parola introduse sunt incorecte. Te rugăm să verifici și să încerci din nou.",
+    "close": "Închide"
   },
   "SignUpModal" : {
     "createAccTitle" : "CREAȚI UN CONT",
-    "message" : "Înregistrați-vă acum, e foarte simplu. Introduceți adresa de email",
+    "message" : "Înregistrează-te acum, e foarte simplu. Introdu adresa de email",
     "last-name" : "Nume",
     "first-name" : "Prenume",
     "email" : "Email",
-    "sign-up" : "Înregistrați-vă",
-    "question" : "Deja aveți cont?",
-    "log-in" : "Conectați-vă acum"
+    "sign-up" : "Înregistrează-te",
+    "question" : "Deja ai un cont?",
+    "log-in" : "Conectează-te acum",
+
+    "email-req-title": "Adresă de email necesară",
+    "email-req-desc": "Te rugăm să introduci adresa ta de e-mail pentru a continua.",
+
+    "lastname-req-title": "Numele de familie necesar",
+    "lastname-req-desc": "Te rugăm să introduci numele tău de familie pentru a continua.",
+
+    "firstname-req-title": "Prenumele necesar",
+    "firstname-req-desc": "Te rugăm să introduci prenumele tău pentru a continua.",
+
+    "firstname-err-title" : "Eroare prenume",
+    "firstname-err-desc" : "Prenumele trebuie să aibă cel puțin 1 caracter și cel mult 50 de caractere",
+
+    "lastname-err-title" : "Eroare nume de familie",
+    "lastname-err-desc" : "Numele de familie trebuie să aibă cel puțin 1 caracter și cel mult 50 de caractere",
+    
+    "email-err-title" : "Email nevalid",
+    "email-err-desc" : "Emailul trebuie să aibă cel puțin 1 caracter și cel mult 50 de caractere, și să fie un email valid",
+
+    "email-taken-title" : "Email indisponibil",
+    "email-taken-desc" : "Acest email a fost deja folosit pentru înregistrare. Te rugăm să folosești un alt email.",
+
+    "general-error-title" : "Eroare la înregistrare",
+    "general-error-desc" : "A apărut o eroare în timpul procesului de înregistrare. Te rugăm să încerci din nou mai târziu.",
+
+    "close": "Închide"
   },
   "UserModal" : {
     "tab_1_text" : "COMENZI & Rezervări",
@@ -231,13 +267,33 @@
     "dob" : "Data de Naștere",
     "pass" : "Parola",
     "saveCh" : "Salvează schimbările",
+    "firstname-err-title" : "Eroare prenume",
+    "firstname-err-desc" : "Prenumele trebuie să aibă cel puțin 1 caracter și cel mult 50 de caractere",
+
+    "lastname-err-title" : "Eroare nume de familie",
+    "lastname-err-desc" : "Numele de familie trebuie să aibă cel puțin 1 caracter și cel mult 50 de caractere",
+
+    "date-err-title": "Dată nevalidă",
+    "date-err-desc": "Data trebuie să fie în formatul zi, lună, an și să fie o dată validă.",
+    
+    "phone-err-title": "Număr de telefon nevalid",
+    "phone-err-desc": "Numărul de telefon trebuie să aibă între 7 și 15 caractere și să fie un număr valid.",
+
+    "update-success-title": "Actualizare reușită",
+    "update-success-desc": "Detaliile contului au fost actualizate cu succes.",
+
+    "update-error-title": "Eroare la actualizare",
+    "update-error-desc": "A apărut o problemă în timpul actualizării datelor tale. Te rugăm să încerci din nou mai târziu.",
+
+    "close": "Închide",
 
     "orders" : "COMENZI & REZERVĂRI",
     "id" : "ID",
     "route" : "Ruta",
     "date" : "Data comandei",
     "passengers" : "Pasageri",
-    "price" : "Preț bilet"
+    "price" : "Preț bilet",
+    "no-reservations" : "Momentan, nu există rezervări asociate cu acest cont."
   }
   
 }

@@ -10,6 +10,8 @@ import { signIn } from "next-auth/react";
 
 import { useRouter } from "next/navigation";
 
+import PulseLoader from 'react-spinners/PulseLoader'
+
 interface LogInProps{
     setIsOpen : React.Dispatch<React.SetStateAction<boolean>>
     setModalContent : React.Dispatch<React.SetStateAction<"LogIn" | "SignUp" | "EmailSent">>
@@ -22,6 +24,7 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
   const t = useTranslations('LogInModal')
 
   const [showPass, setShowPass] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const [formData, setFormData] = useState({
     email: '',
@@ -31,6 +34,9 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
   const [emailFocus, setEmailFocus] = useState(false)
   const [passFocus, setPassFocus] = useState(false)
   const [mouseHover, setMouseHover] = useState(false)
+
+  const [emailErr, setEmailErr] = useState(false)
+  const [passErr, setPassErr] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -43,38 +49,84 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
   // Auth
 
   const onSignIn = async () => {
-    try {
-      const response: any = await signIn("credentials", {
-        email: formData.email,
-        password: formData.password,
-        redirect: false,
-      });
 
-      if (!response?.error) {
-        if (response.ok) {
-          // Close the modal immediately
-          setIsOpen(false);
-          
-          // Delay the session update
-          setTimeout(() => {
-            // This will trigger a re-render and update the session
-            //router.replace(router.asPath);
-          }, 3000); // Adjust this delay as needed (1000ms = 1 second)
-        } else {
-          throw new Error("Network response was not ok");
-        }
-      } else {
-        throw new Error(response.error);
+    if( formData.email === '' || formData.password === ''){
+      if( formData.email === '' && formData.password !== '' ) {
+        setEmailErr(true)
+        setPassErr(false)
+        toast( t('email-req-title'), {
+          description: t('email-req-desc'),
+          action: {
+            label: t('close'),
+            onClick: () => {}
+          }
+        })
       }
-    } catch (error: any) {
-      toast("Oh no! Something went wrong!", {
-        description: "Incorrect password or email",
-        action: {
-          label: 'Close',
-          onClick: () => {}
-        }
-      })
+      if( formData.password === '' && formData.email !== '' ) {
+        setPassErr(true)
+        setEmailErr(false)
+        toast( t('pass-req-title'), {
+          description: t('pass-req-desc'),
+          action: {
+            label: t('close'),
+            onClick: () => {}
+          }
+        })
+      }
+      if( formData.password === '' && formData.email === '' ) {
+        setEmailErr(true)
+        setPassErr(true)
+        toast( t('fields-req-title'), {
+          description: t('fields-req-desc'),
+          action: {
+            label: t('close'),
+            onClick: () => {}
+          }
+        })
+      }
     }
+    else {
+      setLoading(true)
+      try {
+        const response: any = await signIn("credentials", {
+          email: formData.email,
+          password: formData.password,
+          redirect: false,
+        });
+
+        if(response.ok) {
+          setIsOpen(false);
+          setLoading(false)
+        }
+          else {
+            setEmailErr(true)
+            setPassErr(true)
+            setLoading(false)
+
+            toast( t('login-fail-title'), {
+              description: t('login-fail-desc'),
+              action: {
+                label: t('close'),
+                onClick: () => {}
+              }
+            })
+          }
+
+      } catch (error: any) {
+        setEmailErr(true)
+        setPassErr(true)
+        setLoading(false)
+
+        toast( t('login-fail-title'), {
+          description: t('login-fail-desc'),
+          action: {
+            label: t('close'),
+            onClick: () => {}
+          }
+        })
+      }
+    }
+    
   };
 
   return (
@@ -84,10 +136,15 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
         <div className='bg-red h-[2px] w-[3rem] mt-[1rem] mx-auto'/>
         <p className='text-dark-gray font-open-sans font-[400] text-[1.125rem] text-center mt-[1rem]'>{ t('message') }</p>
 
-        <form className='mt-[2rem] w-full' onSubmit={(e) => { e.preventDefault(); onSignIn() }}>
+        <form noValidate className='mt-[2rem] w-full' onSubmit={(e) => { e.preventDefault(); onSignIn() }}>
 
           <div className="relative">
-            <input id="loginFormEmail" onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} name="email" value={formData.email} onChange={handleChange} className='w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]' required type="email"/>
+            <input 
+              id="loginFormEmail" 
+                onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} 
+                name="email" value={formData.email} onChange={handleChange} 
+                className={`${emailErr && 'animate-input-error'} w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="email"
+              />
 
             <motion.label
               htmlFor='loginFormEmail'
@@ -106,7 +163,7 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
             
             <div className="w-full mt-[1rem] relative">
               <div className="relative">
-                <input id="passwordLogInInput" name="password" onFocus={() => setPassFocus(true)} onBlur={() => setPassFocus(false)} value={formData.password} onChange={handleChange} className='w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none pl-[1.5rem] pt-[1rem] pr-[4rem] text-dark-gray font-open-sans text-[1rem] font-[400]' required type={ showPass ? "text" : "password" }/>
+                <input id="passwordLogInInput" name="password" onFocus={() => setPassFocus(true)} onBlur={() => setPassFocus(false)} value={formData.password} onChange={handleChange} className={`${passErr && 'animate-input-error'} w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type={ showPass ? "text" : "password" }/>
                 <motion.label
                   htmlFor='passwordLogInInput'
                   className="origin-top-left cursor-text absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
@@ -123,7 +180,16 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
                 <img onClick={() => setShowPass(prev => !prev)} src={showPass ? "/icons/icon-eye-closed.svg" : '/icons/icon-eye-open.svg'} alt="eye" draggable={false} className="size-[1rem] absolute top-[50%] -translate-y-[50%] right-[1.5rem] cursor-pointer" />
             </div>
 
-            <input type="submit" value={ t('log-in') } className='bg-red hover:bg-dark-red transition-colors duration-300 w-full h-[3.5rem] rounded-[0.5rem] text-light-white text-[1.125rem] font-bold font-open-sans mt-[2rem] cursor-pointer'/>
+            <button type="submit" className='bg-red hover:bg-dark-red transition-colors duration-300 w-full h-[3.5rem] rounded-[0.5rem] text-light-white text-[1.125rem] font-bold font-open-sans mt-[2rem] cursor-pointer'>
+              { 
+                loading 
+                  ? <PulseLoader 
+                      size={5}
+                      color="#FCFEFF"
+                    />
+                  : t('log-in') 
+              }
+            </button>
         </form>
 
         <p className='text-gray text-[1rem] text-center font-open-sans font-[400] mt-[1rem] cursor-pointer hover:opacity-75 transition-opacity duration-300'>{ t('forgot-pass') }</p>

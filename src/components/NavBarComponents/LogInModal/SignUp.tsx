@@ -3,8 +3,12 @@
 import { useLocale, useTranslations } from "next-intl"
 import { useState } from "react"
 import { motion } from "framer-motion"
+import { toast } from "sonner"
 
 import PulseLoader from 'react-spinners/PulseLoader'
+
+import { PostUserSchema } from "@/lib/types"
+import { z } from "zod"
 
 
 interface SignUpProps{
@@ -31,6 +35,10 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
   const [emailFocus, setEmailFocus] = useState(false)
   const [mouseHover, setMouseHover] = useState(false)
 
+  const [lastNameErr, setLastNameErr] = useState(false)
+  const [firstNameErr, setFirstNameErr] = useState(false)
+  const [emailErr, setEmailErr] = useState(false)
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -42,35 +50,130 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    setLoading(true);
+    if(formData.email === '' || formData.firstName === '' || formData.lastName === ''){
+      setEmailErr(false)
+      setLastNameErr(false)
+      setFirstNameErr(false)
 
-    try {
-        const response = await fetch('/api/user', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                firstname: formData.firstName,
-                lastname: formData.lastName,
-                email: formData.email,
-                lang: locale,
-            }),
+      if(formData.email === '') {
+        setEmailErr(true)
+        toast( t('email-req-title'), {
+          description: t('email-req-desc'),
+          action: {
+            label: t('close'),
+            onClick: () => {}
+          }
+        })
+      }
+      if(formData.firstName === '') {
+        setFirstNameErr(true)
+        toast( t('firstname-req-title'), {
+          description: t('firstname-req-desc'),
+          action: {
+            label: t('close'),
+            onClick: () => {}
+          }
+        })
+      }
+      if(formData.lastName === '') {
+        setLastNameErr(true)
+        toast( t('lastname-req-title'), {
+          description: t('lastname-req-desc'),
+          action: {
+            label: t('close'),
+            onClick: () => {}
+          }
+        })
+      }
+    } 
+    else {
+      
+      setLoading(true);
+      try {
+        
+        //data validation
+        PostUserSchema.parse({
+          firstname: formData.firstName,
+          lastname: formData.lastName,
+          email: formData.email,
+          lang: locale,
         });
 
-        const data = await response.json();
-
-        if (response.ok) {
-            console.log("Email Sent")
-            setIsOpen(false)
-        } else {
-            console.log(data.msg, "  Something went wrong");
+          const response = await fetch('/api/user', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  firstname: formData.firstName,
+                  lastname: formData.lastName,
+                  email: formData.email,
+                  lang: locale,
+              }),
+          });
+  
+          const data = await response.json();
+  
+          if (response.ok) {
+              console.log("Email Sent")
+              setIsOpen(false)
+          } else {
+              if(response.status === 400){
+                toast( t('email-taken-title'), {
+                  description: t('email-taken-desc'),
+                  action: {
+                    label: t('close'),
+                    onClick: () => {}
+                  }
+                })
+              } else {
+                toast( t('general-error-title'), {
+                  description: t('general-error-desc'),
+                  action: {
+                    label: t('close'),
+                    onClick: () => {}
+                  }
+                })
+              }
+          }
+      } catch (err) {
+        if (err instanceof z.ZodError) {
+          err.errors.forEach(error => {
+            const field = error.path[0];
+            if(field === 'lastname') {
+              toast( t('lastname-err-title'), {
+                description: t('lastname-err-desc'),
+                action: {
+                  label: t('close'),
+                  onClick: () => {}
+                }
+              })
+            }
+            if(field === 'firstname') {
+              toast( t('firstname-err-title'), {
+                description: t('firstname-err-desc'),
+                action: {
+                  label: t('close'),
+                  onClick: () => {}
+                }
+              })
+            }
+            if(field === 'email') {
+              toast( t('email-err-title'), {
+                description: t('email-err-desc'),
+                action: {
+                  label: t('close'),
+                  onClick: () => {}
+                }
+              })
+            }
+        }); 
         }
-    } catch (error) {
-        console.log("An unexpected error occurred. Please try again.");
     } finally {
-      setLoading(false); // Stop the loader
+        setLoading(false);
     }
+    } 
+
 };
 
   return (
@@ -80,9 +183,9 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
         <div className='bg-red h-[2px] w-[3rem] mt-[1rem] mx-auto'/>
         <p className='text-dark-gray font-open-sans font-[400] text-[1.125rem] text-center mt-[1rem]'>{ t('message') }</p>
 
-        <form className='mt-[2rem] w-full' onSubmit={handleSubmit}>
+        <form noValidate className='mt-[2rem] w-full' onSubmit={handleSubmit}>
           <div className="relative">
-            <input id="signUpFormLastName" name="lastName" onFocus={() => setLastNameFocus(true)} onBlur={() => setLastNameFocus(false)} value={formData.lastName} onChange={handleChange} className='w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]' required type="text"/>
+            <input maxLength={50} id="signUpFormLastName" name="lastName" onFocus={() => setLastNameFocus(true)} onBlur={() => setLastNameFocus(false)} value={formData.lastName} onChange={handleChange} className={`${lastNameErr && 'animate-input-error'} w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"/>
 
             <motion.label
               htmlFor='signUpFormLastName'
@@ -99,7 +202,7 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
           </div>
 
           <div className="relative mt-[1rem]">
-            <input id="signUpFormFirstName" name="firstName" onFocus={() => setFirstNameFocus(true)} onBlur={() => setFirstNameFocus(false)} value={formData.firstName} onChange={handleChange} className='w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]' required type="text"/>
+            <input maxLength={50} id="signUpFormFirstName" name="firstName" onFocus={() => setFirstNameFocus(true)} onBlur={() => setFirstNameFocus(false)} value={formData.firstName} onChange={handleChange} className={`${firstNameErr && 'animate-input-error'} w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"/>
 
             <motion.label
               htmlFor='signUpFormFirstName'
@@ -116,7 +219,7 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
           </div>
 
           <div className="relative mt-[1rem]">
-            <input id="signUpFormEmail" name="email" onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} value={formData.email} onChange={handleChange} className='w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]' required type="text"/>
+            <input maxLength={50} id="signUpFormEmail" name="email" onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} value={formData.email} onChange={handleChange} className={`${emailErr && 'animate-input-error'} w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"/>
 
             <motion.label
               htmlFor='signUpFormEmail'
@@ -144,7 +247,7 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
             </button>
         </form>
 
-        <p className='font-open-sans text-gray text-[1.125rem] font-[400] text-center mt-[2rem]'>
+        <div className='font-open-sans text-gray text-[1.125rem] font-[400] text-center mt-[2rem] flex flex-wrap justify-center'>
             <span className='text-dark-gray'>{ t('question') }</span> &nbsp;
             <span onMouseEnter={() => setMouseHover(true)} onMouseLeave={() => setMouseHover(false)} className="relative">
               <span onClick={() => setModalContent('LogIn')} className='cursor-pointer'>{ t('log-in') }</span>
@@ -155,7 +258,7 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
                 transition={{ type: 'tween', ease: 'linear', duration: 0.3 }}
               />
             </span>
-        </p>
+        </div>
     </div>
   )
 }

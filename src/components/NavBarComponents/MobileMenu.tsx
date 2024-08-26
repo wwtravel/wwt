@@ -65,7 +65,14 @@ const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
                     <p className='text-white font-bold text-[1.333rem]'>{ user ? `${user.firstname} ${user.lastname![0]}.` : t('log-in') }</p>
                   </div>
 
-                  { !user && <LogInModal isOpen={isOpenModal} setIsOpen={setIsOpenModal}/>}
+                  <AnimatePresence>
+                    { !user && (
+                      <motion.div exit={{ opacity: 0 }}>
+                        <LogInModal isOpen={isOpenModal} setIsOpen={setIsOpenModal}/>
+                      </motion.div>
+                    )
+                    }
+                  </AnimatePresence>
                   { user && <UserModal isOpen={isOpenModal} setIsOpen={setIsOpenModal}/>}
                 </div>
 

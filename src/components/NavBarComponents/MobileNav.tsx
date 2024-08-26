@@ -24,8 +24,9 @@ const MobileNav = () => {
           </div>
 
       </div>
-      
-      <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen}/>
+      <div className='xl:hidden'>
+        <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen}/>
+      </div>
     </>
   )
 }

@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl"
 import * as React from "react"
-import { format, Locale } from "date-fns"
+import { format, Locale, parse } from "date-fns"
 import { Calendar as CalendarIcon } from "lucide-react"
  
 import { cn } from "@/lib/utils"
@@ -21,11 +21,16 @@ import { fr, ro, enUS, ru } from "date-fns/locale"
 interface DatePickerProps{
     placeholder: string;
     setDob: React.Dispatch<React.SetStateAction<string>>;
+    dob: string;
 }
 
-const DobDatePicker: React.FC<DatePickerProps> = ({ placeholder, setDob }) => {
+const DobDatePicker: React.FC<DatePickerProps> = ({ placeholder, setDob, dob }) => {
 
-    const [date, setDate] = React.useState<Date>()
+    const [date, setDate] = React.useState<Date | undefined>()
+    
+    React.useEffect(() => {
+      setDate(dob ? parse(dob, "yyyy-MM-dd", new Date()) : undefined)
+    }, [dob])
 
     React.useEffect(() => {
       if(date) {
@@ -53,7 +58,7 @@ const DobDatePicker: React.FC<DatePickerProps> = ({ placeholder, setDob }) => {
         <Button
           variant={"outline"}
           className={cn(
-            "px-[1.5rem] pb-0 lg:pt-[1rem] pt-[1.5rem] relative lg:text-[1rem] text-[1.333rem] bg-light-white min-w-full lg:h-[3.5rem] h-[4.667rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal",
+            "px-[1.5rem] pb-0 lg:pt-[1rem] pt-[1.5rem] relative md:text-[1rem] text-[1.333rem] bg-light-white min-w-full md:h-[3.5rem] h-[4.667rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal",
             !date && "text-muted-foreground"
           )}
         >
@@ -83,6 +88,9 @@ const DobDatePicker: React.FC<DatePickerProps> = ({ placeholder, setDob }) => {
             onSelect={setDate}
             initialFocus
             locale={calLocale}
+            captionLayout="dropdown-buttons"
+            fromYear={1960}
+            toYear={2030}
           />
         </PopoverContent>
     </Popover>

@@ -205,7 +205,17 @@
     "log-in": "Se connecter",
     "forgot-pass": "Mot de passe oublié?",
     "question": "Vous n'avez pas de compte?",
-    "sign-up": "Inscrivez-vous maintenant"
+    "sign-up": "Inscrivez-vous maintenant",
+
+    "email-req-title": "Adresse e-mail requise",
+    "email-req-desc": "Veuillez entrer votre adresse e-mail pour continuer.",
+    "pass-req-title": "Mot de passe requis",
+    "pass-req-desc": "Veuillez entrer votre mot de passe pour continuer.",
+    "fields-req-title": "Informations manquantes",
+    "fields-req-desc": "Veuillez entrer à la fois votre adresse e-mail et votre mot de passe pour vous connecter.",
+    "login-fail-title": "Échec de la connexion",
+    "login-fail-desc": "L'adresse e-mail ou le mot de passe que vous avez saisi est incorrect. Veuillez vérifier et réessayer.",
+    "close": "Fermer"
   },
   "SignUpModal": {
     "createAccTitle": "CRÉER UN COMPTE",
@@ -215,7 +225,33 @@
     "email": "Email",
     "sign-up": "S'inscrire",
     "question": "Vous avez déjà un compte ?",
-    "log-in": "Connectez-vous maintenant"
+    "log-in": "Connectez-vous maintenant",
+
+    "email-req-title": "Adresse e-mail requise",
+    "email-req-desc": "Veuillez entrer votre adresse e-mail pour continuer.",
+    
+    "lastname-req-title": "Nom de famille requis",
+    "lastname-req-desc": "Veuillez entrer votre nom de famille pour continuer.",
+    
+    "firstname-req-title": "Prénom requis",
+    "firstname-req-desc": "Veuillez entrer votre prénom pour continuer.",
+
+    "firstname-err-title": "Erreur prénom",
+    "firstname-err-desc": "Le prénom doit comporter au moins 1 caractère et au plus 50 caractères.",
+    
+    "lastname-err-title": "Erreur nom de famille",
+    "lastname-err-desc": "Le nom de famille doit comporter au moins 1 caractère et au plus 50 caractères.",
+    
+    "email-err-title": "Email invalide",
+    "email-err-desc": "L'email doit comporter au moins 1 caractère et au plus 50 caractères, et doit être un email valide.",
+
+    "email-taken-title": "Email indisponible",
+    "email-taken-desc": "Cet email a déjà été utilisé pour l'inscription. Veuillez utiliser un autre email.",
+
+    "general-error-title": "Erreur lors de l'inscription",
+    "general-error-desc": "Une erreur est survenue lors du processus d'inscription. Veuillez réessayer plus tard.",
+
+    "close": "Fermer"
   },
   "UserModal": {
     "tab_1_text": "Réservations",
@@ -231,11 +267,31 @@
     "pass": "Mot de passe",
     "saveCh": "Enregistrer les modifications",
 
+    "firstname-err-title": "Erreur prénom",
+    "firstname-err-desc": "Le prénom doit comporter au moins 1 caractère et au plus 50 caractères.",
+    
+    "lastname-err-title": "Erreur nom de famille",
+    "lastname-err-desc": "Le nom de famille doit comporter au moins 1 caractère et au plus 50 caractères.",
+
+    "date-err-title": "Date invalide",
+    "date-err-desc": "La date doit être au format jour, mois, année et être une date valide.",
+    
+    "phone-err-title": "Numéro de téléphone invalide",
+    "phone-err-desc": "Le numéro de téléphone doit comporter entre 7 et 15 caractères et être un numéro valide.",
+
+    "update-success-title": "Mise à jour réussie",
+    "update-success-desc": "Les détails du compte ont été mis à jour avec succès.",
+
+    "update-error-title": "Erreur lors de la mise à jour",
+    "update-error-desc": "Un problème est survenu lors de la mise à jour de vos données. Veuillez réessayer plus tard.",
+    "close": "Fermer",
+
     "orders": "RÉSERVATIONS",
     "id": "ID",
     "route": "Itinéraire",
     "date": "Date de la commande",
     "passengers": "Passagers",
-    "price": "Prix du billet"
+    "price": "Prix du billet",
+    "no-reservations": "Actuellement, il n'y a pas de réservations associées à ce compte."
   }
 }

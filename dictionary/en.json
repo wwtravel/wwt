@@ -205,7 +205,21 @@
     "log-in": "Log In",
     "forgot-pass": "Forgot your password?",
     "question": "Don't have an account?",
-    "sign-up": "Sign up now"
+    "sign-up": "Sign up now",
+
+    "email-req-title" : "Email Required",
+    "email-req-desc" : "Please enter your email address.",
+
+    "pass-req-title" : "Password Required",
+    "pass-req-desc" : "Please enter your password.",
+
+    "fields-req-title" : "Fields Required",
+    "fields-req-desc" : "Please enter both your email address and password.",
+
+    "login-fail-title" : "Login Failed",
+    "login-fail-desc" : "The email or password you entered is incorrect. Please try again.",
+
+    "close" : "Close"
   },
   "SignUpModal": {
     "createAccTitle": "CREATE AN ACCOUNT",
@@ -215,7 +229,33 @@
     "email": "Email",
     "sign-up": "Sign Up",
     "question": "Already have an account?",
-    "log-in": "Log In Now"
+    "log-in": "Log In Now",
+
+    "email-req-title": "Email Address Required",
+    "email-req-desc": "Please enter your email address to continue.",
+    
+    "lastname-req-title": "Last Name Required",
+    "lastname-req-desc": "Please enter your last name to continue.",
+    
+    "firstname-req-title": "First Name Required",
+    "firstname-req-desc": "Please enter your first name to continue.",
+
+    "firstname-err-title": "First Name Error",
+    "firstname-err-desc": "First name must be at least 1 character and no more than 50 characters.",
+    
+    "lastname-err-title": "Last Name Error",
+    "lastname-err-desc": "Last name must be at least 1 character and no more than 50 characters.",
+    
+    "email-err-title": "Invalid Email",
+    "email-err-desc": "Email must be at least 1 character and no more than 50 characters, and must be a valid email address.",
+
+    "email-taken-title": "Email Unavailable",
+    "email-taken-desc": "This email has already been used for registration. Please use a different email.",
+
+    "general-error-title": "Registration Error",
+    "general-error-desc": "An error occurred during the registration process. Please try again later.",
+
+    "close" : "Close"
   },
   "UserModal": {
     "tab_1_text": "ORDERS & BOOKings",
@@ -230,12 +270,31 @@
     "dob": "Date of Birth",
     "pass": "Password",
     "saveCh": "Save Changes",
+    "firstname-err-title": "First Name Error",
+    "firstname-err-desc": "First name must be at least 1 character and no more than 50 characters.",
+    
+    "lastname-err-title": "Last Name Error",
+    "lastname-err-desc": "Last name must be at least 1 character and no more than 50 characters.",
+
+    "date-err-title": "Invalid Date",
+    "date-err-desc": "The date must be in the format day, month, year and be a valid date.",
+    
+    "phone-err-title": "Invalid Phone Number",
+    "phone-err-desc": "The phone number must be between 7 and 15 characters and be a valid number.",
+
+    "update-success-title": "Update Successful",
+    "update-success-desc": "Account details have been successfully updated.",
+
+    "update-error-title": "Update Error",
+    "update-error-desc": "There was a problem updating your data. Please try again later.",
+    "close": "Close",
 
     "orders": "ORDERS & BOOKings",
     "id": "ID",
     "route": "Route",
     "date": "Order Date",
     "passengers": "Passengers",
-    "price": "Ticket Price"
+    "price": "Ticket Price",
+    "no-reservations": "Currently, there are no reservations associated with this account."
   }
 }

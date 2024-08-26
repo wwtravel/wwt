@@ -17,15 +17,13 @@ import LogInModal from './LogInModal/LogInModal';
 
 import { useSession } from 'next-auth/react';
 import UserModal from './UserModal/UserModal';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const NavBar = () => {
   const t = useTranslations('NavBar');
 
   const { data } = useSession()
   const user = data?.user
-
-  console.log(user)
 
 
   const [isOpen, setIsOpen] = useState(false)
@@ -78,7 +76,15 @@ const NavBar = () => {
 
         <AnimatedDesktopNav isOpen={isOpen} setIsOpen={setIsOpen}/>
 
-        { !user && <LogInModal isOpen={isOpen} setIsOpen={setIsOpen}/>}
+        <AnimatePresence>
+          { !user && (
+            <motion.div exit={{ opacity: 0 }}>
+              <LogInModal isOpen={isOpen} setIsOpen={setIsOpen}/>
+            </motion.div>
+          )
+          }
+        </AnimatePresence>
+
         { user && <UserModal isOpen={isOpen} setIsOpen={setIsOpen}/>}
 
         {/* desktop nav */}

@@ -66,9 +66,12 @@ const MobileDestinationsCarousel = () => {
                                             <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem]">{ t(item.startPoint) }</p>
                                             <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem]">{ t(item.features) }:</p>
                                             <div className="flex gap-[1rem] mb-[1rem]">
-                                                <img className="size-[1.5rem]" src={`/icons/${item.wifi ? 'icon-wifi.svg' : 'icon-wifi-disabled.svg'}`} alt="feaureIcon" draggable={false} />
-                                                <img className="size-[1.5rem]" src={`/icons/${item.food ? 'icon-food.svg' : 'icon-food-disabled.svg'}`} alt="feaureIcon" draggable={false} />
-                                                <img className="size-[1.5rem]" src={`/icons/${item.luggage ? 'icon-luggage.svg' : 'icon-luggage-disabled.svg'}`} alt="feaureIcon" draggable={false} />
+                                              <img className="size-[1.5rem]" src={`/icons/destinations-icons/${item.wifi ? 'icon-wifi.svg' : 'icon-wifi-disabled.svg'}`} alt="feaureIcon" draggable={false} />
+                                              <img className="size-[1.5rem]" src={`/icons/destinations-icons/${item.wc ? 'icon-wc.svg' : 'icon-wc-disabled.svg'}`} alt="feaureIcon" draggable={false} />
+                                              <img className="size-[1.5rem]" src={`/icons/destinations-icons/${item.ac ? 'icon-ac.svg' : 'icon-ac-disabled.svg'}`} alt="feaureIcon" draggable={false} />
+                                              <img className="size-[1.5rem]" src={`/icons/destinations-icons/${item.socket ? 'icon-socket.svg' : 'icon-socket-disabled.svg'}`} alt="feaureIcon" draggable={false} />
+                                              <img className="size-[1.5rem]" src={`/icons/destinations-icons/${item.minibar ? 'icon-minibar.svg' : 'icon-minibar-disabled.svg'}`} alt="feaureIcon" draggable={false} />
+                                              <img className="size-[1.5rem]" src={`/icons/destinations-icons/${item.multimedia ? 'icon-multimedia.svg' : 'icon-multimedia-disabled.svg'}`} alt="feaureIcon" draggable={false} />
                                             </div>
                                             <RedButton text={t('cardButtonText')}/>
                                         </div>

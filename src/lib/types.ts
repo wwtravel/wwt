@@ -21,12 +21,12 @@ export const PatchUserSchema = z.object({
         .min(1, {
             message: "Firstname must be at least at leat 1 character"
         }).max(50, {
-            message: "Firstname must be at least at most 100 characters"
+            message: "Firstname must be at most 50 characters"
         }),
     lastname: z.string().trim().min(1).max(50),
     email: z.string().trim().min(1).max(50).regex(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g),
     dob: z.string().date().optional(),
-    phone_number: z.string().optional(),
+    phone_number: z.string().min(7).max(15).optional(),
 });
 
 export interface WelcomeEmailProps {

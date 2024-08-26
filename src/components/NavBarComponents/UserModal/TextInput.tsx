@@ -9,20 +9,22 @@ interface TextInputProps {
     id: string;
     label: string;
     name: string;
+    readOnly: boolean;
 }
 
-const TextInput: React.FC<TextInputProps> = ({ onChange, value, id, label, name }) => {
+const TextInput: React.FC<TextInputProps> = ({ onChange, value, id, label, name, readOnly }) => {
 
   const [inputFocused, setInputFocused] = useState(false)
 
   return (
     <div className='relative' >
         <input
+            readOnly = { readOnly }
             value={value}
             onChange={onChange} 
             onFocus={() => setInputFocused(true)}
             onBlur={() => setInputFocused(false)} 
-            id={id} className='w-full sm:h-[3.5rem] h-[4.667rem] sm:text-[1rem] text-[1.333rem] border border-gray/25 rounded-[0.5rem] outline-none pl-[1.5rem] bg-light-white placeholder:text-gray/75 lg:pt-[1rem] pt-[1.5rem]' 
+            id={id} className='w-full md:text-[1rem] text-[1.333rem] md:h-[3.5rem] h-[4.667rem] border border-gray/25 rounded-[0.5rem] outline-none pl-[1.5rem] bg-light-white placeholder:text-gray/75 lg:pt-[1rem] pt-[1.5rem]' 
             type="text" maxLength={50}
             name={name}
         />
