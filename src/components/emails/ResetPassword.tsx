@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Html, Tailwind, Img, Hr, Text, Section, Row, Heading, Head, Font, Button } from "@react-email/components";
-import { WelcomeEmailProps } from '@/src/lib/types';
+import { WelcomeEmailProps } from '@/lib/types';
 
 const langText = new Map([
     ["en", ["PASSWORD RESET", "For more details, access the information below.", "NEW ACCOUNT ACCESS DATA", "Login:", "Password:", "Buy tickets", "Sincerely, the team"]],

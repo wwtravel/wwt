@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Html, Tailwind, Img, Hr, Text, Section, Row, Heading, Head, Font, Link } from "@react-email/components";
-import { ResetPasswordProps } from '@/src/lib/types';
+import { ResetPasswordProps } from '@/lib/types';
 
 const langText = new Map([
     ["en", ["CHECK EMAIL", "For more details, access the information below.", "Please confirm your email address by clicking on the link:", "Check your email address", "If you have not made this request yourself, you can ignore this message.", "Sincerely, the team"]],
