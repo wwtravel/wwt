@@ -3,7 +3,8 @@
     "home" : "Acasă",
     "about" : "Despre Noi",
     "contact" : "Contacte",
-    "schedule" : "Orarul Rutelor"
+    "schedule" : "Orarul Rutelor",
+    "route-search" : "Căutare Rută"
   },
   "NavBar": {
     "titleMD": "Telefon Moldova",
@@ -294,6 +295,46 @@
     "passengers" : "Pasageri",
     "price" : "Preț bilet",
     "no-reservations" : "Momentan, nu există rezervări asociate cu acest cont."
+  },
+  "RouteSearchPage_Date": {
+    "sept" : "Septembrie",
+    "oct" : "Octombrie",
+    "nov" : "Noiembrie",
+    "dec" : "Decembrie",
+    "jan" : "Ianuarie",
+    "feb" : "Februarie",
+    "mar" : "Martie",
+    "apr" : "Aprilie",
+    "may" : "Mai",
+    "jun" : "Iunie",
+    "jul" : "Iulie",
+    "aug" : "August",
+
+    "sun" : "Duminică",
+    "mon" : "Luni",
+    "tue" : "Marți",
+    "wed" : "Miercuri",
+    "thu" : "Joi",
+    "fry" : "Vineri",
+    "sat" : "Sâmbătă"
+  },
+  "RouteSearchPage": {
+    "title" : "RUTELE de plecare DIN DATA DE",
+
+    "start" : "Start",
+    "finish" : "Finiș",
+    "free-spaces" : "Locuri libere",
+    "payment-info" : "Achitare la îmbarcare",
+    "book" : "Rezervă",
+    "info-route" : "Despre rută",
+    "duration" : "Durata călătoriei",
+    "amenities" : "Comodități",
+    "wifi" : "Wi-Fi Gratuit",
+    "wc" : "Toaletă",
+    "ac" : "Aer condiționat",
+    "socket" : "Priză electrică",
+    "minibar" : "Minibar",
+    "multimedia" : "Multimedia"
   }
   
 }

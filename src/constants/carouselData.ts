@@ -131,50 +131,6 @@ export const carouselData = {
             minibar: false,
             multimedia: false
         },
-    ],
-    slide4 : [
-        {
-            imageURL : "/images/carousel-images/viena.png",
-            price : 100, // in EUR
-            title : "card10title",
-            departureText : "cardDeparture",
-            startPoint : "card10StartPoint",
-            features: "features",
-            wifi: false,
-            wc: false,
-            ac: false,
-            socket: false,
-            minibar: false,
-            multimedia: false
-        },
-        {
-            imageURL : "/images/carousel-images/chambery.png",
-            price : 120, // in EUR
-            title : "card11title",
-            departureText : "cardDeparture",
-            startPoint : "card11StartPoint",
-            features: "features",
-            wifi: false,
-            wc: false,
-            ac: false,
-            socket: false,
-            minibar: false,
-            multimedia: false
-        },
-        {
-            imageURL : "/images/carousel-images/zurich.png",
-            price : 80, // in EUR
-            title : "card12title",
-            departureText : "cardDeparture",
-            startPoint : "card12StartPoint",
-            features: "features",
-            wifi: false,
-            wc: false,
-            ac: false,
-            socket: false,
-            minibar: false,
-            multimedia: false
-        },
     ]
 }
 

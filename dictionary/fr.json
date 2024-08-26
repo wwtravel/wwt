@@ -3,7 +3,8 @@
     "home" : "Accueil",
     "about" : "À Propos",
     "contact" : "Contact",
-    "schedule" : "Horaire des Routes"
+    "schedule" : "Horaire des Routes",
+    "route-search" : "Recherche d'Itinéraire"
   },
   "NavBar": {
     "titleMD": "Téléphone Moldavie",
@@ -293,5 +294,45 @@
     "passengers": "Passagers",
     "price": "Prix du billet",
     "no-reservations": "Actuellement, il n'y a pas de réservations associées à ce compte."
+  },
+  "RouteSearchPage_Months": {
+    "sept": "Septembre",
+    "oct": "Octobre",
+    "nov": "Novembre",
+    "dec": "Décembre",
+    "jan": "Janvier",
+    "feb": "Février",
+    "mar": "Mars",
+    "apr": "Avril",
+    "may": "Mai",
+    "jun": "Juin",
+    "jul": "Juillet",
+    "aug": "Août",
+
+    "sun": "Dimanche",
+    "mon": "Lundi",
+    "tue": "Mardi",
+    "wed": "Mercredi",
+    "thu": "Jeudi",
+    "fry": "Vendredi",
+    "sat": "Samedi"
+  },
+  "RouteSearchPage": {
+    "title" : "ROUTES DE DÉPART À PARTIR DU",
+
+    "start": "Départ",
+    "finish": "Arrivée",
+    "free-spaces": "Places libres",
+    "payment-info": "Paiement à l'embarquement",
+    "book": "Réserver",
+    "info-route": "À propos de la route",
+    "duration": "Durée du voyage",
+    "amenities": "Commodités",
+    "wifi": "Wi-Fi Gratuit",
+    "wc": "Toilettes",
+    "ac": "Climatisation",
+    "socket": "Prise électrique",
+    "minibar": "Minibar",
+    "moltimedia": "Multimédia"
   }
 }

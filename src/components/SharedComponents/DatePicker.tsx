@@ -51,7 +51,7 @@ const DatePicker:React.FC<DatePickerProps> = ({ placeholder }) => {
             !date && "text-muted-foreground"
           )}
         >
-          {date && format(date, "dd/MM/yyyy")}
+          {date && format(date, "dd.MM.yyyy")}
 
             <div className="absolute origin-top-left h-full flex items-center left-[1.5rem] top-0 text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]">
               <motion.p

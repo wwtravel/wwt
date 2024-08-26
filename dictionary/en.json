@@ -3,7 +3,8 @@
     "home" : "Home",
     "about" : "About Us",
     "contact" : "Contact",
-    "schedule" : "Route Schedule"
+    "schedule" : "Route Schedule",
+    "route-search" : "Route Search"
   },
   "NavBar": {
     "titleMD": "Phone Moldova",
@@ -296,5 +297,45 @@
     "passengers": "Passengers",
     "price": "Ticket Price",
     "no-reservations": "Currently, there are no reservations associated with this account."
+  },
+  "RouteSearchPage_Months": {
+    "sept": "September",
+    "oct": "October",
+    "nov": "November",
+    "dec": "December",
+    "jan": "January",
+    "feb": "February",
+    "mar": "March",
+    "apr": "April",
+    "may": "May",
+    "jun": "June",
+    "jul": "July",
+    "aug": "August",
+
+    "sun": "Sunday",
+    "mon": "Monday",
+    "tue": "Tuesday",
+    "wed": "Wednesday",
+    "thu": "Thursday",
+    "fry": "Friday",
+    "sat": "Saturday"
+  },
+  "RouteSearchPage": {
+    "title" : "DEPARTURE ROUTES FROM",
+
+    "start": "Start",
+    "finish": "Finish",
+    "free-spaces": "Free Spaces",
+    "payment-info": "Pay on Boarding",
+    "book": "Book",
+    "info-route": "About the Route",
+    "duration": "Travel Duration",
+    "amenities": "Amenities",
+    "wifi": "Free Wi-Fi",
+    "wc": "Toilet",
+    "ac": "Air Conditioning",
+    "socket": "Electric Socket",
+    "minibar": "Minibar",
+    "multimedia": "Multimedia"
   }
 }

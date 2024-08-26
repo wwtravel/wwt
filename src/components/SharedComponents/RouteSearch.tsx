@@ -58,7 +58,7 @@ const RouteSearch = () => {
   }
 
   return (
-    <div className='absolute flex flex-col justify-center bottom-0 left-[50%] -translate-x-[50%] w-fit h-[9.5rem] bg-light-white shadow-custom rounded-[1rem] translate-y-[50%] px-[4rem]'>
+    <div className='absolute flex flex-col justify-center bottom-0 left-[50%] -translate-x-[50%] w-max h-[9.5rem] bg-light-white shadow-custom rounded-[1rem] translate-y-[50%] px-[4rem]'>
 
       <div className='flex gap-[1rem] items-center'>
         <div className='flex gap-[0.5rem] items-center cursor-pointer' onClick={() => setRetour(true)}>

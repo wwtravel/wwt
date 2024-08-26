@@ -17,6 +17,12 @@ export const pathnames: Pathnames<typeof locales> = {
     "ru": '/kontakty',
     "fr": '/contact'
   },
+  '/route-search': {
+    "en": '/route-search',
+    "ro": '/cautare-traseu',
+    "ru": '/poisk-marshruta',
+    "fr": '/recherche-itineraire'
+  },
 };
 
 export const localePrefix: LocalePrefix<typeof locales> = 'always';

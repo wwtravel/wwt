@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react"
-import { Link } from '../../navigation'
+import { Link, usePathname } from '../../navigation'
 import LangPicker from './LangPicker';
 import CurrencyPicker from './CurrencyPicker';
 import { useSession } from 'next-auth/react';
@@ -16,6 +16,9 @@ interface LogInModalProps{
 }
 
 const AnimatedDesktopNav:React.FC<LogInModalProps> = ({ setIsOpen, isOpen }) => {
+
+  const pathname = usePathname()
+  const activePage = pathname.split('/')[1];
 
   const t = useTranslations('NavBar');
 
@@ -52,10 +55,10 @@ const AnimatedDesktopNav:React.FC<LogInModalProps> = ({ setIsOpen, isOpen }) => 
                     transition={{ type: 'tween', ease: 'linear', duration: 0.3 }}
                 >
                     <div className='flex gap-[1.5rem]'>
-                        <Link href="/" className='font-bold text-[1rem] text-dark-gray hover:opacity-75 transition-opacity duration-300'>{t('navHome')}</Link>
-                        <Link href="/" className='font-bold text-[1rem] text-dark-gray hover:opacity-75 transition-opacity duration-300'>{t('navSchedule')}</Link>
-                        <Link href="/about" className='font-bold text-[1rem] text-dark-gray hover:opacity-75 transition-opacity duration-300'>{t('navAbout')}</Link>
-                        <Link href="/contacts" className='font-bold text-[1rem] text-dark-gray hover:opacity-75 transition-opacity duration-300'>{t('navContact')}</Link>
+                        <Link href="/" className={`font-bold text-[1rem] ${activePage === '' ? ' text-red ' : 'text-dark-gray hover:opacity-75'} transition-opacity duration-300`}>{t('navHome')}</Link>
+                        <Link href="/" className={`font-bold text-[1rem] text-dark-gray hover:opacity-75 transition-opacity duration-300`}>{t('navSchedule')}</Link>
+                        <Link href="/about" className={`font-bold text-[1rem] ${activePage === 'about' ? ' text-red ' : 'text-dark-gray hover:opacity-75'} transition-opacity duration-300`}>{t('navAbout')}</Link>
+                        <Link href="/contacts" className={`font-bold text-[1rem] ${activePage === 'contacts' ? ' text-red ' : 'text-dark-gray hover:opacity-75'} transition-opacity duration-300`}>{t('navContact')}</Link>
                     </div>
 
                     <div className='flex'>
