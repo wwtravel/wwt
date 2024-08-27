@@ -180,6 +180,41 @@ export const getApiDocs = async () => {
             },
             required: ["travel_id", "passengers", "contact_details", "lang"],
           },
+
+          City: {
+            type: "object",
+            properties: {
+              value: {
+                type: "string",
+              },
+              label: {
+                type: "object",
+                properties: {
+                  en: {
+                    type: "string",
+                  },
+                  ro: {
+                    type: "string",
+                  },
+                  fr: {
+                    type: "string",
+                  },
+                  ru: {
+                    type: "string",
+                  },
+                },
+              },
+            },
+            example: {
+              value: "chisinau",
+              label: {
+                en: "Chisinau",
+                ro: "Chișinău",
+                fr: "Chisinau",
+                ru: "Кишинев",
+              },
+            },
+          },
         },
 
         // Responses
@@ -227,6 +262,22 @@ export const getApiDocs = async () => {
                     msg: {
                       type: "string",
                       example: "You are not authorized to be here!",
+                    },
+                  },
+                },
+              },
+            },
+          },
+          ServerErrorResponse: {
+            description: "Server Error",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    msg: {
+                      type: "string",
+                      example: "There is an internal problem with the server!",
                     },
                   },
                 },
@@ -566,6 +617,29 @@ export const getApiDocs = async () => {
               "400": { $ref: "#/components/responses/BadRequestResponse" },
               "201": { $ref: "#/components/responses/SuccessResponse" },
               "500": { $ref: "#/components/responses/ServerErrorResponse" },
+            },
+          },
+        },
+
+        // CITIES PATHS
+
+        "/api/cities": {
+          get: {
+            summary: "Gets a list of all cities",
+            tags: ["Cities"],
+            responses: {
+              "500": { $ref: "#/components/responses/ServerErrorResponse" },
+              "200": {
+                description: "Successfully retrieved all cities",
+                content: {
+                  "application/json": {
+                    schema: {
+                      type: "array",
+                      items: { $ref: "#/components/schemas/City" },
+                    },
+                  },
+                },
+              },
             },
           },
         },

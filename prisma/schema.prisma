@@ -126,3 +126,18 @@ enum Lang {
   fr
   ru
 }
+
+// City model
+
+model City {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  value String
+  label Label
+}
+
+type Label {
+  en String
+  ro String
+  fr String
+  ru String
+}
