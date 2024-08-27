@@ -20,10 +20,34 @@ import { fr, ro, enUS, ru } from "date-fns/locale"
  
 interface DatePickerProps{
     placeholder: string;
+    setSearchDate: React.Dispatch<React.SetStateAction<string>>;
+    edgeDate : Date | null;
+    calName : string;
+    dateValue : string;
 }
 
-const DatePicker:React.FC<DatePickerProps> = ({ placeholder }) => {
+const DatePicker:React.FC<DatePickerProps> = ({ placeholder, setSearchDate, edgeDate, calName, dateValue }) => {
   const [date, setDate] = React.useState<Date>()
+
+  React.useEffect(() => {
+    if(dateValue !== ''){
+      setDate(new Date(dateValue))
+    } else setDate(undefined)
+  }, [dateValue])
+
+  React.useEffect(() => {
+    if(date) {
+      const formattedDate = format(date, "yyyy-MM-dd")
+      setSearchDate(formattedDate)
+    }
+  }, [date])
+
+  React.useEffect(() => {
+    if(date) {
+      const formattedDate = format(date, "yyyy-MM-dd")
+      setSearchDate(formattedDate)
+    }
+  }, [date])
 
   const [openCal, setOpenCal] = React.useState(false)
 
@@ -77,7 +101,7 @@ const DatePicker:React.FC<DatePickerProps> = ({ placeholder }) => {
             onSelect={setDate}
             initialFocus
             locale={calLocale}
-            disabled={(date) => date < today}
+            disabled={ edgeDate && calName === 'arrival' ? (date) => date < edgeDate : (date) => date < today}
           />
         </PopoverContent>
     </Popover>

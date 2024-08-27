@@ -4,42 +4,7 @@ import { useTranslations } from 'next-intl';
 import ComboBox from './ComboBox'
 import DatePicker from './DatePicker';
 
-import { useState } from 'react';
-
-const CITIES = [
-  {
-    value: "new_york",
-    label: "New York",
-  },
-  {
-    value: "paris",
-    label: "Paris",
-  },
-  {
-    value: "tokyo",
-    label: "Tokyo",
-  },
-  {
-    value: "sydney",
-    label: "Sydney",
-  },
-  {
-    value: "london",
-    label: "London",
-  },
-  {
-    value: "berlin",
-    label: "Berlin",
-  },
-  {
-    value: "dubai",
-    label: "Dubai",
-  },
-  {
-    value: "san_francisco",
-    label: "San Francisco",
-  },
-];
+import { useEffect, useState } from 'react';
 
 const MobileRouteSearch = () => {
 
@@ -49,6 +14,43 @@ const MobileRouteSearch = () => {
 
     const [departureCity, setDepartureCity] = useState('')
     const [arrivalCity, setArrivalCity] = useState('')
+    const [departureDate, setDepartureDate] = useState('')
+    const [arrivalDate, setArrivalDate] = useState('')
+
+    const [parsedDepartureDate, setParsedDepartureDate] = useState<Date | null>(null)
+
+  useEffect(() => {
+    if(departureDate !== ''){
+      const dateObject = new Date(departureDate);
+      setParsedDepartureDate(dateObject)
+    }
+  }, [departureDate])
+
+    const [cities, setCities] = useState([])
+
+  useEffect(() => {
+    const fetchCities = async () => {
+      try {
+        const response = await fetch("/api/cities", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setCities(data);
+      } catch (error) {
+        console.log(error)
+      }
+    };
+
+    fetchCities();
+  }, []);
 
   return (
     <div className='flex flex-col gap-[0.667rem] mt-[5.333rem]'>
@@ -72,23 +74,23 @@ const MobileRouteSearch = () => {
       </div>
 
         <ComboBox 
-          options={CITIES}
+          options={cities}
           placeholder={t('combobox1placeholder')}
           value={departureCity}
           onChange={setDepartureCity}
         />
 
         <ComboBox 
-          options={CITIES}
+          options={cities}
           placeholder={t('combobox2placeholder')}
           value={arrivalCity}
           onChange={setArrivalCity}
         />
 
-        <DatePicker placeholder={t('calendar1placeholder')}/>
+        <DatePicker dateValue={departureDate} calName='departure' edgeDate={parsedDepartureDate} setSearchDate={setDepartureDate} placeholder={t('calendar1placeholder')}/>
 
         <div className={`transition-opacity duration-300 ${ retour ? "opacity-100" : "opacity-60" } lg:h-[3.5rem] h-[4.667rem] w-full`} onClick={() => setRetour(true)}>
-            <DatePicker placeholder={t('calendar2placeholder')}/>
+            <DatePicker dateValue={arrivalDate} calName='arrival' edgeDate={parsedDepartureDate} setSearchDate={setArrivalDate} placeholder={t('calendar2placeholder')}/>
         </div>
 
         <button className=' h-[4.667rem] bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] px-[1.5rem] flex items-center justify-center text-[1.5rem] font-bold text-white'>

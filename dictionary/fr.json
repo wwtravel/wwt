@@ -295,7 +295,7 @@
     "price": "Prix du billet",
     "no-reservations": "Actuellement, il n'y a pas de réservations associées à ce compte."
   },
-  "RouteSearchPage_Months": {
+  "RouteSearchPage_Date": {
     "sept": "Septembre",
     "oct": "Octobre",
     "nov": "Novembre",
@@ -325,8 +325,9 @@
     "free-spaces": "Places libres",
     "payment-info": "Paiement à l'embarquement",
     "book": "Réserver",
-    "info-route": "À propos de la route",
+    "info-route": "À propos",
     "duration": "Durée du voyage",
+    "hours" : "heures",
     "amenities": "Commodités",
     "wifi": "Wi-Fi Gratuit",
     "wc": "Toilettes",
@@ -334,5 +335,32 @@
     "socket": "Prise électrique",
     "minibar": "Minibar",
     "moltimedia": "Multimédia"
+  },
+  "RouteSearchErrors" : {
+    "departure-city-required-err-title": "Ville de départ manquante",
+    "departure-city-required-err-desc": "Veuillez sélectionner une ville de départ.",
+
+    "departure-city-invalid-err-title": "Ville de départ invalide",
+    "departure-city-invalid-err-desc": "La ville de départ sélectionnée n'est pas valide. Choisissez une ville dans la liste.",
+
+    "arrival-city-required-err-title": "Ville d'arrivée manquante",
+    "arrival-city-required-err-desc": "Veuillez sélectionner une ville d'arrivée.",
+
+    "arrival-city-invalid-err-title": "Ville d'arrivée invalide",
+    "arrival-city-invalid-err-desc": "La ville d'arrivée sélectionnée n'est pas valide. Choisissez une ville dans la liste.",
+
+    "departure-date-required-err-title": "Date de départ manquante",
+    "departure-date-required-err-desc": "Veuillez sélectionner une date de départ.",
+
+    "return-date-required-err-title": "Date de retour manquante",
+    "return-date-required-err-desc": "Veuillez sélectionner une date de retour.",
+
+    "return-date-invalid-err-title": "Date de retour invalide",
+    "return-date-invalid-err-desc": "La date de retour doit être postérieure à la date de départ.",
+
+    "same-city-err-title": "Villes identiques",
+    "same-city-err-desc": "La ville de départ et la ville d'arrivée ne peuvent pas être les mêmes. Veuillez choisir des villes différentes.",
+
+    "close": "Fermer"
   }
 }

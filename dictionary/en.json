@@ -298,7 +298,7 @@
     "price": "Ticket Price",
     "no-reservations": "Currently, there are no reservations associated with this account."
   },
-  "RouteSearchPage_Months": {
+  "RouteSearchPage_Date": {
     "sept": "September",
     "oct": "October",
     "nov": "November",
@@ -327,9 +327,10 @@
     "finish": "Finish",
     "free-spaces": "Free Spaces",
     "payment-info": "Pay on Boarding",
-    "book": "Book",
+    "book": "Book Ticket",
     "info-route": "About the Route",
     "duration": "Travel Duration",
+    "hours" : "hours",
     "amenities": "Amenities",
     "wifi": "Free Wi-Fi",
     "wc": "Toilet",
@@ -337,5 +338,32 @@
     "socket": "Electric Socket",
     "minibar": "Minibar",
     "multimedia": "Multimedia"
+  },
+  "RouteSearchErrors" : {
+    "departure-city-required-err-title": "Departure City Missing",
+    "departure-city-required-err-desc": "Please select a departure city.",
+
+    "departure-city-invalid-err-title": "Invalid Departure City",
+    "departure-city-invalid-err-desc": "The selected departure city is not valid. Please choose a city from the list.",
+
+    "arrival-city-required-err-title": "Arrival City Missing",
+    "arrival-city-required-err-desc": "Please select an arrival city.",
+
+    "arrival-city-invalid-err-title": "Invalid Arrival City",
+    "arrival-city-invalid-err-desc": "The selected arrival city is not valid. Please choose a city from the list.",
+
+    "departure-date-required-err-title": "Departure Date Missing",
+    "departure-date-required-err-desc": "Please select a departure date.",
+
+    "return-date-required-err-title": "Return Date Missing",
+    "return-date-required-err-desc": "Please select a return date.",
+
+    "return-date-invalid-err-title": "Invalid Return Date",
+    "return-date-invalid-err-desc": "The return date must be later than the departure date.",
+
+    "same-city-err-title": "Identical Cities",
+    "same-city-err-desc": "The departure and arrival cities cannot be the same. Please choose different cities.",
+
+    "close": "Close"
   }
 }

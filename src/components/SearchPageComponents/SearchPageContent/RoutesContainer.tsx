@@ -1,9 +1,14 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { routes } from '@/constants/routesData'
 import { useLocale, useTranslations } from 'next-intl'
+import RedButton from '@/components/SharedComponents/RedButton'
+
+import { motion } from 'framer-motion'
+import UnderlinedText from './UnderlinedText'
+import RoutesContainerInfo from './RoutesContainerInfo'
 
 const RoutesContainer = () => {
 
@@ -66,6 +71,28 @@ const getLocale = ( locale: string ) => {
         default : return 'en'
     }
 }
+
+const getHoursBetweenDates = (date1: string, date2: string) => {
+    const start = new Date(date1).getTime();
+    const end = new Date(date2).getTime(); 
+
+    const diffInMs = Math.abs(end - start);
+    
+    const hours = diffInMs / (1000 * 60 * 60);
+    
+    return hours;
+  };
+
+const [openRoutes, setOpenRoutes] = useState<number[]>([])
+
+const toggleRoute = (index: number) => {
+    setOpenRoutes((prevRoutes) =>
+      prevRoutes.includes(index)
+        ? prevRoutes.filter((id) => id !== index)
+        : [...prevRoutes, index]
+    );
+};
+  
       
 
   return (
@@ -85,7 +112,7 @@ const getLocale = ( locale: string ) => {
                                 <img src="/icons/route-card-icons/icon-calendar.svg" alt="calendar" draggable={false} className='size-[1rem] mr-[0.5rem]' />
                                 <p className='mr-[1rem]'>{ `${getDayOfTheWeek(parseDate(route.arrivalDate).dayOfWeek)}, ${parseDate(route.arrivalDate).dayOfMonth} ${getMonthText(parseDate(route.arrivalDate).month)}`}</p>
                                 <img src="/icons/route-card-icons/icon-clock.svg" alt="time" draggable={false} className='size-[1rem] mr-[0.5rem]' />
-                                <p>{ parseDate(route.startDate).timeString }</p>
+                                <p>{ parseDate(route.arrivalDate).timeString }</p>
                             </div>
                         </div>
 
@@ -96,24 +123,59 @@ const getLocale = ( locale: string ) => {
                                 <img src="/icons/route-card-icons/icon-finish-point.svg" alt="start" draggable={false} className='size-[1rem]' />
                             </div>
 
-                            <div className='h-full flex flex-col justify-between'>
+                            <div className='h-full flex flex-col justify-between mr-[2rem]'>
                                 <div className='flex items-center font-open-sans font-[400]'>
                                     <p className='text-[1rem] text-gray/75 mr-[0.5rem]'>{ t('start') }:</p>
-                                    <p className='text-[1rem] text-dark-gray mr-[0.5rem]'>{ route.startCity[getLocale(locale)] }</p>
+                                    <p className='text-[1rem] text-dark-gray mr-[0.5rem] line-clamp-1 text-nowrap'>{ route.startCity[getLocale(locale)] }</p>
                                     <img src="/icons/route-card-icons/icon-adress.svg" alt="adress" draggable={false} className='size-[1rem] mr-[0.5rem]' />
                                     <p className='text-[0.875rem] text-dark-gray'>{ route.startStreet[getLocale(locale)] }</p>
                                 </div>
                                 <div className='flex items-center font-open-sans font-[400]'>
                                     <p className='text-[1rem] text-gray/75 mr-[0.5rem]'>{ t('finish') }:</p>
-                                    <p className='text-[1rem] text-dark-gray mr-[0.5rem]'>{ route.arrivalCity[getLocale(locale)] }</p>
+                                    <p className='text-[1rem] text-dark-gray mr-[0.5rem] line-clamp-1 text-nowrap'>{ route.arrivalCity[getLocale(locale)] }</p>
                                     <img src="/icons/route-card-icons/icon-adress.svg" alt="adress" draggable={false} className='size-[1rem] mr-[0.5rem]' />
                                     <p className='text-[0.875rem] text-red'>{ route.arrivalStreet[getLocale(locale)] }</p>
+                                </div>
+                            </div>
+
+                            <div className='flex flex-col gap-[0.25rem] justify-center mr-[1.5rem]'>
+                                <div className='flex items-center gap-[0.5rem] justify-center'>
+                                    <img src="/icons/route-card-icons/icon-passenger.svg" alt="passenger" draggable={false} className='size-[1rem]' />
+                                    <p className='font-open-sans font-bold text-[1rem] text-dark-gray'>{ route.freePlaces }</p>
+                                </div>
+                                <p className='text-[1rem] font-[400] font-open-sans text-gray/75 line-clamp-1 text-nowrap'>{ t('free-spaces') }</p>
+                            </div>
+
+                            <div className='flex justify-between flex-1'>
+                                <div className='flex flex-col gap-[0.25rem] justify-center mr-[1.5rem]'>
+                                    <p className='font-open-sans font-bold text-[1.5rem] text-dark-gray uppercase text-center'>{ route.price.adult }<span className='text-[1rem]'>eur</span></p>
+                                    <p className='text-[0.875rem] font-bold font-open-sans text-red text-center line-clamp-1 text-nowrap'>* { t('payment-info') }</p>
+                                </div>
+
+                                <div className='flex flex-col items-center justify-between'>
+                                    <RedButton text={t('book')} iconURL='/icons/route-card-icons/icon-checkmark.svg'/>
+
+                                    <div className='flex gap-[0.25rem] items-center cursor-pointer' onClick={() => toggleRoute(index)}>
+                                        <img src="/icons/route-card-icons/icon-info.svg" alt="info" draggable={false} className='size-[1rem]' />
+                                        <UnderlinedText text={ t('info-route') }/>
+                                    </div>
                                 </div>
                             </div>
                             
                         </div>
 
                     </div>
+
+                    <RoutesContainerInfo 
+                        openRoutesIndexes={openRoutes} 
+                        routeIndex={index} 
+                        arrivalCityCoord={route.arrivalCityCoord} 
+                        startCityCoord={route.startCityCoord}
+                        price={route.price}
+                        freePlaces={route.freePlaces}
+                        hoursInterval={getHoursBetweenDates(route.startDate, route.arrivalDate)}
+                        amenities={route.amenities}
+                    />
                 </div>
             ))
         }

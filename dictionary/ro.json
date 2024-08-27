@@ -328,6 +328,7 @@
     "book" : "Rezervă",
     "info-route" : "Despre rută",
     "duration" : "Durata călătoriei",
+    "hours" : "ore",
     "amenities" : "Comodități",
     "wifi" : "Wi-Fi Gratuit",
     "wc" : "Toaletă",
@@ -335,6 +336,32 @@
     "socket" : "Priză electrică",
     "minibar" : "Minibar",
     "multimedia" : "Multimedia"
+  },
+  "RouteSearchErrors" : {
+    "departure-city-required-err-title": "Oraș de plecare lipsă",
+    "departure-city-required-err-desc": "Te rugăm să selectezi un oraș de plecare.",
+
+    "departure-city-invalid-err-title": "Oraș de plecare invalid",
+    "departure-city-invalid-err-desc": "Orașul de plecare selectat nu este valid. Alege un oraș din lista disponibilă.",
+
+    "arrival-city-required-err-title": "Oraș de sosire lipsă",
+    "arrival-city-required-err-desc": "Te rugăm să selectezi un oraș de sosire.",
+
+    "arrival-city-invalid-err-title": "Oraș de sosire invalid",
+    "arrival-city-invalid-err-desc": "Orașul de sosire selectat nu este valid. Alege un oraș din lista disponibilă.",
+
+    "departure-date-required-err-title": "Data de plecare lipsă",
+    "departure-date-required-err-desc": "Te rugăm să selectezi o dată pentru plecare.",
+
+    "return-date-required-err-title": "Data de retur lipsă",
+    "return-date-required-err-desc": "Te rugăm să selectezi o dată pentru retur.",
+
+    "return-date-invalid-err-title": "Data de retur invalidă",
+    "return-date-invalid-err-desc": "Data de retur trebuie să fie ulterioară datei de plecare.",
+
+    "same-city-err-title": "Orașe identice",
+    "same-city-err-desc": "Orașul de plecare și orașul de sosire nu pot fi aceleași. Te rugăm să alegi orașe diferite.",
+    "close": "Închide"
   }
   
 }

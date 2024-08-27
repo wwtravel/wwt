@@ -62,15 +62,10 @@ const AnimatedDesktopNav:React.FC<LogInModalProps> = ({ setIsOpen, isOpen }) => 
                     </div>
 
                     <div className='flex'>
-                        <div className='flex gap-[1.5rem] mr-[3rem]'>
-                        <LangPicker />
-                        <CurrencyPicker />
+                        <div className='flex gap-[1.5rem] mr-[1.5rem]'>
+                          <LangPicker />
+                          <CurrencyPicker />
                         </div>
-
-                        <Link className='flex items-center gap-[0.5rem] mr-[1.5rem] hover:opacity-75 transition-opacity duration-300' href="/">
-                        <img src="/icons/icon-cart.svg" alt="cart" draggable={false} className='size-[1rem]'/>
-                        <p className='font-bold text-dark-gray text-[1rem]'>{ t('navCart') }</p>
-                        </Link>
 
                         <div className='bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] px-[1.5rem] h-[2.5rem] flex justify-center items-center gap-[0.5rem] cursor-pointer' onClick={() => setIsOpen(true)}>
                         <img src="/icons/icon-profile.svg" alt="profile" draggable={false} className='size-[1rem]' />

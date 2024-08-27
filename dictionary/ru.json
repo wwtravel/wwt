@@ -295,7 +295,7 @@
     "price": "Цена билета",
     "no-reservations": "В данный момент нет резервирований, связанных с этой учетной записью."
   },
-  "RouteSearchPage_Months": {
+  "RouteSearchPage_Date": {
     "sept": "Сентября",
     "oct": "Октября",
     "nov": "Ноября",
@@ -309,24 +309,25 @@
     "jul": "Июля",
     "aug": "Августа",
 
-    "sun": "Воскресенье",
-    "mon": "Понедельник",
-    "tue": "Вторник",
-    "wed": "Среда",
-    "thu": "Четверг",
-    "fry": "Пятница",
-    "sat": "Суббота"
+    "sun": "Вс.",
+    "mon": "Пн.",
+    "tue": "Вт.",
+    "wed": "Ср.",
+    "thu": "Чт.",
+    "fry": "Пт.",
+    "sat": "Сб."
   },
   "RouteSearchPage": {
     "title" : "МАРШРУТЫ отправления С",
 
     "start": "Старт",
     "finish": "Финиш",
-    "free-spaces": "Свободные места",
+    "free-spaces": "Своб. места",
     "payment-info": "Оплата при посадке",
     "book": "Забронировать",
     "info-route": "О маршруте",
-    "duration": "Продолжительность поездки",
+    "duration": "Время в пути",
+    "hours" : "часов",
     "amenities": "Удобства",
     "wifi": "Бесплатный Wi-Fi",
     "wc": "Туалет",
@@ -334,5 +335,32 @@
     "socket": "Электрическая розетка",
     "minibar": "Минибар",
     "multimedia": "Мультимедиа"
+  },
+  "RouteSearchErrors" : {
+    "departure-city-required-err-title": "Отсутствует город отправления",
+    "departure-city-required-err-desc": "Пожалуйста, выберите город отправления.",
+
+    "departure-city-invalid-err-title": "Неверный город отправления",
+    "departure-city-invalid-err-desc": "Выбранный город отправления недействителен. Выберите город из списка.",
+
+    "arrival-city-required-err-title": "Отсутствует город прибытия",
+    "arrival-city-required-err-desc": "Пожалуйста, выберите город прибытия.",
+
+    "arrival-city-invalid-err-title": "Неверный город прибытия",
+    "arrival-city-invalid-err-desc": "Выбранный город прибытия недействителен. Выберите город из списка.",
+
+    "departure-date-required-err-title": "Отсутствует дата отправления",
+    "departure-date-required-err-desc": "Пожалуйста, выберите дату отправления.",
+
+    "return-date-required-err-title": "Отсутствует дата возврата",
+    "return-date-required-err-desc": "Пожалуйста, выберите дату возврата.",
+
+    "return-date-invalid-err-title": "Неверная дата возврата",
+    "return-date-invalid-err-desc": "Дата возврата должна быть позже даты отправления.",
+
+    "same-city-err-title": "Одинаковые города",
+    "same-city-err-desc": "Город отправления и город прибытия не могут совпадать. Пожалуйста, выберите разные города.",
+
+    "close": "Закрыть"
   }
 }

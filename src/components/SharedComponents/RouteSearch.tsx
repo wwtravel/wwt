@@ -5,44 +5,46 @@ import ComboBox from './ComboBox'
 import DatePicker from './DatePicker';
 import RedButton from '@/components/SharedComponents/RedButton';
 
-import { useState } from 'react';
-
-const CITIES = [
-  {
-    value: "new_york",
-    label: "New York",
-  },
-  {
-    value: "paris",
-    label: "Paris",
-  },
-  {
-    value: "tokyo",
-    label: "Tokyo",
-  },
-  {
-    value: "sydney",
-    label: "Sydney",
-  },
-  {
-    value: "london",
-    label: "London",
-  },
-  {
-    value: "berlin",
-    label: "Berlin",
-  },
-  {
-    value: "dubai",
-    label: "Dubai",
-  },
-  {
-    value: "san_francisco",
-    label: "San Francisco",
-  },
-];
+import { useEffect, useState } from 'react';
+import { Link, useRouter } from '@/navigation';
+import { Option } from './ComboBox';
+import { toast } from 'sonner';
+import { useSearchParams } from 'next/navigation';
 
 const RouteSearch = () => {
+
+  //search params | router
+
+  const searchParams = useSearchParams()
+  const router = useRouter()
+
+  const err_t = useTranslations("RouteSearchErrors")
+
+  const [cities, setCities] = useState<Option[]>([])
+
+  useEffect(() => {
+    const fetchCities = async () => {
+      try {
+        const response = await fetch("/api/cities", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setCities(data);
+      } catch (error) {
+        console.log(error)
+      }
+    };
+
+    fetchCities();
+  }, []);
 
   const t = useTranslations("Header")
 
@@ -50,11 +52,150 @@ const RouteSearch = () => {
 
   const [departureCity, setDepartureCity] = useState('')
   const [arrivalCity, setArrivalCity] = useState('')
+  const [departureDate, setDepartureDate] = useState('')
+  const [arrivalDate, setArrivalDate] = useState('')
+
+  useEffect(() => {
+    if (searchParams) {
+      setRetour(searchParams.get('r') === 'true');
+      setDepartureCity(searchParams.get('dep') || '');
+      setArrivalCity(searchParams.get('arr') || '');
+      setDepartureDate(searchParams.get('depdate') || '');
+      setArrivalDate(searchParams.get('arrdate') || '');
+    }
+  }, [searchParams]);
+
+  console.log(departureCity, arrivalCity, departureDate, arrivalDate, searchParams.get('arrdate'))
+
+  const [parsedDepartureDate, setParsedDepartureDate] = useState<Date | null>(null)
+
+  useEffect(() => {
+    if(departureDate !== ''){
+      const dateObject = new Date(departureDate);
+      setParsedDepartureDate(dateObject)
+    }
+  }, [departureDate])
 
   const interchangeValues = () => {
     const temp = departureCity
     setDepartureCity(arrivalCity)
     setArrivalCity(temp)
+  }
+
+  //validation functions
+
+  const validateCombobox = ( value : string ) => {
+    let foundMatch = 0
+
+    cities.map(city => {
+      if(city.value === value) foundMatch = 1
+    })
+    
+    if(foundMatch === 1) return true
+      else return false
+  }
+
+  const getDate = (date : string) => {
+    return new Date(date)
+  }
+
+  const handleSearchClick = () => {
+    if(cities) {
+      if(departureCity === '') {
+        toast( err_t("departure-city-required-err-title"), {
+          description: err_t("departure-city-required-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      if( !validateCombobox(departureCity) ) {
+        toast( err_t("departure-city-invalid-err-title"), {
+          description: err_t("departure-city-invalid-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      if(arrivalCity === ''){
+        toast( err_t("arrival-city-required-err-title"), {
+          description: err_t("arrival-city-required-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      if( !validateCombobox(arrivalCity) ) {
+        toast( err_t("arrival-city-invalid-err-title"), {
+          description: err_t("arrival-city-invalid-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      if(arrivalCity === departureCity){
+        toast( err_t("same-city-err-title"), {
+          description: err_t("same-city-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      if(departureDate === ''){
+        toast( err_t("departure-date-required-err-title"), {
+          description: err_t("departure-date-required-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      if(arrivalDate === '' && retour){
+        toast( err_t("return-date-required-err-title"), {
+          description: err_t("return-date-required-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      if(retour && getDate(arrivalDate) <= getDate(departureDate)){
+        toast( err_t("return-date-invalid-err-title"), {
+          description: err_t("return-date-invalid-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      
+      //user redirect
+      const params = new URLSearchParams(searchParams)
+      params.set('dep', departureCity)
+      params.set('arr', arrivalCity)
+      params.set('depdate', departureDate)
+      if(retour) params.set('arrdate', arrivalDate)
+        else params.delete('arrdate')
+      params.set('r', String(retour))
+
+      router.push(`/route-search?${params.toString()}`)
+
+
+
+    }
   }
 
   return (
@@ -81,7 +222,7 @@ const RouteSearch = () => {
       <div className='flex gap-[1rem] items-center mt-[0.375rem]'>
         <div className='w-[15rem]'>
           <ComboBox 
-            options={CITIES}
+            options={cities}
             placeholder={t('combobox1placeholder')}
             value={departureCity}
             onChange={setDepartureCity}
@@ -92,20 +233,22 @@ const RouteSearch = () => {
 
           <div className='w-[15rem]'>
             <ComboBox 
-              options={CITIES}
+              options={cities}
               placeholder={t('combobox2placeholder')}
               value={arrivalCity}
               onChange={setArrivalCity}
             />
           </div>
 
-          <DatePicker placeholder={t('calendar1placeholder')}/>
+          <DatePicker dateValue={departureDate} calName='departure' edgeDate={parsedDepartureDate} setSearchDate={setDepartureDate} placeholder={t('calendar1placeholder')}/>
 
           <div className={`transition-opacity duration-300 ${ retour ? "opacity-100" : "opacity-50" } lg:h-[3.5rem] h-[4.667rem]`} onClick={() => setRetour(true)}>
-            <DatePicker placeholder={t('calendar2placeholder')}/>
+            <DatePicker dateValue={arrivalDate} calName='arrival' edgeDate={parsedDepartureDate} setSearchDate={setArrivalDate} placeholder={t('calendar2placeholder')}/>
           </div>
           
-          <RedButton text={t('search')} iconURL='/icons/icon-search.svg'/>
+          <div onClick={handleSearchClick}>
+            <RedButton text={t('search')} iconURL='/icons/icon-search.svg'/>
+          </div>
       </div>
     </div>
   )
