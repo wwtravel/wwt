@@ -140,3 +140,10 @@ export const ResetPasswordSchema = z.object({
     email: z.string().trim().min(1).max(50).regex(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g),
     lang: z.enum(["fr", "en", "ro", "ru"])
 })
+
+export const SearchSchema = z.object({
+    departure_city: z.string().min(1).max(50),
+    arrival_city: z.string().min(1).max(50),
+    departure_date: z.string().date(),
+    return_date: z.string().date().optional(),
+})

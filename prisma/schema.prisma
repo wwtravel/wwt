@@ -46,6 +46,7 @@ model Travel {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   departure DateTime
   route_id String @db.ObjectId
+  reserved_seats Int @default(0)
 
   route Route @relation(fields: [route_id], references: [id])
   orders Order[] @relation()
@@ -141,3 +142,4 @@ type Label {
   fr String
   ru String
 }
+
