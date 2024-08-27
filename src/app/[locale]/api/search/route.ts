@@ -56,7 +56,7 @@ export async function POST (request: Request) {
                         stops: true,
                         bus: {
                             select: {
-                                services: true,
+                                amenities: true,
                                 nr_of_seats: true
                             }
                         }
@@ -143,7 +143,7 @@ export async function POST (request: Request) {
         travelRes.route.stops = travelRes.route.stops.slice(depIndex, arrIndex + 1);
         const freePlaces = travel.route.bus.nr_of_seats - travel.orders.length - travel.reserved_seats;
         
-        Object.assign(travelRes, {price: price.price_sheet, free_places: freePlaces});
+        Object.assign(travelRes, {price: price.price_sheet, free_places: freePlaces, arrival: new Date(new Date(travel.departure).getTime() + 60 * 60 * travel.route.stops[arrIndex].hours * 1000)});
         if (depIndex < arrIndex) filteredTravels.push(travelRes);
     });
 

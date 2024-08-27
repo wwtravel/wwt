@@ -13,10 +13,19 @@ model Bus {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   name String
   image String
-  services String[]
+  amenities Amenities
   nr_of_seats Int
 
   routes Route[]
+}
+
+type Amenities {
+    wifi Boolean
+    wc Boolean
+    ac Boolean
+    socket Boolean
+    minibar Boolean
+    multimedia Boolean
 }
 
 // Route model
