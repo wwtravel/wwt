@@ -55,7 +55,7 @@ export async function POST (request: Request) {
 
     if (!token) return Response.json({ msg: "Token not found" }, {status: 500});
 
-    const emailHtml = render(ResetPasswordLink({details: {email: result.data.email, lang: result.data.lang, link: `${process.env.URL}/api/reset-password/${token?.id}`}}))
+    const emailHtml = render(ResetPasswordLink({details: {email: result.data.email, lang: result.data.lang, link: `${process.env.URL}/reset-successful/${token?.id}`}}))
 
     const data = {
         to: result.data.email, 

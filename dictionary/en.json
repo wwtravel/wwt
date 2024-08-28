@@ -4,7 +4,8 @@
     "about" : "About Us",
     "contact" : "Contact",
     "schedule" : "Route Schedule",
-    "route-search" : "Route Search"
+    "route-search" : "Route Search",
+    "pass-reset" : "Reset Successful"
   },
   "NavBar": {
     "titleMD": "Phone Moldova",
@@ -258,6 +259,36 @@
 
     "close" : "Close"
   },
+  "ResetPassModal": {
+    "title": "Reset Password",
+    "message": "Please enter the email address you used when creating your account.",
+
+    "email": "Email",
+    "email-req-title": "Email Address Required",
+    "email-req-desc": "Please enter your email address to proceed.",
+
+    "email-err-title": "Invalid Email",
+    "email-err-desc": "The email must be at least 1 character long, no more than 50 characters, and must be a valid email address.",
+
+    "message2": "We will send you an email with a verification link.",
+
+    "general-error-title": "Sending Error",
+    "general-error-desc": "An error occurred while sending the password reset link. Please try again later."
+  },
+  "EmailSentModal": {
+    "title": "Check Your Email",
+    "message": "We have sent a verification link to your email address",
+    "message2": "Click the link to complete the verification. This link will expire in 24 hours",
+    "send-again": "Send Again",
+    "back-to-website": "Back to Website"
+  },
+  "SignUpEmailSentModal": {
+    "title": "Account Created Successfully",
+    "message1": "We have sent the account details to",
+    "message2": "Please check your email to find the account details.",
+    "log-in": "Log In",
+    "back-to-website": "Back to Website"
+  },
   "UserModal": {
     "tab_1_text": "ORDERS & BOOKings",
     "tab_2_text": "ACCOUNT SETTINGS",
@@ -365,5 +396,10 @@
     "same-city-err-desc": "The departure and arrival cities cannot be the same. Please choose different cities.",
 
     "close": "Close"
+  },
+  "ResetSuccessfulPage": {
+    "title": "Password Reset Success",
+    "message": "Great! Your password has been reset, and we've sent the details to your email. Check now.",
+    "back-to-website": "Back to website"
   }
 }

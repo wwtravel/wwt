@@ -47,9 +47,8 @@ export default async function LocaleLayout({
       <body className={`bg-[#F1F8FD] `}>
         <NextIntlClientProvider messages={dictionary}>
           <Providers>
-            <NavBar />
+            
             {children}
-            <Footer />
 
             <Toaster />
           </Providers>

@@ -20,6 +20,9 @@ import { default as Contacts } from './ContactsPageComponents/Contacts'
 import { default as SearchPageHeader } from './SearchPageComponents/SearchPageHeader'
 import { default as SearchPageContent } from './SearchPageComponents/SearchPageContent/SearchPageContent'
 
+//Password Reset Page
+import { default as PassResetPageLogIn } from './PasswordRessetPageComponents/PassResetPageLogIn'
+
 export {
     NavBar,
     Footer,
@@ -37,5 +40,7 @@ export {
     Contacts,
 
     SearchPageHeader,
-    SearchPageContent
+    SearchPageContent,
+
+    PassResetPageLogIn
 }

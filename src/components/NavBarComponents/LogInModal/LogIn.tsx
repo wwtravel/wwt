@@ -14,7 +14,7 @@ import PulseLoader from 'react-spinners/PulseLoader'
 
 interface LogInProps{
     setIsOpen : React.Dispatch<React.SetStateAction<boolean>>
-    setModalContent : React.Dispatch<React.SetStateAction<"LogIn" | "SignUp" | "EmailSent">>
+    setModalContent : React.Dispatch<React.SetStateAction<"LogIn" | "SignUp" | "EmailSent" | "ResetPass" | "SignUpEmailSent">>
 }
 
 const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
@@ -192,7 +192,7 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
             </button>
         </form>
 
-        <p className='text-gray text-[1rem] text-center font-open-sans font-[400] mt-[1rem] cursor-pointer hover:opacity-75 transition-opacity duration-300'>{ t('forgot-pass') }</p>
+        <p className='text-gray text-[1rem] text-center font-open-sans font-[400] mt-[1rem] cursor-pointer hover:opacity-75 transition-opacity duration-300' onClick={() => setModalContent('ResetPass')}>{ t('forgot-pass') }</p>
 
         <div className='font-open-sans text-gray text-[1.125rem] font-[400] text-center mt-[2rem] flex flex-wrap justify-center'>
             <span className='text-dark-gray'>{ t('question') }</span> &nbsp;

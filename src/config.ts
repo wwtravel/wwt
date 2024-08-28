@@ -23,6 +23,12 @@ export const pathnames: Pathnames<typeof locales> = {
     "ru": '/poisk-marshruta',
     "fr": '/recherche-itineraire'
   },
+  '/reset-successful/[token]': {
+    "en": '/reset-successful/[token]',
+    "ro": '/resetare-reusita/[token]',
+    "ru": '/smena-parolya-uspeshna/[token]',
+    "fr": '/reinitialisation-reussie/[token]'
+  },
 };
 
 export const localePrefix: LocalePrefix<typeof locales> = 'always';

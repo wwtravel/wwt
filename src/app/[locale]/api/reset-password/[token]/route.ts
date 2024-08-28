@@ -6,6 +6,9 @@ import { hash } from "bcrypt";
 import nodemailer from 'nodemailer';
 import ResetPassword from "@/components/emails/ResetPassword";
 
+import { notFound } from 'next/navigation';
+import { NextResponse } from "next/server";
+
 const mailConfig = {
     service: "gmail",
     host: "smtp.gmail.com",
@@ -39,6 +42,7 @@ export async function GET (request: Request, {params}: {params: {token: string}}
     }
 
     if (!token) return Response.json({ msg: "Token not found" }, {status: 500});
+    //if (!token) return notFound();
 
     const password = crypto.randomBytes(3).toString('hex');
     const hashedPassword = await hash(password, 10);
@@ -82,4 +86,6 @@ export async function GET (request: Request, {params}: {params: {token: string}}
     }
 
     return Response.json({ msg: "Password successfully changed!" }, {status: 201});
+    //const redirectUrl = `/reset-successful/${params.token}`;
+    //NextResponse.redirect(new URL(redirectUrl, request.url));
 }

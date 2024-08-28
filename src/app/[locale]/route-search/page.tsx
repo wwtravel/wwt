@@ -1,4 +1,4 @@
-import { SearchPageHeader, SearchPageContent } from '@/components'
+import { SearchPageHeader, SearchPageContent, NavBar, Footer } from '@/components'
 import React from 'react'
 
 import { Metadata } from 'next';
@@ -16,8 +16,10 @@ export async function generateMetadata({params: {locale}} : {params: {locale: st
 const page = () => {
   return (
     <div>
+      <NavBar />
         <SearchPageHeader />
         <SearchPageContent />
+      <Footer />
     </div>
   )
 }

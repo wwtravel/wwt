@@ -4,7 +4,8 @@
     "about" : "À Propos",
     "contact" : "Contact",
     "schedule" : "Horaire des Routes",
-    "route-search" : "Recherche d'Itinéraire"
+    "route-search" : "Recherche d'Itinéraire",
+    "pass-reset" : "Réinitialisation Réussie"
   },
   "NavBar": {
     "titleMD": "Téléphone Moldavie",
@@ -254,6 +255,36 @@
 
     "close": "Fermer"
   },
+  "ResetPassModal": {
+    "title": "Réinitialiser le mot de passe",
+    "message": "Veuillez entrer l'adresse e-mail que vous avez utilisée lors de la création de votre compte.",
+
+    "email": "Email",
+    "email-req-title": "Adresse e-mail requise",
+    "email-req-desc": "Veuillez entrer votre adresse e-mail pour continuer.",
+
+    "email-err-title": "E-mail invalide",
+    "email-err-desc": "L'e-mail doit contenir au moins 1 caractère, pas plus de 50 caractères, et doit être une adresse e-mail valide.",
+
+    "message2": "Nous vous enverrons un e-mail avec un lien de vérification.",
+
+    "general-error-title": "Erreur d'envoi",
+    "general-error-desc": "Une erreur est survenue lors de l'envoi du lien de réinitialisation du mot de passe. Veuillez réessayer plus tard."
+  },
+  "EmailSentModal": {
+    "title": "Vérifiez votre email",
+    "message": "Nous avons envoyé un lien de vérification à votre adresse email",
+    "message2": "Cliquez sur le lien pour terminer la vérification. Ce lien expirera dans 24 heures",
+    "send-again": "Envoyer à nouveau",
+    "back-to-website": "Retour au site"
+  },
+  "SignUpEmailSentModal": {
+    "title": "Compte Créé Avec Succès",
+    "message1": "Nous avons envoyé les détails du compte à",
+    "message2": "Veuillez vérifier votre adresse e-mail pour trouver les détails du compte.",
+    "log-in": "Se Connecter",
+    "back-to-website": "Retourner au Site"
+  },
   "UserModal": {
     "tab_1_text": "Réservations",
     "tab_2_text": "PARAMÈTRES",
@@ -362,5 +393,10 @@
     "same-city-err-desc": "La ville de départ et la ville d'arrivée ne peuvent pas être les mêmes. Veuillez choisir des villes différentes.",
 
     "close": "Fermer"
+  },
+  "ResetSuccessfulPage": {
+    "title": "Réinitialisation réussie",
+    "message": "Super ! Votre mot de passe a été réinitialisé et les détails ont été envoyés par email. Vérifiez maintenant.",
+    "back-to-website": "Retour au site"
   }
 }

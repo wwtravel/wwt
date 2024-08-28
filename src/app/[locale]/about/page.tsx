@@ -1,4 +1,4 @@
-import { AboutHeader, AboutFeatures, About, Testimonials } from '@/components'
+import { AboutHeader, AboutFeatures, About, Testimonials, NavBar, Footer } from '@/components'
 import React from 'react'
 
 import { Metadata } from 'next';
@@ -16,10 +16,12 @@ export async function generateMetadata({params: {locale}} : {params: {locale: st
 const page = () => {
   return (
     <div>
+      <NavBar />
       <AboutHeader />
       <About />
       <AboutFeatures />
       <Testimonials />
+      <Footer />
     </div>
   )
 }

@@ -1,12 +1,22 @@
 'use client'
 
 import { useTranslations } from 'next-intl';
-import ComboBox from './ComboBox'
+import ComboBox, { Option } from './ComboBox'
 import DatePicker from './DatePicker';
 
 import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import { useSearchParams } from 'next/navigation';
+import { useRouter } from '@/navigation';
 
 const MobileRouteSearch = () => {
+
+  //search params | router
+
+  const searchParams = useSearchParams()
+  const router = useRouter()
+
+  const err_t = useTranslations("RouteSearchErrors")
 
     const t = useTranslations("Header")
 
@@ -17,6 +27,16 @@ const MobileRouteSearch = () => {
     const [departureDate, setDepartureDate] = useState('')
     const [arrivalDate, setArrivalDate] = useState('')
 
+    useEffect(() => {
+      if (searchParams) {
+        setRetour(searchParams.get('r') === 'true');
+        setDepartureCity(searchParams.get('dep') || '');
+        setArrivalCity(searchParams.get('arr') || '');
+        setDepartureDate(searchParams.get('depdate') || '');
+        setArrivalDate(searchParams.get('arrdate') || '');
+      }
+    }, [searchParams]);
+
     const [parsedDepartureDate, setParsedDepartureDate] = useState<Date | null>(null)
 
   useEffect(() => {
@@ -26,7 +46,7 @@ const MobileRouteSearch = () => {
     }
   }, [departureDate])
 
-    const [cities, setCities] = useState([])
+  const [cities, setCities] = useState<Option[]>([])
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -51,6 +71,122 @@ const MobileRouteSearch = () => {
 
     fetchCities();
   }, []);
+
+  //validation functions
+
+  const validateCombobox = ( value : string ) => {
+    let foundMatch = 0
+
+    cities.map(city => {
+      if(city.value === value) foundMatch = 1
+    })
+    
+    if(foundMatch === 1) return true
+      else return false
+  }
+
+  const getDate = (date : string) => {
+    return new Date(date)
+  }
+
+  const handleSearchClick = () => {
+    if(cities) {
+      if(departureCity === '') {
+        toast( err_t("departure-city-required-err-title"), {
+          description: err_t("departure-city-required-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      if( !validateCombobox(departureCity) ) {
+        toast( err_t("departure-city-invalid-err-title"), {
+          description: err_t("departure-city-invalid-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      if(arrivalCity === ''){
+        toast( err_t("arrival-city-required-err-title"), {
+          description: err_t("arrival-city-required-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      if( !validateCombobox(arrivalCity) ) {
+        toast( err_t("arrival-city-invalid-err-title"), {
+          description: err_t("arrival-city-invalid-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      if(arrivalCity === departureCity){
+        toast( err_t("same-city-err-title"), {
+          description: err_t("same-city-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      if(departureDate === ''){
+        toast( err_t("departure-date-required-err-title"), {
+          description: err_t("departure-date-required-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      if(arrivalDate === '' && retour){
+        toast( err_t("return-date-required-err-title"), {
+          description: err_t("return-date-required-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      if(retour && getDate(arrivalDate) <= getDate(departureDate)){
+        toast( err_t("return-date-invalid-err-title"), {
+          description: err_t("return-date-invalid-err-desc"),
+          action: {
+            label: err_t('close'),
+            onClick: () => {}
+          }
+        })
+        return
+      }
+      
+      //user redirect
+      const params = new URLSearchParams(searchParams)
+      params.set('dep', departureCity)
+      params.set('arr', arrivalCity)
+      params.set('depdate', departureDate)
+      if(retour) params.set('arrdate', arrivalDate)
+        else params.delete('arrdate')
+      params.set('r', String(retour))
+
+      router.push(`/route-search?${params.toString()}`)
+
+
+
+    }
+  }
 
   return (
     <div className='flex flex-col gap-[0.667rem] mt-[5.333rem]'>
@@ -93,7 +229,7 @@ const MobileRouteSearch = () => {
             <DatePicker dateValue={arrivalDate} calName='arrival' edgeDate={parsedDepartureDate} setSearchDate={setArrivalDate} placeholder={t('calendar2placeholder')}/>
         </div>
 
-        <button className=' h-[4.667rem] bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] px-[1.5rem] flex items-center justify-center text-[1.5rem] font-bold text-white'>
+        <button className=' h-[4.667rem] bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] px-[1.5rem] flex items-center justify-center text-[1.5rem] font-bold text-white' onClick={handleSearchClick}>
             <img className='size-[1.5rem] mr-[0.5rem]' src='/icons/icon-search.svg' alt="icon" draggable={false} />
             <p>
                 { t('search') }

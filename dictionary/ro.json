@@ -4,7 +4,8 @@
     "about" : "Despre Noi",
     "contact" : "Contacte",
     "schedule" : "Orarul Rutelor",
-    "route-search" : "Căutare Rută"
+    "route-search" : "Căutare Rută",
+    "pass-reset" : "Resetare Reușită"
   },
   "NavBar": {
     "titleMD": "Telefon Moldova",
@@ -255,6 +256,39 @@
 
     "close": "Închide"
   },
+  "ResetPassModal" : {
+    "title" : "Resetează parola",
+    "message" : "Scrie-ne adresa de email pe care ai folosit-o atunci când ai creat contul",
+
+    "email" : "Email",
+    "email-req-title": "Adresă de email necesară",
+    "email-req-desc": "Te rugăm să introduci adresa ta de e-mail pentru a continua.",
+
+    "email-err-title" : "Email nevalid",
+    "email-err-desc" : "Emailul trebuie să aibă cel puțin 1 caracter și cel mult 50 de caractere, și să fie un email valid",
+
+    "message2" : "Îți vom trimite un email cu un link de verificare",
+
+    "general-error-title": "Eroare la trimitere",
+    "general-error-desc": "A apărut o eroare în timpul trimiterii linkului de resetare a parolei. Te rugăm să încerci din nou mai târziu."
+  },
+  "EmailSentModal" : {
+    "title" : "Verifică email",
+    "message" : "Am trimis un link de verificare pe adresa de email",
+
+    "message2" : "Fă clic pe link pentru a finaliza verificarea. Acest link va expira în 24 ore",
+
+    "send-again" : "Trimite din nou",
+    "back-to-website" : "Întoarce-te pe site"
+
+  },
+  "SignUpEmailSentModal" : {
+    "title" : "Cont creat cu succes",
+    "message1" : "Am trimis detaliile contului pe adresa de email",
+    "message2" : "Te rugăm să verifici adresa de email pentru a găsi detaliile contului creat.",
+    "log-in" : "Conectează-te",
+    "back-to-website" : "Întoarce-te pe site"
+  },
   "UserModal" : {
     "tab_1_text" : "COMENZI & Rezervări",
     "tab_2_text" : "SETĂRI CONT",
@@ -362,6 +396,12 @@
     "same-city-err-title": "Orașe identice",
     "same-city-err-desc": "Orașul de plecare și orașul de sosire nu pot fi aceleași. Te rugăm să alegi orașe diferite.",
     "close": "Închide"
+  },
+  "ResetSuccessfulPage" : {
+    "title" : "PAROLA RESETATĂ CU SUCCES",
+    "message" : "Minunat! Am resetat parola și ți-am trimis datele pe email. Verifică acum",
+
+    "back-to-website" : "Întoarce-te pe site"
   }
   
 }

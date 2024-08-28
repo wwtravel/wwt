@@ -13,10 +13,11 @@ import { z } from "zod"
 
 interface SignUpProps{
     setIsOpen : React.Dispatch<React.SetStateAction<boolean>>
-    setModalContent : React.Dispatch<React.SetStateAction<"LogIn" | "SignUp" | "EmailSent">>
+    setModalContent : React.Dispatch<React.SetStateAction<"LogIn" | "SignUp" | "EmailSent" | "ResetPass" | "SignUpEmailSent">>
+    setSentEmail : React.Dispatch<React.SetStateAction<string>>
 }
 
-const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
+const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent, setSentEmail }) => {
 
   const t = useTranslations('SignUpModal')
 
@@ -115,8 +116,8 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent }) => {
           const data = await response.json();
   
           if (response.ok) {
-              console.log("Email Sent")
-              setIsOpen(false)
+              setSentEmail(formData.email)
+              setModalContent('SignUpEmailSent')
           } else {
               if(response.status === 400){
                 toast( t('email-taken-title'), {
