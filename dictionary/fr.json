@@ -373,7 +373,11 @@
     "no-matching-route": "Aucune route n'a été trouvée pour le jour sélectionné, mais vous pouvez consulter les données les plus proches ci-dessous.",
     "no-route-found_part1": "Aucune route n'a été trouvée pour le jour sélectionné, veuillez",
     "no-route-found_part2": "nous contacter",
-    "no-route-found_part3": "pour plus de détails."
+    "no-route-found_part3": "pour plus de détails.",
+
+    "return-date-req-title": "Date de retour requise",
+    "return-date-req-desc": "Pour continuer la réservation de votre billet retour, veuillez sélectionner une date de retour et cliquer à nouveau sur le bouton 'Rechercher'. Vous pouvez également désactiver l'option de retour.",
+    "close": "Fermer"
   },
   "RouteSearchErrors" : {
     "departure-city-required-err-title": "Ville de départ manquante",

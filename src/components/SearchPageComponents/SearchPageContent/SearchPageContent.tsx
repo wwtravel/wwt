@@ -1,11 +1,17 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import React from 'react'
+import React, { useState } from 'react'
 import RoutesContainer from './RoutesContainer'
 import { useSearchParams } from 'next/navigation'
 
-const SearchPageContent = () => {
+import { SelectedRoutes } from '@/app/[locale]/route-search/PageContent'
+
+interface SearchPageContentProps{
+  setSelectedRoutes: React.Dispatch<React.SetStateAction<SelectedRoutes>>
+}
+
+const SearchPageContent:React.FC<SearchPageContentProps> = ({ setSelectedRoutes }) => {
 
   const t = useTranslations("RouteSearchPage")
   const date_t = useTranslations("RouteSearchPage_Date")
@@ -55,7 +61,7 @@ const SearchPageContent = () => {
         </h1>
         <div className='h-[4px] w-[6rem] mx-auto mt-[1.5rem] bg-red'/>
 
-        <RoutesContainer />
+        <RoutesContainer setSelectedRoutes={setSelectedRoutes}/>
     </div>
   )
 }

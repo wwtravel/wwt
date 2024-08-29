@@ -377,7 +377,11 @@
     "no-matching-route" : "Nu a fost găsită nici o rută pentru ziua selectată, dar puteți consulta datele cele mai apropiate mai jos.",
     "no-route-found_part1" : "Nu a fost găsită nici o rută pentru ziua selectată, vă rugăm să ne",
     "no-route-found_part2" : "contactați",
-    "no-route-found_part3" : "pentru mai multe detalii."
+    "no-route-found_part3" : "pentru mai multe detalii.",
+
+    "return-date-req-title": "Dată de retur necesară",
+    "return-date-req-desc": "Pentru a continua cu rezervarea biletului de retur, te rugăm să selectezi o dată de retur și să apeși din nou pe butonul 'Caută'. Alternativ, poți dezactiva opțiunea de retur.",
+    "close": "Închide"
   },
   "RouteSearchErrors" : {
     "departure-city-required-err-title": "Oraș de plecare lipsă",

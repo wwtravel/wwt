@@ -376,7 +376,11 @@
     "no-matching-route": "No route was found for the selected day, but you can check the nearest available data below.",
     "no-route-found_part1": "No route was found for the selected day, please",
     "no-route-found_part2": "contact us",
-    "no-route-found_part3": "for more details."
+    "no-route-found_part3": "for more details.",
+
+    "return-date-req-title": "Return Date Required",
+    "return-date-req-desc": "To proceed with booking your return ticket, please select a return date and click the 'Search' button again. Alternatively, you can disable the return option.",
+    "close": "Close"
   },
   "RouteSearchErrors" : {
     "departure-city-required-err-title": "Departure City Missing",

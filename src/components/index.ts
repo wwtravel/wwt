@@ -19,6 +19,9 @@ import { default as Contacts } from './ContactsPageComponents/Contacts'
 //Route Search Page
 import { default as SearchPageHeader } from './SearchPageComponents/SearchPageHeader'
 import { default as SearchPageContent } from './SearchPageComponents/SearchPageContent/SearchPageContent'
+import { default as SearchReturnHeader } from './SearchPageComponents/SearchReturn/SearchReturnHeader'
+import { default as SearchReturnContent } from './SearchPageComponents/SearchReturn/SearchReturnContent'
+import { default as Checkout } from './SearchPageComponents/Checkout/Checkout'
 
 //Password Reset Page
 import { default as PassResetPageLogIn } from './PasswordRessetPageComponents/PassResetPageLogIn'
@@ -41,6 +44,9 @@ export {
 
     SearchPageHeader,
     SearchPageContent,
+    SearchReturnHeader,
+    SearchReturnContent,
+    Checkout,
 
     PassResetPageLogIn
 }

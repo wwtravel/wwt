@@ -31,7 +31,7 @@ interface PriceSheet {
     student: number;
 }
 
-interface Travel {
+export interface Travel {
     arrival: string; // ISO 8601 date-time string
     departure: string; // ISO 8601 date-time string
     free_places: number;

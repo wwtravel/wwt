@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 
-import { TravelResponse } from '@/types/routeType'
+import { Travel, TravelResponse } from '@/types/routeType'
 
 import { useLocale, useTranslations } from 'next-intl'
 import RedButton from '@/components/SharedComponents/RedButton'
@@ -16,7 +16,14 @@ import PulseLoader from 'react-spinners/PulseLoader'
 import { Link } from '@/navigation'
 import MobileRoutesContainer from './MobileRoutesContainer'
 
-const RoutesContainer = () => {
+import { SelectedRoutes } from '@/app/[locale]/route-search/PageContent'
+import { toast } from 'sonner'
+
+interface RoutesContainerProps{
+    setSelectedRoutes: React.Dispatch<React.SetStateAction<SelectedRoutes>>
+}
+
+const RoutesContainer:React.FC<RoutesContainerProps> = ({ setSelectedRoutes }) => {
 
 const searchParams = useSearchParams()
 
@@ -143,6 +150,34 @@ const toggleRoute = (index: number) => {
         : [...prevRoutes, index]
     );
 };
+
+const handleRouteSelect = (route : Travel) => {
+    const shouldReturn = searchParams.get('r') === 'true' || false
+
+    if(shouldReturn) {
+        if(!searchParams.has('arrdate')){
+            toast( t('return-date-req-title'), {
+            description: t('return-date-req-desc'),
+            action: {
+                label: t('close'),
+                onClick: () => {}
+            }
+            })
+        } else{
+            setSelectedRoutes({
+                departureRoute: route,
+                shouldReturn: true,
+                returnRoute: null
+            })
+        }
+    } else {
+        setSelectedRoutes({
+            departureRoute: route,
+            shouldReturn: false,
+            returnRoute: null
+        })
+    }
+}
   
   if(loading) return (
     <div className='mt-[3rem] md:max-w-[82.75rem] max-w-[29.5rem] h-[9.5rem] rounded-[1rem]  mx-auto w-full grid place-content-center bg-light-white border border-gray/25 shadow-custom'>
@@ -180,7 +215,7 @@ const toggleRoute = (index: number) => {
         }
 
         {/* Mobile routes */}
-        <MobileRoutesContainer routes={routes}/>
+        <MobileRoutesContainer routes={routes} setSelectedRoutes={setSelectedRoutes}/>
 
         {
             routes.map((route, index) => (
@@ -238,7 +273,9 @@ const toggleRoute = (index: number) => {
                                 </div>
 
                                 <div className='flex flex-col items-center justify-between'>
-                                    <RedButton text={t('book')} iconURL='/icons/route-card-icons/icon-checkmark.svg'/>
+                                    <div onClick={() => handleRouteSelect(route)}>
+                                        <RedButton text={t('book')} iconURL='/icons/route-card-icons/icon-checkmark.svg'/>
+                                    </div>
 
                                     <div className='flex gap-[0.25rem] items-center cursor-pointer' onClick={() => toggleRoute(index)}>
                                         <img src="/icons/route-card-icons/icon-info.svg" alt="info" draggable={false} className='size-[1rem]' />
