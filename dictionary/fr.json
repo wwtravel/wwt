@@ -365,7 +365,15 @@
     "ac": "Climatisation",
     "socket": "Prise électrique",
     "minibar": "Minibar",
-    "moltimedia": "Multimédia"
+    "moltimedia": "Multimédia",
+
+    "street" : "Rue Tighina 2/2",
+    "pass-req" : "À la demande",
+
+    "no-matching-route": "Aucune route n'a été trouvée pour le jour sélectionné, mais vous pouvez consulter les données les plus proches ci-dessous.",
+    "no-route-found_part1": "Aucune route n'a été trouvée pour le jour sélectionné, veuillez",
+    "no-route-found_part2": "nous contacter",
+    "no-route-found_part3": "pour plus de détails."
   },
   "RouteSearchErrors" : {
     "departure-city-required-err-title": "Ville de départ manquante",

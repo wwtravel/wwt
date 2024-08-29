@@ -181,7 +181,7 @@ const MobileRouteSearch = () => {
         else params.delete('arrdate')
       params.set('r', String(retour))
 
-      router.push(`/route-search?${params.toString()}`)
+      router.push(`/route-search?${params.toString()}`, { scroll: false })
 
 
 

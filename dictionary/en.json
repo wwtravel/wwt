@@ -359,7 +359,7 @@
     "free-spaces": "Free Spaces",
     "payment-info": "Pay on Boarding",
     "book": "Book Ticket",
-    "info-route": "About the Route",
+    "info-route": "More",
     "duration": "Travel Duration",
     "hours" : "hours",
     "amenities": "Amenities",
@@ -368,7 +368,15 @@
     "ac": "Air Conditioning",
     "socket": "Electric Socket",
     "minibar": "Minibar",
-    "multimedia": "Multimedia"
+    "multimedia": "Multimedia",
+
+    "street" : "Tighina Street 2/2",
+    "pass-req" : "Upon passengers' request",
+
+    "no-matching-route": "No route was found for the selected day, but you can check the nearest available data below.",
+    "no-route-found_part1": "No route was found for the selected day, please",
+    "no-route-found_part2": "contact us",
+    "no-route-found_part3": "for more details."
   },
   "RouteSearchErrors" : {
     "departure-city-required-err-title": "Departure City Missing",

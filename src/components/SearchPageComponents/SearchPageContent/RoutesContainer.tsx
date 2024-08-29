@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from 'react'
 
-//import { routes } from '@/constants/routesData'
+import { TravelResponse } from '@/types/routeType'
+
 import { useLocale, useTranslations } from 'next-intl'
 import RedButton from '@/components/SharedComponents/RedButton'
 
@@ -11,19 +12,25 @@ import UnderlinedText from './UnderlinedText'
 import RoutesContainerInfo from './RoutesContainerInfo'
 
 import { useSearchParams } from 'next/navigation'
+import PulseLoader from 'react-spinners/PulseLoader'
+import { Link } from '@/navigation'
+import MobileRoutesContainer from './MobileRoutesContainer'
 
 const RoutesContainer = () => {
 
 const searchParams = useSearchParams()
 
-const [routes, setRoutes] = useState(null)
+const [routes, setRoutes] = useState<TravelResponse>([])
+const [loading, setLoading] = useState(true)
 
 const searchRoutes = async (departureCity: string, arrivalCity: string, departureDate: string, returnDate: string | null) => {
     try {
+        setLoading(true)
+        setRoutes([])
         const body: any = {
             departure_city: departureCity,
             arrival_city: arrivalCity,
-            departure_date: departureDate,
+            departure_date: departureDate 
         };
 
         if (returnDate) {
@@ -39,15 +46,16 @@ const searchRoutes = async (departureCity: string, arrivalCity: string, departur
         });
 
         if (!response.ok) {
-            console.log("response nu e ok");
+            setLoading(false)
             const errorData = await response.json();
             throw new Error(errorData.msg || 'An error occurred while searching for routes.');
         }
 
         const result = await response.json();
-        console.log(result);
+        setRoutes(result)
+        setLoading(false)
     } catch (error) {
-        console.log("s-a ajuns la catch, e slitaia");
+        setLoading(false)
         console.error('Error:', error);
         throw error;
     }
@@ -55,7 +63,6 @@ const searchRoutes = async (departureCity: string, arrivalCity: string, departur
 
 useEffect(() => {
     if(searchParams.get('dep') && searchParams.get('arr') && searchParams.get('depdate')){
-        console.log(searchParams.get('dep')!, searchParams.get('arr')!, searchParams.get('depdate')!, searchParams.get('arrdate'))
         searchRoutes(searchParams.get('dep')!, searchParams.get('arr')!, searchParams.get('depdate')!, searchParams.get('arrdate'))
     }
 }, [searchParams])
@@ -120,16 +127,12 @@ const getLocale = ( locale: string ) => {
     }
 }
 
-const getHoursBetweenDates = (date1: string, date2: string) => {
-    const start = new Date(date1).getTime();
-    const end = new Date(date2).getTime(); 
+const extractDate = ( textDate: string ) => {
+    const date = new Date(textDate);
+    const dateString = date.toISOString().split('T')[0];
 
-    const diffInMs = Math.abs(end - start);
-    
-    const hours = diffInMs / (1000 * 60 * 60);
-    
-    return hours;
-  };
+    return dateString
+}
 
 const [openRoutes, setOpenRoutes] = useState<number[]>([])
 
@@ -141,26 +144,60 @@ const toggleRoute = (index: number) => {
     );
 };
   
-      
+  if(loading) return (
+    <div className='mt-[3rem] md:max-w-[82.75rem] max-w-[29.5rem] h-[9.5rem] rounded-[1rem]  mx-auto w-full grid place-content-center bg-light-white border border-gray/25 shadow-custom'>
+        <PulseLoader 
+            size={15}
+            color='#757678'
+            style={{
+                opacity: '25%'
+            }}
+        />
+    </div>
+  )
+
+  if(routes.length === 0) return (
+    <div className='mt-[3rem] md:max-w-[82.75rem] max-w-[29.5rem] py-[2rem] px-[1.5rem] rounded-[1rem]  mx-auto w-full flex items-center justify-center bg-red/20 border border-gray/25 shadow-custom'>
+        <div className='flex lg:gap-[0.25rem] gap-[0.333rem] text-left'>
+            <img src="/icons/route-card-icons/icon-info.svg" alt="info" draggable={false} className='lg:size-[1rem] size-[1.333rem] mt-[0.25rem]' />
+            <p className='text-left text-dark-gray font-open-sans lg:text-[1rem] text-[1.333rem]'>{ t('no-route-found_part1') } <Link className='underline' href="/contacts">{ t('no-route-found_part2') }</Link> { t('no-route-found_part3') }</p>
+        </div>
+    </div>
+  )
 
   return (
     <div className='mt-[3rem] max-w-[82.75rem] mx-auto w-full flex flex-col gap-[1rem]'>
-        {/* {
+        {
+            extractDate(routes[0].departure) !== searchParams.get('depdate') && (
+                <div className='md:max-w-[82.75rem] max-w-[29.5rem] py-[2rem] px-[1.5rem] rounded-[1rem]  mx-auto w-full flex items-center justify-center bg-red/20 border border-gray/25 shadow-custom'>
+                    <div className='flex lg:gap-[0.25rem] gap-[0.333rem] text-left'>
+                        <img src="/icons/route-card-icons/icon-info.svg" alt="info" draggable={false} className='lg:size-[1rem] size-[1.333rem] mt-[0.25rem]' />
+                        <p className=' text-dark-gray lg:text-[1rem] text-[1.333rem] font-open-sans'>{ t('no-matching-route') }</p>
+                    </div>
+                
+                </div>
+            )
+        }
+
+        {/* Mobile routes */}
+        <MobileRoutesContainer routes={routes}/>
+
+        {
             routes.map((route, index) => (
-                <div className='w-full bg-light-white border border-gray/25 hover:border-red transition-colors duration-300 shadow-custom rounded-[1rem] px-[4rem] py-[2rem]' key={index}>
+                <div className='w-full max-lg:hidden bg-light-white border border-gray/25 hover:border-red transition-colors duration-300 shadow-custom rounded-[1rem] px-[4rem] py-[2rem]' key={index}>
                     <div className='h-[5.5rem] flex justify-between items-center'>
                         <div className='h-full flex flex-col justify-between'>
                             <div className='flex items-center font-open-sans font-[400] text-[1rem] text-dark-gray line-clamp-1 text-nowrap'>
                                 <img src="/icons/route-card-icons/icon-calendar.svg" alt="calendar" draggable={false} className='size-[1rem] mr-[0.5rem]' />
-                                <p className='mr-[1rem]'>{ `${getDayOfTheWeek(parseDate(route.startDate).dayOfWeek)}, ${parseDate(route.startDate).dayOfMonth} ${getMonthText(parseDate(route.startDate).month)}`}</p>
+                                <p className={`mr-[1rem] ${ extractDate(routes[0].departure) === searchParams.get('depdate') && "text-red font-bold" }`}>{ `${getDayOfTheWeek(parseDate(route.departure).dayOfWeek)}, ${parseDate(route.departure).dayOfMonth} ${getMonthText(parseDate(route.departure).month)}`}</p>
                                 <img src="/icons/route-card-icons/icon-clock.svg" alt="time" draggable={false} className='size-[1rem] mr-[0.5rem]' />
-                                <p>{ parseDate(route.startDate).timeString }</p>
+                                <p>{ parseDate(route.departure).timeString }</p>
                             </div>
                             <div className='flex items-center font-open-sans font-[400] text-[1rem] text-dark-gray line-clamp-1 text-nowrap'>
                                 <img src="/icons/route-card-icons/icon-calendar.svg" alt="calendar" draggable={false} className='size-[1rem] mr-[0.5rem]' />
-                                <p className='mr-[1rem]'>{ `${getDayOfTheWeek(parseDate(route.arrivalDate).dayOfWeek)}, ${parseDate(route.arrivalDate).dayOfMonth} ${getMonthText(parseDate(route.arrivalDate).month)}`}</p>
+                                <p className='mr-[1rem]'>{ `${getDayOfTheWeek(parseDate(route.arrival).dayOfWeek)}, ${parseDate(route.arrival).dayOfMonth} ${getMonthText(parseDate(route.arrival).month)}`}</p>
                                 <img src="/icons/route-card-icons/icon-clock.svg" alt="time" draggable={false} className='size-[1rem] mr-[0.5rem]' />
-                                <p>{ parseDate(route.arrivalDate).timeString }</p>
+                                <p>{ parseDate(route.arrival).timeString }</p>
                             </div>
                         </div>
 
@@ -174,22 +211,22 @@ const toggleRoute = (index: number) => {
                             <div className='h-full flex flex-col justify-between mr-[2rem]'>
                                 <div className='flex items-center font-open-sans font-[400]'>
                                     <p className='text-[1rem] text-gray/75 mr-[0.5rem]'>{ t('start') }:</p>
-                                    <p className='text-[1rem] text-dark-gray mr-[0.5rem] line-clamp-1 text-nowrap'>{ route.startCity[getLocale(locale)] }</p>
+                                    <p className='text-[1rem] text-dark-gray mr-[0.5rem] line-clamp-1 text-nowrap'>{ route.route.stops[0].label[getLocale(locale)] }</p>
                                     <img src="/icons/route-card-icons/icon-adress.svg" alt="adress" draggable={false} className='size-[1rem] mr-[0.5rem]' />
-                                    <p className='text-[0.875rem] text-dark-gray'>{ route.startStreet[getLocale(locale)] }</p>
+                                    <p className='text-[0.875rem] text-dark-gray'>{ route.route.stops[0].city === 'chisinau' ? t('street') : t('pass-req') }</p>
                                 </div>
                                 <div className='flex items-center font-open-sans font-[400]'>
                                     <p className='text-[1rem] text-gray/75 mr-[0.5rem]'>{ t('finish') }:</p>
-                                    <p className='text-[1rem] text-dark-gray mr-[0.5rem] line-clamp-1 text-nowrap'>{ route.arrivalCity[getLocale(locale)] }</p>
+                                    <p className='text-[1rem] text-dark-gray mr-[0.5rem] line-clamp-1 text-nowrap'>{ route.route.stops[route.route.stops.length - 1].label[getLocale(locale)] }</p>
                                     <img src="/icons/route-card-icons/icon-adress.svg" alt="adress" draggable={false} className='size-[1rem] mr-[0.5rem]' />
-                                    <p className='text-[0.875rem] text-red'>{ route.arrivalStreet[getLocale(locale)] }</p>
+                                    <p className='text-[0.875rem] text-red'>{ route.route.stops[route.route.stops.length - 1].city === 'chisinau' ? t('street') : t('pass-req') }</p>
                                 </div>
                             </div>
 
                             <div className='flex flex-col gap-[0.25rem] justify-center mr-[1.5rem]'>
                                 <div className='flex items-center gap-[0.5rem] justify-center'>
                                     <img src="/icons/route-card-icons/icon-passenger.svg" alt="passenger" draggable={false} className='size-[1rem]' />
-                                    <p className='font-open-sans font-bold text-[1rem] text-dark-gray'>{ route.freePlaces }</p>
+                                    <p className='font-open-sans font-bold text-[1rem] text-dark-gray'>{ route.free_places }</p>
                                 </div>
                                 <p className='text-[1rem] font-[400] font-open-sans text-gray/75 line-clamp-1 text-nowrap'>{ t('free-spaces') }</p>
                             </div>
@@ -217,16 +254,15 @@ const toggleRoute = (index: number) => {
                     <RoutesContainerInfo 
                         openRoutesIndexes={openRoutes} 
                         routeIndex={index} 
-                        arrivalCityCoord={route.arrivalCityCoord} 
-                        startCityCoord={route.startCityCoord}
+                        stops={route.route.stops}
                         price={route.price}
-                        freePlaces={route.freePlaces}
-                        hoursInterval={getHoursBetweenDates(route.startDate, route.arrivalDate)}
-                        amenities={route.amenities}
+                        freePlaces={route.free_places}
+                        hoursInterval={route.route.stops[route.route.stops.length -1].hours}
+                        amenities={route.route.bus.amenities}
                     />
                 </div>
             ))
-        } */}
+        }
     </div>
   )
 }

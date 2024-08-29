@@ -12,7 +12,7 @@ const UnderlinedText:React.FC<UnderlinedTextProps> = ({ text }) => {
     const [mouseHover, setMouseHover] = useState(false)
 
   return (
-    <div className='font-open-sans text-gray text-[1rem] font-[400] text-center cursor-pointer'>
+    <div className='font-open-sans text-gray lg:text-[1rem] text-[1.333rem] font-[400] text-center cursor-pointer'>
         <span onMouseEnter={() => setMouseHover(true)} onMouseLeave={() => setMouseHover(false)} className="relative">
             <span>{ text }</span>
             <motion.div 

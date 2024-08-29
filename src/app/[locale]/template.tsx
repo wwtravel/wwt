@@ -27,7 +27,7 @@ const template = ({ children }: { children: React.ReactNode }) => {
                 isLoading && <Loader />
             }
         </AnimatePresence>
-        {  !isLoading && children }
+        { children }
     </div>
   )
 }
