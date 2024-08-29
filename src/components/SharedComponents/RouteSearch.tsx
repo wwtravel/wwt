@@ -65,8 +65,6 @@ const RouteSearch = () => {
     }
   }, [searchParams]);
 
-  console.log(departureCity, arrivalCity, departureDate, arrivalDate, searchParams.get('arrdate'))
-
   const [parsedDepartureDate, setParsedDepartureDate] = useState<Date | null>(null)
 
   useEffect(() => {

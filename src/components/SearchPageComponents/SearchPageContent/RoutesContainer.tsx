@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 
-import { routes } from '@/constants/routesData'
+//import { routes } from '@/constants/routesData'
 import { useLocale, useTranslations } from 'next-intl'
 import RedButton from '@/components/SharedComponents/RedButton'
 
@@ -10,7 +10,55 @@ import { motion } from 'framer-motion'
 import UnderlinedText from './UnderlinedText'
 import RoutesContainerInfo from './RoutesContainerInfo'
 
+import { useSearchParams } from 'next/navigation'
+
 const RoutesContainer = () => {
+
+const searchParams = useSearchParams()
+
+const [routes, setRoutes] = useState(null)
+
+const searchRoutes = async (departureCity: string, arrivalCity: string, departureDate: string, returnDate: string | null) => {
+    try {
+        const body: any = {
+            departure_city: departureCity,
+            arrival_city: arrivalCity,
+            departure_date: departureDate,
+        };
+
+        if (returnDate) {
+            body.return_date = returnDate;
+        }
+
+        const response = await fetch('/api/search', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        });
+
+        if (!response.ok) {
+            console.log("response nu e ok");
+            const errorData = await response.json();
+            throw new Error(errorData.msg || 'An error occurred while searching for routes.');
+        }
+
+        const result = await response.json();
+        console.log(result);
+    } catch (error) {
+        console.log("s-a ajuns la catch, e slitaia");
+        console.error('Error:', error);
+        throw error;
+    }
+};
+
+useEffect(() => {
+    if(searchParams.get('dep') && searchParams.get('arr') && searchParams.get('depdate')){
+        console.log(searchParams.get('dep')!, searchParams.get('arr')!, searchParams.get('depdate')!, searchParams.get('arrdate'))
+        searchRoutes(searchParams.get('dep')!, searchParams.get('arr')!, searchParams.get('depdate')!, searchParams.get('arrdate'))
+    }
+}, [searchParams])
 
 const locale = useLocale()
 
@@ -97,7 +145,7 @@ const toggleRoute = (index: number) => {
 
   return (
     <div className='mt-[3rem] max-w-[82.75rem] mx-auto w-full flex flex-col gap-[1rem]'>
-        {
+        {/* {
             routes.map((route, index) => (
                 <div className='w-full bg-light-white border border-gray/25 hover:border-red transition-colors duration-300 shadow-custom rounded-[1rem] px-[4rem] py-[2rem]' key={index}>
                     <div className='h-[5.5rem] flex justify-between items-center'>
@@ -178,7 +226,7 @@ const toggleRoute = (index: number) => {
                     />
                 </div>
             ))
-        }
+        } */}
     </div>
   )
 }

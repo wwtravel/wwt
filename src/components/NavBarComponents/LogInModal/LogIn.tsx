@@ -8,7 +8,7 @@ import { toast } from "sonner"
 
 import { signIn } from "next-auth/react";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "@/navigation";
 
 import PulseLoader from 'react-spinners/PulseLoader'
 
@@ -18,8 +18,6 @@ interface LogInProps{
 }
 
 const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
-
-  const router = useRouter()
 
   const t = useTranslations('LogInModal')
 
@@ -96,7 +94,7 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
 
         if(response.ok) {
           setIsOpen(false);
-          setLoading(false)
+          setLoading(false);
         }
           else {
             setEmailErr(true)
