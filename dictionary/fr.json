@@ -376,8 +376,34 @@
     "no-route-found_part3": "pour plus de détails.",
 
     "return-date-req-title": "Date de retour requise",
-    "return-date-req-desc": "Pour continuer la réservation de votre billet retour, veuillez sélectionner une date de retour et cliquer à nouveau sur le bouton 'Rechercher'. Vous pouvez également désactiver l'option de retour.",
-    "close": "Fermer"
+    "return-date-req-desc": "Pour continuer la réservation de votre billet retour, veuillez sélectionner une date de retour. Vous pouvez également désactiver l'option de retour.",
+    "close": "Fermer",
+
+    "change-departure": "Modifier l'itinéraire de départ",
+    "change-return": "Modifier l'itinéraire de retour",
+    "return-title": "ROUTES de retour À PARTIR DU"
+  },
+  "RouteSearchPage_Checkout": {
+    "title": "ENTREZ LES DÉTAILS DES PASSAGERS",
+    "order-details": "Détails de la commande",
+    "total-price": "Prix total",
+    "passenger": "Passager",
+    "number": "N°",
+    "main": "Principal",
+    "lastname": "Nom de famille",
+    "firstname": "Prénom",
+    "ticket-type": "Type de billet",
+    "adult": "Adulte",
+    "student": "Étudiant",
+    "child": "Enfant",
+    "years": "ans",
+    "add-passenger": "Ajouter un passager",
+    "contact-details": "Coordonnées",
+    "phone": "Numéro de téléphone",
+    "email": "Email",
+    "finish": "Terminer",
+    "payment-info": "Paiement à l'embarquement",
+    "delete": "Supprimer"
   },
   "RouteSearchErrors" : {
     "departure-city-required-err-title": "Ville de départ manquante",

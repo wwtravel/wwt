@@ -24,7 +24,7 @@ const TextInput: React.FC<TextInputProps> = ({ onChange, value, id, label, name,
             onChange={onChange} 
             onFocus={() => setInputFocused(true)}
             onBlur={() => setInputFocused(false)} 
-            id={id} className='w-full md:text-[1rem] text-[1.333rem] md:h-[3.5rem] h-[4.667rem] border border-gray/25 rounded-[0.5rem] outline-none pl-[1.5rem] bg-light-white placeholder:text-gray/75 lg:pt-[1rem] pt-[1.5rem]' 
+            id={id} className='w-full md:text-[1rem] text-[1.333rem] lg:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] outline-none pl-[1.5rem] bg-light-white placeholder:text-gray/75 pt-[1rem]' 
             type="text" maxLength={50}
             name={name}
         />

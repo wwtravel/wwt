@@ -186,7 +186,7 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent, setSentEmail
 
         <form noValidate className='mt-[2rem] w-full' onSubmit={handleSubmit}>
           <div className="relative">
-            <input maxLength={50} id="signUpFormLastName" name="lastName" onFocus={() => setLastNameFocus(true)} onBlur={() => setLastNameFocus(false)} value={formData.lastName} onChange={handleChange} className={`${lastNameErr && 'animate-input-error'} w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"/>
+            <input maxLength={50} id="signUpFormLastName" name="lastName" onFocus={() => setLastNameFocus(true)} onBlur={() => setLastNameFocus(false)} value={formData.lastName} onChange={handleChange} className={`${lastNameErr && 'animate-input-error'} w-full lg:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"/>
 
             <motion.label
               htmlFor='signUpFormLastName'
@@ -203,7 +203,7 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent, setSentEmail
           </div>
 
           <div className="relative mt-[1rem]">
-            <input maxLength={50} id="signUpFormFirstName" name="firstName" onFocus={() => setFirstNameFocus(true)} onBlur={() => setFirstNameFocus(false)} value={formData.firstName} onChange={handleChange} className={`${firstNameErr && 'animate-input-error'} w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"/>
+            <input maxLength={50} id="signUpFormFirstName" name="firstName" onFocus={() => setFirstNameFocus(true)} onBlur={() => setFirstNameFocus(false)} value={formData.firstName} onChange={handleChange} className={`${firstNameErr && 'animate-input-error'} w-full lg:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"/>
 
             <motion.label
               htmlFor='signUpFormFirstName'
@@ -220,7 +220,7 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent, setSentEmail
           </div>
 
           <div className="relative mt-[1rem]">
-            <input maxLength={50} id="signUpFormEmail" name="email" onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} value={formData.email} onChange={handleChange} className={`${emailErr && 'animate-input-error'} w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"/>
+            <input maxLength={50} id="signUpFormEmail" name="email" onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} value={formData.email} onChange={handleChange} className={`${emailErr && 'animate-input-error'} w-full lg:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"/>
 
             <motion.label
               htmlFor='signUpFormEmail'
@@ -236,7 +236,7 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent, setSentEmail
             </motion.label>
           </div>
 
-            <button type="submit" className='bg-red hover:bg-dark-red transition-colors duration-300 w-full h-[3.5rem] rounded-[0.5rem] text-light-white text-[1.125rem] font-bold font-open-sans mt-[2rem] cursor-pointer'>
+            <button type="submit" className='bg-red hover:bg-dark-red transition-colors duration-300 w-full lg:h-[3.5rem] h-[4rem] rounded-[0.5rem] text-light-white text-[1.125rem] font-bold font-open-sans mt-[2rem] cursor-pointer'>
               { 
                 loading 
                   ? <PulseLoader 
@@ -248,7 +248,7 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent, setSentEmail
             </button>
         </form>
 
-        <div className='font-open-sans text-gray text-[1.125rem] font-[400] text-center mt-[2rem] flex flex-wrap justify-center'>
+        <div className='font-open-sans text-gray lg:text-[1.125rem] text-[1.333rem] font-[400] text-center mt-[2rem] flex flex-wrap justify-center'>
             <span className='text-dark-gray'>{ t('question') }</span> &nbsp;
             <span onMouseEnter={() => setMouseHover(true)} onMouseLeave={() => setMouseHover(false)} className="relative">
               <span onClick={() => setModalContent('LogIn')} className='cursor-pointer'>{ t('log-in') }</span>

@@ -19,6 +19,8 @@ const PageContent = () => {
     shouldReturn: false
   })
 
+  console.log(selectedRoutes)
+
   return (
     <div>
         <NavBar />
@@ -34,14 +36,19 @@ const PageContent = () => {
                 selectedRoutes.departureRoute && selectedRoutes.shouldReturn && !selectedRoutes.returnRoute && (
                     <>
                         <SearchReturnHeader seletcedRoute={selectedRoutes.departureRoute} setSelectedRoutes={setSelectedRoutes}/>
-                        <SearchReturnContent />
+                        <SearchReturnContent seletcedRoute={selectedRoutes.departureRoute} setSelectedRoutes={setSelectedRoutes}/>
                     </>
                 )
             }
             {
-                selectedRoutes.departureRoute && !selectedRoutes.shouldReturn || selectedRoutes.departureRoute && selectedRoutes.shouldReturn && selectedRoutes.returnRoute && (
-                    <Checkout />
-                )
+                (selectedRoutes.departureRoute && !selectedRoutes.shouldReturn) || 
+                (selectedRoutes.departureRoute && selectedRoutes.shouldReturn && selectedRoutes.returnRoute) ? (
+                  <Checkout 
+                    setSelectedRoutes={setSelectedRoutes} 
+                    seletcedDepartureRoute={selectedRoutes.departureRoute} 
+                    seletcedArrivalRoute={selectedRoutes.returnRoute} 
+                  />
+                ) : null
             }
         <Footer />
     </div>

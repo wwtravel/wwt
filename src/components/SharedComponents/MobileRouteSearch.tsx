@@ -7,7 +7,7 @@ import DatePicker from './DatePicker';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { useSearchParams } from 'next/navigation';
-import { useRouter } from '@/navigation';
+import { usePathname, useRouter } from '@/navigation';
 
 const MobileRouteSearch = () => {
 
@@ -15,6 +15,7 @@ const MobileRouteSearch = () => {
 
   const searchParams = useSearchParams()
   const router = useRouter()
+  const pathname = usePathname()
 
   const err_t = useTranslations("RouteSearchErrors")
 
@@ -26,6 +27,11 @@ const MobileRouteSearch = () => {
     const [arrivalCity, setArrivalCity] = useState('')
     const [departureDate, setDepartureDate] = useState('')
     const [arrivalDate, setArrivalDate] = useState('')
+
+    const [departureCityErr, setDepartureCityErr] = useState(false)
+    const [arrivalCityErr, setArrivalCityErr] = useState(false)
+    const [departureDateErr, setDepartureDateErr] = useState(false)
+    const [arrivalDateErr, setArrivalDateErr] = useState(false)
 
     useEffect(() => {
       if (searchParams) {
@@ -91,7 +97,14 @@ const MobileRouteSearch = () => {
 
   const handleSearchClick = () => {
     if(cities) {
+
+      setArrivalCityErr(false)
+      setDepartureCityErr(false)
+      setDepartureDateErr(false)
+      setArrivalDateErr(false)
+
       if(departureCity === '') {
+        setDepartureCityErr(true)
         toast( err_t("departure-city-required-err-title"), {
           description: err_t("departure-city-required-err-desc"),
           action: {
@@ -102,6 +115,7 @@ const MobileRouteSearch = () => {
         return
       }
       if( !validateCombobox(departureCity) ) {
+        setDepartureCityErr(true)
         toast( err_t("departure-city-invalid-err-title"), {
           description: err_t("departure-city-invalid-err-desc"),
           action: {
@@ -112,6 +126,7 @@ const MobileRouteSearch = () => {
         return
       }
       if(arrivalCity === ''){
+        setArrivalCityErr(true)
         toast( err_t("arrival-city-required-err-title"), {
           description: err_t("arrival-city-required-err-desc"),
           action: {
@@ -122,6 +137,7 @@ const MobileRouteSearch = () => {
         return
       }
       if( !validateCombobox(arrivalCity) ) {
+        setArrivalCityErr(true)
         toast( err_t("arrival-city-invalid-err-title"), {
           description: err_t("arrival-city-invalid-err-desc"),
           action: {
@@ -132,6 +148,8 @@ const MobileRouteSearch = () => {
         return
       }
       if(arrivalCity === departureCity){
+        setArrivalCityErr(true)
+        setDepartureCityErr(true)
         toast( err_t("same-city-err-title"), {
           description: err_t("same-city-err-desc"),
           action: {
@@ -142,6 +160,7 @@ const MobileRouteSearch = () => {
         return
       }
       if(departureDate === ''){
+        setDepartureDateErr(true)
         toast( err_t("departure-date-required-err-title"), {
           description: err_t("departure-date-required-err-desc"),
           action: {
@@ -152,6 +171,7 @@ const MobileRouteSearch = () => {
         return
       }
       if(arrivalDate === '' && retour){
+        setArrivalDateErr(true)
         toast( err_t("return-date-required-err-title"), {
           description: err_t("return-date-required-err-desc"),
           action: {
@@ -162,6 +182,7 @@ const MobileRouteSearch = () => {
         return
       }
       if(retour && getDate(arrivalDate) <= getDate(departureDate)){
+        setArrivalDateErr(true)
         toast( err_t("return-date-invalid-err-title"), {
           description: err_t("return-date-invalid-err-desc"),
           action: {
@@ -187,6 +208,34 @@ const MobileRouteSearch = () => {
 
     }
   }
+
+  //changing retour
+
+  useEffect(() => {
+    if(searchParams.has('r')){
+      const currentParams = new URLSearchParams(searchParams.toString());
+  
+      currentParams.set("r", String(retour));
+  
+      router.replace(`${pathname}?${currentParams.toString()}`)
+    }
+  }, [retour])
+
+  useEffect(() => {
+    if (pathname === '/route-search') {
+      const currentParams = new URLSearchParams(searchParams.toString());
+  
+      if (arrivalDate !== '') {
+        currentParams.set("arrdate", arrivalDate);
+      } else {
+        if (currentParams.has('arrdate')) {
+          currentParams.delete("arrdate");
+        }
+      }
+  
+      router.replace(`${pathname}?${currentParams.toString()}`);
+    }
+  }, [arrivalDate]);
 
   return (
     <div className='flex flex-col gap-[0.667rem] mt-[5.333rem]'>
@@ -214,6 +263,7 @@ const MobileRouteSearch = () => {
           placeholder={t('combobox1placeholder')}
           value={departureCity}
           onChange={setDepartureCity}
+          errTrigger={departureCityErr}
         />
 
         <ComboBox 
@@ -221,12 +271,13 @@ const MobileRouteSearch = () => {
           placeholder={t('combobox2placeholder')}
           value={arrivalCity}
           onChange={setArrivalCity}
+          errTrigger={arrivalCityErr}
         />
 
-        <DatePicker dateValue={departureDate} calName='departure' edgeDate={parsedDepartureDate} setSearchDate={setDepartureDate} placeholder={t('calendar1placeholder')}/>
+        <DatePicker errTrigger={departureDateErr} dateValue={departureDate} calName='departure' edgeDate={parsedDepartureDate} setSearchDate={setDepartureDate} placeholder={t('calendar1placeholder')}/>
 
         <div className={`transition-opacity duration-300 ${ retour ? "opacity-100" : "opacity-60" } lg:h-[3.5rem] h-[4.667rem] w-full`} onClick={() => setRetour(true)}>
-            <DatePicker dateValue={arrivalDate} calName='arrival' edgeDate={parsedDepartureDate} setSearchDate={setArrivalDate} placeholder={t('calendar2placeholder')}/>
+            <DatePicker errTrigger={arrivalDateErr} dateValue={arrivalDate} calName='arrival' edgeDate={parsedDepartureDate} setSearchDate={setArrivalDate} placeholder={t('calendar2placeholder')}/>
         </div>
 
         <button className=' h-[4.667rem] bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] px-[1.5rem] flex items-center justify-center text-[1.5rem] font-bold text-white' onClick={handleSearchClick}>

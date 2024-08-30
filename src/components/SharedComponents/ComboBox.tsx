@@ -35,9 +35,10 @@ interface ComboBoxProps{
   options: Option[];
   value: string;
   onChange: (value: string) => void;
+  errTrigger: boolean;
 }
 
-const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChange }) => {
+const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChange, errTrigger }) => {
 
   const locale = useLocale()
 
@@ -76,9 +77,9 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
 
   return (
     <div>
-      <Command className="bg-[transparent]">
+      <Command className="bg-[transparent] overflow-visible">
         <Popover open={isFocused} onOpenChange={setIsFocused}>
-          <PopoverTrigger asChild onClick={(e) => { e.preventDefault() }}>
+          <PopoverTrigger className="overflow-visible" asChild onClick={(e) => { e.preventDefault() }}>
             <div className="relative">
               <div 
                 className="relative"
@@ -88,7 +89,7 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
                   value={inputContent}
                   onValueChange={(value) => handleInputChange(value, value)}
                   onBlur={() => setIsFocused(false)} 
-                  className="bg-light-white lg:min-w-[15rem] min-w-full lg:h-[3.5rem] h-[4.667rem] outline-none border border-gray/25 rounded-[0.5rem] lg:text-[1rem] text-[1.333rem] font-[400] text-dark-gray px-[1.5rem] lg:pt-[1rem] pt-[1.5rem]"
+                  className={`${errTrigger && 'animate-input-error'} bg-light-white lg:min-w-[15rem] min-w-full lg:h-[3.5rem] h-[4.667rem] outline-none border border-gray/25 rounded-[0.5rem] lg:text-[1rem] text-[1.333rem] font-[400] text-dark-gray px-[1.5rem] lg:pt-[1rem] pt-[1.5rem]`}
                   ref={ inputRef }
                 />
 

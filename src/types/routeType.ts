@@ -25,7 +25,7 @@ interface RouteBus {
     nr_of_seats: number;
 }
 
-interface PriceSheet {
+export interface PriceSheet {
     adult: number;
     child: number;
     student: number;

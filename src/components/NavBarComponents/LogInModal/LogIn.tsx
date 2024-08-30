@@ -141,7 +141,7 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
               id="loginFormEmail" 
                 onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} 
                 name="email" value={formData.email} onChange={handleChange} 
-                className={`${emailErr && 'animate-input-error'} w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="email"
+                className={`${emailErr && 'animate-input-error'} w-full lg:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="email"
               />
 
             <motion.label
@@ -161,7 +161,7 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
             
             <div className="w-full mt-[1rem] relative">
               <div className="relative">
-                <input id="passwordLogInInput" name="password" onFocus={() => setPassFocus(true)} onBlur={() => setPassFocus(false)} value={formData.password} onChange={handleChange} className={`${passErr && 'animate-input-error'} w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type={ showPass ? "text" : "password" }/>
+                <input id="passwordLogInInput" name="password" onFocus={() => setPassFocus(true)} onBlur={() => setPassFocus(false)} value={formData.password} onChange={handleChange} className={`${passErr && 'animate-input-error'} w-full lg:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type={ showPass ? "text" : "password" }/>
                 <motion.label
                   htmlFor='passwordLogInInput'
                   className="origin-top-left cursor-text absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
@@ -178,7 +178,7 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
                 <img onClick={() => setShowPass(prev => !prev)} src={showPass ? "/icons/icon-eye-closed.svg" : '/icons/icon-eye-open.svg'} alt="eye" draggable={false} className="size-[1rem] absolute top-[50%] -translate-y-[50%] right-[1.5rem] cursor-pointer" />
             </div>
 
-            <button type="submit" className='bg-red hover:bg-dark-red transition-colors duration-300 w-full h-[3.5rem] rounded-[0.5rem] text-light-white text-[1.125rem] font-bold font-open-sans mt-[2rem] cursor-pointer'>
+            <button type="submit" className='bg-red hover:bg-dark-red transition-colors duration-300 w-full lg:h-[3.5rem] h-[4rem] rounded-[0.5rem] text-light-white text-[1.125rem] font-bold font-open-sans mt-[2rem] cursor-pointer'>
               { 
                 loading 
                   ? <PulseLoader 
@@ -190,9 +190,9 @@ const LogIn:React.FC<LogInProps> = ({ setIsOpen, setModalContent }) => {
             </button>
         </form>
 
-        <p className='text-gray text-[1rem] text-center font-open-sans font-[400] mt-[1rem] cursor-pointer hover:opacity-75 transition-opacity duration-300' onClick={() => setModalContent('ResetPass')}>{ t('forgot-pass') }</p>
+        <p className='text-gray lg:text-[1rem] text-[1.125rem] text-center font-open-sans font-[400] mt-[1rem] cursor-pointer hover:opacity-75 transition-opacity duration-300' onClick={() => setModalContent('ResetPass')}>{ t('forgot-pass') }</p>
 
-        <div className='font-open-sans text-gray text-[1.125rem] font-[400] text-center mt-[2rem] flex flex-wrap justify-center'>
+        <div className='font-open-sans text-gray lg:text-[1.125rem] text-[1.333rem] font-[400] text-center mt-[2rem] flex flex-wrap justify-center'>
             <span className='text-dark-gray'>{ t('question') }</span> &nbsp;
             <span onMouseEnter={() => setMouseHover(true)} onMouseLeave={() => setMouseHover(false)} className="relative">
               <span onClick={() => setModalContent('SignUp')} className='cursor-pointer'>{ t('sign-up') }</span>

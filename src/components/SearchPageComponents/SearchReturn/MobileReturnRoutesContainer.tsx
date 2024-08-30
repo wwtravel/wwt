@@ -1,21 +1,18 @@
-'use client'
+import { SelectedRoutes } from "@/app/[locale]/route-search/PageContent";
+import { TravelResponse } from "@/types/routeType";
+import { useLocale, useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
+import { useState } from "react";
+import RoutesContainerInfo from "../SearchPageContent/RoutesContainerInfo";
+import UnderlinedText from "../SearchPageContent/UnderlinedText";
 
-import { Travel, TravelResponse } from "@/types/routeType"
-import { useLocale, useTranslations } from "next-intl"
-import { useSearchParams } from "next/navigation"
-import UnderlinedText from "./UnderlinedText"
-import RedButton from "@/components/SharedComponents/RedButton"
-import { useState } from "react"
-import RoutesContainerInfo from "./RoutesContainerInfo"
-import { SelectedRoutes } from "@/app/[locale]/route-search/PageContent"
-import { toast } from "sonner"
 
 interface MobileRoutesContainerProps{
     routes: TravelResponse;
     setSelectedRoutes: React.Dispatch<React.SetStateAction<SelectedRoutes>>;
 }
 
-const MobileRoutesContainer: React.FC<MobileRoutesContainerProps> = ({ routes, setSelectedRoutes }) => {
+const MobileReturnRoutesContainer:React.FC<MobileRoutesContainerProps> = ({ routes, setSelectedRoutes }) => {
 
     const locale = useLocale()
     const searchParams = useSearchParams()
@@ -95,35 +92,6 @@ const MobileRoutesContainer: React.FC<MobileRoutesContainerProps> = ({ routes, s
         );
     };
 
-    const handleRouteSelect = (route : Travel) => {
-        const shouldReturn = searchParams.get('r') === 'true' || false
-        
-    
-        if(shouldReturn) {
-            if(!searchParams.has('arrdate')){
-                toast( t('return-date-req-title'), {
-                description: t('return-date-req-desc'),
-                action: {
-                    label: t('close'),
-                    onClick: () => {}
-                }
-                })
-            } else{
-                setSelectedRoutes({
-                    departureRoute: route,
-                    shouldReturn: true,
-                    returnRoute: null
-                })
-            }
-        } else {
-            setSelectedRoutes({
-                departureRoute: route,
-                shouldReturn: false,
-                returnRoute: null
-            })
-        }
-    }
-
   return (
     <div className="lg:hidden">
         {
@@ -172,7 +140,11 @@ const MobileRoutesContainer: React.FC<MobileRoutesContainerProps> = ({ routes, s
                             </div>
 
                             <div className='flex md:flex-col flex-row items-center justify-center md:gap-[0.667rem] gap-[1.333rem]'>
-                                <button className='h-[4.667rem] bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.667rem] px-[2rem] flex items-center justify-center text-[1.5rem] font-bold text-white' onClick={() => handleRouteSelect(route)}>
+                                <button className='h-[4.667rem] bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.667rem] px-[2rem] flex items-center justify-center text-[1.5rem] font-bold text-white' onClick={() => setSelectedRoutes(prev => ({
+                                        ...prev,
+                                        returnRoute: route
+                                        }))}
+                                    >
                                         <img className='size-[2rem] mr-[0.667rem]' src="/icons/route-card-icons/icon-checkmark.svg" alt="icon" draggable={false} />
                                     <p>
                                         { t('book') }
@@ -204,4 +176,4 @@ const MobileRoutesContainer: React.FC<MobileRoutesContainerProps> = ({ routes, s
   )
 }
 
-export default MobileRoutesContainer
+export default MobileReturnRoutesContainer

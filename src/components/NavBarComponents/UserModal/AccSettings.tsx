@@ -200,7 +200,6 @@ const AccSettings:React.FC<AccSettingsProps> = ({ setIsOpen }) => {
           <TextInput readOnly={true} onChange={handleChange} value={ formData.email } id="UserModalEmail" label={ t('email') } name="email"/>
           <TextInput readOnly={false} onChange={handleChange} value={ formData.phone } id="UserModalPhone" label={ t('phone') } name="phone"/>
           <DobDatePicker placeholder={ t('dob') } setDob={setDob} dob={dob}/>
-          <Password value="gfgfgf" label={ t('pass') }/>
         </div>
 
         <div className="mt-[2rem] flex sm:flex-row flex-col-reverse max-sm:gap-[1rem] justify-between items-center">

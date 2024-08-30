@@ -379,8 +379,34 @@
     "no-route-found_part3": "for more details.",
 
     "return-date-req-title": "Return Date Required",
-    "return-date-req-desc": "To proceed with booking your return ticket, please select a return date and click the 'Search' button again. Alternatively, you can disable the return option.",
-    "close": "Close"
+    "return-date-req-desc": "To proceed with booking your return ticket, please select a return date. Alternatively, you can disable the return option.",
+    "close": "Close",
+
+    "change-departure": "Change departure route",
+    "change-return": "Change return route",
+    "return-title": "RETURN ROUTES FROM"
+  },
+  "RouteSearchPage_Checkout": {
+    "title": "ENTER PASSENGER DETAILS",
+    "order-details": "Order Details",
+    "total-price": "Total Price",
+    "passenger": "Passenger",
+    "number": "No",
+    "main": "Main",
+    "lastname": "Last Name",
+    "firstname": "First Name",
+    "ticket-type": "Ticket Type",
+    "adult": "Adult",
+    "student": "Student",
+    "child": "Child",
+    "years": "years",
+    "add-passenger": "Add a Passenger",
+    "contact-details": "Contact Details",
+    "phone": "Phone Number",
+    "email": "Email",
+    "finish": "Finish",
+    "payment-info": "Payment at Boarding",
+    "delete": "Delete"
   },
   "RouteSearchErrors" : {
     "departure-city-required-err-title": "Departure City Missing",

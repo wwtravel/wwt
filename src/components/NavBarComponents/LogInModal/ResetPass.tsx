@@ -105,7 +105,7 @@ const ResetPass: React.FC<ResetPassProps> = ({ setIsOpen, setModalContent, setSe
 
         <form noValidate className='w-full' onSubmit={handleSubmit}>
             <div className="relative mt-[2rem]">
-                <input maxLength={50} id="ResetPassFormEmail" name="email" onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} value={emailInput} onChange={(e) => setEmailInput(e.target.value)} className={`${emailErr && 'animate-input-error'} w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"/>
+                <input maxLength={50} id="ResetPassFormEmail" name="email" onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} value={emailInput} onChange={(e) => setEmailInput(e.target.value)} className={`${emailErr && 'animate-input-error'} w-full lg:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"/>
 
                 <motion.label
                 htmlFor='ResetPassFormEmail'
@@ -121,7 +121,7 @@ const ResetPass: React.FC<ResetPassProps> = ({ setIsOpen, setModalContent, setSe
                 </motion.label>
             </div>
 
-            <button type="submit" className='bg-red hover:bg-dark-red transition-colors duration-300 w-full h-[3.5rem] rounded-[0.5rem] text-light-white text-[1.125rem] font-bold font-open-sans mt-[2rem] cursor-pointer'>
+            <button type="submit" className='bg-red hover:bg-dark-red transition-colors duration-300 w-full lg:h-[3.5rem] h-[4rem] rounded-[0.5rem] text-light-white text-[1.125rem] font-bold font-open-sans mt-[2rem] cursor-pointer'>
               { 
                 loading 
                   ? <PulseLoader 
@@ -135,7 +135,7 @@ const ResetPass: React.FC<ResetPassProps> = ({ setIsOpen, setModalContent, setSe
 
         <p className='font-open-sans font-[400] text-[1.125rem] text-dark-gray mt-[2rem] text-center'>{ t('message2') }</p>
 
-        <div className='font-open-sans text-gray text-[1.125rem] font-[400] text-center mt-[2rem] flex flex-wrap justify-center'>
+        <div className='font-open-sans text-gray lg:text-[1.125rem] text-[1.333rem] font-[400] text-center mt-[2rem] flex flex-wrap justify-center'>
             <span className='text-dark-gray'>{ login_t('question') }</span> &nbsp;
             <span onMouseEnter={() => setMouseHover(true)} onMouseLeave={() => setMouseHover(false)} className="relative">
               <span onClick={() => setModalContent('SignUp')} className='cursor-pointer'>{ login_t('sign-up') }</span>

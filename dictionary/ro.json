@@ -380,8 +380,34 @@
     "no-route-found_part3" : "pentru mai multe detalii.",
 
     "return-date-req-title": "Dată de retur necesară",
-    "return-date-req-desc": "Pentru a continua cu rezervarea biletului de retur, te rugăm să selectezi o dată de retur și să apeși din nou pe butonul 'Caută'. Alternativ, poți dezactiva opțiunea de retur.",
-    "close": "Închide"
+    "return-date-req-desc": "Pentru a continua cu rezervarea biletului de retur, te rugăm să selectezi o dată de retur. Alternativ, poți dezactiva opțiunea de dus-întors.",
+    "close": "Închide",
+
+    "change-departure" : "Modifică ruta de plecare",
+    "change-return" : "Modifică ruta de return",
+    "return-title" : "RUTELE de retur DIN DATA DE"
+  },
+  "RouteSearchPage_Checkout" : {
+    "title" : "INTRODUCEȚI DATELE PASAGERILOR",
+    "order-details" : "Detaliile comenzi",
+    "total-price" : "Preț total",
+    "passenger" : "Pasager",
+    "number" : "nr",
+    "main" : "Principal",
+    "lastname" : "Nume",
+    "firstname" : "Prenume",
+    "ticket-type" : "Tipul biletului",
+    "adult" : "Adult",
+    "student" : "Student",
+    "child" : "Copil",
+    "years" : "ani",
+    "add-passenger" : "Adaugă un pasager",
+    "contact-details" : "Date de contact",
+    "phone" : "Număr de telefon",
+    "email" : "Email",
+    "finish" : "Finalizează",
+    "payment-info" : "Achitare la îmbarcare",
+    "delete" : "Șterge"
   },
   "RouteSearchErrors" : {
     "departure-city-required-err-title": "Oraș de plecare lipsă",

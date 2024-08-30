@@ -83,7 +83,7 @@ const extractDate = ( textDate: string ) => {
 }
 
   return (
-    <div className="relative lg:h-[24.75rem] max-lg:pb-[2.667rem] bg-[url('/images/header_bg.png')] bg-center bg-cover lg:px-[12rem] px-[1rem] lg:pt-[30vh] pt-[13.75rem]">
+    <div className="relative lg:h-[24.75rem] max-lg:pb-[2.667rem] md:bg-[url('/images/header_bg.png')] bg-center bg-cover lg:px-[12rem] px-[1rem] lg:pt-[30vh] pt-[13.75rem]">
 
           <div className='absolute max-lg:hidden bottom-0 left-[50%] -translate-x-[50%] max-w-[82.75rem] mx-auto w-full h-[9.5rem] rounded-[1rem] overflow-hidden border border-gray/25 shadow-custom   translate-y-[50%]'>
             <div className='w-full max-lg:hidden bg-light-white px-[4rem] py-[2rem]' >
@@ -125,23 +125,18 @@ const extractDate = ( textDate: string ) => {
                             </div>
                         </div>
 
-                        <div className='flex flex-col gap-[0.25rem] justify-center mr-[1.5rem]'>
-                            <div className='flex items-center gap-[0.5rem] justify-center'>
-                                <img src="/icons/route-card-icons/icon-passenger.svg" alt="passenger" draggable={false} className='size-[1rem]' />
-                                <p className='font-open-sans font-bold text-[1rem] text-dark-gray'>{ seletcedRoute.free_places }</p>
-                            </div>
-                            <p className='text-[1rem] font-[400] font-open-sans text-gray/75 line-clamp-1 text-nowrap'>{ t('free-spaces') }</p>
-                        </div>
-
-                        <div className='flex justify-between flex-1'>
+                        <div className='flex justify-end gap-[3rem] flex-1'>
                             <div className='flex flex-col gap-[0.25rem] justify-center mr-[1.5rem]'>
                                 <p className='font-open-sans font-bold text-[1.5rem] text-dark-gray uppercase text-center'>{ seletcedRoute.price.adult }<span className='text-[1rem]'>eur</span></p>
                                 <p className='text-[0.875rem] font-bold font-open-sans text-red text-center line-clamp-1 text-nowrap'>* { t('payment-info') }</p>
                             </div>
 
-                            <div className='flex items-center gap-[0.25rem]'>
+                            <div className='flex items-center gap-[0.25rem]' onClick={() => setSelectedRoutes(prev => ({ 
+                                ...prev,
+                                departureRoute: null
+                             }))}>
                               <img src="/icons/route-card-icons/icon-pencil.svg" alt="edit" draggable={false} className='size-[1rem]' />
-                              <UnderlinedText text='Modifica nush ce'/>
+                              <UnderlinedText text={ t('change-departure') }/>
                             </div>
                         </div>
                         
@@ -151,9 +146,63 @@ const extractDate = ( textDate: string ) => {
             </div>
           </div>
 
-        {/* <div className='lg:hidden'>
-          <MobileRouteSearch />
-        </div> */}
+        <div className='lg:hidden'>
+                <div className="px-[1.333rem] max-md:max-w-[29.5rem] max-md:mx-auto py-[2rem] bg-light-white border border-gray/25 rounded-[1.333rem]">
+                    <div className="flex md:flex-row flex-col justify-between max-md:gap-[0.333rem]">
+                        <div className="flex gap-[0.667rem]">
+                            <div className='flex flex-col items-center h-full pt-[2.55rem]'>
+                                <img src="/icons/route-card-icons/icon-start-point.svg" alt="start" draggable={false} className='size-[1.5rem]' />
+                                <div className='w-[2px] h-[6.75rem] bg-gray/50'/>
+                                <img src="/icons/route-card-icons/icon-finish-point.svg" alt="start" draggable={false} className='size-[1.5rem]' />
+                            </div>
+
+                            <div>
+                                <div className='flex items-center font-open-sans font-[400] text-[1.333rem] text-dark-gray line-clamp-1 text-nowrap mb-[0.333rem]'>
+                                    <img src="/icons/route-card-icons/icon-calendar.svg" alt="calendar" draggable={false} className='size-[1.333rem] mr-[0.667rem]' />
+                                    <p className={`mr-[1.333rem]`}>{ `${getDayOfTheWeek(parseDate(seletcedRoute.departure).dayOfWeek)}, ${parseDate(seletcedRoute.departure).dayOfMonth} ${getMonthText(parseDate(seletcedRoute.departure).month)}`}</p>
+                                    <img src="/icons/route-card-icons/icon-clock.svg" alt="time" draggable={false} className='size-[1.333rem] mr-[0.5rem]' />
+                                    <p>{ parseDate(seletcedRoute.departure).timeString }</p>
+                                </div>
+                                <div className='flex items-center font-open-sans font-[400]'>
+                                    <p className='text-[1.333rem] text-gray/75 mr-[0.667rem]'>{ t('start') }:</p>
+                                    <p className='text-[1.333rem] text-dark-gray mr-[0.667rem] text-nowrap'>{ seletcedRoute.route.stops[0].label[getLocale(locale)] }</p>
+                                    <img src="/icons/route-card-icons/icon-adress.svg" alt="adress" draggable={false} className='size-[1.333rem] mr-[0.667rem]' />
+                                    <p className='text-[1.167rem] text-dark-gray'>{ seletcedRoute.route.stops[0].city === 'chisinau' ? t('street') : t('pass-req') }</p>
+                                </div>
+                                <div className='flex mt-[4rem] items-center font-open-sans font-[400] text-[1.333rem] text-dark-gray line-clamp-1 text-nowrap'>
+                                    <img src="/icons/route-card-icons/icon-calendar.svg" alt="calendar" draggable={false} className='size-[1.333rem] mr-[0.667rem]' />
+                                    <p className='mr-[1.333rem]'>{ `${getDayOfTheWeek(parseDate(seletcedRoute.arrival).dayOfWeek)}, ${parseDate(seletcedRoute.arrival).dayOfMonth} ${getMonthText(parseDate(seletcedRoute.arrival).month)}`}</p>
+                                    <img src="/icons/route-card-icons/icon-clock.svg" alt="time" draggable={false} className='size-[1.333rem] mr-[0.667rem]' />
+                                    <p>{ parseDate(seletcedRoute.arrival).timeString }</p>
+                                </div>
+                                <div className='flex items-center font-open-sans font-[400] mt-[0.333rem]'>
+                                    <p className='text-[1.333rem] text-gray/75 mr-[0.667rem]'>{ t('finish') }:</p>
+                                    <p className='text-[1.333rem] text-dark-gray mr-[0.667rem] text-nowrap'>{ seletcedRoute.route.stops[seletcedRoute.route.stops.length - 1].label[getLocale(locale)] }</p>
+                                    <img src="/icons/route-card-icons/icon-adress.svg" alt="adress" draggable={false} className='size-[1.333rem] mr-[0.667rem]' />
+                                    <p className='text-[1.167rem] text-red h-[1.333rem] leading-[1]'>{ seletcedRoute.route.stops[seletcedRoute.route.stops.length - 1].city === 'chisinau' ? t('street') : t('pass-req') }</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex gap-[1.5rem] flex-col items-center justify-center mt-[1rem]">
+                            <div className='flex flex-col gap-[0.333rem] justify-center'>
+                                <p className='font-open-sans font-bold text-[2rem] text-dark-gray uppercase text-center'>{ seletcedRoute.price.adult }<span className='text-[1.333rem]'>eur</span></p>
+                                <p className='text-[1.167rem] font-bold font-open-sans text-red text-center line-clamp-1 text-nowrap'>* { t('payment-info') }</p>
+                            </div>
+
+                                <div className='flex gap-[0.333rem] items-center cursor-pointer' onClick={() => setSelectedRoutes(prev => ({ 
+                                    ...prev,
+                                    departureRoute: null
+                                    }))}
+                                >
+                                    <img src="/icons/route-card-icons/icon-pencil.svg" alt="edit" draggable={false} className='size-[1rem]' />
+                                    <UnderlinedText text={ t('change-departure') }/>
+                                </div>
+                        </div>
+                    </div>
+
+                </div>
+        </div>
 
     </div>
   )
