@@ -3,8 +3,8 @@ import { checkIfAdmin, handlePrismaError } from "@/lib/bd-utils";
 import { prisma } from "@/utils/prisma";
 
 export async function POST (request: Request) {
-    // const response = await checkIfAdmin();
-    // if (response !== null) return response;
+    const response = await checkIfAdmin();
+    if (response !== null) return response;
     
     const result = PostTravelsSchema.safeParse(await request.json());
 
@@ -33,8 +33,8 @@ export async function POST (request: Request) {
 }
 
 export async function PATCH (request: Request) {
-    // const response = await checkIfAdmin();
-    // if (response !== null) return response;
+    const response = await checkIfAdmin();
+    if (response !== null) return response;
     
     const result = PatchTravelSchema.safeParse(await request.json());
 
@@ -70,8 +70,8 @@ export async function PATCH (request: Request) {
 
 
 export async function GET () {
-    // const response = await checkIfAdmin();
-    // if (response !== null) return response;
+    const response = await checkIfAdmin();
+    if (response !== null) return response;
     let travels = null;
 
     try {
