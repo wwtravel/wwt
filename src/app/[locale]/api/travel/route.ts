@@ -33,8 +33,8 @@ export async function POST (request: Request) {
 }
 
 export async function PATCH (request: Request) {
-    const response = await checkIfAdmin();
-    if (response !== null) return response;
+    // const response = await checkIfAdmin();
+    // if (response !== null) return response;
     
     const result = PatchTravelSchema.safeParse(await request.json());
 
