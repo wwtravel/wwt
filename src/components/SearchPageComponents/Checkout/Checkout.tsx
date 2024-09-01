@@ -36,7 +36,7 @@ const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDeparture
             </div>
           </div>
 
-          <PassengersDataContainer prices={seletcedDepartureRoute.price} />
+          <PassengersDataContainer depRoute={seletcedDepartureRoute} prices={seletcedDepartureRoute.price} />
         </div>
 
     </div>

@@ -17,9 +17,10 @@ import { Passenger } from "./PassengersDataContainer";
     prices : PriceSheet;
     setPassenger: (updatedPassenger: Passenger) => void;
     passenger: Passenger;
+    selectBoxErr: boolean;
   }
 
-const PriceSelectBox:React.FC<PriceSelectBoxProps> = ({ prices, setPassenger, passenger }) => {
+const PriceSelectBox:React.FC<PriceSelectBoxProps> = ({ prices, setPassenger, passenger, selectBoxErr }) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -42,7 +43,7 @@ const PriceSelectBox:React.FC<PriceSelectBoxProps> = ({ prices, setPassenger, pa
 
   return (
     <Select open={isOpen} onOpenChange={setIsOpen} onValueChange={handleSelectChange}>
-      <SelectTrigger className="relative font-open-sans text-[1rem] w-full lg:h-[3.5rem] h-[4.667rem] bg-light-white  md:rounded-[0.5rem] rounded-[0.667rem] border-gray/25 px-[1.5rem] py-0">
+      <SelectTrigger className={`${ selectBoxErr && 'animate-input-error' } relative font-open-sans text-[1rem] w-full lg:h-[3.5rem] h-[4.667rem] bg-light-white  md:rounded-[0.5rem] rounded-[0.667rem] border-gray/25 px-[1.5rem] py-0`}>
       <div className="pt-[1rem]">
         <SelectValue className="ring-0 text-[1rem] text-dark-gray font-open-sans font-[400]"/>
       </div>

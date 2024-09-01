@@ -85,7 +85,7 @@ const RouteDetails: React.FC<RouteDetailsProps> = ({ route, setSelectedRoutes, r
                 <div className="flex md:gap-[0.5rem] gap-[0.667rem]">
                     <div className='flex flex-col items-center h-full md:pt-[2rem] pt-[2.667rem]'>
                         <img src="/icons/route-card-icons/icon-start-point.svg" alt="start" draggable={false} className='md:size-[1.125rem] size-[1.5rem]' />
-                        <div className='w-[2px] h-[6.75rem] bg-gray/50'/>
+                        <div className='w-[2px] md:h-[5.1rem] h-[6.75rem] bg-gray/50'/>
                         <img src="/icons/route-card-icons/icon-finish-point.svg" alt="start" draggable={false} className='md:size-[1.125rem] size-[1.5rem]' />
                     </div>
 

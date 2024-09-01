@@ -197,7 +197,7 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
                         </div>
 
                         <div className='max-w-[54.625rem] w-full flex h-full ml-[1.5rem]'>
-                            <div className='flex flex-col items-center mr-[0.5rem]'>
+                            <div className='flex flex-col items-center mr-[0.5rem] py-[0.25rem]'>
                                 <img src="/icons/route-card-icons/icon-start-point.svg" alt="start" draggable={false} className='size-[1rem]' />
                                 <div className='w-[2px] h-full bg-gray/50'/>
                                 <img src="/icons/route-card-icons/icon-finish-point.svg" alt="start" draggable={false} className='size-[1rem]' />

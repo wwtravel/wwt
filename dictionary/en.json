@@ -406,7 +406,24 @@
     "email": "Email",
     "finish": "Finish",
     "payment-info": "Payment at Boarding",
-    "delete": "Delete"
+    "delete": "Delete",
+
+    "lastname-req-title": "Last Name Required",
+    "lastname-req-desc": "Please enter your last name to continue.",
+
+    "firstname-req-title": "First Name Required",
+    "firstname-req-desc": "Please enter your first name to continue.",
+
+    "firstname-err-title" : "First Name Error",
+    "firstname-err-desc" : "The first name must be at least 1 character and no more than 50 characters.",
+
+    "lastname-err-title" : "Last Name Error",
+    "lastname-err-desc" : "The last name must be at least 1 character and no more than 50 characters.",
+
+    "price-req-title": "Ticket Price Required",
+    "price-req-desc": "Please select a ticket price based on the passenger type: child, adult, student.",
+
+    "close": "Close"
   },
   "RouteSearchErrors" : {
     "departure-city-required-err-title": "Departure City Missing",

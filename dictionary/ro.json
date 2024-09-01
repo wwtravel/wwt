@@ -407,7 +407,36 @@
     "email" : "Email",
     "finish" : "Finalizează",
     "payment-info" : "Achitare la îmbarcare",
-    "delete" : "Șterge"
+    "delete" : "Șterge",
+
+    "lastname-req-title": "Numele de familie necesar",
+    "lastname-req-desc": "Te rugăm să introduci numele tău de familie pentru a continua.",
+
+    "firstname-req-title": "Prenumele necesar",
+    "firstname-req-desc": "Te rugăm să introduci prenumele tău pentru a continua.",
+
+    "firstname-err-title" : "Eroare prenume",
+    "firstname-err-desc" : "Prenumele trebuie să aibă cel puțin 1 caracter și cel mult 50 de caractere",
+
+    "lastname-err-title" : "Eroare nume de familie",
+    "lastname-err-desc" : "Numele de familie trebuie să aibă cel puțin 1 caracter și cel mult 50 de caractere",
+
+    "price-req-title": "Prețul biletului necesar",
+    "price-req-desc": "Te rugăm să alegi un preț pentru biletul tău, în funcție de tipul de pasager: copil, adult, student.",
+
+    "phone-req-title": "Număr de telefon necesar",
+    "phone-req-desc": "Te rugăm să introduci numărul tău de telefon pentru a continua.",
+
+    "phone-err-title": "Număr de telefon nevalid",
+    "phone-err-desc": "Numărul de telefon trebuie să aibă între 7 și 15 caractere și să fie un număr valid.",
+
+    "email-req-title": "Adresă de email necesară",
+    "email-req-desc": "Te rugăm să introduci adresa ta de e-mail pentru a continua.",
+
+    "email-err-title" : "Email nevalid",
+    "email-err-desc" : "Emailul trebuie să aibă cel puțin 1 caracter și cel mult 50 de caractere, și să fie un email valid",
+
+    "close": "Închide"
   },
   "RouteSearchErrors" : {
     "departure-city-required-err-title": "Oraș de plecare lipsă",

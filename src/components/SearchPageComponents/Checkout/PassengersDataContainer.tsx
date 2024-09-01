@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import PassengerDataRow from "./PassengerDataRow";
-import { PriceSheet } from "@/types/routeType";
+import { PriceSheet, Travel } from "@/types/routeType";
 import { useTranslations } from "next-intl";
 import UnderlinedText from "../SearchPageContent/UnderlinedText";
 
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 
 export interface Passenger{
     firstname: string;
@@ -21,14 +22,56 @@ interface ContactDetails{
 
 interface PassengerDataContainerProps{
     prices : PriceSheet;
+    depRoute: Travel;
 }
 
-const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices }) => {
+const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices, depRoute }) => {
 
     const t = useTranslations("RouteSearchPage_Checkout")
 
+    const [validationTrigger, setValidationTrigger] = useState(false)
+
     const [phoneFocus, setPhoneFocus] = useState(false)
     const [emailFocus, setEmailFocus] = useState(false)
+
+    const [phoneErr, setPhoneErr] = useState(false)
+    const [emailErr, setEmailErr] = useState(false)
+
+    const handleClick = () => {
+        setValidationTrigger(true); 
+        setTimeout(() => setValidationTrigger(false), 300)
+
+        passengers.map(passenger => {
+            if(passenger.firstname === '' || passenger.lastname === '' || passenger.price === 0) return
+        })
+
+        setEmailErr(false)
+        setPhoneErr(false)
+
+        if(contactDetails.phone === ''){
+            setPhoneErr(true)
+            toast( t('phone-req-title'), {
+                description: t('phone-req-desc'),
+                action: {
+                  label: t('close'),
+                  onClick: () => {}
+                }
+              })
+              return;
+        }
+
+        if(contactDetails.email === ''){
+            setEmailErr(true)
+            toast( t('email-req-title'), {
+                description: t('email-req-desc'),
+                action: {
+                  label: t('close'),
+                  onClick: () => {}
+                }
+              })
+              return;
+        }
+    }
 
     const [contactDetails, setContactDetails] = useState<ContactDetails>({
         phone: '',
@@ -56,6 +99,10 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices 
         );
     }
 
+    let maxLength = 10;
+    if(depRoute.free_places >= 10) maxLength = 10
+        else maxLength = depRoute.free_places
+
   return (
     <div className='max-w-[47rem] w-full flex flex-col justify-between'>
         <div>
@@ -68,13 +115,14 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices 
                             setPassenger={(updatedPassenger) => updatePassenger(index, updatedPassenger)}
                             prices={prices}
                             setPassengers={setPassengers}
+                            shouldValidate={validationTrigger}
                         />
                     ))
                 }
             </div>
             
             {
-                passengers.length < 10 && (
+                passengers.length < maxLength && (
                     <div className="flex items-center justify-center mt-[1.5rem]">
                         <div className="flex items-center gap-[0.25rem]" onClick={() => {
                             setPassengers(prev => [...passengers, { firstname: '', lastname: '', price: 0 }])
@@ -95,9 +143,9 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices 
                     <div className="relative">
                         <input 
                         id="checkoutPhone" 
-                            onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} 
+                            onFocus={() => setPhoneFocus(true)} onBlur={() => setPhoneFocus(false)} 
                             name="phone" value={contactDetails.phone} onChange={handleChange} 
-                            className={`w-full bg-light-white lg:h-[3.5rem] h-[4.667rem] border border-gray/25  md:rounded-[0.5rem] rounded-[0.667rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"
+                            className={`${phoneErr && 'animate-input-error'} w-full bg-light-white lg:h-[3.5rem] h-[4.667rem] border border-gray/25  md:rounded-[0.5rem] rounded-[0.667rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text" maxLength={15}
                         />
 
                         <motion.label
@@ -121,7 +169,7 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices 
                         id="checkoutEmail" 
                             onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} 
                             name="email" value={contactDetails.email} onChange={handleChange} 
-                            className={`w-full bg-light-white lg:h-[3.5rem] h-[4.667rem] border border-gray/25  md:rounded-[0.5rem] rounded-[0.667rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"
+                            className={`${emailErr && 'animate-input-error'} w-full bg-light-white lg:h-[3.5rem] h-[4.667rem] border border-gray/25  md:rounded-[0.5rem] rounded-[0.667rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"
                         />
 
                         <motion.label
@@ -140,7 +188,7 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices 
                 {/* email */}
 
                 {/* Finish btn */}
-                    <div className="relative lg:h-[3.5rem] h-[4.667rem] w-full bg-red hover:bg-dark-red transition-colors duration-300  md:rounded-[0.5rem] rounded-[0.667rem] cursor-pointer grid place-content-center">
+                    <div className="relative lg:h-[3.5rem] h-[4.667rem] w-full bg-red hover:bg-dark-red transition-colors duration-300  md:rounded-[0.5rem] rounded-[0.667rem] cursor-pointer grid place-content-center" onClick={handleClick}>
                         <p className="text-light-white md:text-[1.125rem] text-[1.5rem] font-bold font-open-sans">{ t('finish') }</p>
                         <p className="text-center absolute bottom-0 left-0 right-0 md:translate-y-[1.5rem] translate-y-[2rem] text-red md:text-[0.875rem] text-[1.167rem] font-bold font-open-sans">* { t('payment-info') }</p>
                     </div>
