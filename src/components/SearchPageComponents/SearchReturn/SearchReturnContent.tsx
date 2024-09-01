@@ -57,7 +57,7 @@ const SearchReturnContent: React.FC<SearchReturnContentProps> = ({ setSelectedRo
         <h1 className='text-center font-montserrat font-bold md:text-[2.5rem] text-[2rem] uppercase'>
             { t('return-title') } &nbsp;
             
-          <span className='text-red'>{ parseDate(seletcedRoute.arrival).dayOfMonth } { getMonthText(parseDate(seletcedRoute.arrival).month) }</span>
+          <span className='text-red'>{ parseDate(searchParams.get('arrdate')!).dayOfMonth } { getMonthText(parseDate(searchParams.get('arrdate')!).month) }</span>
             
         </h1>
         <div className='h-[4px] w-[6rem] mx-auto mt-[1.5rem] bg-red'/>

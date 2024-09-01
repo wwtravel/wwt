@@ -57,6 +57,15 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
     };
     
     useEffect(() => {
+
+        // let queryDate = ''
+        // if(searchParams.has('arrdate') && searchParams.get('arrdate') !== ''){
+        //     queryDate = searchParams.get('arrdate')!
+        // } else {
+        //     queryDate = extractDate(seletcedRoute.arrival)
+        // }
+        //     searchRoutes(seletcedRoute.route.stops[seletcedRoute.route.stops.length - 1].city, seletcedRoute.route.stops[0].city, queryDate)
+
         searchRoutes(seletcedRoute.route.stops[0].city, seletcedRoute.route.stops[seletcedRoute.route.stops.length - 1].city, extractDate(seletcedRoute.departure))
     }, [searchParams])
     

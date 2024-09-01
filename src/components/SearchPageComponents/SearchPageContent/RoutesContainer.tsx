@@ -69,7 +69,7 @@ const searchRoutes = async (departureCity: string, arrivalCity: string, departur
 };
 
 useEffect(() => {
-    if(searchParams.get('dep') && searchParams.get('arr') && searchParams.get('depdate')){
+    if(searchParams.has('dep') && searchParams.has('arr') && searchParams.has('depdate')){
         searchRoutes(searchParams.get('dep')!, searchParams.get('arr')!, searchParams.get('depdate')!, searchParams.get('arrdate'))
     }
 }, [searchParams])

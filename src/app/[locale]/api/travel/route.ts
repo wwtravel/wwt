@@ -3,8 +3,8 @@ import { checkIfAdmin, handlePrismaError } from "@/lib/bd-utils";
 import { prisma } from "@/utils/prisma";
 
 export async function POST (request: Request) {
-    const response = await checkIfAdmin();
-    if (response !== null) return response;
+    // const response = await checkIfAdmin();
+    // if (response !== null) return response;
     
     const result = PostTravelsSchema.safeParse(await request.json());
 

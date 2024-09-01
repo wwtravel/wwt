@@ -8,6 +8,7 @@ import UnderlinedText from "../SearchPageContent/UnderlinedText";
 
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { OrderSchema } from "@/lib/types";
 
 export interface Passenger{
     firstname: string;
@@ -20,12 +21,21 @@ interface ContactDetails{
     email: string;
 }
 
+interface OrderData {
+    travel_id: string;
+    passengers: Passenger[];
+    user_id: string;
+    contact_details: ContactDetails;
+    lang: string;
+}
+
 interface PassengerDataContainerProps{
     prices : PriceSheet;
     depRoute: Travel;
+    retRoute: Travel | null;
 }
 
-const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices, depRoute }) => {
+const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices, depRoute, retRoute }) => {
 
     const t = useTranslations("RouteSearchPage_Checkout")
 
@@ -37,16 +47,40 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
     const [phoneErr, setPhoneErr] = useState(false)
     const [emailErr, setEmailErr] = useState(false)
 
-    const handleClick = () => {
+    const createOrder = async (orderData: OrderData) => {
+        try {
+            const response = await fetch('/api/order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(orderData),
+            });
+    
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.msg || 'An error occurred while creating the order.');
+            }
+    
+            const result = await response.json();
+            console.log('Order created successfully:', result);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    const handleClick = async () => {
+        let isPassengerDataValidated = true
         setValidationTrigger(true); 
         setTimeout(() => setValidationTrigger(false), 300)
-
-        passengers.map(passenger => {
-            if(passenger.firstname === '' || passenger.lastname === '' || passenger.price === 0) return
-        })
-
         setEmailErr(false)
         setPhoneErr(false)
+
+        passengers.map(passenger => {
+            if(passenger.firstname === '' || passenger.lastname === '' || passenger.price === 0) isPassengerDataValidated = false
+        })
+
+        if(!isPassengerDataValidated) return;
 
         if(contactDetails.phone === ''){
             setPhoneErr(true)
