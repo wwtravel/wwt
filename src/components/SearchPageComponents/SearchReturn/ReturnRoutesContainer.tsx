@@ -47,7 +47,7 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
             }
     
             const result = await response.json();
-            setRoutes(result)
+            setRoutes(result.retour)
             setLoading(false)
         } catch (error) {
             setLoading(false)
@@ -58,15 +58,14 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
     
     useEffect(() => {
 
-        // let queryDate = ''
-        // if(searchParams.has('arrdate') && searchParams.get('arrdate') !== ''){
-        //     queryDate = searchParams.get('arrdate')!
-        // } else {
-        //     queryDate = extractDate(seletcedRoute.arrival)
-        // }
-        //     searchRoutes(seletcedRoute.route.stops[seletcedRoute.route.stops.length - 1].city, seletcedRoute.route.stops[0].city, queryDate)
+        let queryDate = ''
+        if(searchParams.has('arrdate') && searchParams.get('arrdate') !== ''){
+            queryDate = searchParams.get('arrdate')!
+        } else {
+            queryDate = extractDate(seletcedRoute.arrival)
+        }
+            searchRoutes(seletcedRoute.route.stops[seletcedRoute.route.stops.length - 1].city, seletcedRoute.route.stops[0].city, queryDate)
 
-        searchRoutes(seletcedRoute.route.stops[0].city, seletcedRoute.route.stops[seletcedRoute.route.stops.length - 1].city, extractDate(seletcedRoute.departure))
     }, [searchParams])
     
     const locale = useLocale()
@@ -267,7 +266,7 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
                         stops={route.route.stops}
                         price={route.price}
                         freePlaces={route.free_places}
-                        hoursInterval={route.route.stops[route.route.stops.length -1].hours}
+                        hoursInterval={route.route.stops[0].hours}
                         amenities={route.route.bus.amenities}
                     />
                 </div>

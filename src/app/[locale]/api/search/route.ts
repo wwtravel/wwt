@@ -71,6 +71,7 @@ export async function POST (request: Request) {
             },
         })
     } catch (e) {
+        console.log("Inside RouteSearch > travel err: ", e)
         if (e) {
             return handlePrismaError(e);
         }
@@ -104,6 +105,7 @@ export async function POST (request: Request) {
             }
         })
     } catch (e) {
+        console.log("Inside RouteSearch > price err: ", e)
         if (e) {
             return handlePrismaError(e);
         }
@@ -122,6 +124,7 @@ export async function POST (request: Request) {
             }
         })
     } catch (e) {
+        console.log("Inside RouteSearch > label err: ", e)
         if (e) {
             return handlePrismaError(e);
         }
@@ -129,23 +132,90 @@ export async function POST (request: Request) {
 
     if (!label) return Response.json({ msg: "Label not found!"}, {status: 400});
 
-    const filteredTravels = new Array();
+    const filteredTourTravels = new Array();
+    const filteredReturnTravels = new Array();
 
-    travels.forEach(travel => {
-        const depIndex = travel.route.stops.findIndex(route => route.city === result.data.departure_city);
-        const arrIndex = travel.route.stops.findIndex(route => route.city === result.data.arrival_city);
+    // Process each travel
+travels.forEach(travel => {
 
-        let travelRes = {...travel};
+    console.log(travel.route.stops[0])
 
-        Object.assign(travelRes.route.stops[depIndex], {label: label.find(label => label.value === result.data.departure_city)?.label});
-        Object.assign(travelRes.route.stops[arrIndex], {label: label.find(label => label.value === result.data.arrival_city)?.label});
+    let depIndex = travel.route.stops.findIndex(route => route.city === result.data.departure_city);
+    let arrIndex = travel.route.stops.findIndex(route => route.city === result.data.arrival_city);
 
-        travelRes.route.stops = travelRes.route.stops.slice(depIndex, arrIndex + 1);
-        const freePlaces = travel.route.bus.nr_of_seats - travel.orders.length - travel.reserved_seats;
-        
-        Object.assign(travelRes, {price: price.price_sheet, free_places: freePlaces, arrival: new Date(new Date(travel.departure).getTime() + 60 * 60 * travel.route.stops[arrIndex].hours * 1000)});
-        if (depIndex < arrIndex) filteredTravels.push(travelRes);
-    });
+    if (depIndex !== -1 && arrIndex !== -1) {
+        let travelRes = { ...travel };
 
-    return Response.json(filteredTravels, {status: 200});
+        // Assign labels
+        Object.assign(travelRes.route.stops[depIndex], { label: label.find(label => label.value === result.data.departure_city)?.label });
+        Object.assign(travelRes.route.stops[arrIndex], { label: label.find(label => label.value === result.data.arrival_city)?.label });
+
+        // Handle tour trips (depIndex < arrIndex)
+        if (depIndex < arrIndex) {
+            travelRes.route.stops = travelRes.route.stops.slice(depIndex, arrIndex + 1);
+
+            const freePlaces = travel.route.bus.nr_of_seats - travel.orders.length - travel.reserved_seats;
+
+            // Check if hours is defined before using it
+            const lastStop = travelRes.route.stops[travelRes.route.stops.length - 1];
+            if (lastStop.hours !== undefined) {
+                const hours = lastStop.hours;
+                const arrivalTime = new Date(new Date(travel.departure).getTime() + 60 * 60 * hours * 1000);
+                Object.assign(travelRes, { price: price.price_sheet, free_places: freePlaces, arrival: arrivalTime });
+                filteredTourTravels.push(travelRes);
+            } else {
+                console.error("Hours property is undefined for the last stop:", lastStop);
+            }
+        } 
+        // Handle return trips (depIndex > arrIndex)
+        else {
+            travelRes.route.stops = travelRes.route.stops.slice(arrIndex, depIndex + 1).reverse();
+
+            const freePlaces = travel.route.bus.nr_of_seats - travel.orders.length - travel.reserved_seats;
+
+            // Check if hours is defined before using it
+            const lastStop = travelRes.route.stops[travelRes.route.stops.length - 1];
+            const firstStop = travelRes.route.stops[0]
+            if (lastStop.hours !== undefined) {
+                const hours = firstStop.hours;
+                const arrivalTime = new Date(new Date(travel.departure).getTime() + 60 * 60 * hours * 1000);
+                Object.assign(travelRes, { price: price.price_sheet, free_places: freePlaces, arrival: arrivalTime, hours: hours });
+                filteredReturnTravels.push(travelRes);
+            } else {
+                console.error("Hours property is undefined for the last stop:", lastStop);
+            }
+        }
+    } else {
+        console.error("Departure or arrival city not found in the stops.");
+    }
+});
+
+console.log("Tour routes: ", filteredTourTravels);
+console.log("Return routes: ", filteredReturnTravels);
+
+// Return separate responses if needed
+return Response.json({
+    tour: filteredTourTravels,
+    retour: filteredReturnTravels
+}, { status: 200 });
 }
+
+// const filteredTravels = new Array();
+
+//     travels.forEach(travel => {
+//         const depIndex = travel.route.stops.findIndex(route => route.city === result.data.departure_city);
+//         const arrIndex = travel.route.stops.findIndex(route => route.city === result.data.arrival_city);
+
+//         let travelRes = {...travel};
+
+//         Object.assign(travelRes.route.stops[depIndex], {label: label.find(label => label.value === result.data.departure_city)?.label});
+//         Object.assign(travelRes.route.stops[arrIndex], {label: label.find(label => label.value === result.data.arrival_city)?.label});
+
+//         travelRes.route.stops = travelRes.route.stops.slice(depIndex, arrIndex + 1);
+//         const freePlaces = travel.route.bus.nr_of_seats - travel.orders.length - travel.reserved_seats;
+        
+//         Object.assign(travelRes, {price: price.price_sheet, free_places: freePlaces, arrival: new Date(new Date(travel.departure).getTime() + 60 * 60 * travel.route.stops[arrIndex].hours * 1000)});
+//         if (depIndex < arrIndex) filteredTravels.push(travelRes);
+//     });
+
+//     return Response.json(filteredTravels, {status: 200});
