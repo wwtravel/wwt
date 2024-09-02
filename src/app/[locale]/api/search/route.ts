@@ -2,27 +2,52 @@ import { handlePrismaError } from "@/lib/bd-utils";
 import { SearchSchema } from "@/lib/types";
 import { prisma } from "@/utils/prisma";
 
+interface FindTravelInterface {
+    departure_city: string,
+    arrival_city: string,
+    date: string
+}
+
 export async function POST (request: Request) {
     const result = SearchSchema.safeParse(await request.json());
 
     if (!result.success) {
         let errorMessage = "";
-
+ 
         result.error.issues.forEach((issue) => {
             errorMessage = errorMessage + issue.path[0] + ": " + issue.message + ", ";
         });
 
-
         return Response.json({ msg: errorMessage }, {status: 400})
     }
 
+    const toures = await findTravel({
+        departure_city: result.data.departure_city,
+        arrival_city: result.data.arrival_city,
+        date: result.data.departure_date,
+    });
+
+    let return_toures: Response | any [] = [];
+
+    if (result.data.return_date !== undefined) {
+        return_toures = await findTravel({
+            departure_city: result.data.arrival_city,
+            arrival_city: result.data.departure_city,
+            date: result.data.return_date,
+        });
+    }
+
+    return Response.json({toures: toures, returnToures: return_toures}, {status: 200});
+}
+
+const findTravel = async (data: FindTravelInterface) => {
     let travels = null;
 
     try {
         travels = await prisma.travel.findMany({
             where: {
                 departure: {
-                    gte: new Date(result.data.departure_date)
+                    gte: new Date(data.date)
                 },
                 AND: [
                     {
@@ -30,7 +55,7 @@ export async function POST (request: Request) {
                             stops: {
                                 some: {
                                     city: {
-                                        equals: result.data.departure_city,
+                                        equals: data.departure_city,
                                     }
                                 }
                             }
@@ -41,7 +66,7 @@ export async function POST (request: Request) {
                             stops: {
                                 some: {
                                     city: {
-                                        equals: result.data.arrival_city,
+                                        equals: data.arrival_city,
                                     }
                                 }
                             }
@@ -76,7 +101,7 @@ export async function POST (request: Request) {
         }
     }
 
-    if (!travels) return Response.json({ msg: "Travel not found!"}, {status: 400});
+    if (!travels || travels.length === 0) return Response.json({ msg: "Travel not found!"}, {status: 400});
 
     let price = null;
 
@@ -117,7 +142,7 @@ export async function POST (request: Request) {
         label = await prisma.city.findMany({
             where: {
                 value: {
-                    in: [result.data.departure_city, result.data.arrival_city]
+                    in: [data.departure_city, data.arrival_city]
                 }
             }
         })
@@ -132,20 +157,20 @@ export async function POST (request: Request) {
     const filteredTravels = new Array();
 
     travels.forEach(travel => {
-        const depIndex = travel.route.stops.findIndex(route => route.city === result.data.departure_city);
-        const arrIndex = travel.route.stops.findIndex(route => route.city === result.data.arrival_city);
+        const depIndex = travel.route.stops.findIndex(route => route.city === data.departure_city);
+        const arrIndex = travel.route.stops.findIndex(route => route.city === data.arrival_city);
 
-        let travelRes = {...travel};
+        let travelRes = JSON.parse(JSON.stringify(travel));
 
-        Object.assign(travelRes.route.stops[depIndex], {label: label.find(label => label.value === result.data.departure_city)?.label});
-        Object.assign(travelRes.route.stops[arrIndex], {label: label.find(label => label.value === result.data.arrival_city)?.label});
+        Object.assign(travelRes.route.stops[depIndex], {label: label.find(label => label.value === data.departure_city)?.label});
+        Object.assign(travelRes.route.stops[arrIndex], {label: label.find(label => label.value === data.arrival_city)?.label});
 
         travelRes.route.stops = travelRes.route.stops.slice(depIndex, arrIndex + 1);
         const freePlaces = travel.route.bus.nr_of_seats - travel.orders.length - travel.reserved_seats;
         
-        Object.assign(travelRes, {price: price.price_sheet, free_places: freePlaces, arrival: new Date(new Date(travel.departure).getTime() + 60 * 60 * travel.route.stops[arrIndex].hours * 1000)});
+        Object.assign(travelRes, {price: price.price_sheet, free_places: freePlaces, arrival: new Date(new Date(travel.departure).getTime() + 60 * 60 * (travel.route.stops[arrIndex].hours - travel.route.stops[depIndex].hours) * 1000)});
         if (depIndex < arrIndex) filteredTravels.push(travelRes);
     });
 
-    return Response.json(filteredTravels, {status: 200});
+    return filteredTravels;
 }
