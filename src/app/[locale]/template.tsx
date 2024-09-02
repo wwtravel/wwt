@@ -13,12 +13,17 @@ const template = ({ children }: { children: React.ReactNode }) => {
 
   const [isLoading, setIsLoading] = useState(false)
   const [showPage, setShowPage] = useState(false)
+  const [showChat, setShowChat] = useState(false)
 
   useEffect(() => {
     setIsLoading(true)
     setTimeout(() => {
         setIsLoading(false)
     }, 1500)
+
+    setTimeout(() => {
+      setShowChat(true)
+    }, 3000)
   }, [])
 
   return (
@@ -30,7 +35,7 @@ const template = ({ children }: { children: React.ReactNode }) => {
         </AnimatePresence>
         { children }
         {
-          !isLoading && <TawkMessengerReact
+          showChat && <TawkMessengerReact
             propertyId="66d5add7ea492f34bc0cbf89" 
             widgetId="1i6pau4mq"/>
           }
