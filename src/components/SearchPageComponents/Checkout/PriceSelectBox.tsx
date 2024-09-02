@@ -41,8 +41,15 @@ const PriceSelectBox:React.FC<PriceSelectBoxProps> = ({ prices, setPassenger, pa
     setPassenger({ ...passenger, price: updatedPrice });
   };
 
+  const getPriceType = (price: number): string => {
+    if (price === prices.adult) return 'adult';
+    if (price === prices.student) return 'student';
+    if (price === prices.child) return 'child';
+    return '';
+  };
+
   return (
-    <Select open={isOpen} onOpenChange={setIsOpen} onValueChange={handleSelectChange}>
+    <Select open={isOpen} onOpenChange={setIsOpen} onValueChange={handleSelectChange} value={getPriceType(passenger.price)}>
       <SelectTrigger className={`${ selectBoxErr && 'animate-input-error' } relative font-open-sans text-[1rem] w-full lg:h-[3.5rem] h-[4.667rem] bg-light-white  md:rounded-[0.5rem] rounded-[0.667rem] border-gray/25 px-[1.5rem] py-0`}>
       <div className="pt-[1rem]">
         <SelectValue className="ring-0 text-[1rem] text-dark-gray font-open-sans font-[400]"/>

@@ -388,7 +388,8 @@
     "return-title" : "RUTELE de retur DIN DATA DE"
   },
   "RouteSearchPage_Checkout" : {
-    "title" : "INTRODUCEȚI DATELE PASAGERILOR",
+    "title-tour" : "INTRODUCEȚI DATELE PASAGERILOR PENTRU TUR",
+    "title-retour" : "INTRODUCEȚI DATELE PASAGERILOR PENTRU RETUR",
     "order-details" : "Detaliile comenzi",
     "total-price" : "Preț total",
     "passenger" : "Pasager",
@@ -408,6 +409,13 @@
     "finish" : "Finalizează",
     "payment-info" : "Achitare la îmbarcare",
     "delete" : "Șterge",
+
+    "sign-in-question" : "Ai deja un cont?",
+    "sign-in-btn" : "Conectează-te",
+    "sign-in-msg" : "pentru a completa datele mai rapid.",
+    "fill-in-data-question" : "Datele de tur și retur sunt identice?",
+    "fill-in-data-msg" : "Completeză cu aceleași date",
+    "continue" : "Continuă",
 
     "lastname-req-title": "Numele de familie necesar",
     "lastname-req-desc": "Te rugăm să introduci numele tău de familie pentru a continua.",

@@ -93,10 +93,10 @@ const MobileReturnRoutesContainer:React.FC<MobileRoutesContainerProps> = ({ rout
     };
 
   return (
-    <div className="lg:hidden">
+    <>
         {
             routes.map(( route, index ) => (
-                <div className="px-[1.333rem] max-md:max-w-[29.5rem] max-md:mx-auto py-[2rem] bg-light-white border border-gray/25 rounded-[1.333rem] hover:border-red transition-colors duration-300" key={index}>
+                <div className="lg:hidden px-[1.333rem] max-md:max-w-[29.5rem] max-md:mx-auto py-[2rem] bg-light-white border border-gray/25 rounded-[1.333rem] hover:border-red transition-colors duration-300" key={index}>
                     <div className="flex md:flex-row flex-col justify-between max-md:gap-[0.333rem]">
                         <div className="flex gap-[0.667rem]">
                             <div className='flex flex-col items-center h-full pt-[2.55rem]'>
@@ -108,7 +108,7 @@ const MobileReturnRoutesContainer:React.FC<MobileRoutesContainerProps> = ({ rout
                             <div>
                                 <div className='flex items-center font-open-sans font-[400] text-[1.333rem] text-dark-gray line-clamp-1 text-nowrap mb-[0.333rem]'>
                                     <img src="/icons/route-card-icons/icon-calendar.svg" alt="calendar" draggable={false} className='size-[1.333rem] mr-[0.667rem]' />
-                                    <p className={`mr-[1.333rem] ${ extractDate(routes[0].departure) === searchParams.get('depdate') && "text-red font-bold" }`}>{ `${getDayOfTheWeek(parseDate(route.departure).dayOfWeek)}, ${parseDate(route.departure).dayOfMonth} ${getMonthText(parseDate(route.departure).month)}`}</p>
+                                    <p className={`mr-[1.333rem] ${ extractDate(route.departure) === searchParams.get('arrdate') ? "text-red font-bold" : "text-dark-gray"}`}>{ `${getDayOfTheWeek(parseDate(route.departure).dayOfWeek)}, ${parseDate(route.departure).dayOfMonth} ${getMonthText(parseDate(route.departure).month)}`}</p>
                                     <img src="/icons/route-card-icons/icon-clock.svg" alt="time" draggable={false} className='size-[1.333rem] mr-[0.5rem]' />
                                     <p>{ parseDate(route.departure).timeString }</p>
                                 </div>
@@ -116,7 +116,7 @@ const MobileReturnRoutesContainer:React.FC<MobileRoutesContainerProps> = ({ rout
                                     <p className='text-[1.333rem] text-gray/75 mr-[0.667rem]'>{ t('start') }:</p>
                                     <p className='text-[1.333rem] text-dark-gray mr-[0.667rem] text-nowrap'>{ route.route.stops[0].label[getLocale(locale)] }</p>
                                     <img src="/icons/route-card-icons/icon-adress.svg" alt="adress" draggable={false} className='size-[1.333rem] mr-[0.667rem]' />
-                                    <p className='text-[1.167rem] text-dark-gray'>{ route.route.stops[0].city === 'chisinau' ? t('street') : t('pass-req') }</p>
+                                    <p className={`text-[1.167rem] ${route.route.stops[0].city === 'chisinau' ? 'text-dark-gray' : "text-red"}`}>{ route.route.stops[0].city === 'chisinau' ? t('street') : t('pass-req') }</p>
                                 </div>
                                 <div className='flex mt-[4rem] items-center font-open-sans font-[400] text-[1.333rem] text-dark-gray line-clamp-1 text-nowrap'>
                                     <img src="/icons/route-card-icons/icon-calendar.svg" alt="calendar" draggable={false} className='size-[1.333rem] mr-[0.667rem]' />
@@ -128,7 +128,7 @@ const MobileReturnRoutesContainer:React.FC<MobileRoutesContainerProps> = ({ rout
                                     <p className='text-[1.333rem] text-gray/75 mr-[0.667rem]'>{ t('finish') }:</p>
                                     <p className='text-[1.333rem] text-dark-gray mr-[0.667rem] text-nowrap'>{ route.route.stops[route.route.stops.length - 1].label[getLocale(locale)] }</p>
                                     <img src="/icons/route-card-icons/icon-adress.svg" alt="adress" draggable={false} className='size-[1.333rem] mr-[0.667rem]' />
-                                    <p className='text-[1.167rem] text-red h-[1.333rem] leading-[1]'>{ route.route.stops[route.route.stops.length - 1].city === 'chisinau' ? t('street') : t('pass-req') }</p>
+                                    <p className={`text-[1.167rem] ${route.route.stops[route.route.stops.length - 1].city === 'chisinau' ? 'text-dark-gray' : "text-red"}`}>{ route.route.stops[route.route.stops.length - 1].city === 'chisinau' ? t('street') : t('pass-req') }</p>
                                 </div>
                             </div>
                         </div>
@@ -172,7 +172,7 @@ const MobileReturnRoutesContainer:React.FC<MobileRoutesContainerProps> = ({ rout
                 </div>
             ))
         }
-    </div>
+    </>
   )
 }
 

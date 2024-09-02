@@ -6,12 +6,15 @@ import RoutesContainer from './RoutesContainer'
 import { useSearchParams } from 'next/navigation'
 
 import { SelectedRoutes } from '@/app/[locale]/route-search/PageContent'
+import { TravelResponse } from '@/types/routeType'
 
 interface SearchPageContentProps{
   setSelectedRoutes: React.Dispatch<React.SetStateAction<SelectedRoutes>>
+  routes: TravelResponse;
+  loading: boolean;
 }
 
-const SearchPageContent:React.FC<SearchPageContentProps> = ({ setSelectedRoutes }) => {
+const SearchPageContent:React.FC<SearchPageContentProps> = ({ setSelectedRoutes, routes, loading }) => {
 
   const t = useTranslations("RouteSearchPage")
   const date_t = useTranslations("RouteSearchPage_Date")
@@ -61,7 +64,7 @@ const SearchPageContent:React.FC<SearchPageContentProps> = ({ setSelectedRoutes 
         </h1>
         <div className='h-[4px] w-[6rem] mx-auto mt-[1.5rem] bg-red'/>
 
-        <RoutesContainer setSelectedRoutes={setSelectedRoutes}/>
+        <RoutesContainer loading={loading} routes={routes} setSelectedRoutes={setSelectedRoutes}/>
     </div>
   )
 }

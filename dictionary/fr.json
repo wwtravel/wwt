@@ -384,7 +384,8 @@
     "return-title": "ROUTES de retour À PARTIR DU"
   },
   "RouteSearchPage_Checkout": {
-    "title": "ENTREZ LES DÉTAILS DES PASSAGERS",
+    "title-tour": "ENTREZ LES DÉTAILS DES PASSAGERS POUR L'ALLER",
+    "title-retour": "ENTREZ LES DÉTAILS DES PASSAGERS POUR LE RETOUR",
     "order-details": "Détails de la commande",
     "total-price": "Prix total",
     "passenger": "Passager",
@@ -404,6 +405,13 @@
     "finish": "Terminer",
     "payment-info": "Paiement à l'embarquement",
     "delete": "Supprimer",
+
+    "sign-in-question": "Vous avez déjà un compte?",
+    "sign-in-btn" : "Connectez-vous",
+    "sign-in-msg": "pour remplir les informations plus rapidement.",
+    "fill-in-data-question": "Les dates de l'aller et du retour sont-elles identiques ?",
+    "fill-in-data-msg": "Remplissez avec les mêmes données.",
+    "continue": "Continuer",
 
     "lastname-req-title": "Nom de famille requis",
     "lastname-req-desc": "Veuillez entrer votre nom de famille pour continuer.",

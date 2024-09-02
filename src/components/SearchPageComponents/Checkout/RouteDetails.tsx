@@ -100,7 +100,7 @@ const RouteDetails: React.FC<RouteDetailsProps> = ({ route, setSelectedRoutes, r
                             <p className='md:text-[1rem] text-[1.333rem] text-gray/75 md:mr-[0.5rem] mr-[0.667rem]'>{ t('start') }:</p>
                             <p className='md:text-[1rem] text-[1.333rem] text-dark-gray md:mr-[0.5rem] mr-[0.667rem] text-nowrap'>{ route.route.stops[0].label[getLocale(locale)] }</p>
                             <img src="/icons/route-card-icons/icon-adress.svg" alt="adress" draggable={false} className='md:size-[1rem] size-[1.333rem] md:mr-[0.5rem] mr-[0.667rem]' />
-                            <p className='md:text-[0.875rem] text-[1.167rem] text-dark-gray h-[1rem] leading-[1]'><span className='align-super'>{ route.route.stops[0].city === 'chisinau' ? t('street') : t('pass-req') }</span></p>
+                            <p className='md:text-[0.875rem] text-[1.167rem] text-dark-gray h-[1rem] leading-[1]'><span className={`align-super ${route.route.stops[0].city === 'chisinau' ? 'text-dark-gray' : "text-red"}`}>{ route.route.stops[0].city === 'chisinau' ? t('street') : t('pass-req') }</span></p>
                         </div>
                         <div className='flex md:mt-[3rem] mt-[4rem] items-center font-open-sans font-[400] md:text-[1rem] text-[1.333rem] text-dark-gray line-clamp-1 text-nowrap'>
                             <img src="/icons/route-card-icons/icon-calendar.svg" alt="calendar" draggable={false} className='md:size-[1rem] size-[1.333rem] md:mr-[0.5rem] mr-[0.667rem]' />
@@ -112,7 +112,7 @@ const RouteDetails: React.FC<RouteDetailsProps> = ({ route, setSelectedRoutes, r
                             <p className='md:text-[1rem] text-[1.333rem] text-gray/75 md:mr-[0.5rem] mr-[0.667rem]'>{ t('finish') }:</p>
                             <p className='md:text-[1rem] text-[1.333rem] text-dark-gray md:mr-[0.5rem] mr-[0.667rem] text-nowrap'>{ route.route.stops[route.route.stops.length - 1].label[getLocale(locale)] }</p>
                             <img src="/icons/route-card-icons/icon-adress.svg" alt="adress" draggable={false} className='md:size-[1rem] size-[1.333rem] md:mr-[0.5rem] mr-[0.667rem]' />
-                            <p className='md:text-[0.875rem] text-[1.167rem]  text-red h-[1rem] leading-[1]'><span className='align-super'>{ route.route.stops[route.route.stops.length - 1].city === 'chisinau' ? t('street') : t('pass-req') }</span></p>
+                            <p className='md:text-[0.875rem] text-[1.167rem]   h-[1rem] leading-[1]'><span className={`align-super ${route.route.stops[route.route.stops.length - 1].city === 'chisinau' ? 'text-dark-gray' : "text-red"}`}>{ route.route.stops[route.route.stops.length - 1].city === 'chisinau' ? t('street') : t('pass-req') }</span></p>
                         </div>
                     </div>
                 </div>

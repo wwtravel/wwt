@@ -26,31 +26,35 @@ const PassengerInfo = () => {
         </div>
         <div className='flex lg:flex-row flex-col'>
             <div className='lg:w-[50%] w-full md:px-[4rem] md:py-[3rem] xs:p-[2rem] p-[1rem]'>
-                <div className='flex items-end w-full'>
-                    <img src="/icons/passenger-info-icons/icon-adult.svg" alt="info-icon" draggable={false} className='md:size-[4rem] size-[2.667rem] md:mr-[1.5rem] mr-[0.667rem]' />
-                    <p className='whitespace-nowrap  font-bold md:text-[1.5rem] text-[1.333rem] text-dark-gray font-open-sans leading-[0.7] mr-[0.5rem]'>{ t('passenger1Title') }</p>
-                    <span className='w-full overflow-hidden whitespace-nowrap text-ellipsis leading-[0.8] text-[1.5rem]'>.......................................................................................................................................................................................................</span>
+                <div className='flex items-end w-full justify-between'>
+                    <div className='flex items-end'>
+                        <img src="/icons/passenger-info-icons/icon-adult.svg" alt="info-icon" draggable={false} className='md:size-[4rem] size-[2.667rem] md:mr-[1.5rem] mr-[0.667rem]' />
+                        <p className='whitespace-nowrap  font-bold md:text-[1.5rem] text-[1.333rem] text-dark-gray font-open-sans leading-[0.7] mr-[0.5rem]'>{ t('passenger1Title') }</p>
+                    </div>
                     <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7] '>{ passengersInfoData[activeCountry].adultFee }€</p>
                 </div>
 
-                <div className='flex items-end w-full mt-[1.5rem]'>
-                    <img src="/icons/passenger-info-icons/icon-child.svg" alt="info-icon" draggable={false} className='md:size-[4rem] size-[2.667rem] md:mr-[1.5rem] mr-[0.667rem]' />
-                    <p className='whitespace-nowrap font-bold md:text-[1.5rem] text-[1.333rem] text-dark-gray font-open-sans leading-[0.7] mr-[0.5rem]'>{ t('passenger2Title') } <span className='font-[400]'>- { t('passenger2info') }</span></p>
-                    <span className='w-full overflow-hidden whitespace-nowrap text-ellipsis leading-[0.8] text-[1.5rem]'>.......................................................................................................................................................................................................</span>
+                <div className='flex items-end w-full mt-[1.5rem] justify-between'>
+                    <div className='flex items-end'>
+                        <img src="/icons/passenger-info-icons/icon-child.svg" alt="info-icon" draggable={false} className='md:size-[4rem] size-[2.667rem] md:mr-[1.5rem] mr-[0.667rem]' />
+                        <p className='whitespace-nowrap font-bold md:text-[1.5rem] text-[1.333rem] text-dark-gray font-open-sans leading-[0.7] mr-[0.5rem]'>{ t('passenger2Title') } <span className='font-[400]'>- { t('passenger2info') }</span></p>
+                    </div>
                     <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7] '>{ passengersInfoData[activeCountry].childFee }€</p>
                 </div>
 
-                <div className='flex items-end w-full mt-[1.5rem]'>
-                    <img src="/icons/passenger-info-icons/icon-student.svg" alt="info-icon" draggable={false} className='md:size-[4rem] size-[2.667rem] md:mr-[1.5rem] mr-[0.667rem]' />
-                    <p className='whitespace-nowrap  font-bold md:text-[1.5rem] text-[1.333rem] text-dark-gray font-open-sans leading-[0.7] mr-[0.5rem]'>{ t('passenger3Title') } <span className='font-[400]'>- { t('passenger3info') }</span></p>
-                    <span className='w-full overflow-hidden whitespace-nowrap text-ellipsis leading-[0.8] text-[1.5rem] mr-[0.5rem]'>.......................................................................................................................................................................................................</span>
+                <div className='flex items-end w-full mt-[1.5rem] justify-between'>
+                    <div className='flex items-end'>
+                        <img src="/icons/passenger-info-icons/icon-student.svg" alt="info-icon" draggable={false} className='md:size-[4rem] size-[2.667rem] md:mr-[1.5rem] mr-[0.667rem]' />
+                        <p className='whitespace-nowrap  font-bold md:text-[1.5rem] text-[1.333rem] text-dark-gray font-open-sans leading-[0.7] mr-[0.5rem]'>{ t('passenger3Title') } <span className='font-[400]'>- { t('passenger3info') }</span></p>
+                    </div>
                     <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7]'>{ passengersInfoData[activeCountry].studentFee }€</p>
                 </div>
 
-                <div className='flex items-end w-full mt-[1.5rem]'>
-                    <img src="/icons/passenger-info-icons/icon-luggage.svg" alt="info-icon" draggable={false} className='md:size-[4rem] size-[2.667rem] md:mr-[1.5rem] mr-[0.667rem]' />
-                    <p className='whitespace-nowrap  font-bold md:text-[1.5rem] text-[1.333rem] text-dark-gray font-open-sans leading-[0.7] mr-[0.5rem]'>{ t('passenger4Title') } <span className='font-[400]'>- { t('passenger4info') }</span></p>
-                    <span className='w-full overflow-hidden whitespace-nowrap text-ellipsis leading-[0.8] text-[1.5rem] mr-[0.5rem]'>.......................................................................................................................................................................................................</span>
+                <div className='flex items-end w-full mt-[1.5rem] justify-between'>
+                    <div className='flex items-end'>
+                        <img src="/icons/passenger-info-icons/icon-luggage.svg" alt="info-icon" draggable={false} className='md:size-[4rem] size-[2.667rem] md:mr-[1.5rem] mr-[0.667rem]' />
+                        <p className='whitespace-nowrap  font-bold md:text-[1.5rem] text-[1.333rem] text-dark-gray font-open-sans leading-[0.7] mr-[0.5rem]'>{ t('passenger4Title') } <span className='font-[400]'>- { t('passenger4info') }</span></p>
+                    </div>
                     <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7]'>{ passengersInfoData[activeCountry].luggageFee === 0 ? t('free') : passengersInfoData[activeCountry].luggageFee }</p>
                 </div>
 

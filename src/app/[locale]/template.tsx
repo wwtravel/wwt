@@ -7,6 +7,8 @@ import { useEffect, useState } from "react"
 import { RemoveScrollBar } from "react-remove-scroll-bar"
 import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 
+import {zeroRightClassName,fullWidthClassName, noScrollbarsClassName} from 'react-remove-scroll-bar';
+
 
 
 const template = ({ children }: { children: React.ReactNode }) => {
@@ -16,6 +18,7 @@ const template = ({ children }: { children: React.ReactNode }) => {
   const [showChat, setShowChat] = useState(false)
 
   useEffect(() => {
+    setShowChat(false)
     setIsLoading(true)
     setTimeout(() => {
         setIsLoading(false)
@@ -35,9 +38,11 @@ const template = ({ children }: { children: React.ReactNode }) => {
         </AnimatePresence>
         { children }
         {
-          showChat && <TawkMessengerReact
-            propertyId="66d5add7ea492f34bc0cbf89" 
-            widgetId="1i6pau4mq"/>
+          showChat &&
+              <TawkMessengerReact
+                propertyId="66d5add7ea492f34bc0cbf89" 
+                widgetId="1i6pau4mq"
+              />
           }
     </div>
   )

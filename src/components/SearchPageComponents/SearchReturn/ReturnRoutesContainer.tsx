@@ -13,60 +13,13 @@ import MobileReturnRoutesContainer from './MobileReturnRoutesContainer';
 interface ReturnRoutesContainerProps{
     setSelectedRoutes: React.Dispatch<React.SetStateAction<SelectedRoutes>>;
     seletcedRoute : Travel;
+    routes : TravelResponse;
+    loading : boolean;
 }
 
-const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelectedRoutes, seletcedRoute }) => {
+const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelectedRoutes, seletcedRoute, routes, loading }) => {
 
     const searchParams = useSearchParams()
-
-    const [routes, setRoutes] = useState<TravelResponse>([])
-    const [loading, setLoading] = useState(true)
-
-    const searchRoutes = async (departureCity: string, arrivalCity: string, departureDate: string) => {
-        try {
-            setLoading(true)
-            setRoutes([])
-            const body: any = {
-                departure_city: departureCity,
-                arrival_city: arrivalCity,
-                departure_date: departureDate 
-            };
-    
-            const response = await fetch('/api/search', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(body),
-            });
-    
-            if (!response.ok) {
-                setLoading(false)
-                const errorData = await response.json();
-                throw new Error(errorData.msg || 'An error occurred while searching for routes.');
-            }
-    
-            const result = await response.json();
-            setRoutes(result.toures)
-            setLoading(false)
-        } catch (error) {
-            setLoading(false)
-            console.error('Error:', error);
-            throw error;
-        }
-    };
-    
-    useEffect(() => {
-
-        let queryDate = ''
-        if(searchParams.has('arrdate') && searchParams.get('arrdate') !== ''){
-            queryDate = searchParams.get('arrdate')!
-        } else {
-            queryDate = extractDate(seletcedRoute.arrival)
-        }
-            searchRoutes(seletcedRoute.route.stops[seletcedRoute.route.stops.length - 1].city, seletcedRoute.route.stops[0].city, queryDate)
-
-    }, [searchParams])
     
     const locale = useLocale()
     
@@ -145,6 +98,12 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
         );
     };
 
+    const [filteredRoutes, setFilteredRoutes] = useState<TravelResponse>([])
+
+    useEffect(() => {
+        setFilteredRoutes(routes.filter((route: Travel) => new Date(extractDate(route.departure)) > new Date(extractDate(seletcedRoute.arrival))));
+    }, [routes])
+
 
     if(loading) return (
         <div className='mt-[3rem] md:max-w-[82.75rem] max-w-[29.5rem] h-[9.5rem] rounded-[1rem]  mx-auto w-full grid place-content-center bg-light-white border border-gray/25 shadow-custom'>
@@ -158,7 +117,7 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
         </div>
       )
     
-      if(routes.length === 0) return (
+      if(filteredRoutes.length === 0) return (
         <div className='mt-[3rem] md:max-w-[82.75rem] max-w-[29.5rem] py-[2rem] px-[1.5rem] rounded-[1rem]  mx-auto w-full flex items-center justify-center bg-red/20 border border-gray/25 shadow-custom'>
             <div className='flex lg:gap-[0.25rem] gap-[0.333rem] text-left'>
                 <img src="/icons/route-card-icons/icon-info.svg" alt="info" draggable={false} className='lg:size-[1rem] size-[1.333rem] mt-[0.25rem]' />
@@ -171,7 +130,7 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
     <div>
         <div className='mt-[3rem] max-w-[82.75rem] mx-auto w-full flex flex-col gap-[1rem]'>
         {
-            extractDate(routes[0].departure) !== searchParams.get('depdate') && (
+            extractDate(filteredRoutes[0].departure) !== searchParams.get('arrdate') && (
                 <div className='md:max-w-[82.75rem] max-w-[29.5rem] py-[2rem] px-[1.5rem] rounded-[1rem]  mx-auto w-full flex items-center justify-center bg-red/20 border border-gray/25 shadow-custom'>
                     <div className='flex lg:gap-[0.25rem] gap-[0.333rem] text-left'>
                         <img src="/icons/route-card-icons/icon-info.svg" alt="info" draggable={false} className='lg:size-[1rem] size-[1.333rem] mt-[0.25rem]' />
@@ -183,16 +142,16 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
         }
 
         {/* Mobile routes */}
-        <MobileReturnRoutesContainer routes={routes} setSelectedRoutes={setSelectedRoutes}/>
+        <MobileReturnRoutesContainer routes={filteredRoutes} setSelectedRoutes={setSelectedRoutes}/>
 
         {
-            routes.map((route, index) => (
+            filteredRoutes.map((route, index) => (
                 <div className='w-full max-lg:hidden bg-light-white border border-gray/25 hover:border-red transition-colors duration-300 shadow-custom rounded-[1rem] px-[4rem] py-[2rem]' key={index}>
                     <div className='h-[5.5rem] flex justify-between items-center'>
                         <div className='h-full flex flex-col justify-between'>
                             <div className='flex items-center font-open-sans font-[400] text-[1rem] text-dark-gray line-clamp-1 text-nowrap'>
                                 <img src="/icons/route-card-icons/icon-calendar.svg" alt="calendar" draggable={false} className='size-[1rem] mr-[0.5rem]' />
-                                <p className={`mr-[1rem] ${ extractDate(routes[0].departure) === searchParams.get('depdate') && "text-red font-bold" }`}>{ `${getDayOfTheWeek(parseDate(route.departure).dayOfWeek)}, ${parseDate(route.departure).dayOfMonth} ${getMonthText(parseDate(route.departure).month)}`}</p>
+                                <p className={`mr-[1rem] ${ extractDate(route.departure) === searchParams.get('arrdate') ? "text-red font-bold" : "text-dark-gray"}`}>{ `${getDayOfTheWeek(parseDate(route.departure).dayOfWeek)}, ${parseDate(route.departure).dayOfMonth} ${getMonthText(parseDate(route.departure).month)}`}</p>
                                 <img src="/icons/route-card-icons/icon-clock.svg" alt="time" draggable={false} className='size-[1rem] mr-[0.5rem]' />
                                 <p>{ parseDate(route.departure).timeString }</p>
                             </div>
@@ -216,13 +175,13 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
                                     <p className='text-[1rem] text-gray/75 mr-[0.5rem]'>{ t('start') }:</p>
                                     <p className='text-[1rem] text-dark-gray mr-[0.5rem] line-clamp-1 text-nowrap'>{ route.route.stops[0].label[getLocale(locale)] }</p>
                                     <img src="/icons/route-card-icons/icon-adress.svg" alt="adress" draggable={false} className='size-[1rem] mr-[0.5rem]' />
-                                    <p className='text-[0.875rem] text-dark-gray'>{ route.route.stops[0].city === 'chisinau' ? t('street') : t('pass-req') }</p>
+                                    <p className={`text-[0.875rem] ${route.route.stops[0].city === 'chisinau' ? 'text-dark-gray' : "text-red"}`}>{ route.route.stops[0].city === 'chisinau' ? t('street') : t('pass-req') }</p>
                                 </div>
                                 <div className='flex items-center font-open-sans font-[400]'>
                                     <p className='text-[1rem] text-gray/75 mr-[0.5rem]'>{ t('finish') }:</p>
                                     <p className='text-[1rem] text-dark-gray mr-[0.5rem] line-clamp-1 text-nowrap'>{ route.route.stops[route.route.stops.length - 1].label[getLocale(locale)] }</p>
                                     <img src="/icons/route-card-icons/icon-adress.svg" alt="adress" draggable={false} className='size-[1rem] mr-[0.5rem]' />
-                                    <p className='text-[0.875rem] text-red'>{ route.route.stops[route.route.stops.length - 1].city === 'chisinau' ? t('street') : t('pass-req') }</p>
+                                    <p className={`text-[0.875rem] ${route.route.stops[route.route.stops.length - 1].city === 'chisinau' ? 'text-dark-gray' : "text-red"}`}>{ route.route.stops[route.route.stops.length - 1].city === 'chisinau' ? t('street') : t('pass-req') }</p>
                                 </div>
                             </div>
 

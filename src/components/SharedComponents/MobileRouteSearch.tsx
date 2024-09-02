@@ -217,7 +217,7 @@ const MobileRouteSearch = () => {
   
       currentParams.set("r", String(retour));
   
-      router.replace(`${pathname}?${currentParams.toString()}`)
+      router.replace(`${pathname}?${currentParams.toString()}` , { scroll: false })
     }
   }, [retour])
 
@@ -233,7 +233,7 @@ const MobileRouteSearch = () => {
         }
       }
   
-      router.replace(`${pathname}?${currentParams.toString()}`);
+      router.replace(`${pathname}?${currentParams.toString()}`, { scroll: false });
     }
   }, [arrivalDate]);
 

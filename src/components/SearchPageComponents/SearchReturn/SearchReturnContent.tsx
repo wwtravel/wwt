@@ -1,7 +1,7 @@
 'use client'
 
 import { SelectedRoutes } from '@/app/[locale]/route-search/PageContent'
-import { Travel } from '@/types/routeType';
+import { Travel, TravelResponse } from '@/types/routeType';
 import { useTranslations } from 'next-intl'
 import { useSearchParams } from 'next/navigation'
 import React from 'react'
@@ -10,9 +10,11 @@ import ReturnRoutesContainer from './ReturnRoutesContainer';
 interface SearchReturnContentProps{
   setSelectedRoutes: React.Dispatch<React.SetStateAction<SelectedRoutes>>;
   seletcedRoute : Travel;
+  routes : TravelResponse;
+  loading: boolean;
 }
 
-const SearchReturnContent: React.FC<SearchReturnContentProps> = ({ setSelectedRoutes, seletcedRoute }) => {
+const SearchReturnContent: React.FC<SearchReturnContentProps> = ({ setSelectedRoutes, seletcedRoute, routes, loading }) => {
 
   const t = useTranslations("RouteSearchPage")
   const date_t = useTranslations("RouteSearchPage_Date")
@@ -62,7 +64,7 @@ const SearchReturnContent: React.FC<SearchReturnContentProps> = ({ setSelectedRo
         </h1>
         <div className='h-[4px] w-[6rem] mx-auto mt-[1.5rem] bg-red'/>
 
-        <ReturnRoutesContainer seletcedRoute={seletcedRoute} setSelectedRoutes={setSelectedRoutes}/>
+        <ReturnRoutesContainer routes={routes} loading={loading} seletcedRoute={seletcedRoute} setSelectedRoutes={setSelectedRoutes}/>
     </div>
   )
 }

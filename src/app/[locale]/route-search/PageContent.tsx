@@ -3,6 +3,7 @@
 import { SearchPageHeader, SearchPageContent, NavBar, Footer, SearchReturnHeader, SearchReturnContent, Checkout } from '@/components'
 import { Travel } from '@/types/routeType'
 import { useState } from 'react'
+import { TravelResponseFull } from './FetchContainer';
 
 export interface SelectedRoutes{
     departureRoute : Travel | null;
@@ -10,7 +11,12 @@ export interface SelectedRoutes{
     shouldReturn : boolean;
 }
 
-const PageContent = () => {
+interface PageContentProps{
+  routes: TravelResponseFull;
+  loading: boolean;
+}
+
+const PageContent:React.FC<PageContentProps> = ({ routes, loading }) => {
 
 
   const [selectedRoutes, setSelectedRoutes] = useState<SelectedRoutes>({
@@ -19,8 +25,6 @@ const PageContent = () => {
     shouldReturn: false
   })
 
-  console.log(selectedRoutes)
-
   return (
     <div>
         <NavBar />
@@ -28,7 +32,7 @@ const PageContent = () => {
                 !selectedRoutes.departureRoute && !selectedRoutes.returnRoute && (
                     <>
                         <SearchPageHeader />
-                        <SearchPageContent setSelectedRoutes={setSelectedRoutes}/>
+                        <SearchPageContent loading={loading} routes={routes.tour} setSelectedRoutes={setSelectedRoutes}/>
                     </>
                 )
             }
@@ -36,7 +40,7 @@ const PageContent = () => {
                 selectedRoutes.departureRoute && selectedRoutes.shouldReturn && !selectedRoutes.returnRoute && (
                     <>
                         <SearchReturnHeader seletcedRoute={selectedRoutes.departureRoute} setSelectedRoutes={setSelectedRoutes}/>
-                        <SearchReturnContent seletcedRoute={selectedRoutes.departureRoute} setSelectedRoutes={setSelectedRoutes}/>
+                        <SearchReturnContent loading={loading} routes={routes.return} seletcedRoute={selectedRoutes.departureRoute} setSelectedRoutes={setSelectedRoutes}/>
                     </>
                 )
             }

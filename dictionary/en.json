@@ -387,7 +387,8 @@
     "return-title": "RETURN ROUTES FROM"
   },
   "RouteSearchPage_Checkout": {
-    "title": "ENTER PASSENGER DETAILS",
+    "title-tour": "ENTER PASSENGER DETAILS FOR THE TOUR",
+    "title-retour": "ENTER PASSENGER DETAILS FOR THE RETURN",
     "order-details": "Order Details",
     "total-price": "Total Price",
     "passenger": "Passenger",
@@ -407,6 +408,13 @@
     "finish": "Finish",
     "payment-info": "Payment at Boarding",
     "delete": "Delete",
+
+    "sign-in-question": "Do you already have an account?",
+    "sign-in-btn" : "Sign in",
+    "sign-in-msg": "to fill in the details faster.",
+    "fill-in-data-question": "Are the tour and return dates the same?",
+    "fill-in-data-msg": "Fill in with the same data.",
+    "continue": "Continue",
 
     "lastname-req-title": "Last Name Required",
     "lastname-req-desc": "Please enter your last name to continue.",

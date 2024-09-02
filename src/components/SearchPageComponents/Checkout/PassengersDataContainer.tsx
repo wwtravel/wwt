@@ -31,12 +31,16 @@ interface OrderData {
 
 interface PassengerDataContainerProps{
     prices : PriceSheet;
-    depRoute: Travel;
-    retRoute: Travel | null;
+    route : Travel | null;
     setCost: React.Dispatch<React.SetStateAction<number>>
+    passengers: Passenger[];
+    updatePassenger: (index: number, updatedPassenger: Passenger) => void;
+    setPassengers: React.Dispatch<React.SetStateAction<Passenger[]>>;
+    setCheckoutContent: React.Dispatch<React.SetStateAction<"tour" | "return">>;
+    checkoutContent : "tour" | "return"
 }
 
-const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices, depRoute, retRoute, setCost }) => {
+const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices, route, setCost, passengers, setPassengers, updatePassenger, setCheckoutContent, checkoutContent }) => {
 
     const t = useTranslations("RouteSearchPage_Checkout")
 
@@ -70,7 +74,7 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
         }
     };
 
-    const handleClick = async () => {
+    const handleClickFinish = async () => {
         let isPassengerDataValidated = true
         setValidationTrigger(true); 
         setTimeout(() => setValidationTrigger(false), 300)
@@ -108,6 +112,21 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
         }
     }
 
+    const handleClickContinue = async () => {
+        let isPassengerDataValidated = true
+        setValidationTrigger(true); 
+        setTimeout(() => setValidationTrigger(false), 300)
+
+        passengers.map(passenger => {
+            if(passenger.firstname === '' || passenger.lastname === '' || passenger.price === 0) isPassengerDataValidated = false
+        })
+
+        if(!isPassengerDataValidated) return;
+
+        setValidationTrigger(false)
+        setCheckoutContent('return')
+    }
+
     const [contactDetails, setContactDetails] = useState<ContactDetails>({
         phone: '',
         email: ''
@@ -118,14 +137,6 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
         setContactDetails({ ...contactDetails, [name]: value });
     };
 
-    const [passengers, setPassengers] = useState<Passenger[]>([
-        {
-            firstname: '',
-            lastname: '',
-            price: 0
-        }
-    ])
-
     useEffect(() => {
         setCost(0)
         passengers.map(passenger => {
@@ -133,20 +144,14 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
         })
     }, [passengers])
 
-    const updatePassenger = (index: number, updatedPassenger: Passenger) => {
-        setPassengers(prevPassengers => 
-            prevPassengers.map((passenger, i) => 
-                i === index ? updatedPassenger : passenger
-            )
-        );
+    let maxLength = 10;
+    if(route){
+        if(route.free_places >= 10) maxLength = 10
+            else maxLength = route.free_places
     }
 
-    let maxLength = 10;
-    if(depRoute.free_places >= 10) maxLength = 10
-        else maxLength = depRoute.free_places
-
   return (
-    <div className='max-w-[47rem] w-full flex flex-col justify-between'>
+    <div className='max-w-[47rem] w-full flex flex-col justify-between flex-1'>
         <div>
             <div className='w-full flex flex-col md:gap-[1rem] gap-[2rem]'>
                 {
@@ -178,62 +183,80 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
         </div>
 
         <div className="w-full mt-[2rem]">
-            <p className="font-open-sans md:text-[1.125rem] text-[1.5rem] font-bold text-dark-gray">{ t('contact-details') }</p>
-            <div className="w-full mt-[0.5rem] grid lg:grid-cols-3 grid-cols-1 md:gap-[1rem] gap-[0.667rem]">
+            {
+                checkoutContent === 'return' && <p className="font-open-sans md:text-[1.125rem] text-[1.5rem] font-bold text-dark-gray">{ t('contact-details') }</p>
+            }
+            <div className={`w-full mt-[0.5rem] grid lg:grid-cols-3 grid-cols-1 md:gap-[1rem] gap-[0.667rem]`}>
 
                 {/* phone */}
                     <div className="relative">
-                        <input 
-                        id="checkoutPhone" 
-                            onFocus={() => setPhoneFocus(true)} onBlur={() => setPhoneFocus(false)} 
-                            name="phone" value={contactDetails.phone} onChange={handleChange} 
-                            className={`${phoneErr && 'animate-input-error'} w-full bg-light-white lg:h-[3.5rem] h-[4.667rem] border border-gray/25  md:rounded-[0.5rem] rounded-[0.667rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text" maxLength={15}
-                        />
+                        {
+                            checkoutContent === 'return' && (
+                                <>
+                                    <input 
+                                    id="checkoutPhone" 
+                                        onFocus={() => setPhoneFocus(true)} onBlur={() => setPhoneFocus(false)} 
+                                        name="phone" value={contactDetails.phone} onChange={handleChange} 
+                                        className={`${phoneErr && 'animate-input-error'} w-full bg-light-white lg:h-[3.5rem] h-[4.667rem] border border-gray/25  md:rounded-[0.5rem] rounded-[0.667rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text" maxLength={15}
+                                    />
 
-                        <motion.label
-                            htmlFor="checkoutPhone" 
-                            className="origin-top-left cursor-text absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
-                            initial={{ scale: 1, y: '-50%' }}
-                            animate={{
-                                scale: phoneFocus || contactDetails.phone !== '' ? 0.7 : 1,
-                                y: phoneFocus || contactDetails.phone !== '' ? '-80%' : '-50%'
-                            }}
-                            transition={{ type: 'tween', ease: 'easeInOut', duration: 0.2 }}
-                        >
-                            { t('phone') }
-                        </motion.label>
+                                    <motion.label
+                                        htmlFor="checkoutPhone" 
+                                        className="origin-top-left cursor-text absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
+                                        initial={{ scale: 1, y: '-50%' }}
+                                        animate={{
+                                            scale: phoneFocus || contactDetails.phone !== '' ? 0.7 : 1,
+                                            y: phoneFocus || contactDetails.phone !== '' ? '-80%' : '-50%'
+                                        }}
+                                        transition={{ type: 'tween', ease: 'easeInOut', duration: 0.2 }}
+                                    >
+                                        { t('phone') }
+                                    </motion.label>
+                                </>
+                            ) 
+                        }
                     </div>
                 {/* phone */}
 
                 {/* email */}
                     <div className="relative">
-                        <input 
-                        id="checkoutEmail" 
-                            onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} 
-                            name="email" value={contactDetails.email} onChange={handleChange} 
-                            className={`${emailErr && 'animate-input-error'} w-full bg-light-white lg:h-[3.5rem] h-[4.667rem] border border-gray/25  md:rounded-[0.5rem] rounded-[0.667rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"
-                        />
+                        {
+                            checkoutContent === 'return' && (
+                                <>
+                                    <input 
+                                    id="checkoutEmail" 
+                                        onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} 
+                                        name="email" value={contactDetails.email} onChange={handleChange} 
+                                        className={`${emailErr && 'animate-input-error'} w-full bg-light-white lg:h-[3.5rem] h-[4.667rem] border border-gray/25  md:rounded-[0.5rem] rounded-[0.667rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text"
+                                    />
 
-                        <motion.label
-                            htmlFor="checkoutEmail" 
-                            className="origin-top-left cursor-text absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
-                            initial={{ scale: 1, y: '-50%' }}
-                            animate={{
-                                scale: emailFocus || contactDetails.email !== '' ? 0.7 : 1,
-                                y: emailFocus || contactDetails.email !== '' ? '-80%' : '-50%'
-                            }}
-                            transition={{ type: 'tween', ease: 'easeInOut', duration: 0.2 }}
-                        >
-                            { t('email') }
-                        </motion.label>
+                                    <motion.label
+                                        htmlFor="checkoutEmail" 
+                                        className="origin-top-left cursor-text absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
+                                        initial={{ scale: 1, y: '-50%' }}
+                                        animate={{
+                                            scale: emailFocus || contactDetails.email !== '' ? 0.7 : 1,
+                                            y: emailFocus || contactDetails.email !== '' ? '-80%' : '-50%'
+                                        }}
+                                        transition={{ type: 'tween', ease: 'easeInOut', duration: 0.2 }}
+                                    >
+                                        { t('email') }
+                                    </motion.label>
+                                </>
+                            )
+                        }
                     </div>
                 {/* email */}
 
                 {/* Finish btn */}
-                    <div className="relative lg:h-[3.5rem] h-[4.667rem] w-full bg-red hover:bg-dark-red transition-colors duration-300  md:rounded-[0.5rem] rounded-[0.667rem] cursor-pointer grid place-content-center" onClick={handleClick}>
-                        <p className="text-light-white md:text-[1.125rem] text-[1.5rem] font-bold font-open-sans">{ t('finish') }</p>
-                        <p className="text-center absolute bottom-0 left-0 right-0 md:translate-y-[1.5rem] translate-y-[2rem] text-red md:text-[0.875rem] text-[1.167rem] font-bold font-open-sans">* { t('payment-info') }</p>
+                {
+                    <div className="relative lg:h-[3.5rem] h-[4.667rem] w-full bg-red hover:bg-dark-red transition-colors duration-300  md:rounded-[0.5rem] rounded-[0.667rem] cursor-pointer grid place-content-center" onClick={checkoutContent === 'return' ? handleClickFinish : handleClickContinue}>
+                        <p className="text-light-white md:text-[1.125rem] text-[1.5rem] font-bold font-open-sans">{ checkoutContent === 'return' ? t('finish') : t('continue') }</p>
+                        {
+                            checkoutContent === 'return' && <p className="text-center absolute bottom-0 left-0 right-0 md:translate-y-[1.5rem] translate-y-[2rem] text-red md:text-[0.875rem] text-[1.167rem] font-bold font-open-sans">* { t('payment-info') }</p>
+                        }
                     </div>
+                }
                 {/* Finish btn */}
 
             </div>

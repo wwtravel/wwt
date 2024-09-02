@@ -210,7 +210,7 @@ const RouteSearch = () => {
         else params.delete('arrdate')
       params.set('r', String(retour))
 
-      router.push(`/route-search?${params.toString()}`, {scroll: false})
+      router.push(`/route-search?${params.toString()}`, { scroll: false })
 
 
 
@@ -226,7 +226,7 @@ const RouteSearch = () => {
   
       currentParams.set("r", String(retour));
   
-      router.replace(`${pathname}?${currentParams.toString()}`)
+      router.replace(`${pathname}?${currentParams.toString()}`, {scroll: false})
     }
   }, [retour])
 
@@ -242,7 +242,7 @@ const RouteSearch = () => {
         }
       }
   
-      router.replace(`${pathname}?${currentParams.toString()}`);
+      router.replace(`${pathname}?${currentParams.toString()}`, {scroll: false});
     }
   }, [arrivalDate]);
 

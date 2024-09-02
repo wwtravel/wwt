@@ -7,6 +7,8 @@ import MobileRouteSearch from '@/components/SharedComponents/MobileRouteSearch'
 import { Travel } from '@/types/routeType'
 import { SelectedRoutes } from '@/app/[locale]/route-search/PageContent'
 import UnderlinedText from '../SearchPageContent/UnderlinedText'
+import { useEffect } from 'react'
+import { scrollToSection } from '@/utils/otherFunctions'
 
 interface SearchReturnHeaderProps{
   seletcedRoute : Travel;
@@ -16,6 +18,10 @@ interface SearchReturnHeaderProps{
 const SearchReturnHeader:React.FC<SearchReturnHeaderProps> = ({ seletcedRoute, setSelectedRoutes }) => {
 
   const locale = useLocale()
+
+  useEffect(() => {
+    scrollToSection('scroll')
+  })
 
 const date_t = useTranslations("RouteSearchPage_Date")
 const t = useTranslations("RouteSearchPage")
@@ -84,6 +90,8 @@ const extractDate = ( textDate: string ) => {
 
   return (
     <div className="relative lg:h-[24.75rem] max-lg:pb-[2.667rem] md:bg-[url('/images/header_bg.png')] bg-center bg-cover lg:px-[12rem] px-[1rem] lg:pt-[30vh] pt-[13.75rem]">
+
+        <div id='scroll' className='absolute left-0 lg:bottom-[6.25rem] bottom-[4rem]'/>
 
           <div className='absolute max-lg:hidden bottom-0 left-[50%] -translate-x-[50%] max-w-[82.75rem] mx-auto w-full h-[9.5rem] rounded-[1rem] overflow-hidden border border-gray/25 shadow-custom   translate-y-[50%]'>
             <div className='w-full max-lg:hidden bg-light-white px-[4rem] py-[2rem]' >

@@ -21,53 +21,13 @@ import { toast } from 'sonner'
 
 interface RoutesContainerProps{
     setSelectedRoutes: React.Dispatch<React.SetStateAction<SelectedRoutes>>
+    routes: TravelResponse;
+    loading: boolean;
 }
 
-const RoutesContainer:React.FC<RoutesContainerProps> = ({ setSelectedRoutes }) => {
+const RoutesContainer:React.FC<RoutesContainerProps> = ({ setSelectedRoutes, routes, loading }) => {
 
 const searchParams = useSearchParams()
-
-const [routes, setRoutes] = useState<TravelResponse>([])
-const [loading, setLoading] = useState(true)
-
-const searchRoutes = async (departureCity: string, arrivalCity: string, departureDate: string) => {
-    try {
-        setLoading(true)
-        setRoutes([])
-
-        const response = await fetch('/api/search', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                departure_city: departureCity,
-                arrival_city: arrivalCity,
-                departure_date: departureDate,
-            }),
-        });
-
-        if (!response.ok) {
-            setLoading(false)
-            const errorData = await response.json();
-            throw new Error(errorData.msg || 'An error occurred while searching for routes.');
-        }
-
-        const result = await response.json();
-        setRoutes(result.toures)
-        setLoading(false)
-    } catch (error) {
-        setLoading(false)
-        console.error('Error:', error);
-        throw error;
-    }
-};
-
-useEffect(() => {
-    if(searchParams.has('dep') && searchParams.has('arr') && searchParams.has('depdate')){
-        searchRoutes(searchParams.get('dep')!, searchParams.get('arr')!, searchParams.get('depdate')!)
-    }
-}, [searchParams])
 
 const locale = useLocale()
 
@@ -219,7 +179,7 @@ const handleRouteSelect = (route : Travel) => {
                         <div className='h-full flex flex-col justify-between'>
                             <div className='flex items-center font-open-sans font-[400] text-[1rem] text-dark-gray line-clamp-1 text-nowrap'>
                                 <img src="/icons/route-card-icons/icon-calendar.svg" alt="calendar" draggable={false} className='size-[1rem] mr-[0.5rem]' />
-                                <p className={`mr-[1rem] ${ extractDate(routes[0].departure) === searchParams.get('depdate') && "text-red font-bold" }`}>{ `${getDayOfTheWeek(parseDate(route.departure).dayOfWeek)}, ${parseDate(route.departure).dayOfMonth} ${getMonthText(parseDate(route.departure).month)}`}</p>
+                                <p className={`mr-[1rem] ${ extractDate(route.departure) === searchParams.get('depdate') ? "text-red font-bold" : "text-dark-gray"}`}>{ `${getDayOfTheWeek(parseDate(route.departure).dayOfWeek)}, ${parseDate(route.departure).dayOfMonth} ${getMonthText(parseDate(route.departure).month)}`}</p>
                                 <img src="/icons/route-card-icons/icon-clock.svg" alt="time" draggable={false} className='size-[1rem] mr-[0.5rem]' />
                                 <p>{ parseDate(route.departure).timeString }</p>
                             </div>
@@ -243,13 +203,13 @@ const handleRouteSelect = (route : Travel) => {
                                     <p className='text-[1rem] text-gray/75 mr-[0.5rem]'>{ t('start') }:</p>
                                     <p className='text-[1rem] text-dark-gray mr-[0.5rem] line-clamp-1 text-nowrap'>{ route.route.stops[0].label[getLocale(locale)] }</p>
                                     <img src="/icons/route-card-icons/icon-adress.svg" alt="adress" draggable={false} className='size-[1rem] mr-[0.5rem]' />
-                                    <p className='text-[0.875rem] text-dark-gray'>{ route.route.stops[0].city === 'chisinau' ? t('street') : t('pass-req') }</p>
+                                    <p className={`text-[0.875rem] ${route.route.stops[0].city === 'chisinau' ? 'text-dark-gray' : "text-red"}`}>{ route.route.stops[0].city === 'chisinau' ? t('street') : t('pass-req') }</p>
                                 </div>
                                 <div className='flex items-center font-open-sans font-[400]'>
                                     <p className='text-[1rem] text-gray/75 mr-[0.5rem]'>{ t('finish') }:</p>
                                     <p className='text-[1rem] text-dark-gray mr-[0.5rem] line-clamp-1 text-nowrap'>{ route.route.stops[route.route.stops.length - 1].label[getLocale(locale)] }</p>
                                     <img src="/icons/route-card-icons/icon-adress.svg" alt="adress" draggable={false} className='size-[1rem] mr-[0.5rem]' />
-                                    <p className='text-[0.875rem] text-red'>{ route.route.stops[route.route.stops.length - 1].city === 'chisinau' ? t('street') : t('pass-req') }</p>
+                                    <p className={`text-[0.875rem] ${route.route.stops[route.route.stops.length - 1].city === 'chisinau' ? 'text-dark-gray' : "text-red"}`}>{ route.route.stops[route.route.stops.length - 1].city === 'chisinau' ? t('street') : t('pass-req') }</p>
                                 </div>
                             </div>
 
