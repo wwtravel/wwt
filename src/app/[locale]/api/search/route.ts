@@ -94,9 +94,11 @@ const findTravel = async (data: FindTravelInterface) => {
                     }
                 }
             },
+            orderBy: {
+                departure: 'asc'
+            }
         })
     } catch (e) {
-        console.log("Inside RouteSearch > travel err: ", e)
         if (e) {
             return handlePrismaError(e);
         }
@@ -130,7 +132,6 @@ const findTravel = async (data: FindTravelInterface) => {
             }
         })
     } catch (e) {
-        console.log("Inside RouteSearch > price err: ", e)
         if (e) {
             return handlePrismaError(e);
         }
@@ -149,7 +150,6 @@ const findTravel = async (data: FindTravelInterface) => {
             }
         })
     } catch (e) {
-        console.log("Inside RouteSearch > label err: ", e)
         if (e) {
             return handlePrismaError(e);
         }
@@ -162,6 +162,7 @@ const findTravel = async (data: FindTravelInterface) => {
     travels.forEach(travel => {
         const depIndex = travel.route.stops.findIndex(route => route.city === data.departure_city);
         const arrIndex = travel.route.stops.findIndex(route => route.city === data.arrival_city);
+
 
         let travelRes = JSON.parse(JSON.stringify(travel));
 
