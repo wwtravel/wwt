@@ -37,7 +37,7 @@ export async function POST (request: Request) {
         });
     }
 
-    return Response.json({toures: toures, returnToures: return_toures}, {status: 200});
+    return Response.json({toures: toures, return_toures: return_toures}, {status: 200});
 }
 
 const findTravel = async (data: FindTravelInterface) => {
