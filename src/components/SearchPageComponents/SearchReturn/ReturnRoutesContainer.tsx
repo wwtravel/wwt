@@ -47,7 +47,7 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
             }
     
             const result = await response.json();
-            setRoutes(result.retour)
+            setRoutes(result)
             setLoading(false)
         } catch (error) {
             setLoading(false)
@@ -266,7 +266,7 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
                         stops={route.route.stops}
                         price={route.price}
                         freePlaces={route.free_places}
-                        hoursInterval={route.route.stops[0].hours}
+                        hoursInterval={route.route.stops[route.route.stops.length - 1].hours}
                         amenities={route.route.bus.amenities}
                     />
                 </div>

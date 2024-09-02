@@ -54,7 +54,7 @@ const searchRoutes = async (departureCity: string, arrivalCity: string, departur
         }
 
         const result = await response.json();
-        setRoutes(result.tour)
+        setRoutes(result)
         setLoading(false)
     } catch (error) {
         setLoading(false)
