@@ -20,10 +20,30 @@ import { fr, ro, enUS, ru } from "date-fns/locale"
  
 interface DatePickerProps{
     placeholder: string;
+    setSearchDate: React.Dispatch<React.SetStateAction<string>>;
+    edgeDate : Date | null;
+    calName : string;
+    dateValue : string;
+    errTrigger: boolean;
 }
 
-const DatePicker:React.FC<DatePickerProps> = ({ placeholder }) => {
+const DatePicker:React.FC<DatePickerProps> = ({ placeholder, setSearchDate, edgeDate, calName, dateValue, errTrigger }) => {
   const [date, setDate] = React.useState<Date>()
+
+  React.useEffect(() => {
+    if(dateValue !== ''){
+      setDate(new Date(dateValue))
+    } else setDate(undefined)
+  }, [dateValue])
+
+  React.useEffect(() => {
+    if(date) {
+      const formattedDate = format(date, "yyyy-MM-dd")
+      setSearchDate(formattedDate)
+    } else {
+      setSearchDate('')
+    }
+  }, [date])
 
   const [openCal, setOpenCal] = React.useState(false)
 
@@ -47,7 +67,7 @@ const DatePicker:React.FC<DatePickerProps> = ({ placeholder }) => {
         <Button
           variant={"outline"}
           className={cn(
-            "px-[1.5rem] pb-0 lg:pt-[1rem] pt-[1.5rem] relative lg:text-[1rem] text-[1.333rem] bg-light-white min-w-[15rem] max-lg:w-full lg:h-[3.5rem] h-[4.667rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal",
+            `${errTrigger && 'animate-input-error'} px-[1.5rem] pb-0 lg:pt-[1rem] pt-[1.5rem] relative lg:text-[1rem] text-[1.333rem] bg-light-white min-w-[15rem] max-lg:w-full lg:h-[3.5rem] h-[4.667rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal`,
             !date && "text-muted-foreground"
           )}
         >
@@ -77,7 +97,7 @@ const DatePicker:React.FC<DatePickerProps> = ({ placeholder }) => {
             onSelect={setDate}
             initialFocus
             locale={calLocale}
-            disabled={(date) => date < today}
+            disabled={ edgeDate && calName === 'arrival' ? (date) => date < edgeDate : (date) => date < today}
           />
         </PopoverContent>
     </Popover>

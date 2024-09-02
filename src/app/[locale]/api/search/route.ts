@@ -96,6 +96,7 @@ const findTravel = async (data: FindTravelInterface) => {
             },
         })
     } catch (e) {
+        console.log("Inside RouteSearch > travel err: ", e)
         if (e) {
             return handlePrismaError(e);
         }
@@ -129,6 +130,7 @@ const findTravel = async (data: FindTravelInterface) => {
             }
         })
     } catch (e) {
+        console.log("Inside RouteSearch > price err: ", e)
         if (e) {
             return handlePrismaError(e);
         }
@@ -147,6 +149,7 @@ const findTravel = async (data: FindTravelInterface) => {
             }
         })
     } catch (e) {
+        console.log("Inside RouteSearch > label err: ", e)
         if (e) {
             return handlePrismaError(e);
         }
@@ -154,7 +157,7 @@ const findTravel = async (data: FindTravelInterface) => {
 
     if (!label) return Response.json({ msg: "Label not found!"}, {status: 400});
 
-    const filteredTravels = new Array();
+const filteredTravels = new Array();
 
     travels.forEach(travel => {
         const depIndex = travel.route.stops.findIndex(route => route.city === data.departure_city);
@@ -172,5 +175,5 @@ const findTravel = async (data: FindTravelInterface) => {
         if (depIndex < arrIndex) filteredTravels.push(travelRes);
     });
 
-    return filteredTravels;
+    return Response.json(filteredTravels, {status: 200});
 }

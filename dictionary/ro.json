@@ -4,7 +4,8 @@
     "about" : "Despre Noi",
     "contact" : "Contacte",
     "schedule" : "Orarul Rutelor",
-    "route-search" : "Căutare Rută"
+    "route-search" : "Căutare Rută",
+    "pass-reset" : "Resetare Reușită"
   },
   "NavBar": {
     "titleMD": "Telefon Moldova",
@@ -255,6 +256,39 @@
 
     "close": "Închide"
   },
+  "ResetPassModal" : {
+    "title" : "Resetează parola",
+    "message" : "Scrie-ne adresa de email pe care ai folosit-o atunci când ai creat contul",
+
+    "email" : "Email",
+    "email-req-title": "Adresă de email necesară",
+    "email-req-desc": "Te rugăm să introduci adresa ta de e-mail pentru a continua.",
+
+    "email-err-title" : "Email nevalid",
+    "email-err-desc" : "Emailul trebuie să aibă cel puțin 1 caracter și cel mult 50 de caractere, și să fie un email valid",
+
+    "message2" : "Îți vom trimite un email cu un link de verificare",
+
+    "general-error-title": "Eroare la trimitere",
+    "general-error-desc": "A apărut o eroare în timpul trimiterii linkului de resetare a parolei. Te rugăm să încerci din nou mai târziu."
+  },
+  "EmailSentModal" : {
+    "title" : "Verifică email",
+    "message" : "Am trimis un link de verificare pe adresa de email",
+
+    "message2" : "Fă clic pe link pentru a finaliza verificarea. Acest link va expira în 24 ore",
+
+    "send-again" : "Trimite din nou",
+    "back-to-website" : "Întoarce-te pe site"
+
+  },
+  "SignUpEmailSentModal" : {
+    "title" : "Cont creat cu succes",
+    "message1" : "Am trimis detaliile contului pe adresa de email",
+    "message2" : "Te rugăm să verifici adresa de email pentru a găsi detaliile contului creat.",
+    "log-in" : "Conectează-te",
+    "back-to-website" : "Întoarce-te pe site"
+  },
   "UserModal" : {
     "tab_1_text" : "COMENZI & Rezervări",
     "tab_2_text" : "SETĂRI CONT",
@@ -328,13 +362,113 @@
     "book" : "Rezervă",
     "info-route" : "Despre rută",
     "duration" : "Durata călătoriei",
+    "hours" : "ore",
     "amenities" : "Comodități",
     "wifi" : "Wi-Fi Gratuit",
     "wc" : "Toaletă",
     "ac" : "Aer condiționat",
     "socket" : "Priză electrică",
     "minibar" : "Minibar",
-    "multimedia" : "Multimedia"
+    "multimedia" : "Multimedia",
+
+    "street" : "Strada Tighina 2/2",
+    "pass-req" : "După solicitarea pasagerilor",
+
+    "no-matching-route" : "Nu a fost găsită nici o rută pentru ziua selectată, dar puteți consulta datele cele mai apropiate mai jos.",
+    "no-route-found_part1" : "Nu a fost găsită nici o rută pentru ziua selectată, vă rugăm să ne",
+    "no-route-found_part2" : "contactați",
+    "no-route-found_part3" : "pentru mai multe detalii.",
+
+    "return-date-req-title": "Dată de retur necesară",
+    "return-date-req-desc": "Pentru a continua cu rezervarea biletului de retur, te rugăm să selectezi o dată de retur. Alternativ, poți dezactiva opțiunea de dus-întors.",
+    "close": "Închide",
+
+    "change-departure" : "Modifică ruta de plecare",
+    "change-return" : "Modifică ruta de return",
+    "return-title" : "RUTELE de retur DIN DATA DE"
+  },
+  "RouteSearchPage_Checkout" : {
+    "title" : "INTRODUCEȚI DATELE PASAGERILOR",
+    "order-details" : "Detaliile comenzi",
+    "total-price" : "Preț total",
+    "passenger" : "Pasager",
+    "number" : "nr",
+    "main" : "Principal",
+    "lastname" : "Nume",
+    "firstname" : "Prenume",
+    "ticket-type" : "Tipul biletului",
+    "adult" : "Adult",
+    "student" : "Student",
+    "child" : "Copil",
+    "years" : "ani",
+    "add-passenger" : "Adaugă un pasager",
+    "contact-details" : "Date de contact",
+    "phone" : "Număr de telefon",
+    "email" : "Email",
+    "finish" : "Finalizează",
+    "payment-info" : "Achitare la îmbarcare",
+    "delete" : "Șterge",
+
+    "lastname-req-title": "Numele de familie necesar",
+    "lastname-req-desc": "Te rugăm să introduci numele tău de familie pentru a continua.",
+
+    "firstname-req-title": "Prenumele necesar",
+    "firstname-req-desc": "Te rugăm să introduci prenumele tău pentru a continua.",
+
+    "firstname-err-title" : "Eroare prenume",
+    "firstname-err-desc" : "Prenumele trebuie să aibă cel puțin 1 caracter și cel mult 50 de caractere",
+
+    "lastname-err-title" : "Eroare nume de familie",
+    "lastname-err-desc" : "Numele de familie trebuie să aibă cel puțin 1 caracter și cel mult 50 de caractere",
+
+    "price-req-title": "Prețul biletului necesar",
+    "price-req-desc": "Te rugăm să alegi un preț pentru biletul tău, în funcție de tipul de pasager: copil, adult, student.",
+
+    "phone-req-title": "Număr de telefon necesar",
+    "phone-req-desc": "Te rugăm să introduci numărul tău de telefon pentru a continua.",
+
+    "phone-err-title": "Număr de telefon nevalid",
+    "phone-err-desc": "Numărul de telefon trebuie să aibă între 7 și 15 caractere și să fie un număr valid.",
+
+    "email-req-title": "Adresă de email necesară",
+    "email-req-desc": "Te rugăm să introduci adresa ta de e-mail pentru a continua.",
+
+    "email-err-title" : "Email nevalid",
+    "email-err-desc" : "Emailul trebuie să aibă cel puțin 1 caracter și cel mult 50 de caractere, și să fie un email valid",
+
+    "close": "Închide"
+  },
+  "RouteSearchErrors" : {
+    "departure-city-required-err-title": "Oraș de plecare lipsă",
+    "departure-city-required-err-desc": "Te rugăm să selectezi un oraș de plecare.",
+
+    "departure-city-invalid-err-title": "Oraș de plecare invalid",
+    "departure-city-invalid-err-desc": "Orașul de plecare selectat nu este valid. Alege un oraș din lista disponibilă.",
+
+    "arrival-city-required-err-title": "Oraș de sosire lipsă",
+    "arrival-city-required-err-desc": "Te rugăm să selectezi un oraș de sosire.",
+
+    "arrival-city-invalid-err-title": "Oraș de sosire invalid",
+    "arrival-city-invalid-err-desc": "Orașul de sosire selectat nu este valid. Alege un oraș din lista disponibilă.",
+
+    "departure-date-required-err-title": "Data de plecare lipsă",
+    "departure-date-required-err-desc": "Te rugăm să selectezi o dată pentru plecare.",
+
+    "return-date-required-err-title": "Data de retur lipsă",
+    "return-date-required-err-desc": "Te rugăm să selectezi o dată pentru retur.",
+
+    "return-date-invalid-err-title": "Data de retur invalidă",
+    "return-date-invalid-err-desc": "Data de retur trebuie să fie ulterioară datei de plecare.",
+
+    "same-city-err-title": "Orașe identice",
+    "same-city-err-desc": "Orașul de plecare și orașul de sosire nu pot fi aceleași. Te rugăm să alegi orașe diferite.",
+    "close": "Închide"
+  },
+  "ResetSuccessfulPage" : {
+    "title" : "PAROLA RESETATĂ CU SUCCES",
+    "message" : "Minunat! Am resetat parola și ți-am trimis datele pe email. Verifică acum",
+
+    "back-to-website" : "Întoarce-te pe site"
   }
   
 }

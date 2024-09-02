@@ -58,7 +58,7 @@ const DobDatePicker: React.FC<DatePickerProps> = ({ placeholder, setDob, dob }) 
         <Button
           variant={"outline"}
           className={cn(
-            "px-[1.5rem] pb-0 lg:pt-[1rem] pt-[1.5rem] relative md:text-[1rem] text-[1.333rem] bg-light-white min-w-full md:h-[3.5rem] h-[4.667rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal",
+            "px-[1.5rem] pb-0 pt-[1rem] relative md:text-[1rem] text-[1.333rem] bg-light-white min-w-full lg:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal",
             !date && "text-muted-foreground"
           )}
         >

@@ -1,3 +1,5 @@
+'use client'
+
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
@@ -8,6 +10,28 @@ interface OrdersProps{
 const Orders:React.FC<OrdersProps> = ({ setIsOpen }) => {
 
   const t = useTranslations("UserModal")
+
+
+  async function fetchOrder() {
+    try {
+        const response = await fetch('/api/order', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+      } catch (error) {
+          console.error('Error fetching order:', error);
+      }
+    }
+
+    fetchOrder();
 
   return (
     <div className='p-[3rem] relative'>

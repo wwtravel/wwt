@@ -11,6 +11,7 @@ import { RemoveScrollBar } from "react-remove-scroll-bar"
 const template = ({ children }: { children: React.ReactNode }) => {
 
   const [isLoading, setIsLoading] = useState(false)
+  const [showPage, setShowPage] = useState(false)
 
   useEffect(() => {
     setIsLoading(true)

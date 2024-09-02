@@ -114,6 +114,9 @@ export async function GET () {
         user = await prisma.user.findUnique({
             where: {
               email: session.user?.email,
+            },
+            select: {
+             orders: true
             }
           })
     } catch (e) {

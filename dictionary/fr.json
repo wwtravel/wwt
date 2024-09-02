@@ -4,7 +4,8 @@
     "about" : "À Propos",
     "contact" : "Contact",
     "schedule" : "Horaire des Routes",
-    "route-search" : "Recherche d'Itinéraire"
+    "route-search" : "Recherche d'Itinéraire",
+    "pass-reset" : "Réinitialisation Réussie"
   },
   "NavBar": {
     "titleMD": "Téléphone Moldavie",
@@ -254,6 +255,36 @@
 
     "close": "Fermer"
   },
+  "ResetPassModal": {
+    "title": "Réinitialiser le mot de passe",
+    "message": "Veuillez entrer l'adresse e-mail que vous avez utilisée lors de la création de votre compte.",
+
+    "email": "Email",
+    "email-req-title": "Adresse e-mail requise",
+    "email-req-desc": "Veuillez entrer votre adresse e-mail pour continuer.",
+
+    "email-err-title": "E-mail invalide",
+    "email-err-desc": "L'e-mail doit contenir au moins 1 caractère, pas plus de 50 caractères, et doit être une adresse e-mail valide.",
+
+    "message2": "Nous vous enverrons un e-mail avec un lien de vérification.",
+
+    "general-error-title": "Erreur d'envoi",
+    "general-error-desc": "Une erreur est survenue lors de l'envoi du lien de réinitialisation du mot de passe. Veuillez réessayer plus tard."
+  },
+  "EmailSentModal": {
+    "title": "Vérifiez votre email",
+    "message": "Nous avons envoyé un lien de vérification à votre adresse email",
+    "message2": "Cliquez sur le lien pour terminer la vérification. Ce lien expirera dans 24 heures",
+    "send-again": "Envoyer à nouveau",
+    "back-to-website": "Retour au site"
+  },
+  "SignUpEmailSentModal": {
+    "title": "Compte Créé Avec Succès",
+    "message1": "Nous avons envoyé les détails du compte à",
+    "message2": "Veuillez vérifier votre adresse e-mail pour trouver les détails du compte.",
+    "log-in": "Se Connecter",
+    "back-to-website": "Retourner au Site"
+  },
   "UserModal": {
     "tab_1_text": "Réservations",
     "tab_2_text": "PARAMÈTRES",
@@ -295,7 +326,7 @@
     "price": "Prix du billet",
     "no-reservations": "Actuellement, il n'y a pas de réservations associées à ce compte."
   },
-  "RouteSearchPage_Months": {
+  "RouteSearchPage_Date": {
     "sept": "Septembre",
     "oct": "Octobre",
     "nov": "Novembre",
@@ -325,14 +356,102 @@
     "free-spaces": "Places libres",
     "payment-info": "Paiement à l'embarquement",
     "book": "Réserver",
-    "info-route": "À propos de la route",
+    "info-route": "À propos",
     "duration": "Durée du voyage",
+    "hours" : "heures",
     "amenities": "Commodités",
     "wifi": "Wi-Fi Gratuit",
     "wc": "Toilettes",
     "ac": "Climatisation",
     "socket": "Prise électrique",
     "minibar": "Minibar",
-    "moltimedia": "Multimédia"
+    "multimedia": "Multimédia",
+
+    "street" : "Rue Tighina 2/2",
+    "pass-req" : "À la demande",
+
+    "no-matching-route": "Aucune route n'a été trouvée pour le jour sélectionné, mais vous pouvez consulter les données les plus proches ci-dessous.",
+    "no-route-found_part1": "Aucune route n'a été trouvée pour le jour sélectionné, veuillez",
+    "no-route-found_part2": "nous contacter",
+    "no-route-found_part3": "pour plus de détails.",
+
+    "return-date-req-title": "Date de retour requise",
+    "return-date-req-desc": "Pour continuer la réservation de votre billet retour, veuillez sélectionner une date de retour. Vous pouvez également désactiver l'option de retour.",
+    "close": "Fermer",
+
+    "change-departure": "Modifier l'itinéraire de départ",
+    "change-return": "Modifier l'itinéraire de retour",
+    "return-title": "ROUTES de retour À PARTIR DU"
+  },
+  "RouteSearchPage_Checkout": {
+    "title": "ENTREZ LES DÉTAILS DES PASSAGERS",
+    "order-details": "Détails de la commande",
+    "total-price": "Prix total",
+    "passenger": "Passager",
+    "number": "N°",
+    "main": "Principal",
+    "lastname": "Nom de famille",
+    "firstname": "Prénom",
+    "ticket-type": "Type de billet",
+    "adult": "Adulte",
+    "student": "Étudiant",
+    "child": "Enfant",
+    "years": "ans",
+    "add-passenger": "Ajouter un passager",
+    "contact-details": "Coordonnées",
+    "phone": "Numéro de téléphone",
+    "email": "Email",
+    "finish": "Terminer",
+    "payment-info": "Paiement à l'embarquement",
+    "delete": "Supprimer",
+
+    "lastname-req-title": "Nom de famille requis",
+    "lastname-req-desc": "Veuillez entrer votre nom de famille pour continuer.",
+
+    "firstname-req-title": "Prénom requis",
+    "firstname-req-desc": "Veuillez entrer votre prénom pour continuer.",
+
+    "firstname-err-title" : "Erreur de prénom",
+    "firstname-err-desc" : "Le prénom doit comporter au moins 1 caractère et ne pas dépasser 50 caractères.",
+
+    "lastname-err-title" : "Erreur de nom de famille",
+    "lastname-err-desc" : "Le nom de famille doit comporter au moins 1 caractère et ne pas dépasser 50 caractères.",
+
+    "price-req-title": "Prix du billet requis",
+    "price-req-desc": "Veuillez choisir un prix pour le billet en fonction du type de passager : enfant, adulte, étudiant.",
+
+    "close": "Fermer"
+  },
+  "RouteSearchErrors" : {
+    "departure-city-required-err-title": "Ville de départ manquante",
+    "departure-city-required-err-desc": "Veuillez sélectionner une ville de départ.",
+
+    "departure-city-invalid-err-title": "Ville de départ invalide",
+    "departure-city-invalid-err-desc": "La ville de départ sélectionnée n'est pas valide. Choisissez une ville dans la liste.",
+
+    "arrival-city-required-err-title": "Ville d'arrivée manquante",
+    "arrival-city-required-err-desc": "Veuillez sélectionner une ville d'arrivée.",
+
+    "arrival-city-invalid-err-title": "Ville d'arrivée invalide",
+    "arrival-city-invalid-err-desc": "La ville d'arrivée sélectionnée n'est pas valide. Choisissez une ville dans la liste.",
+
+    "departure-date-required-err-title": "Date de départ manquante",
+    "departure-date-required-err-desc": "Veuillez sélectionner une date de départ.",
+
+    "return-date-required-err-title": "Date de retour manquante",
+    "return-date-required-err-desc": "Veuillez sélectionner une date de retour.",
+
+    "return-date-invalid-err-title": "Date de retour invalide",
+    "return-date-invalid-err-desc": "La date de retour doit être postérieure à la date de départ.",
+
+    "same-city-err-title": "Villes identiques",
+    "same-city-err-desc": "La ville de départ et la ville d'arrivée ne peuvent pas être les mêmes. Veuillez choisir des villes différentes.",
+
+    "close": "Fermer"
+  },
+  "ResetSuccessfulPage": {
+    "title": "Réinitialisation réussie",
+    "message": "Super ! Votre mot de passe a été réinitialisé et les détails ont été envoyés par email. Vérifiez maintenant.",
+    "back-to-website": "Retour au site"
   }
 }

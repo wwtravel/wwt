@@ -1,5 +1,5 @@
 
-import { Contacts } from '@/components'
+import { Contacts, Footer, NavBar } from '@/components'
 import { Metadata } from 'next';
 
 import { getTranslations } from 'next-intl/server';
@@ -16,7 +16,9 @@ const page = () => {
 
   return (
     <div>
+      <NavBar />
         <Contacts />
+      <Footer />
     </div>
   )
 }

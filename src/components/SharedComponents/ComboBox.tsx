@@ -13,21 +13,34 @@ import {
 
 
 import { useState, useEffect, useRef } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
 import { RemoveScrollBar } from "react-remove-scroll-bar";
 
-export type Option = Record<"value" | "label", string> & Record<string, string>
+import PulseLoader from "react-spinners/PulseLoader";
+
+export interface Option{
+  label : {
+    en : string;
+    ro : string;
+    ru : string;
+    fr : string;
+  };
+  value : string;
+}
 
 interface ComboBoxProps{
   placeholder: string;
   options: Option[];
   value: string;
   onChange: (value: string) => void;
+  errTrigger: boolean;
 }
 
-const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChange }) => {
+const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChange, errTrigger }) => {
+
+  const locale = useLocale()
 
   const t = useTranslations("Header")
 
@@ -36,20 +49,37 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
   const [isFocused, setIsFocused] = useState(false)
   const [inputContent, setInputContent] = useState(value)
 
-  const handleInputChange = (newValue: string) => {
-    setInputContent(newValue)
+  useEffect(() => {
+    if(options) {
+      options.map((option) => {
+        if(option.value === value) {
+          setInputContent(option.label[getLocale(locale)])
+          return
+        }
+      })
+    }
+  }, [value, options])
+
+  const handleInputChange = (newLabel: string, newValue: string) => {
+    setInputContent(newLabel)
     onChange(newValue)
   }
 
-  useEffect(() => {
-    setInputContent(value)
-  }, [value])
+  const getLocale = ( locale: string ) => {
+    switch(locale) {
+        case 'ro' : return 'ro'
+        case 'ru' : return 'ru'
+        case 'en' : return 'en'
+        case 'fr' : return 'fr'
+        default : return 'en'
+    }
+}
 
   return (
     <div>
-      <Command className="bg-[transparent]">
+      <Command className="bg-[transparent] overflow-visible">
         <Popover open={isFocused} onOpenChange={setIsFocused}>
-          <PopoverTrigger asChild onClick={(e) => { e.preventDefault() }}>
+          <PopoverTrigger className="overflow-visible" asChild onClick={(e) => { e.preventDefault() }}>
             <div className="relative">
               <div 
                 className="relative"
@@ -57,9 +87,9 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
               >
                 <CommandInput
                   value={inputContent}
-                  onValueChange={(value) => handleInputChange(value)}
+                  onValueChange={(value) => handleInputChange(value, value)}
                   onBlur={() => setIsFocused(false)} 
-                  className="bg-light-white lg:min-w-[15rem] min-w-full lg:h-[3.5rem] h-[4.667rem] outline-none border border-gray/25 rounded-[0.5rem] lg:text-[1rem] text-[1.333rem] font-[400] text-dark-gray px-[1.5rem] lg:pt-[1rem] pt-[1.5rem]"
+                  className={`${errTrigger && 'animate-input-error'} bg-light-white lg:min-w-[15rem] min-w-full lg:h-[3.5rem] h-[4.667rem] outline-none border border-gray/25 rounded-[0.5rem] lg:text-[1rem] text-[1.333rem] font-[400] text-dark-gray px-[1.5rem] lg:pt-[1rem] pt-[1.5rem]`}
                   ref={ inputRef }
                 />
 
@@ -77,7 +107,7 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
 
               </div>
               <img
-                onClick={() => { setIsFocused(false); handleInputChange("")} }
+                onClick={() => { setIsFocused(false); handleInputChange("", "")} }
                 className="cursor-pointer transition-opacity duration-300 absolute top-[50%] -translate-y-[50%] right-0 mr-[1.5rem]" 
                 style={{
                   opacity : inputContent === "" ? 0 : 1
@@ -94,9 +124,20 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
               <CommandEmpty>{ t('comboboxNothingFound') }</CommandEmpty>
               <CommandGroup>
                 {
-                  options.map(option=> (
-                      <CommandItem key={option.value} onSelect={() => handleInputChange(option.label)} className=" hover:bg-gray/10 transition-colors duration-300 lg:text-[1rem] text-[1.333rem] rounded-[0.5rem] p-[0.5rem]">
-                            { option.label }
+                  options.length === 0 && (
+                    <div className="w-full h-[6rem] grid place-content-center">
+                        <PulseLoader 
+                          size={5}
+                          color="#B8BABC"
+                          className="rotate-90"
+                        />
+                    </div>
+                  )
+                }
+                {
+                  options.map((option, index)=> (
+                      <CommandItem key={index} onSelect={() => handleInputChange(option.label[getLocale(locale)], option.value)} className=" hover:bg-gray/10 transition-colors duration-300 lg:text-[1rem] text-[1.333rem] rounded-[0.5rem] p-[0.5rem]">
+                            { option.label[getLocale(locale)] }
                       </CommandItem>
                   ))
                 }

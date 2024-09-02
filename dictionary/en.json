@@ -4,7 +4,8 @@
     "about" : "About Us",
     "contact" : "Contact",
     "schedule" : "Route Schedule",
-    "route-search" : "Route Search"
+    "route-search" : "Route Search",
+    "pass-reset" : "Reset Successful"
   },
   "NavBar": {
     "titleMD": "Phone Moldova",
@@ -258,6 +259,36 @@
 
     "close" : "Close"
   },
+  "ResetPassModal": {
+    "title": "Reset Password",
+    "message": "Please enter the email address you used when creating your account.",
+
+    "email": "Email",
+    "email-req-title": "Email Address Required",
+    "email-req-desc": "Please enter your email address to proceed.",
+
+    "email-err-title": "Invalid Email",
+    "email-err-desc": "The email must be at least 1 character long, no more than 50 characters, and must be a valid email address.",
+
+    "message2": "We will send you an email with a verification link.",
+
+    "general-error-title": "Sending Error",
+    "general-error-desc": "An error occurred while sending the password reset link. Please try again later."
+  },
+  "EmailSentModal": {
+    "title": "Check Your Email",
+    "message": "We have sent a verification link to your email address",
+    "message2": "Click the link to complete the verification. This link will expire in 24 hours",
+    "send-again": "Send Again",
+    "back-to-website": "Back to Website"
+  },
+  "SignUpEmailSentModal": {
+    "title": "Account Created Successfully",
+    "message1": "We have sent the account details to",
+    "message2": "Please check your email to find the account details.",
+    "log-in": "Log In",
+    "back-to-website": "Back to Website"
+  },
   "UserModal": {
     "tab_1_text": "ORDERS & BOOKings",
     "tab_2_text": "ACCOUNT SETTINGS",
@@ -298,7 +329,7 @@
     "price": "Ticket Price",
     "no-reservations": "Currently, there are no reservations associated with this account."
   },
-  "RouteSearchPage_Months": {
+  "RouteSearchPage_Date": {
     "sept": "September",
     "oct": "October",
     "nov": "November",
@@ -327,15 +358,103 @@
     "finish": "Finish",
     "free-spaces": "Free Spaces",
     "payment-info": "Pay on Boarding",
-    "book": "Book",
-    "info-route": "About the Route",
+    "book": "Book Ticket",
+    "info-route": "More",
     "duration": "Travel Duration",
+    "hours" : "hours",
     "amenities": "Amenities",
     "wifi": "Free Wi-Fi",
     "wc": "Toilet",
     "ac": "Air Conditioning",
     "socket": "Electric Socket",
     "minibar": "Minibar",
-    "multimedia": "Multimedia"
+    "multimedia": "Multimedia",
+
+    "street" : "Tighina Street 2/2",
+    "pass-req" : "Upon passengers' request",
+
+    "no-matching-route": "No route was found for the selected day, but you can check the nearest available data below.",
+    "no-route-found_part1": "No route was found for the selected day, please",
+    "no-route-found_part2": "contact us",
+    "no-route-found_part3": "for more details.",
+
+    "return-date-req-title": "Return Date Required",
+    "return-date-req-desc": "To proceed with booking your return ticket, please select a return date. Alternatively, you can disable the return option.",
+    "close": "Close",
+
+    "change-departure": "Change departure route",
+    "change-return": "Change return route",
+    "return-title": "RETURN ROUTES FROM"
+  },
+  "RouteSearchPage_Checkout": {
+    "title": "ENTER PASSENGER DETAILS",
+    "order-details": "Order Details",
+    "total-price": "Total Price",
+    "passenger": "Passenger",
+    "number": "No",
+    "main": "Main",
+    "lastname": "Last Name",
+    "firstname": "First Name",
+    "ticket-type": "Ticket Type",
+    "adult": "Adult",
+    "student": "Student",
+    "child": "Child",
+    "years": "years",
+    "add-passenger": "Add a Passenger",
+    "contact-details": "Contact Details",
+    "phone": "Phone Number",
+    "email": "Email",
+    "finish": "Finish",
+    "payment-info": "Payment at Boarding",
+    "delete": "Delete",
+
+    "lastname-req-title": "Last Name Required",
+    "lastname-req-desc": "Please enter your last name to continue.",
+
+    "firstname-req-title": "First Name Required",
+    "firstname-req-desc": "Please enter your first name to continue.",
+
+    "firstname-err-title" : "First Name Error",
+    "firstname-err-desc" : "The first name must be at least 1 character and no more than 50 characters.",
+
+    "lastname-err-title" : "Last Name Error",
+    "lastname-err-desc" : "The last name must be at least 1 character and no more than 50 characters.",
+
+    "price-req-title": "Ticket Price Required",
+    "price-req-desc": "Please select a ticket price based on the passenger type: child, adult, student.",
+
+    "close": "Close"
+  },
+  "RouteSearchErrors" : {
+    "departure-city-required-err-title": "Departure City Missing",
+    "departure-city-required-err-desc": "Please select a departure city.",
+
+    "departure-city-invalid-err-title": "Invalid Departure City",
+    "departure-city-invalid-err-desc": "The selected departure city is not valid. Please choose a city from the list.",
+
+    "arrival-city-required-err-title": "Arrival City Missing",
+    "arrival-city-required-err-desc": "Please select an arrival city.",
+
+    "arrival-city-invalid-err-title": "Invalid Arrival City",
+    "arrival-city-invalid-err-desc": "The selected arrival city is not valid. Please choose a city from the list.",
+
+    "departure-date-required-err-title": "Departure Date Missing",
+    "departure-date-required-err-desc": "Please select a departure date.",
+
+    "return-date-required-err-title": "Return Date Missing",
+    "return-date-required-err-desc": "Please select a return date.",
+
+    "return-date-invalid-err-title": "Invalid Return Date",
+    "return-date-invalid-err-desc": "The return date must be later than the departure date.",
+
+    "same-city-err-title": "Identical Cities",
+    "same-city-err-desc": "The departure and arrival cities cannot be the same. Please choose different cities.",
+
+    "close": "Close"
+  },
+  "ResetSuccessfulPage": {
+    "title": "Password Reset Success",
+    "message": "Great! Your password has been reset, and we've sent the details to your email. Check now.",
+    "back-to-website": "Back to website"
   }
 }

@@ -31,9 +31,9 @@ export const routes = [
         },
         arrivalStreet: {
             ro: "După solicitarea pasagerilor",
-            ru: "По запросу пассажиров",
+            ru: "По запросу",
             en: "Upon passengers' request",
-            fr: "À la demande des passagers"
+            fr: "À la demande"
         },
         freePlaces : 26,
         price: {
@@ -82,9 +82,9 @@ export const routes = [
         },
         arrivalStreet: {
             ro: "După solicitarea pasagerilor",
-            ru: "По запросу пассажиров",
+            ru: "По запросу",
             en: "Upon passengers' request",
-            fr: "À la demande des passagers"
+            fr: "À la demande"
         },
         freePlaces : 23,
         price: {
@@ -133,9 +133,9 @@ export const routes = [
         },
         arrivalStreet: {
             ro: "După solicitarea pasagerilor",
-            ru: "По запросу пассажиров",
+            ru: "По запросу",
             en: "Upon passengers' request",
-            fr: "À la demande des passagers"
+            fr: "À la demande"
         },
         freePlaces : 16,
         price: {
@@ -184,9 +184,9 @@ export const routes = [
         },
         arrivalStreet: {
             ro: "După solicitarea pasagerilor",
-            ru: "По запросу пассажиров",
+            ru: "По запросу",
             en: "Upon passengers' request",
-            fr: "À la demande des passagers"
+            fr: "À la demande"
         },
         freePlaces : 16,
         price: {
