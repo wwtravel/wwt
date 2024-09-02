@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PassengerDataRow from "./PassengerDataRow";
 import { PriceSheet, Travel } from "@/types/routeType";
 import { useTranslations } from "next-intl";
@@ -33,9 +33,10 @@ interface PassengerDataContainerProps{
     prices : PriceSheet;
     depRoute: Travel;
     retRoute: Travel | null;
+    setCost: React.Dispatch<React.SetStateAction<number>>
 }
 
-const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices, depRoute, retRoute }) => {
+const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices, depRoute, retRoute, setCost }) => {
 
     const t = useTranslations("RouteSearchPage_Checkout")
 
@@ -124,6 +125,13 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
             price: 0
         }
     ])
+
+    useEffect(() => {
+        setCost(0)
+        passengers.map(passenger => {
+            setCost(prev => prev + passenger.price)
+        })
+    }, [passengers])
 
     const updatePassenger = (index: number, updatedPassenger: Passenger) => {
         setPassengers(prevPassengers => 

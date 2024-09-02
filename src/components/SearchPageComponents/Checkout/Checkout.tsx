@@ -1,7 +1,9 @@
+'use client'
+
 import { SelectedRoutes } from '@/app/[locale]/route-search/PageContent'
 import { Travel } from '@/types/routeType';
 import { useTranslations } from 'next-intl';
-import React from 'react'
+import React, { useState } from 'react'
 import RouteDetails from './RouteDetails';
 import PassengersDataContainer from './PassengersDataContainer';
 
@@ -14,6 +16,8 @@ interface CheckoutProps{
 const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDepartureRoute, seletcedArrivalRoute }) => {
 
   const t = useTranslations("RouteSearchPage_Checkout")
+
+  const [cost, setCost] = useState(0)
 
   return (
     <div className='md:pt-[13.125rem] pt-[15rem] px-[1rem]'>
@@ -31,12 +35,12 @@ const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDeparture
                 seletcedArrivalRoute && <RouteDetails setSelectedRoutes={setSelectedRoutes} route={seletcedArrivalRoute} routeType='return'/>
               }
               <div className='md:h-[3.5rem] h-[4.667rem] w-full bg-red grid place-content-center md:rounded-[0.5rem] rounded-[0.667rem] max-md:mt-[0.333rem]'>
-                <p className='font-bold text-light-white md:text-[1.125rem] text-[1.5rem] font-open-sans'>{ t('total-price') }: 300EUR</p>
+                <p className='font-bold text-light-white md:text-[1.125rem] text-[1.5rem] font-open-sans'>{ t('total-price') }: {cost}EUR</p>
               </div>
             </div>
           </div>
 
-          <PassengersDataContainer retRoute={seletcedArrivalRoute} depRoute={seletcedDepartureRoute} prices={seletcedDepartureRoute.price} />
+          <PassengersDataContainer setCost={setCost} retRoute={seletcedArrivalRoute} depRoute={seletcedDepartureRoute} prices={seletcedDepartureRoute.price} />
         </div>
 
     </div>

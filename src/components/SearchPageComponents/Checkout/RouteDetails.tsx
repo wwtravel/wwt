@@ -7,7 +7,7 @@ import UnderlinedText from '../SearchPageContent/UnderlinedText';
 interface RouteDetailsProps{
     route: Travel;
     setSelectedRoutes: React.Dispatch<React.SetStateAction<SelectedRoutes>>;
-    routeType: "departure" | "return"
+    routeType: "departure" | "return";
 }
 
 const RouteDetails: React.FC<RouteDetailsProps> = ({ route, setSelectedRoutes, routeType }) => {
