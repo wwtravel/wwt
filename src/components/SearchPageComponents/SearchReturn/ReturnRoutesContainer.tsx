@@ -47,7 +47,7 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
             }
     
             const result = await response.json();
-            setRoutes(result)
+            setRoutes(result.toures)
             setLoading(false)
         } catch (error) {
             setLoading(false)
