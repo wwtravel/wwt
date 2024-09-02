@@ -5,6 +5,7 @@ import '@/styles/loader.css'
 import { AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
 import { RemoveScrollBar } from "react-remove-scroll-bar"
+import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 
 
 
@@ -28,6 +29,11 @@ const template = ({ children }: { children: React.ReactNode }) => {
             }
         </AnimatePresence>
         { children }
+        {
+          !isLoading && <TawkMessengerReact
+            propertyId="66d5add7ea492f34bc0cbf89"
+            widgetId="1i6pau4mq"/>
+          }
     </div>
   )
 }

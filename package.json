@@ -17,6 +17,7 @@
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@react-email/components": "^0.0.22",
+    "@tawk.to/tawk-messenger-react": "^2.0.2",
     "@types/leaflet-routing-machine": "^3.2.8",
     "again": "^0.0.1",
     "bcrypt": "^5.1.1",
