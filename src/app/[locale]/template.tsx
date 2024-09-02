@@ -23,7 +23,7 @@ const template = ({ children }: { children: React.ReactNode }) => {
 
     setTimeout(() => {
       setShowChat(true)
-    }, 3000)
+    }, 2300)
   }, [])
 
   return (
