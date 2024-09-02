@@ -57,7 +57,7 @@ export default async function LocaleLayout({
           </Providers>
         </NextIntlClientProvider>
 
-        <Script
+        {/* <Script
           id="tawkto"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -73,7 +73,7 @@ export default async function LocaleLayout({
               })();
             `,
           }}
-        />
+        /> */}
       </body>
     </html>
   );
