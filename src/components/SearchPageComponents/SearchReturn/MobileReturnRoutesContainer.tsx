@@ -140,10 +140,13 @@ const MobileReturnRoutesContainer:React.FC<MobileRoutesContainerProps> = ({ rout
                             </div>
 
                             <div className='flex md:flex-col flex-row items-center justify-center md:gap-[0.667rem] gap-[1.333rem]'>
-                                <button className='h-[4.667rem] bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.667rem] px-[2rem] flex items-center justify-center text-[1.5rem] font-bold text-white' onClick={() => setSelectedRoutes(prev => ({
+                                <button className='h-[4.667rem] bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.667rem] px-[2rem] flex items-center justify-center text-[1.5rem] font-bold text-white' onClick={() => {setSelectedRoutes(prev => ({
                                         ...prev,
                                         returnRoute: route
-                                        }))}
+                                        }))
+                                        
+                                        window.scrollTo(0, 0)
+                                    }}
                                     >
                                         <img className='size-[2rem] mr-[0.667rem]' src="/icons/route-card-icons/icon-checkmark.svg" alt="icon" draggable={false} />
                                     <p>

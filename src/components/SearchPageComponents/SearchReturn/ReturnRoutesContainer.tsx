@@ -238,10 +238,13 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
                                 </div>
 
                                 <div className='flex flex-col items-center justify-between'>
-                                    <div onClick={() => setSelectedRoutes(prev => ({
+                                    <div onClick={() => {setSelectedRoutes(prev => ({
                                         ...prev,
                                         returnRoute: route
-                                        }))}
+                                        }))
+
+                                        window.scrollTo(0, 0)
+                                    }}
                                     >
                                         <RedButton text={t('book')} iconURL='/icons/route-card-icons/icon-checkmark.svg'/>
                                     </div>

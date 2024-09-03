@@ -38,7 +38,7 @@ interface CheckoutProps{
 }
 
 const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDepartureRoute, seletcedArrivalRoute, setCheckoutSuccess }) => {
-
+  
   const { data } = useSession()
 
   const t = useTranslations("RouteSearchPage_Checkout")

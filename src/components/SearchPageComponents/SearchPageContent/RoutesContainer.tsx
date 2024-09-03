@@ -131,6 +131,7 @@ const handleRouteSelect = (route : Travel) => {
             shouldReturn: false,
             returnRoute: null
         })
+        window.scrollTo(0, 0)
     }
 }
 
