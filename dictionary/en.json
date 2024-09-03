@@ -475,5 +475,11 @@
     "title": "Password Reset Success",
     "message": "Great! Your password has been reset, and we've sent the details to your email. Check now.",
     "back-to-website": "Back to website"
+  },
+  "AdminNav": {
+    "all-routes": "All Routes",
+    "routes-prices": "Route Prices",
+    "orders": "Orders",
+    "exit-admin": "Exit Admin"
   }
 }

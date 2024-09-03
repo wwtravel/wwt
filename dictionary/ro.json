@@ -488,6 +488,12 @@
     "message" : "Minunat! Am resetat parola și ți-am trimis datele pe email. Verifică acum",
 
     "back-to-website" : "Întoarce-te pe site"
+  },
+  "AdminNav" : {
+    "all-routes" : "Toate rutele",
+    "routes-prices" : "Prețurile rutelor",
+    "orders" : "Comenzi",
+    "exit-admin" : "Ieșire din admin"
   }
   
 }

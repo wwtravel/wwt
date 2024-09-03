@@ -472,5 +472,11 @@
     "title": "Réinitialisation réussie",
     "message": "Super ! Votre mot de passe a été réinitialisé et les détails ont été envoyés par email. Vérifiez maintenant.",
     "back-to-website": "Retour au site"
+  },
+  "AdminNav": {
+    "all-routes": "Tous les itinéraires",
+    "routes-prices": "Tarifs des itinéraires",
+    "orders": "Commandes",
+    "exit-admin": "Déconnexion admin"
   }
 }

@@ -26,6 +26,9 @@ import { default as Checkout } from './SearchPageComponents/Checkout/Checkout'
 //Password Reset Page
 import { default as PassResetPageLogIn } from './PasswordRessetPageComponents/PassResetPageLogIn'
 
+//Admin Pages
+import { default as AdminNav } from './Admin/AdminSharedComponents/AdminNav/AdminNav'
+
 export {
     NavBar,
     Footer,
@@ -48,5 +51,7 @@ export {
     SearchReturnContent,
     Checkout,
 
-    PassResetPageLogIn
+    PassResetPageLogIn,
+
+    AdminNav
 }
