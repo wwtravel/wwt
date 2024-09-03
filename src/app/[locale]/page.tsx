@@ -1,4 +1,4 @@
-import { Destinations, Features, Footer, Header, NavBar, Services } from "@/components";
+import { Destinations, Features, Footer, Header, NavBar, Services, Testimonials } from "@/components";
 import { Metadata } from "next";
 
 import { getTranslations } from 'next-intl/server';
@@ -18,6 +18,7 @@ export default function HomePage() {
       <Header />
       <Destinations />
       <Services />
+      <Testimonials />
       <Features />
       <Footer />
     </div>

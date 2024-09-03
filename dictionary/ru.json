@@ -1,7 +1,7 @@
 {
   "PageTitles" : {
     "home" : "Главная страница",
-    "about" : "О нас",
+    "about" : "Про компанию",
     "contact" : "Контакты",
     "schedule" : "Расписание маршрутов",
     "route-search" : "Поиск Маршрута",
@@ -13,7 +13,7 @@
     "titleEmail": "Адрес электронной почты",
     "navHome" : "Главная страница",
     "navSchedule" : "Расписание маршрутов",
-    "navAbout" : "О нас",
+    "navAbout" : "Про компанию",
     "navContact" : "Контакты",
     "navCart" : "Корзина",
     "log-in": "Войти",
@@ -141,8 +141,8 @@
     "copyright": "Авторское право © World Wide Travel все права защищены."
   },
   "AboutHeader" : {
-    "aboutWord1": "о",
-    "aboutWord2": "компании",
+    "aboutWord1": "Про",
+    "aboutWord2": "компанию",
     "headerDesc": "Каждое путешествие — это уникальный опыт, наполненный комфортом и безопасностью, с направлениями в Германию, Швейцарию, Францию и Австрию.",
     "headerBtn": "Узнать больше"
   },
@@ -162,7 +162,7 @@
     "featureCard_1_Title": "Безопасность и Комфорт",
     "featureCard_2_Title": "Профессионализм",
     "featureCard_3_Title": "Доступные Цены",
-    "featureCard_4_Title": "Пунктуальность и Надежность",
+    "featureCard_4_Title": "Пунктуальность",
     "featureCard_5_Title": "Инновации и Технологии",
     "featureCard_6_Title": "Коммуникация",
 

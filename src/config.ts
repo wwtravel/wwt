@@ -8,7 +8,7 @@ export const pathnames: Pathnames<typeof locales> = {
   '/about': {
     en: '/about-us',
     ro: '/despre-noi',
-    ru: '/o-nas',
+    ru: '/pro-kompaniyu',
     fr: '/a-propos'
   },
   '/contacts': {
