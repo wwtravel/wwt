@@ -27,6 +27,10 @@ export async function POST (request: Request) {
         date: result.data.departure_date,
     });
 
+    if (toures instanceof Response) {
+        return toures;
+    }
+
     let return_toures: Response | any [] = [];
 
     if (result.data.return_date !== undefined) {
@@ -36,6 +40,11 @@ export async function POST (request: Request) {
             date: result.data.return_date,
         });
     }
+    
+    if (return_toures instanceof Response) {
+        return return_toures;
+    }
+
 
     return Response.json({toures: toures, return_toures: return_toures}, {status: 200});
 }
@@ -75,6 +84,7 @@ const findTravel = async (data: FindTravelInterface) => {
                 ]
             },
             select: {
+                id: true,
                 departure: true,
                 route: {
                     select: {
