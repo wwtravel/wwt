@@ -1,6 +1,6 @@
 {
   "PageTitles" : {
-    "home" : "Accueil",
+    "home" : "Page d'accueil",
     "about" : "À Propos",
     "contact" : "Contact",
     "schedule" : "Horaire des Routes",
@@ -11,7 +11,7 @@
     "titleMD": "Téléphone Moldavie",
     "titleSW": "Téléphone Suisse",
     "titleEmail": "Adresse Email",
-    "navHome" : "Accueil",
+    "navHome" : "Page d'accueil",
     "navSchedule" : "Horaire des Routes",
     "navAbout" : "À Propos",
     "navContact" : "Contact",
@@ -95,6 +95,8 @@
     "free": "Gratuit",
     "bookBtnText": "Réserver un billet",
 
+    "parcels": "Colis",
+    "parcels-desc": "chaque 1kg",
     "parcelInfoText1": "Pour les colis plus volumineux, le tarif est calculé par unité. Veuillez contacter notre bureau ou nous rendre visite en personne pour déterminer le tarif.",
     "parcelInfoText2": "La collecte et la livraison des colis sont effectuées sur tout le territoire de la République de Moldavie et de la Suisse. Selon les besoins, le transport peut se faire dans des chambres frigorifiques.",
     "send": "Envoyer la demande",
@@ -151,7 +153,7 @@
     "AboutBoldText": "Nous sommes World Wide Travel, une entreprise de transport international de passagers et de colis basée à Chișinău.",
     "AboutParagraph_1": "Avec plus de 10 ans d'expérience, nous nous engageons à fournir des services de haute qualité, en assurant des voyages sûrs et confortables pour tous nos passagers.",
     "AboutParagraph_2": "Nous sommes fiers de notre flotte moderne d'autobus et de notre équipe professionnelle qui veille à ce que vous atteigniez votre destination dans les meilleures conditions. Nous nous adressons particulièrement aux personnes âgées, leur offrant tout le soutien nécessaire pour un voyage sans souci.",
-    "AboutBtn": "En savoir plus"
+    "AboutBtn": "Contactez-nous"
   },
   "AboutFeatures" : {
     "lowOpacityTitle": "AVANTAGES",
@@ -429,6 +431,15 @@
     "price-req-desc": "Veuillez choisir un prix pour le billet en fonction du type de passager : enfant, adulte, étudiant.",
 
     "close": "Fermer"
+  },
+  "RouteSearchPage_CheckoutSuccess": {
+    "title": "Réservation Confirmée!",
+    "msg1": "Super, votre demande de réservation a été enregistrée avec succès.",
+    "msg2": "Vérifiez votre email pour plus de détails.",
+    "msg3": "Merci d'avoir choisi de voyager avec nous!",
+    "btn-text": "Retourner sur le site",
+    "question": "Des questions?",
+    "link": "Contactez-nous"
   },
   "RouteSearchErrors" : {
     "departure-city-required-err-title": "Ville de départ manquante",

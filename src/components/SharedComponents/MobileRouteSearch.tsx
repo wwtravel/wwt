@@ -238,7 +238,7 @@ const MobileRouteSearch = () => {
   }, [arrivalDate]);
 
   return (
-    <div className='flex flex-col gap-[0.667rem] mt-[5.333rem]'>
+    <div className='flex flex-col gap-[0.667rem] mt-[4rem]'>
 
       <div className='flex gap-[1rem] items-center'>
         <div className='flex gap-[0.5rem] items-center cursor-pointer' onClick={() => setRetour(true)}>

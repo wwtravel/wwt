@@ -165,7 +165,7 @@ const MobileReturnRoutesContainer:React.FC<MobileRoutesContainerProps> = ({ rout
                         stops={route.route.stops}
                         price={route.price}
                         freePlaces={route.free_places}
-                        hoursInterval={route.route.stops[route.route.stops.length -1].hours}
+                        hoursInterval={route.route.stops[route.route.stops.length -1].hours - route.route.stops[0].hours === 0 ? 4 : route.route.stops[route.route.stops.length -1].hours - route.route.stops[0].hours}
                         amenities={route.route.bus.amenities}
                     />
 

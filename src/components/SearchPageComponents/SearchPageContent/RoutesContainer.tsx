@@ -133,6 +133,44 @@ const handleRouteSelect = (route : Travel) => {
         })
     }
 }
+
+const [adjustedRoutes, setAdjustedRoutes] = useState<TravelResponse>([])
+
+useEffect(() => {
+    const adjusted = routes.map(route => {
+        const departureDate = new Date(route.departure);
+        const arrivalDate = new Date(route.arrival);
+
+        const departureUTC = new Date(Date.UTC(
+            departureDate.getUTCFullYear(),
+            departureDate.getUTCMonth(),
+            departureDate.getUTCDate(),
+            departureDate.getUTCHours(),
+            departureDate.getUTCMinutes(),
+            departureDate.getUTCSeconds()
+        ));
+
+        const arrivalUTC = new Date(Date.UTC(
+            arrivalDate.getUTCFullYear(),
+            arrivalDate.getUTCMonth(),
+            arrivalDate.getUTCDate(),
+            arrivalDate.getUTCHours(),
+            arrivalDate.getUTCMinutes(),
+            arrivalDate.getUTCSeconds()
+        ));
+
+        if (departureUTC.getTime() === arrivalUTC.getTime()) {
+            arrivalUTC.setUTCHours(arrivalUTC.getUTCHours() + 4);
+        }
+
+        return {
+            ...route,
+            arrival: arrivalUTC.toISOString()
+        };
+    });
+
+        setAdjustedRoutes(adjusted);
+    }, [routes]);
   
   if(loading) return (
     <div className='mt-[3rem] md:max-w-[82.75rem] max-w-[29.5rem] h-[9.5rem] rounded-[1rem]  mx-auto w-full grid place-content-center bg-light-white border border-gray/25 shadow-custom'>
@@ -146,7 +184,7 @@ const handleRouteSelect = (route : Travel) => {
     </div>
   )
 
-  if(routes.length === 0) return (
+  if(adjustedRoutes.length === 0) return (
     <div className='mt-[3rem] md:max-w-[82.75rem] max-w-[29.5rem] py-[2rem] px-[1.5rem] rounded-[1rem]  mx-auto w-full flex items-center justify-center bg-red/20 border border-gray/25 shadow-custom'>
         <div className='flex lg:gap-[0.25rem] gap-[0.333rem] text-left'>
             <img src="/icons/route-card-icons/icon-info.svg" alt="info" draggable={false} className='lg:size-[1rem] size-[1.333rem] mt-[0.25rem]' />
@@ -158,7 +196,7 @@ const handleRouteSelect = (route : Travel) => {
   return (
     <div className='mt-[3rem] max-w-[82.75rem] mx-auto w-full flex flex-col gap-[1rem]'>
         {
-            extractDate(routes[0].departure) !== searchParams.get('depdate') && (
+            extractDate(adjustedRoutes[0].departure) !== searchParams.get('depdate') && (
                 <div className='md:max-w-[82.75rem] max-w-[29.5rem] py-[2rem] px-[1.5rem] rounded-[1rem]  mx-auto w-full flex items-center justify-center bg-red/20 border border-gray/25 shadow-custom'>
                     <div className='flex lg:gap-[0.25rem] gap-[0.333rem] text-left'>
                         <img src="/icons/route-card-icons/icon-info.svg" alt="info" draggable={false} className='lg:size-[1rem] size-[1.333rem] mt-[0.25rem]' />
@@ -170,10 +208,10 @@ const handleRouteSelect = (route : Travel) => {
         }
 
         {/* Mobile routes */}
-        <MobileRoutesContainer routes={routes} setSelectedRoutes={setSelectedRoutes}/>
+        <MobileRoutesContainer routes={adjustedRoutes} setSelectedRoutes={setSelectedRoutes}/>
 
         {
-            routes.map((route, index) => (
+            adjustedRoutes.map((route, index) => (
                 <div className='w-full max-lg:hidden bg-light-white border border-gray/25 hover:border-red transition-colors duration-300 shadow-custom rounded-[1rem] px-[4rem] py-[2rem]' key={index}>
                     <div className='h-[5.5rem] flex justify-between items-center'>
                         <div className='h-full flex flex-col justify-between'>
@@ -249,7 +287,7 @@ const handleRouteSelect = (route : Travel) => {
                         stops={route.route.stops}
                         price={route.price}
                         freePlaces={route.free_places}
-                        hoursInterval={route.route.stops[route.route.stops.length -1].hours}
+                        hoursInterval={route.route.stops[route.route.stops.length -1].hours - route.route.stops[0].hours === 0 ? 4 : route.route.stops[route.route.stops.length -1].hours - route.route.stops[0].hours}
                         amenities={route.route.bus.amenities}
                     />
                 </div>

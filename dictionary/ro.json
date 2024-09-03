@@ -1,6 +1,6 @@
 {
   "PageTitles" : {
-    "home" : "Acasă",
+    "home" : "Pagina Principală",
     "about" : "Despre Noi",
     "contact" : "Contacte",
     "schedule" : "Orarul Rutelor",
@@ -11,7 +11,7 @@
     "titleMD": "Telefon Moldova",
     "titleSW": "Telefon Elveția",
     "titleEmail": "Adresa Email",
-    "navHome" : "Acasă",
+    "navHome" : "Pagina Principală",
     "navSchedule" : "Orarul Rutelor",
     "navAbout" : "Despre Noi",
     "navContact" : "Contacte",
@@ -95,6 +95,8 @@
     "free" : "Gratuit",
     "bookBtnText" : "Rezervă Bilet",
 
+    "parcels" : "Colete",
+    "parcels-desc" : "fiecare 1kg",
     "parcelInfoText1" : "Pentru coletele de dimensiuni mai mari, tariful se calculează per unitate, iar pentru stabilirea acestuia vă rugăm să contactați sediul nostru sau să veniți în persoană.",
     "parcelInfoText2" : "Colectarea și livrarea coletelor se efectuează pe tot teritoriul Republicii Moldova si al Elveției. În funcție de necesități, transportul se poate realiza în camere frigorifice.",
     "send" : "Trimite cerere",
@@ -151,7 +153,7 @@
     "AboutBoldText" : "Suntem World Wide Travel, o companie de transport internațional de pasageri și colete cu sediul în Chișinău.",
     "AboutParagraph_1" : "Cu o experiență de peste 10 ani, ne dedicăm să oferim servicii de înaltă calitate, asigurând călătorii sigure și confortabile pentru toți pasagerii noștri.",
     "AboutParagraph_2" : "Ne mândrim cu flota noastră modernă de autobuze și cu echipa noastră profesionistă care are grijă să ajungeți la destinație în cele mai bune condiții. Ne adresăm cu precădere persoanelor în vârstă, oferindu-le tot suportul necesar pentru o călătorie fără griji.",
-    "AboutBtn" : "Află mai multe"
+    "AboutBtn" : "Contactează-ne"
   },
   "AboutFeatures" : {
     "lowOpacityTitle" : "BENEFICII",
@@ -372,7 +374,7 @@
     "multimedia" : "Multimedia",
 
     "street" : "Strada Tighina 2/2",
-    "pass-req" : "După solicitarea pasagerilor",
+    "pass-req" : "La solicitare",
 
     "no-matching-route" : "Nu a fost găsită nici o rută pentru ziua selectată, dar puteți consulta datele cele mai apropiate mai jos.",
     "no-route-found_part1" : "Nu a fost găsită nici o rută pentru ziua selectată, vă rugăm să ne",
@@ -445,6 +447,15 @@
     "email-err-desc" : "Emailul trebuie să aibă cel puțin 1 caracter și cel mult 50 de caractere, și să fie un email valid",
 
     "close": "Închide"
+  },
+  "RouteSearchPage_CheckoutSuccess" : {
+    "title": "Rezervare confirmată!",
+    "msg1" : "Excelent, cererea ta de rezervare a fost înregistrată cu succes.",
+    "msg2" : "Verifică emailul pentru mai multe detalii.",
+    "msg3" : "Îți mulțumim că ai ales să călătorești cu noi!",
+    "btn-text" : "Întoarce-te pe site",
+    "question" : "Ai întrebări?",
+    "link" : "Contactează-ne"
   },
   "RouteSearchErrors" : {
     "departure-city-required-err-title": "Oraș de plecare lipsă",

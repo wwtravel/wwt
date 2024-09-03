@@ -129,7 +129,7 @@ export const OrderSchema = z.object({
     ),
     user_id: z.string().optional(),
     contact_details: z.object({
-        phone_number: z.string(),
+        phone_number: z.string().min(7).max(15),
         email: z.string().trim().min(1).max(50).regex(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g),
         notes: z.string().optional()
     }),

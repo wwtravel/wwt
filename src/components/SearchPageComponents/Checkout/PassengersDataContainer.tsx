@@ -3,12 +3,13 @@
 import { useEffect, useState } from "react";
 import PassengerDataRow from "./PassengerDataRow";
 import { PriceSheet, Travel } from "@/types/routeType";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import UnderlinedText from "../SearchPageContent/UnderlinedText";
 
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { OrderSchema } from "@/lib/types";
+import PulseLoader from "react-spinners/PulseLoader";
 
 export interface Passenger{
     firstname: string;
@@ -21,12 +22,28 @@ interface ContactDetails{
     email: string;
 }
 
-interface OrderData {
+interface BaseOrderData {
+    contact_details: {
+        phone_number: string;
+        email: string;
+    };
+    lang: string;
+    user_id?: string;
+}
+
+interface OrderDetails{
     travel_id: string;
     passengers: Passenger[];
-    user_id: string;
-    contact_details: ContactDetails;
-    lang: string;
+}
+
+
+interface User{
+    id?: string;
+    dob?: string;
+    email?: string;
+    firstname?: string;
+    lastname?: string;
+    phone_number?: string;
 }
 
 interface PassengerDataContainerProps{
@@ -37,12 +54,21 @@ interface PassengerDataContainerProps{
     updatePassenger: (index: number, updatedPassenger: Passenger) => void;
     setPassengers: React.Dispatch<React.SetStateAction<Passenger[]>>;
     setCheckoutContent: React.Dispatch<React.SetStateAction<"tour" | "return">>;
-    checkoutContent : "tour" | "return"
+    checkoutContent : "tour" | "return";
+    passengersFullObj : {
+        tourPassengers : Passenger[];
+        returnPassengers : Passenger[];
+    }
+    user : User | undefined;
+    seletcedDepartureRoute : Travel;
+    seletcedArrivalRoute : Travel | null;
+    setCheckoutSuccess: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices, route, setCost, passengers, setPassengers, updatePassenger, setCheckoutContent, checkoutContent }) => {
+const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices, route, setCost, passengers, setPassengers, updatePassenger, setCheckoutContent, checkoutContent, passengersFullObj, user, seletcedArrivalRoute, seletcedDepartureRoute, setCheckoutSuccess }) => {
 
     const t = useTranslations("RouteSearchPage_Checkout")
+    const locale = useLocale()
 
     const [validationTrigger, setValidationTrigger] = useState(false)
 
@@ -52,27 +78,162 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
     const [phoneErr, setPhoneErr] = useState(false)
     const [emailErr, setEmailErr] = useState(false)
 
-    const createOrder = async (orderData: OrderData) => {
+    
+    const handleClickContinue = async () => {
+        let isPassengerDataValidated = true
+        setValidationTrigger(true); 
+        setTimeout(() => setValidationTrigger(false), 300)
+        
+        passengers.map(passenger => {
+            if(passenger.firstname === '' || passenger.lastname === '' || passenger.price === 0) isPassengerDataValidated = false
+        })
+        
+        if(!isPassengerDataValidated) return;
+        
+        setValidationTrigger(false)
+        setCheckoutContent('return')
+    }
+
+    useEffect(() => {
+        if(user){
+            setContactDetails({
+                phone: user.phone_number ?? '',
+                email: user.email ?? ''
+            })
+        }
+    }, [user])
+
+    const [contactDetails, setContactDetails] = useState<ContactDetails>({
+        phone: user?.phone_number ? user.phone_number : '',
+        email: user?.email ? user.email : '',
+    })
+    
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setContactDetails({ ...contactDetails, [name]: value });
+    };
+    
+    useEffect(() => {
+        setCost(0)
+        passengers.map(passenger => {
+            setCost(prev => prev + passenger.price)
+        })
+    }, [passengers])
+    
+    // < checkout api call
+
+    const [loading, setLoading] = useState(false)
+
+    const baseOrderData: BaseOrderData = {
+        contact_details: {
+            phone_number: contactDetails.phone,
+            email: contactDetails.email,
+        },
+        lang: locale
+    };
+
+    if(user) baseOrderData.user_id = user.id;
+
+    const orderTourDetails : OrderDetails = {
+        travel_id: seletcedDepartureRoute.id,
+        passengers: passengersFullObj.tourPassengers
+    };
+    
+    const orderReturnDetails : OrderDetails | null = seletcedArrivalRoute 
+    ? {
+        travel_id: seletcedArrivalRoute.id,
+        passengers: passengersFullObj.returnPassengers
+    }
+    : null
+
+    async function createOrders(baseOrderData: BaseOrderData, orderTourDetails : OrderDetails, orderReturnDetails : OrderDetails | null) {
+        setEmailErr(false)
+        setPhoneErr(false)
+
+        setLoading(true)
+
         try {
-            const response = await fetch('/api/order', {
+            const createOrderData = (orderDetails : OrderDetails) => {
+                const orderData = {
+                    ...baseOrderData,
+                    travel_id: orderDetails.travel_id,
+                    passengers: orderDetails.passengers,
+                    ...(baseOrderData.user_id && { user_id: baseOrderData.user_id })
+                };
+
+                const result = OrderSchema.safeParse(orderData);
+                if (!result.success) {
+                    result.error.issues.forEach((issue) => {
+                        const field = issue.path[1]
+                        if(field === 'email'){
+                            setEmailErr(true)
+                            toast( t('email-err-title'), {
+                                description: t('email-err-desc'),
+                                action: {
+                                label: t('close'),
+                                onClick: () => {}
+                                }
+                            })
+                            setLoading(false)
+                            throw new Error('Email validation failed');
+                        }
+                        if(field === 'phone_number'){
+                            setPhoneErr(true)
+                            toast( t('phone-err-title'), {
+                                description: t('phone-err-desc'),
+                                action: {
+                                label: t('close'),
+                                onClick: () => {}
+                                }
+                            })
+                            setLoading(false)
+                            throw new Error('Phone number validation failed');
+                        }
+                    });
+                }
+    
+                return orderData;
+            };
+    
+            const orderDataTour = createOrderData(orderTourDetails);
+            const orderDataReturn = orderReturnDetails ? createOrderData(orderTourDetails) : null;
+    
+            const responseTour = await fetch('/api/order', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(orderData),
+                body: JSON.stringify(orderDataTour),
             });
     
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.msg || 'An error occurred while creating the order.');
+            const dataTour = await responseTour.json();
+            if (!responseTour.ok) {
+                setLoading(false)
+                throw new Error(dataTour.msg || 'Failed to create the first order');
             }
     
-            const result = await response.json();
-            console.log('Order created successfully:', result);
-        } catch (error) {
-            console.error('Error:', error);
+            if(orderDataReturn){
+                const responseReturn = await fetch('/api/order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(orderDataReturn),
+                });
+        
+                const dataReturn = await responseReturn.json();
+                if (!responseReturn.ok) {
+                    setLoading(false)
+                    throw new Error(dataReturn.msg || 'Failed to create the second order');
+                }
+            }
+
+            setCheckoutSuccess(true)
+        } catch (error: any) {
+            setLoading(false)
+            console.error('Error creating orders:', error.message);
         }
-    };
+    }
 
     const handleClickFinish = async () => {
         let isPassengerDataValidated = true
@@ -110,39 +271,12 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
               })
               return;
         }
+
+        createOrders(baseOrderData, orderTourDetails, orderReturnDetails)
     }
 
-    const handleClickContinue = async () => {
-        let isPassengerDataValidated = true
-        setValidationTrigger(true); 
-        setTimeout(() => setValidationTrigger(false), 300)
+    // checkout api call >
 
-        passengers.map(passenger => {
-            if(passenger.firstname === '' || passenger.lastname === '' || passenger.price === 0) isPassengerDataValidated = false
-        })
-
-        if(!isPassengerDataValidated) return;
-
-        setValidationTrigger(false)
-        setCheckoutContent('return')
-    }
-
-    const [contactDetails, setContactDetails] = useState<ContactDetails>({
-        phone: '',
-        email: ''
-    })
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setContactDetails({ ...contactDetails, [name]: value });
-    };
-
-    useEffect(() => {
-        setCost(0)
-        passengers.map(passenger => {
-            setCost(prev => prev + passenger.price)
-        })
-    }, [passengers])
 
     let maxLength = 10;
     if(route){
@@ -151,12 +285,12 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
     }
 
   return (
-    <div className='max-w-[47rem] w-full flex flex-col justify-between flex-1'>
+    <div className='lg:max-w-[47rem] w-full flex flex-col justify-between flex-1'>
         <div>
             <div className='w-full flex flex-col md:gap-[1rem] gap-[2rem]'>
                 {
                     passengers.map((passenger, index) => (
-                        <PassengerDataRow 
+                        <PassengerDataRow key={index}
                             passenger={passenger} 
                             index={index + 1}
                             setPassenger={(updatedPassenger) => updatePassenger(index, updatedPassenger)}
@@ -251,7 +385,14 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
                 {/* Finish btn */}
                 {
                     <div className="relative lg:h-[3.5rem] h-[4.667rem] w-full bg-red hover:bg-dark-red transition-colors duration-300  md:rounded-[0.5rem] rounded-[0.667rem] cursor-pointer grid place-content-center" onClick={checkoutContent === 'return' ? handleClickFinish : handleClickContinue}>
-                        <p className="text-light-white md:text-[1.125rem] text-[1.5rem] font-bold font-open-sans">{ checkoutContent === 'return' ? t('finish') : t('continue') }</p>
+                        {
+                            loading 
+                            ? <div><PulseLoader 
+                                size={5}
+                                color="#FCFEFF"
+                              /></div>
+                            : <p className="text-light-white md:text-[1.125rem] text-[1.5rem] font-bold font-open-sans">{ checkoutContent === 'return' ? t('finish') : t('continue') }</p>
+                        }
                         {
                             checkoutContent === 'return' && <p className="text-center absolute bottom-0 left-0 right-0 md:translate-y-[1.5rem] translate-y-[2rem] text-red md:text-[0.875rem] text-[1.167rem] font-bold font-open-sans">* { t('payment-info') }</p>
                         }

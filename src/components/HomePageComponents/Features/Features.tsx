@@ -5,6 +5,7 @@ import React from 'react'
 import FeatureCard from './FeatureCard'
 import FeatureCeckText from './FeatureCeckText'
 import RedButton from '@/components/SharedComponents/RedButton'
+import { Link } from '@/navigation'
 
 const Features = () => {
 
@@ -40,9 +41,11 @@ const Features = () => {
                     <FeatureCeckText title={ t('featuresCheckText_3_Title') } descrption={ t('featuresCheckText_3_Description') }/>
                 </div>
 
-                <div className='md:mt-[3rem] mt-[2rem]'>
-                    <RedButton text={ t('featuresBtn') } />
-                </div>
+                <Link href="/about" >
+                    <div className='md:mt-[3rem] mt-[2rem]'>
+                        <RedButton text={ t('featuresBtn') } />
+                    </div>
+                </Link>
             </div>
         </div>
     </div>

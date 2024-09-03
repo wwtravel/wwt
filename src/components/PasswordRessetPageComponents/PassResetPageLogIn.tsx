@@ -126,7 +126,7 @@ const PassResetPageLogIn = () => {
   return (
     <div className='w-full pt-[14rem] px-[1rem]'>
       <div className='max-w-[84.25rem] w-full mx-auto h-[40.875rem] bg-[url(/images/dotted-map-bg.png)] bg-cover bg-center flex items-center'>
-        <div className='max-w-[32rem] w-full mx-auto bg-light-white border border-gray/25 rounded-[1rem] shadow-custom py-[4rem] px-[3rem]'>
+        <div className='max-w-[32rem] w-full mx-auto bg-light-white border border-gray/25 rounded-[1rem] shadow-custom py-[4rem] lg:px-[3rem] px-[2rem]'>
           <h3 className='text-dark-gray uppercase font-montserrat font-bold text-[1.5rem] text-center leading-[1]'>{ t('title') }</h3>
           <div className='bg-red h-[2px] w-[3rem] mt-[1rem] mx-auto'/>
           <p className='text-dark-gray font-open-sans font-[400] text-[1.125rem] text-center mt-[1rem]'>{ t('message') }</p>
@@ -138,7 +138,7 @@ const PassResetPageLogIn = () => {
                 id="ResetloginFormEmail" 
                   onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} 
                   name="email" value={formData.email} onChange={handleChange} 
-                  className={`${emailErr && 'animate-input-error'} w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="email"
+                  className={`${emailErr && 'animate-input-error'} w-full lg:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="email"
                 />
 
               <motion.label
@@ -158,7 +158,7 @@ const PassResetPageLogIn = () => {
               
               <div className="w-full mt-[1rem] relative">
                 <div className="relative">
-                  <input id="ResetpasswordLogInInput" name="password" onFocus={() => setPassFocus(true)} onBlur={() => setPassFocus(false)} value={formData.password} onChange={handleChange} className={`${passErr && 'animate-input-error'} w-full h-[3.5rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type={ showPass ? "text" : "password" }/>
+                  <input id="ResetpasswordLogInInput" name="password" onFocus={() => setPassFocus(true)} onBlur={() => setPassFocus(false)} value={formData.password} onChange={handleChange} className={`${passErr && 'animate-input-error'} w-full lg:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type={ showPass ? "text" : "password" }/>
                   <motion.label
                     htmlFor='ResetpasswordLogInInput'
                     className="origin-top-left cursor-text absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
@@ -175,7 +175,7 @@ const PassResetPageLogIn = () => {
                   <img onClick={() => setShowPass(prev => !prev)} src={showPass ? "/icons/icon-eye-closed.svg" : '/icons/icon-eye-open.svg'} alt="eye" draggable={false} className="size-[1rem] absolute top-[50%] -translate-y-[50%] right-[1.5rem] cursor-pointer" />
               </div>
 
-              <button type="submit" className='bg-red hover:bg-dark-red transition-colors duration-300 w-full h-[3.5rem] rounded-[0.5rem] text-light-white text-[1.125rem] font-bold font-open-sans mt-[2rem] cursor-pointer'>
+              <button type="submit" className='bg-red hover:bg-dark-red transition-colors duration-300 w-full lg:h-[3.5rem] h-[4rem] rounded-[0.5rem] text-light-white text-[1.125rem] font-bold font-open-sans mt-[2rem] cursor-pointer'>
                 { 
                   loading 
                     ? <PulseLoader 

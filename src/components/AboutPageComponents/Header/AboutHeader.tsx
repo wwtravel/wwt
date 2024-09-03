@@ -15,10 +15,6 @@ const AboutHeader = () => {
             <p>{ t('headerDesc') }</p>
         </div>
 
-        <div className='md:mt-[3rem] mt-[2rem]'>
-          <RedButton text={t('headerBtn')}/>
-        </div>
-
         <div className='max-lg:hidden'>
           <RouteSearch />
         </div>
