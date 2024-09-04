@@ -481,5 +481,54 @@
     "routes-prices": "Route Prices",
     "orders": "Orders",
     "exit-admin": "Exit Admin"
+  },
+  "AdminRoutes" : {
+    "filter-by": "Filter by",
+    "route-date": "Route date",
+    "route-output": "Route display",
+    "all-routes": "All routes",
+    "tour": "Moldova ― Switzerland",
+    "return": "Switzerland ― Moldova",
+    "sort-by": "Sort by",
+    "default": "Default",
+    "no-of-reservations-asc": "No. of reservations asc.",
+    "no-of-reservations-desc": "No. of reservations desc.",
+    "newest": "Earliest",
+    "latest": "Latest",
+    "delete": "Delete",
+    "filter": "Filter",
+    "routes": "Routes",
+    "add-new-route": "Add new route"
+  },
+  "AdminPrices" : {
+    "filter-by" : "Filter by",
+    "sort-by": "Sort by",
+    "delete": "Delete",
+    "filter": "Filter",
+    "default": "Default",
+
+    "display-by-route": "Display by route",
+    "all-prices": "All prices",
+    "md-sw": "Moldova ― Switzerland",
+    "md-gr": "Moldova ― Germany",
+    "md-fr": "Moldova ― France",
+    "md-au": "Moldova ― Austria",
+    "au-gr": "Austria ― Germany",
+    "fr-au": "Austria ― France",
+    "gr-fr": "Germany ― France",
+    "parcels": "Parcels & Luggage",
+    "price-desc": "Price: high - low",
+    "price-asc": "Price: low - high",
+
+    "md": "Moldova",
+    "au": "Austria",
+    "sw": "Switzerland",
+    "gr": "Germany",
+    "fr": "France",
+
+    "prices": "Prices",
+
+    "price-not-found-error": "No price found for editing.",
+    "edit-prices": "Edit prices"
   }
 }

@@ -6,9 +6,7 @@ import { AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
 import { RemoveScrollBar } from "react-remove-scroll-bar"
 import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
-
 import {zeroRightClassName,fullWidthClassName, noScrollbarsClassName} from 'react-remove-scroll-bar';
-
 
 
 const template = ({ children }: { children: React.ReactNode }) => {

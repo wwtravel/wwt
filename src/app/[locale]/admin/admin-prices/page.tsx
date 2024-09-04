@@ -1,10 +1,10 @@
-import { AdminNav } from '@/components'
+import { AdminNav, AdminPricesContent } from '@/components'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-      <AdminNav />
+      <AdminPricesContent />
     </div>
   )
 }

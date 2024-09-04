@@ -494,6 +494,58 @@
     "routes-prices" : "Prețurile rutelor",
     "orders" : "Comenzi",
     "exit-admin" : "Ieșire din admin"
+  },
+  "AdminRoutes" : {
+    "filter-by" : "Filtrează după",
+    "route-date" : "Data rutei",
+    "route-output" : "Afișarea rutelor",
+    "all-routes" : "Toate rutele",
+    "tour" : "Moldova ― Elveția",
+    "return" : "Elveția ― Moldova",
+    "sort-by" : "Sortează după",
+    "default" : "Implicit",
+    "no-of-reservations-asc" : "Nr. rezervări cresc.",
+    "no-of-reservations-desc" : "Nr. rezervări desc.",
+    "newest" : "Cea mai devreme",
+    "latest" : "Cea mai târzie",
+    "delete" : "Șterge",
+    "filter" : "Filtrează",
+
+    "routes" : "Rutele",
+    "add-new-route" : "Adaugă o rută nouă"
+  },
+  "AdminPrices" : {
+    "filter-by" : "Filtrează după",
+    "sort-by" : "Sortează după",
+    "delete" : "Șterge",
+    "filter" : "Filtrează",
+    "default" : "Implicit",
+
+
+    "display-by-route" : "Afișarea după rută",
+    "all-prices" : "Toate prețurile",
+    "md-sw" : "Moldova ― Elveția",
+    "md-gr" : "Moldova ― Germania",
+    "md-fr" : "Moldova ― Franța",
+    "md-au" : "Moldova ― Austria",
+    "au-gr" : "Austria ― Germania",
+    "fr-au" : "Austria ― Franța",
+    "gr-fr" : "Germania ― Franța",
+    "parcels" : "Colete & Bagaje",
+    "price-desc" : "Preț: mare - mic",
+    "price-asc" : "Preț: mic - mare",
+
+    "md" : "Moldova",
+    "au" : "Austria",
+    "sw" : "Elveția",
+    "gr" : "Germania",
+    "fr" : "Franța",
+
+    "prices" : "Prețurile",
+
+    "price-not-found-error": "Nu a fost găsit niciun preț disponibil pentru editare.",
+    "edit-prices" : "Modifică prețurile"
+
   }
   
 }

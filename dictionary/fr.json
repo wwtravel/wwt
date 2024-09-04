@@ -475,8 +475,57 @@
   },
   "AdminNav": {
     "all-routes": "Tous les itinéraires",
-    "routes-prices": "Tarifs des itinéraires",
+    "routes-prices": "Tarifs",
     "orders": "Commandes",
     "exit-admin": "Déconnexion admin"
+  },
+  "AdminRoutes" : {
+    "filter-by": "Filtrer par",
+    "route-date": "Date de la route",
+    "route-output": "Affichage des routes",
+    "all-routes": "Toutes les routes",
+    "tour": "Moldavie ― Suisse",
+    "return": "Suisse ― Moldavie",
+    "sort-by": "Trier par",
+    "default": "Par défaut",
+    "no-of-reservations-asc": "Nb de réservations croiss.",
+    "no-of-reservations-desc": "Nb de réservations décroiss.",
+    "newest": "La plus ancienne",
+    "latest": "La plus récente",
+    "delete": "Supprimer",
+    "filter": "Filtrer",
+    "routes": "Les routes",
+    "add-new-route": "Ajouter une nouvelle route"
+  },
+  "AdminPrices" : {
+    "filter-by" : "Filtrer par",
+    "delete": "Supprimer",
+    "filter": "Filtrer",
+    "sort-by": "Trier par",
+    "default": "Par défaut",
+
+    "display-by-route": "Affichage par route",
+    "all-prices": "Tous les prix",
+    "md-sw": "Moldavie ― Suisse",
+    "md-gr": "Moldavie ― Allemagne",
+    "md-fr": "Moldavie ― France",
+    "md-au": "Moldavie ― Autriche",
+    "au-gr": "Autriche ― Allemagne",
+    "fr-au": "Autriche ― France",
+    "gr-fr": "Allemagne ― France",
+    "parcels": "Colis & Bagages",
+    "price-desc": "Prix : élevé - faible",
+    "price-asc": "Prix : faible - élevé",
+
+    "md": "Moldavie",
+    "au": "Autriche",
+    "sw": "Suisse",
+    "gr": "Allemagne",
+    "fr": "France",
+
+    "prices": "Les prix",
+
+    "price-not-found-error": "Aucun prix disponible pour l'édition.",
+    "edit-prices": "Modifier les prix"
   }
 }

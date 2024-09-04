@@ -28,6 +28,8 @@ import { default as PassResetPageLogIn } from './PasswordRessetPageComponents/Pa
 
 //Admin Pages
 import { default as AdminNav } from './Admin/AdminSharedComponents/AdminNav/AdminNav'
+import { default as AdminRoutesContent } from './Admin/AdminRoutesComponents/AdminRoutesContent'
+import { default as AdminPricesContent } from './Admin/AdminPricesComponents/AdminPricesContent'
 
 export {
     NavBar,
@@ -53,5 +55,7 @@ export {
 
     PassResetPageLogIn,
 
-    AdminNav
+    AdminNav,
+    AdminRoutesContent,
+    AdminPricesContent
 }
