@@ -1,5 +1,6 @@
 import RedButton from '@/components/SharedComponents/RedButton'
 import SectionTitle from '@/components/SharedComponents/SectionTitle'
+import { Link } from '@/navigation'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import React from 'react'
@@ -32,7 +33,9 @@ const About = () => {
                     <br />
                     <span>{ t('AboutParagraph_2') }</span>
                 </p>
-                <RedButton text={ t('AboutBtn') }/>
+                <Link href="/contacts">
+                    <RedButton text={ t('AboutBtn') }/>
+                </Link>
             </div>
 
         </div>

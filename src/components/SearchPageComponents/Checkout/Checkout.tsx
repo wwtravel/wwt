@@ -34,13 +34,12 @@ interface CheckoutProps{
   seletcedDepartureRoute : Travel;
   seletcedArrivalRoute : Travel | null;
   setSelectedRoutes: React.Dispatch<React.SetStateAction<SelectedRoutes>>
+  setCheckoutSuccess: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDepartureRoute, seletcedArrivalRoute }) => {
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  })
+const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDepartureRoute, seletcedArrivalRoute, setCheckoutSuccess }) => {
+  
+  const { data } = useSession()
 
   const t = useTranslations("RouteSearchPage_Checkout")
 
@@ -59,9 +58,9 @@ const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDeparture
   const [tourCost, setTourCost] = useState(0)
   const [returnCost, setReturnCost] = useState(0)
 
-  const { data } = useSession()
 
   const [checkoutContent, setCheckoutContent] = useState<"tour" | "return">('tour')
+  const [showFillBox, setShowFillBox] = useState(true)
 
   const [tourPassengers, setTourPassengers] = useState<Passenger[]>([
     {
@@ -78,8 +77,6 @@ const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDeparture
         price: 0
     }
   ])
-
-  console.log(tourPassengers, returnPassengers)
 
   const updateTourPassenger = (index: number, updatedPassenger: Passenger) => {
     setTourPassengers(prevPassengers => 
@@ -106,19 +103,19 @@ const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDeparture
 
         <div className='mt-[3rem] flex md:flex-row flex-col-reverse max-md:items-center gap-[4rem] justify-center'>
           <div className='md:max-w-[22.375rem] max-w-[29.833rem] w-full'>
-            <p className='md:text-[1.125rem] text-[1.5rem] text-dark-gray font-bold font-open-sans'>{ t('order-details') }</p>
+            <p className='md:text-[1.125rem] text-[1.5rem] text-dark-gray font-bold font-open-sans md:mb-[0.5rem] mb-[0.667rem]'>{ t('order-details') }</p>
             <div className='flex flex-col gap-[1rem]'>
               <RouteDetails setSelectedRoutes={setSelectedRoutes} route={seletcedDepartureRoute} routeType='departure'/>
               {
                 seletcedArrivalRoute && <RouteDetails setSelectedRoutes={setSelectedRoutes} route={seletcedArrivalRoute} routeType='return'/>
               }
               <div className='md:h-[3.5rem] h-[4.667rem] w-full bg-red grid place-content-center md:rounded-[0.5rem] rounded-[0.667rem] max-md:mt-[0.333rem]'>
-                <p className='font-bold text-light-white md:text-[1.125rem] text-[1.5rem] font-open-sans'>{ t('total-price') }: {checkoutContent === 'tour' ? tourCost : returnCost}EUR</p>
+                <p className='font-bold text-light-white md:text-[1.125rem] text-[1.5rem] font-open-sans'>{ t('total-price') }: {tourCost + returnCost}EUR</p>
               </div>
             </div>
           </div>
           
-          <div className='min-h-full flex flex-col gap-[1.5rem]'>
+          <div className='min-h-full flex flex-col gap-[1.5rem] max-lg:w-full'>
             {
               !data && checkoutContent !== 'return' && (
                 <SignInQuestionBox />
@@ -126,8 +123,8 @@ const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDeparture
             }
 
             {
-              checkoutContent === 'return' && (
-                <AutoFillFields onClick={() => setReturnPassengers(tourPassengers.map(passenger => ({...passenger})))} />
+              checkoutContent === 'return' && showFillBox &&(
+                <AutoFillFields onClick={() => {setReturnPassengers(tourPassengers.map(passenger => ({...passenger}))); setShowFillBox(false)}} />
               )
             }
 
@@ -154,6 +151,7 @@ const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDeparture
             }
 
             <PassengersDataContainer 
+              passengersFullObj = { { tourPassengers, returnPassengers } }
               passengers={ checkoutContent === "tour" ? tourPassengers : returnPassengers } 
               setPassengers={ checkoutContent === "tour" ? setTourPassengers : setReturnPassengers } 
               updatePassenger={ checkoutContent === "tour" ? updateTourPassenger : updateReturnPassenger } 
@@ -162,6 +160,10 @@ const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDeparture
               checkoutContent={ checkoutContent }
               route={checkoutContent === "tour" ? seletcedDepartureRoute : seletcedArrivalRoute} 
               prices={seletcedDepartureRoute.price} 
+              user={data?.user}
+              seletcedArrivalRoute={seletcedArrivalRoute}
+              seletcedDepartureRoute={seletcedDepartureRoute}
+              setCheckoutSuccess={setCheckoutSuccess}
             />
           </div>
         </div>

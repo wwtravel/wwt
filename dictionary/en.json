@@ -1,6 +1,6 @@
 {
   "PageTitles" : {
-    "home" : "Home",
+    "home" : "Home Page",
     "about" : "About Us",
     "contact" : "Contact",
     "schedule" : "Route Schedule",
@@ -11,7 +11,7 @@
     "titleMD": "Phone Moldova",
     "titleSW": "Phone Switzerland",
     "titleEmail": "Email Address",
-    "navHome" : "Home",
+    "navHome" : "Home Page",
     "navSchedule" : "Route Schedule",
     "navAbout" : "About Us",
     "navContact" : "Contact",
@@ -95,6 +95,8 @@
     "free": "Free",
     "bookBtnText": "Book Ticket",
 
+    "parcels": "Parcels",
+    "parcels-desc": "each 1kg",
     "parcelInfoText1": "For larger parcels, the rate is calculated per unit. Please contact our office or visit us in person to determine the rate.",
     "parcelInfoText2": "Collection and delivery of parcels are carried out throughout the territory of the Republic of Moldova and Switzerland. Depending on the needs, transportation can be done in refrigerated chambers.",
     "send": "Send Request",
@@ -151,7 +153,7 @@
     "AboutBoldText": "We are World Wide Travel, an international passenger and parcel transport company based in Chișinău.",
     "AboutParagraph_1": "With over 10 years of experience, we are dedicated to providing high-quality services, ensuring safe and comfortable journeys for all our passengers.",
     "AboutParagraph_2": "We take pride in our modern fleet of buses and our professional team that ensures you reach your destination in the best conditions. We specifically cater to elderly individuals, offering them all the support they need for a worry-free journey.",
-    "AboutBtn": "Find out more"
+    "AboutBtn": "Contact us"
   },
   "AboutFeatures" : {
     "lowOpacityTitle": "BENEFITS",
@@ -371,7 +373,7 @@
     "multimedia": "Multimedia",
 
     "street" : "Tighina Street 2/2",
-    "pass-req" : "Upon passengers' request",
+    "pass-req" : "Upon request",
 
     "no-matching-route": "No route was found for the selected day, but you can check the nearest available data below.",
     "no-route-found_part1": "No route was found for the selected day, please",
@@ -433,6 +435,15 @@
 
     "close": "Close"
   },
+  "RouteSearchPage_CheckoutSuccess": {
+    "title": "Booking Confirmed!",
+    "msg1": "Great, your booking request has been successfully recorded.",
+    "msg2": "Check your email for more details.",
+    "msg3": "Thank you for choosing to travel with us!",
+    "btn-text": "Return to the site",
+    "question": "Have questions?",
+    "link": "Contact us"
+  },
   "RouteSearchErrors" : {
     "departure-city-required-err-title": "Departure City Missing",
     "departure-city-required-err-desc": "Please select a departure city.",
@@ -464,5 +475,11 @@
     "title": "Password Reset Success",
     "message": "Great! Your password has been reset, and we've sent the details to your email. Check now.",
     "back-to-website": "Back to website"
+  },
+  "AdminNav": {
+    "all-routes": "All Routes",
+    "routes-prices": "Route Prices",
+    "orders": "Orders",
+    "exit-admin": "Exit Admin"
   }
 }

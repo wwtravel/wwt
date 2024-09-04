@@ -56,7 +56,6 @@ const AnimatedDesktopNav:React.FC<LogInModalProps> = ({ setIsOpen, isOpen }) => 
                 >
                     <div className='flex gap-[1.5rem]'>
                         <Link href="/" className={`font-bold text-[1rem] ${activePage === '' ? ' text-red ' : 'text-dark-gray hover:opacity-75'} transition-opacity duration-300`}>{t('navHome')}</Link>
-                        <Link href="/" className={`font-bold text-[1rem] text-dark-gray hover:opacity-75 transition-opacity duration-300`}>{t('navSchedule')}</Link>
                         <Link href="/about" className={`font-bold text-[1rem] ${activePage === 'about' ? ' text-red ' : 'text-dark-gray hover:opacity-75'} transition-opacity duration-300`}>{t('navAbout')}</Link>
                         <Link href="/contacts" className={`font-bold text-[1rem] ${activePage === 'contacts' ? ' text-red ' : 'text-dark-gray hover:opacity-75'} transition-opacity duration-300`}>{t('navContact')}</Link>
                     </div>

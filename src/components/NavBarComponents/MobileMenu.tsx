@@ -56,10 +56,9 @@ const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
 
 
                 <div className='relative'>
-                  <img onClick={() => setIsOpen(false)} src="/icons/icon-close.svg" alt="close" draggable={false} className='w-[2.667rem] absolute right-[2rem] top-[2rem] cursor-pointer' />
+                  <img onClick={() => setIsOpen(false)} src="/icons/icon-close.svg" alt="close" draggable={false} className='w-[2.667rem] absolute right-[2rem] top-[2rem] cursor-pointer transition-opacity duration-300 hover:opacity-75' />
                   <div className='mt-[8rem] flex flex-col gap-[1.333rem] font-bold text-[2rem] text-dark-gray'>
                     <Link href="/" className={`${activePage === '' ? ' text-red ' : 'text-dark-gray hover:opacity-75'} transition-opacity duration-300'`} onClick={() => setIsOpen(false)}>{t('navHome')}</Link>
-                    <Link href="/" className={`hover:opacity-75 transition-opacity duration-300`} onClick={() => setIsOpen(false)}>{t('navSchedule')}</Link>
                     <Link href="/about" className={`${activePage === 'about' ? ' text-red ' : 'text-dark-gray hover:opacity-75'} transition-opacity duration-300`} onClick={() => setIsOpen(false)}>{t('navAbout')}</Link>
                     <Link href="/contacts" className={`${activePage === 'contacts' ? ' text-red ' : 'text-dark-gray hover:opacity-75'} transition-opacity duration-300`} onClick={() => setIsOpen(false)}>{t('navContact')}</Link>
                   </div>

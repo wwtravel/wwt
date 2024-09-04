@@ -26,8 +26,8 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, setIsOpen }) => {
   return (
     <ModalWindow isOpen={isOpen} setIsOpen={setIsOpen} maxWidth={45.75}>
       <div className='w-full h-[5rem] flex'>
-        <div onClick={() => setModalContent('Orders')} className={`h-full cursor-pointer uppercase grid place-content-center md:text-[1.5rem] text-[1rem] font-bold font-montserrat flex-1 transition-colors duration-300 ${ modalContent === "Orders" ? "bg-light-white text-red" : "bg-red text-light-white" }`}>{ t('tab_1_text') }</div>
-        <div onClick={() => setModalContent('AccSettings')} className={`h-full cursor-pointer uppercase grid place-content-center md:text-[1.5rem] text-[1rem] font-bold font-montserrat flex-1 transition-colors duration-300 ${ modalContent === "AccSettings" ? "bg-light-white text-red" : "bg-red text-light-white" }`}>{ t('tab_2_text') }</div>
+        <div onClick={() => setModalContent('Orders')} className={`h-full px-[1rem] text-center cursor-pointer uppercase grid place-content-center md:text-[1.5rem] text-[1rem] font-bold font-montserrat flex-1 transition-colors duration-300 ${ modalContent === "Orders" ? "bg-light-white text-red" : "bg-red text-light-white" }`}>{ t('tab_1_text') }</div>
+        <div onClick={() => setModalContent('AccSettings')} className={`h-full px-[1rem] text-center cursor-pointer uppercase grid place-content-center md:text-[1.5rem] text-[1rem] font-bold font-montserrat flex-1 transition-colors duration-300 ${ modalContent === "AccSettings" ? "bg-light-white text-red" : "bg-red text-light-white" }`}>{ t('tab_2_text') }</div>
       </div>
       { modalContent === "AccSettings" && <AccSettings setIsOpen={setIsOpen}/> }
       { modalContent === "Orders" && <Orders setIsOpen={setIsOpen}/> }

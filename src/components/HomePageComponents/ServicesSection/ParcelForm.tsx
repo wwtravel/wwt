@@ -128,12 +128,13 @@ const ParcelForm = () => {
             </motion.label>
         </div>
 
-        <ParcelFormSelect inputValue={formData.fromCity} options={CITIES} placeholder={ t('selectBox1Placeholder') } setInputValue={setFromCityValue}/>
         <ParcelFormSelect inputValue={formData.toCity} options={CITIES} placeholder={ t('selectBox2Placeholder') } setInputValue={setToCityValue}/>
-        
-        <div className='max-sm:hidden'>
-          <RedButton text={t('send')}/>
-        </div>
+
+        <button className='max-sm:hidden md:h-[3.5rem] h-[3.333rem] bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] px-[1.5rem] flex items-center justify-center md:text-[1.125rem] text-[1rem] font-bold text-white'>
+          <p>
+            { t('send') }
+          </p>
+        </button>
 
         <button className='sm:hidden h-[4.667rem] bg-red rounded-[0.5rem] px-[1.5rem] flex items-center justify-center text-[1.333rem] font-bold text-white'>
           {t('send')}
