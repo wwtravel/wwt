@@ -24,7 +24,7 @@ const subjectLang = new Map([
     ["ro", "ÎNREGISTRARE CU SUCCES | World Wide Travel"],
     ["fr", "INSCRIPTION RÉUSSIE | World Wide Travel"],
     ["ru", "РЕГИСТРАЦИЯ УСПЕШНА | World Wide Travel"]
-])
+]);
 
 export async function POST (request: Request) {
     const result = PostUserSchema.safeParse(await request.json());
@@ -125,7 +125,21 @@ export async function GET () {
                 lastname: true,
                 email: true,
                 dob: true,
-                phone_number: true
+                phone_number: true,
+                orders: {
+                    select: {
+                        id: true,
+                        travel: {
+                            select: {
+                                route: {
+                                    select: {
+                                        name: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
           })
     } catch (e) {
