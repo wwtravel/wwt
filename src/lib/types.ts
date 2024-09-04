@@ -93,7 +93,8 @@ export const PatchPriceSchema = z.object({
 
 export const PatchTravelSchema = z.object({
     id: z.string(),
-    departure: z.string().datetime(),
+    departure: z.string().datetime().optional(),
+    reserved_seats: z.number().optional(),
     route_id: z.string()
 })
 
