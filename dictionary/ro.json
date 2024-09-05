@@ -514,7 +514,9 @@
     "filter" : "Filtrează",
 
     "routes" : "Rutele",
-    "add-new-route" : "Adaugă o rută nouă"
+    "add-new-route" : "Adaugă o rută nouă",
+    "reserved-places" : "Locuri rezervate",
+    "patch-route" : "Modificare rută"
   },
   "AdminPrices" : {
     "filter-by" : "Filtrează după",

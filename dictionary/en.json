@@ -500,7 +500,10 @@
     "delete": "Delete",
     "filter": "Filter",
     "routes": "Routes",
-    "add-new-route": "Add new route"
+    "add-new-route": "Add new route",
+
+    "reserved-places": "Reserved places",
+    "patch-route": "Modify route"
   },
   "AdminPrices" : {
     "filter-by" : "Filter by",

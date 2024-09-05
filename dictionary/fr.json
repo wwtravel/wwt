@@ -497,7 +497,10 @@
     "delete": "Supprimer",
     "filter": "Filtrer",
     "routes": "Les routes",
-    "add-new-route": "Ajouter une nouvelle route"
+    "add-new-route": "Ajouter une nouvelle route",
+
+    "reserved-places": "Places réservées",
+    "patch-route": "Modifier l'itinéraire"
   },
   "AdminPrices" : {
     "filter-by" : "Filtrer par",
