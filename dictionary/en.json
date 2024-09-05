@@ -480,7 +480,9 @@
     "all-routes": "All Routes",
     "routes-prices": "Route Prices",
     "orders": "Orders",
-    "exit-admin": "Exit Admin"
+    "exit-admin": "Exit Admin",
+
+    "admin-screen" : "Please increase the screen size. This admin page is optimized for desktop devices."
   },
   "AdminRoutes" : {
     "filter-by": "Filter by",
@@ -529,6 +531,9 @@
     "prices": "Prices",
 
     "price-not-found-error": "No price found for editing.",
-    "edit-prices": "Edit prices"
+    "edit-prices": "Edit prices",
+
+    "price-err-title" : "Price update error",
+    "price-err-desc" : "Some error occured while updating the price"
   }
 }

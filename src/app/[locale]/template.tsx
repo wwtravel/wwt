@@ -7,9 +7,12 @@ import { useEffect, useState } from "react"
 import { RemoveScrollBar } from "react-remove-scroll-bar"
 import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 import {zeroRightClassName,fullWidthClassName, noScrollbarsClassName} from 'react-remove-scroll-bar';
+import { usePathname } from "@/navigation"
 
 
 const template = ({ children }: { children: React.ReactNode }) => {
+
+  const pathname = usePathname()
 
   const [isLoading, setIsLoading] = useState(false)
   const [showPage, setShowPage] = useState(false)
@@ -31,12 +34,12 @@ const template = ({ children }: { children: React.ReactNode }) => {
     <div>
         <AnimatePresence>
             {
-                isLoading && <Loader />
+                isLoading && pathname.split('/')[1] !== 'admin' && <Loader />
             }
         </AnimatePresence>
         { children }
         {
-          showChat &&
+          showChat && pathname.split('/')[1] !== 'admin' &&
               <TawkMessengerReact
                 propertyId="66d5add7ea492f34bc0cbf89" 
                 widgetId="1i6pau4mq"

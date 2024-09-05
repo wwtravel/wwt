@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import PricesFilter from './PricesFilter/PricesFilter'
 import PricesContainer from './PricesContainer/PricesContainer'
 
-interface PriceSheet {
+export interface PriceSheet {
   adult: number;
   child: number;
   student: number;
@@ -21,7 +21,7 @@ export type PricesArray = Price[];
 
 const AdminPricesContent = () => {
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [prices, setPrices] = useState<PricesArray>([])
   const [alteredPrices, setAlteredPrices] = useState<PricesArray>([])
 
@@ -63,27 +63,29 @@ const AdminPricesContent = () => {
 
   const handleClick = () => {
     let tempPrices = [...prices]
-    console.log("Temp Prices", tempPrices)
 
     //output
-    if(outputContition === "au-gr") tempPrices = filterByCities(prices, "austria", "germany")
-    if(outputContition === "au-fr") tempPrices = filterByCities(prices, "austria", "france")
-    if(outputContition === "gr-fr") tempPrices = filterByCities(prices, "germany", "france")
-    if(outputContition === "md-au") tempPrices = filterByCities(prices, "moldova", "austria")
-    if(outputContition === "md-fr") tempPrices = filterByCities(prices, "moldova", "france")
-    if(outputContition === "md-gr") tempPrices = filterByCities(prices, "moldova", "germany")
-    if(outputContition === "md-sw") tempPrices = filterByCities(prices, "moldova", "switzerland")
-    if(outputContition === "parcels") tempPrices = filterByCities(prices, "parcels", "parcels")
+    if(outputContition === "au-gr") tempPrices = filterByCities(tempPrices, "austria", "germany")
+    if(outputContition === "au-fr") tempPrices = filterByCities(tempPrices, "austria", "france")
+    if(outputContition === "gr-fr") tempPrices = filterByCities(tempPrices, "germany", "france")
+    if(outputContition === "md-au") tempPrices = filterByCities(tempPrices, "moldova", "austria")
+    if(outputContition === "md-fr") tempPrices = filterByCities(tempPrices, "moldova", "france")
+    if(outputContition === "md-gr") tempPrices = filterByCities(tempPrices, "moldova", "germany")
+    if(outputContition === "md-sw") tempPrices = filterByCities(tempPrices, "moldova", "switzerland")
+    if(outputContition === "parcels") tempPrices = filterByCities(tempPrices, "parcels", "parcels")
 
-    console.log("Temp Prices", tempPrices)
     // sorting
-    if(sortContition === 'priceAsc') tempPrices = sortByAdultPriceAsc(prices)
-    if(sortContition === 'priceDesc') tempPrices = sortByAdultPriceDesc(prices)
-    if(sortContition === 'none') tempPrices = prices
+    if(sortContition === 'priceAsc') tempPrices = sortByAdultPriceAsc(tempPrices)
+    if(sortContition === 'priceDesc') tempPrices = sortByAdultPriceDesc(tempPrices)
 
-    console.log("Temp Prices", tempPrices)
-    setAlteredPrices(prev => [...tempPrices])
-    console.log("Altered Prices", alteredPrices)
+    setAlteredPrices(tempPrices)
+  }
+
+  const handleReset = () => {
+    setOutputCondition('all')
+    setSortContition('none')
+
+    setAlteredPrices(prices)
   }
 
 
@@ -92,8 +94,8 @@ const AdminPricesContent = () => {
 
   return (
     <div className='pt-[9.5rem] flex xl:gap-[4rem] gap-[2rem] justify-center mb-[5rem]'>
-        <PricesFilter handleClick={handleClick} sortContition={sortContition} setSortContition={setSortContition} setOutputCondition={setOutputCondition} outputContition={outputContition}/>
-        <PricesContainer loading={loading} prices={alteredPrices}/>
+        <PricesFilter handleReset={handleReset} handleClick={handleClick} sortContition={sortContition} setSortContition={setSortContition} setOutputCondition={setOutputCondition} outputContition={outputContition}/>
+        <PricesContainer loading={loading} prices={alteredPrices} fetchPrices={fetchPrices}/>
     </div>
   )
 }

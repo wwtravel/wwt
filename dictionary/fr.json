@@ -477,7 +477,9 @@
     "all-routes": "Tous les itinéraires",
     "routes-prices": "Tarifs",
     "orders": "Commandes",
-    "exit-admin": "Déconnexion admin"
+    "exit-admin": "Déconnexion admin",
+
+    "admin-screen" : "Veuillez agrandir la taille de l'écran. Cette page d'administration est optimisée pour les appareils de bureau."
   },
   "AdminRoutes" : {
     "filter-by": "Filtrer par",
@@ -526,6 +528,9 @@
     "prices": "Les prix",
 
     "price-not-found-error": "Aucun prix disponible pour l'édition.",
-    "edit-prices": "Modifier les prix"
+    "edit-prices": "Modifier les prix",
+
+    "price-err-title": "Erreur prix",
+    "price-err-desc": "Une erreur est survenue lors de la mise à jour du prix"
   }
 }

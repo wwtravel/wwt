@@ -1,13 +1,15 @@
-import React from 'react'
-import { Price } from './PricesContainer'
+import React, { useState } from 'react'
 import { useTranslations } from 'next-intl';
 import UnderlinedText from '@/components/SearchPageComponents/SearchPageContent/UnderlinedText';
+import { Price } from '../AdminPricesContent';
+import PricePatchModal from '../PricePatchModal';
 
 interface PriceCardProps{
     price : Price;
+    fetchPrices(): Promise<void>
 }
 
-const PriceCard: React.FC<PriceCardProps> = ({ price }) => {
+const PriceCard: React.FC<PriceCardProps> = ({ price, fetchPrices }) => {
 
     const t = useTranslations("AdminPrices")
     const prices_t = useTranslations("Services")
@@ -22,6 +24,8 @@ const PriceCard: React.FC<PriceCardProps> = ({ price }) => {
             default : "Country"
         }
     }
+
+    const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div className='w-full p-[1.5rem] bg-light-white rounded-[1rem] border border-gray/25 shadow-custom'>
@@ -64,10 +68,12 @@ const PriceCard: React.FC<PriceCardProps> = ({ price }) => {
             </div>
         </div>
 
-        <div className='w-full flex justify-center items-center gap-[0.25rem] mt-[1.5rem]'>
+        <div className='w-full flex justify-center items-center gap-[0.25rem] mt-[1.5rem]' onClick={() => setIsOpen(true)}>
             <img src="/icons/route-card-icons/icon-pencil.svg" alt="edit" draggable={false} className='size-[1rem]' />
             <UnderlinedText text={ t('edit-prices') }/>
         </div>
+
+        <PricePatchModal fetchPrices={fetchPrices} isOpen={isOpen} setIsOpen={setIsOpen} price={price}/>
     </div>
   )
 }

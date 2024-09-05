@@ -493,7 +493,9 @@
     "all-routes" : "Toate rutele",
     "routes-prices" : "Prețurile rutelor",
     "orders" : "Comenzi",
-    "exit-admin" : "Ieșire din admin"
+    "exit-admin" : "Ieșire din admin",
+
+    "admin-screen" : "Vă rugăm să măriți dimensiunea ecranului. Această pagină de administrare este optimizată pentru dispozitive desktop."
   },
   "AdminRoutes" : {
     "filter-by" : "Filtrează după",
@@ -544,7 +546,10 @@
     "prices" : "Prețurile",
 
     "price-not-found-error": "Nu a fost găsit niciun preț disponibil pentru editare.",
-    "edit-prices" : "Modifică prețurile"
+    "edit-prices" : "Modifică prețurile",
+
+    "price-err-title": "Eroare actualizare",
+    "price-err-desc": "A apărut o eroare la actualizarea prețului"
 
   }
   

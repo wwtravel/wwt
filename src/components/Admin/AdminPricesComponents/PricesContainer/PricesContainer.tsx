@@ -9,10 +9,11 @@ import { PricesArray } from '../AdminPricesContent';
 interface PricesContainerProps{
   prices : PricesArray;
   loading: boolean;
+  fetchPrices(): Promise<void>
 }
 
 
-const PricesContainer:React.FC<PricesContainerProps> = ({ prices, loading }) => {
+const PricesContainer:React.FC<PricesContainerProps> = ({ prices, loading, fetchPrices }) => {
 
   const t = useTranslations("AdminPrices")
 
@@ -51,7 +52,7 @@ const PricesContainer:React.FC<PricesContainerProps> = ({ prices, loading }) => 
                   <div className='grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 grid-flow-row gap-[1rem] '>
                     {
                       prices.map((price, index) => (
-                        <PriceCard key={index} price={price}/>
+                        <PriceCard fetchPrices={fetchPrices} key={index} price={price}/>
                       ))
                     }
                   </div>

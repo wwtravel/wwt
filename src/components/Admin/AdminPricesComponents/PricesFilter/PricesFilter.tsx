@@ -10,10 +10,11 @@ interface PricesFilterProps {
     setOutputCondition: React.Dispatch<React.SetStateAction<"all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr" | "parcels">>
     outputContition: "all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr" | "parcels";
     sortContition: "priceAsc" | "priceDesc" | "none";
-    handleClick : () => void
+    handleClick : () => void;
+    handleReset : () => void
 }
 
-const PricesFilter:React.FC<PricesFilterProps> = ({ sortContition, setSortContition, setOutputCondition, outputContition, handleClick }) => {
+const PricesFilter:React.FC<PricesFilterProps> = ({ sortContition, setSortContition, setOutputCondition, outputContition, handleClick, handleReset }) => {
 
     const t = useTranslations("AdminPrices")
 
@@ -74,7 +75,9 @@ const PricesFilter:React.FC<PricesFilterProps> = ({ sortContition, setSortContit
             <PricesFilterSelect setSortContition={setSortContition} sortContition={sortContition} />
 
             <div className='flex justify-between items-center mt-[3rem]'>
-                <UnderlinedText text={ t('delete') }/>
+                <div onClick={handleReset}>
+                    <UnderlinedText text={ t('delete') }/>
+                </div>
 
                 <button className='bg-red hover:bg-dark-red transition-colors duration-300 grid place-content-center rounded-[0.5rem] xl:h-[2.5rem] h-[3rem] px-[1.5rem]' onClick={handleClick}>
                     <p className='text-light-white xl:text-[1rem] text-[1.333rem] font-bold'>{ t('filter') }</p>

@@ -32,7 +32,7 @@ const ModalWindow:React.FC<ModalWindowProps> = ({ children, isOpen, setIsOpen, m
                             style={{ maxWidth: `${maxWidth}rem` }}
                         >
                             <motion.div 
-                                className="bg-light-white rounded-[1rem] overflow-hidden"
+                                className="bg-light-white rounded-[1rem] overflow-hidden border border-gray/25"
                                 initial={{ y: '-5%', opacity: 0 }}
                                 animate={{ y: '0%', opacity: 1 }}
                                 exit={{ y: '-5%', opacity: 0 }}
