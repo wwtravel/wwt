@@ -503,7 +503,15 @@
     "add-new-route": "Add new route",
 
     "reserved-places": "Reserved places",
-    "patch-route": "Modify route"
+    "patch-route": "Modify route",
+
+    "update": "Update",
+    "add": "Add new route",
+    "choose-route": "Choose route",
+    "departure-date": "Departure Date",
+    "departure-hour": "Departure Hour",
+
+    "price-not-found-error": "No available route found for editing."
   },
   "AdminPrices" : {
     "filter-by" : "Filter by",

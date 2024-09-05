@@ -516,7 +516,15 @@
     "routes" : "Rutele",
     "add-new-route" : "Adaugă o rută nouă",
     "reserved-places" : "Locuri rezervate",
-    "patch-route" : "Modificare rută"
+    "patch-route" : "Modificare rută",
+
+    "update" : "Actualizează",
+    "add" : "Adaugă ruta nouă",
+    "choose-route" : "Alegeți ruta",
+    "departure-date" : "Data de Plecare",
+    "departure-hour" : "Ora de Plecare",
+
+    "price-not-found-error": "Nu a fost găsită nici o rută disponibilă pentru editare."
   },
   "AdminPrices" : {
     "filter-by" : "Filtrează după",

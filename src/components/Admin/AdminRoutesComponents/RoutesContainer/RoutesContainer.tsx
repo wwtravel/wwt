@@ -15,7 +15,7 @@ const RoutesContainer: React.FC<RoutesContainerProps> = ({ loading, travels }) =
 
   return (
     <div className='max-w-[66rem] w-full'>
-        <p className='font-bold text-[1.125rem] text-dark-gray mb-[0.5rem]'>{ t('routes') }</p>
+        <p className='font-bold xl:text-[1.125rem] text-[1.5rem] text-dark-gray mb-[0.5rem]'>{ t('routes') }</p>
 
         {
           loading

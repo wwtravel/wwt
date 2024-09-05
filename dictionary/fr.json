@@ -500,7 +500,14 @@
     "add-new-route": "Ajouter une nouvelle route",
 
     "reserved-places": "Places réservées",
-    "patch-route": "Modifier l'itinéraire"
+    "patch-route": "Modifier l'itinéraire",
+
+    "update": "Mettre à jour",
+    "add": "Ajouter une nouvelle route",
+    "choose-route": "Choisir la route",
+    "departure-date": "Date de départ",
+    "departure-hour": "Heure de départ",
+    "price-not-found-error": "Aucun itinéraire disponible trouvé pour modification."
   },
   "AdminPrices" : {
     "filter-by" : "Filtrer par",

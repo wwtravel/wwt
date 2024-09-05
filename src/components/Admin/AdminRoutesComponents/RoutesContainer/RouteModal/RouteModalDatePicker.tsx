@@ -1,6 +1,6 @@
 'use client'
 
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import * as React from "react"
 import { format, Locale, parse } from "date-fns"
 import { Calendar as CalendarIcon } from "lucide-react"
@@ -16,25 +16,30 @@ import {
 
 import { fr, ro, enUS, ru } from "date-fns/locale"
 
-interface FilterDatePickerProps{
-  setDateCondition: React.Dispatch<React.SetStateAction<string>>;
-  dateCondition: string;
+interface RouteModalDatePickerProps{
+  routeDate: string;
+  setRouteDate: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const FilterDatePicker:React.FC<FilterDatePickerProps> = ({ setDateCondition, dateCondition }) => {
+const RouteModalDatePicker:React.FC<RouteModalDatePickerProps> = ({ routeDate, setRouteDate }) => {
 
-    const [date, setDate] = React.useState<Date | undefined>()
+    const t = useTranslations("AdminRoutes")
 
-    React.useEffect(() => {
-      if(dateCondition === '') setDate(undefined)
-    }, [dateCondition])
+    const extractDate = ( textDate: string ) => {
+      const date = new Date(textDate);
+      const dateString = date.toISOString().split('T')[0];
+  
+      return dateString
+    }
+
+    const [date, setDate] = React.useState<Date | undefined>(routeDate !== '' ? new Date(routeDate) : undefined)
 
     React.useEffect(() => {
       if(date) {
         const formattedDate = format(date, "yyyy-MM-dd")
-        setDateCondition(formattedDate)
+        setRouteDate(formattedDate)
       } else {
-        setDateCondition('')
+        setRouteDate('')
       }
     }, [date])
 
@@ -61,7 +66,7 @@ const FilterDatePicker:React.FC<FilterDatePickerProps> = ({ setDateCondition, da
             !date && "text-muted-foreground"
           )}
         >
-          {date ? format(date, "dd.MM.yyyy") : ( <span className="text-gray/75">dd.mm.yyyy</span> ) }
+          {date ? format(date, "dd.MM.yyyy") : ( <span className="text-gray/75">{ t('departure-date') }</span> ) }
           <CalendarIcon className="lg:size-[1rem] size-[1.333rem] absolute right-[1.5rem] top-[50%] -translate-y-[50%]" />
         </Button>
       </PopoverTrigger>
@@ -81,4 +86,4 @@ const FilterDatePicker:React.FC<FilterDatePickerProps> = ({ setDateCondition, da
   )
 }
 
-export default FilterDatePicker
+export default RouteModalDatePicker

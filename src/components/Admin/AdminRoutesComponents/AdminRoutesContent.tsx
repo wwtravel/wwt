@@ -30,8 +30,8 @@ interface Stop {
   hours: number;
   is_destination: boolean;
   label: Label;
-  lat: string;
-  lon: string;
+  lat: number;
+  lon: number;
 }
 
 export interface Travel {
@@ -49,6 +49,7 @@ const AdminRoutesContent = () => {
 
   const [loading, setLoading] = useState(true)
   const [travels, setTravels] = useState<TravelArray>([])
+  const [alteredTravels, setAlteredTravels] = useState<TravelArray>([])
 
   const fetchTravels = async () => {
     setLoading(true)
@@ -60,6 +61,7 @@ const AdminRoutesContent = () => {
       }
       const data = await response.json();
       setTravels(data)
+      setAlteredTravels(data)
       setLoading(false)
   } catch (error) {
       setLoading(false)
@@ -70,14 +72,73 @@ const AdminRoutesContent = () => {
   useEffect(() => {
     fetchTravels()
   }, [])
-  console.log(travels)
 
   const [sortContition, setSortContition] = useState<"resAsc" | "resDesc" | "newest" | "oldest" | "none">("none")
   const [outputContition, setOutputCondition] = useState<"all" | "tour" | "retour">("all")
   const [dateCondition, setDateCondition] = useState<string>("")
 
+  const extractDate = ( textDate: string ) => {
+    const date = new Date(textDate);
+    const dateString = date.toISOString().split('T')[0];
+
+    return dateString
+}
+
+  const filterByCountry = (travels: Travel[], startCountry: string): Travel[] => {
+    return travels.filter(travel => travel.route.stops[0].country === startCountry);
+  };
+
+  const filterByDate = (travels: Travel[], date: string): Travel[] => {
+    return travels.filter(travel => extractDate(travel.departure) === date);
+  };
+
+  const sortReservedSeatsAsc = (travels: TravelArray): TravelArray => {
+    return [...travels].sort((a, b) => a.reserved_seats - b.reserved_seats);
+  };
+
+  const sortReservedSeatsDesc = (travels: TravelArray): TravelArray => {
+    return [...travels].sort((a, b) => b.reserved_seats - a.reserved_seats);
+  };
+
+  const sortDepartureDateAsc = (travels: TravelArray): TravelArray => {
+    return [...travels].sort((a, b) => new Date(a.departure).getTime() - new Date(b.departure).getTime());
+  };
+
+  const sortDepartureDateDesc = (travels: TravelArray): TravelArray => {
+    return [...travels].sort((a, b) => new Date(b.departure).getTime() - new Date(a.departure).getTime());
+  };
+
+  const handleClick = () => {
+    let tempTravels = [...travels]
+
+    //date
+    if(dateCondition !== '') tempTravels = filterByDate(tempTravels, dateCondition)
+
+    //output
+    if(outputContition === "tour") tempTravels = filterByCountry(tempTravels, "moldova")
+    if(outputContition === "retour") tempTravels = filterByCountry(tempTravels, "switzerland")
+
+    // sorting
+    if(sortContition === 'resAsc') tempTravels = sortReservedSeatsAsc(tempTravels)
+    if(sortContition === 'resDesc') tempTravels = sortReservedSeatsDesc(tempTravels)
+    if(sortContition === 'newest') tempTravels = sortDepartureDateAsc(tempTravels)
+    if(sortContition === 'oldest') tempTravels = sortDepartureDateDesc(tempTravels)
+
+    setAlteredTravels(tempTravels)
+  }
+
+  const handleReset = () => {
+    setDateCondition('')
+    setSortContition('none')
+    setOutputCondition('all')
+
+    setAlteredTravels(travels)
+  }
+
+  console.log(travels)
+
   return (
-    <div className='pt-[9.5rem] flex gap-[4rem] justify-center'>
+    <div className='pt-[9.5rem] flex xl:gap-[4rem] gap-[2rem] justify-center'>
         <Filter 
           sortContition={sortContition}
           setSortContition={setSortContition}
@@ -85,8 +146,10 @@ const AdminRoutesContent = () => {
           setOutputCondition={setOutputCondition}
           dateCondition={dateCondition}
           setDateCondition={setDateCondition}
+          handleClick={handleClick}
+          handleReset={handleReset}
         />
-        <RoutesContainer loading={loading} travels={travels}/>
+        <RoutesContainer loading={loading} travels={alteredTravels}/>
     </div>
   )
 }
