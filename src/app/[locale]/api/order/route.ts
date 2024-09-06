@@ -1,10 +1,10 @@
-import WelcomeEmail from "@/components/emails/WelcomeEmail";
-import { OrderSchema } from "@/lib/types";
+import { OrderSchema, ResetPasswordSchema } from "@/lib/types";
 import { prisma } from "@/utils/prisma"
 import { render } from "@react-email/components";
 import nodemailer from 'nodemailer';
 import { handlePrismaError } from "@/lib/bd-utils";
 import { auth } from "@/lib/auth";
+import OrderConfirmation from "@/components/emails/OrderConfirmation";
 
 const mailConfig = {
     service: "gmail",
@@ -25,7 +25,7 @@ const subjectLang = new Map([
 ])
 
 export async function POST (request: Request) {
-    const result = OrderSchema.safeParse(await request.json());
+    const result = ResetPasswordSchema.safeParse(await request.json());
 
     if (!result.success) {
         let errorMessage = "";
@@ -38,31 +38,31 @@ export async function POST (request: Request) {
         return Response.json({ msg: errorMessage }, {status: 400})
     }
 
-    try {
-        await prisma.order.create({
-            data: {
-                travel_id: result.data.travel_id,
-                passengers: result.data.passengers,
-                user_id: result.data.user_id,
-                contact_details: result.data.contact_details
-            }
-        })
-    } catch (e) {
-        if (e) {
-            return handlePrismaError(e);
-        }
-    }
-
-    // const emailHtml = render(WelcomeEmail({details: {email: result.data.email, password: password, lang: result.data.lang}}))
-
-    // const data = {
-    //     to: result.data.contact_details.email, 
-    //     subject: subjectLang.get(result.data.lang),
-    //     html: emailHtml
+    // try {
+    //     await prisma.order.create({
+    //         data: {
+    //             travel_id: result.data.travel_id,
+    //             passengers: result.data.passengers,
+    //             user_id: result.data.user_id,
+    //             contact_details: result.data.contact_details
+    //         }
+    //     })
+    // } catch (e) {
+    //     if (e) {
+    //         return handlePrismaError(e);
+    //     }
     // }
 
-    // const transporter = nodemailer.createTransport(mailConfig);
-    // await transporter.sendMail(data);
+    const emailHtml = render(OrderConfirmation())
+
+    const data = {
+        to: result.data.email, 
+        subject: subjectLang.get(result.data.lang),
+        html: emailHtml
+    }
+
+    const transporter = nodemailer.createTransport(mailConfig);
+    await transporter.sendMail(data);
 
     return Response.json({ msg: "Order succesfully created!" }, {status: 201});
 }

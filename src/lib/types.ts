@@ -42,6 +42,26 @@ export interface ResetPasswordProps {
     lang: string
 }
 
+export interface OrderConfirmationProps {
+    id: string,
+    departureDate: string,
+    arrivalDate: string,
+    departureAdress: string,
+    arrivalAdress: string,
+    passangers: Passanger[],
+    contactDetails: {
+        name: string,
+        phoneNumber: string
+    },
+    lang: string,
+
+}
+
+interface Passanger {
+    name: string,
+    price: string
+}
+
 export const PostPriceSchema = z.object({
     from: z
         .string()
