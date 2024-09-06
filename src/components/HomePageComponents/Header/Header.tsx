@@ -29,9 +29,9 @@ const Header = () => {
           <RouteSearch />
         </div>
 
-        <div className='lg:hidden'>
+        {/* <div className='lg:hidden'>
           <MobileRouteSearch />
-        </div>
+        </div> */}
 
     </div>
   )
