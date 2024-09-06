@@ -4,7 +4,13 @@ import { Link } from '@/navigation'
 import React, { useState } from 'react'
 import LangPicker from './LangPicker'
 import CurrencyPicker from './CurrencyPicker'
-import MobileMenu from './MobileMenu'
+
+import dynamic from 'next/dynamic';
+
+const MobileMenu = dynamic(() => import('./MobileMenu'), {
+  ssr: false,
+  loading: () => <p>Loading...</p>
+});
 
 const MobileNav = () => {
 
