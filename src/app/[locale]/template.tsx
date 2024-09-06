@@ -18,25 +18,25 @@ const template = ({ children }: { children: React.ReactNode }) => {
   const [showPage, setShowPage] = useState(false)
   const [showChat, setShowChat] = useState(false)
 
-  useEffect(() => {
-    setShowChat(false)
-    setIsLoading(true)
-    setTimeout(() => {
-        setIsLoading(false)
-    }, 1500)
+  // useEffect(() => {
+  //   setShowChat(false)
+  //   setIsLoading(true)
+  //   setTimeout(() => {
+  //       setIsLoading(false)
+  //   }, 1500)
 
-    setTimeout(() => {
-      setShowChat(true)
-    }, 2300)
-  }, [])
+  //   setTimeout(() => {
+  //     setShowChat(true)
+  //   }, 2300)
+  // }, [])
 
   return (
     <div>
-        <AnimatePresence>
+        {/* <AnimatePresence>
             {
                 isLoading && pathname.split('/')[1] !== 'admin' && <Loader />
             }
-        </AnimatePresence>
+        </AnimatePresence> */}
         { children }
         {
           showChat && pathname.split('/')[1] !== 'admin' &&
