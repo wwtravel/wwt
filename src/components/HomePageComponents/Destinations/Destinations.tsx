@@ -1,10 +1,20 @@
 import React from 'react'
-import DestinationsCarousel from './DestinationsCarousel'
+
 import { useTranslations } from 'next-intl'
 
 import Image from 'next/image'
 import SectionTitle from '@/components/SharedComponents/SectionTitle'
-import MobileDestinationsCarousel from './MobileDestinationsCarousel'
+import dynamic from 'next/dynamic'
+
+const DestinationsCarousel = dynamic(() => import('./DestinationsCarousel'), {
+  loading: () => <p>Loading carousel...</p>,  // Optional: Loading placeholder
+  ssr: false  // Disable server-side rendering if the carousel is purely client-side
+})
+
+const MobileDestinationsCarousel = dynamic(() => import('./MobileDestinationsCarousel'), {
+  loading: () => <p>Loading mobile carousel...</p>,  // Optional: Loading placeholder
+  ssr: false  // Disable server-side rendering if the carousel is purely client-side
+})
 
 const Destinations = () => {
 
