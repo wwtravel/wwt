@@ -30,6 +30,7 @@ import { default as PassResetPageLogIn } from './PasswordRessetPageComponents/Pa
 import { default as AdminNav } from './Admin/AdminSharedComponents/AdminNav/AdminNav'
 import { default as AdminRoutesContent } from './Admin/AdminRoutesComponents/AdminRoutesContent'
 import { default as AdminPricesContent } from './Admin/AdminPricesComponents/AdminPricesContent'
+import { default as AdminOrdersContent } from './Admin/AdminOrdersComponents/AdminOrdersContent'
 
 export {
     NavBar,
@@ -57,5 +58,6 @@ export {
 
     AdminNav,
     AdminRoutesContent,
-    AdminPricesContent
+    AdminPricesContent,
+    AdminOrdersContent
 }

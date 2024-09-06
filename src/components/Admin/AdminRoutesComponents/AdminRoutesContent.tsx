@@ -135,10 +135,8 @@ const AdminRoutesContent = () => {
     setAlteredTravels(travels)
   }
 
-  console.log(travels)
-
   return (
-    <div className='pt-[9.5rem] flex xl:gap-[4rem] gap-[2rem] justify-center'>
+    <div className='pt-[9.5rem] flex xl:gap-[4rem] gap-[2rem] justify-center mb-[4rem]'>
         <Filter 
           sortContition={sortContition}
           setSortContition={setSortContition}

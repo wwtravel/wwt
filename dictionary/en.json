@@ -507,9 +507,12 @@
 
     "update": "Update",
     "add": "Add new route",
+    "add-btn": "Add route",
     "choose-route": "Choose route",
     "departure-date": "Departure Date",
     "departure-hour": "Departure Hour",
+
+    "fill-in-data" : "Enter the data in the boxes for more details.",
 
     "price-not-found-error": "No available route found for editing."
   },
@@ -546,5 +549,23 @@
 
     "price-err-title" : "Price update error",
     "price-err-desc" : "Some error occured while updating the price"
-  }
+  },
+  "AdminOrders" : {
+    "filter-by" : "Filter by",
+    "delete" : "Delete",
+    "filter" : "Filter",
+    "default" : "Default",
+    "search-by" : "Search by",
+    "order-date" : "Order Date",
+
+    "search-placeholder" : "ID/First Name/Last Name",
+
+    "id" : "ID",
+    "main-pass" : "Main Passenger",
+    "pass-nr" : "No. of Passengers",
+    "phone" : "Phone Number",
+    "total-price" : "Total Price",
+    "about" : "About Reservation",
+    "pass-order-number" : "Passenger No."
+}
 }

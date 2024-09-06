@@ -33,7 +33,7 @@ const RouteModalSelect:React.FC<RouteModalSelectProps> = ({ direction, setDirect
   const t = useTranslations("AdminRoutes")
 
   return (
-    <Select value={ isSameCoordinatePair(direction, tourCoord) ? "tour" : "return" } onValueChange={(value) => {
+    <Select value={ direction ? isSameCoordinatePair(direction, tourCoord) ? "tour" : "return" : '' } onValueChange={(value) => {
         if(value === 'tour') setDirection(tourCoord)
             else setDirection(returnCoord)
     }}>

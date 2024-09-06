@@ -519,10 +519,13 @@
     "patch-route" : "Modificare rută",
 
     "update" : "Actualizează",
-    "add" : "Adaugă ruta nouă",
+    "add" : "Adaugă o rută nouă",
+    "add-btn" : "Adaugă ruta",
     "choose-route" : "Alegeți ruta",
     "departure-date" : "Data de Plecare",
     "departure-hour" : "Ora de Plecare",
+
+    "fill-in-data" : "Introduceți datele în casete pentru mai multe detalii.",
 
     "price-not-found-error": "Nu a fost găsită nici o rută disponibilă pentru editare."
   },
@@ -560,6 +563,26 @@
 
     "price-err-title": "Eroare actualizare",
     "price-err-desc": "A apărut o eroare la actualizarea prețului"
+
+  },
+  "AdminOrders" : {
+    "filter-by" : "Filtrează după",
+    "delete" : "Șterge",
+    "filter" : "Filtrează",
+    "default" : "Implicit",
+    "search-by" : "Caută după",
+    "order-date" : "Data comenzii",
+
+    "search-placeholder" : "ID/Nume/Prenume",
+
+    "id" : "ID",
+    "main-pass" : "Pasager principal",
+    "pass-nr" : "Nr. pasageri",
+    "phone" : "Număr de telefon",
+    "total-price" : "Preț total",
+    "about" : "Despre rezervare",
+    "pass-order-number" : "Pasager nr."
+
 
   }
   

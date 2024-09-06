@@ -1,8 +1,12 @@
+'use client'
+
 import { useTranslations } from 'next-intl'
-import React from 'react'
+import React, { useState } from 'react'
 import { TravelArray } from '../AdminRoutesContent';
 import PulseLoader from 'react-spinners/PulseLoader';
 import TravelCard from './TravelCard';
+import UnderlinedText from '@/components/SearchPageComponents/SearchPageContent/UnderlinedText';
+import RoutePatchModal from './RouteModal/RoutePatchModal';
 
 interface RoutesContainerProps{
   loading: boolean;
@@ -13,9 +17,19 @@ const RoutesContainer: React.FC<RoutesContainerProps> = ({ loading, travels }) =
 
   const t= useTranslations("AdminRoutes")
 
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <div className='max-w-[66rem] w-full'>
+      <div className='flex justify-between items-center'>
         <p className='font-bold xl:text-[1.125rem] text-[1.5rem] text-dark-gray mb-[0.5rem]'>{ t('routes') }</p>
+        <div className='flex items-center gap-[0.5rem]' onClick={() => setIsOpen(true)}>
+          <img src="/icons/route-card-icons/icon-add.svg" alt="add" draggable={false} className='lg:size-[1.125rem] size-[1.5rem]' />
+          <UnderlinedText text={ t('add') }/>
+        </div>
+
+        <RoutePatchModal travel={null} modalGoal="add" isOpen={isOpen} setIsOpen={setIsOpen}/>
+      </div>
 
         {
           loading

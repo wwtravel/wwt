@@ -504,10 +504,13 @@
 
     "update": "Mettre à jour",
     "add": "Ajouter une nouvelle route",
+    "add-btn": "Ajouter route",
     "choose-route": "Choisir la route",
     "departure-date": "Date de départ",
     "departure-hour": "Heure de départ",
-    "price-not-found-error": "Aucun itinéraire disponible trouvé pour modification."
+    "price-not-found-error": "Aucun itinéraire disponible trouvé pour modification.",
+
+    "fill-in-data" : "Saisissez les données dans les cases pour plus de détails."
   },
   "AdminPrices" : {
     "filter-by" : "Filtrer par",
@@ -542,5 +545,23 @@
 
     "price-err-title": "Erreur prix",
     "price-err-desc": "Une erreur est survenue lors de la mise à jour du prix"
-  }
+  },
+  "AdminOrders" : {
+    "filter-by" : "Filtrer par",
+    "delete" : "Supprimer",
+    "filter" : "Filtrer",
+    "default" : "Par défaut",
+    "search-by" : "Rechercher par",
+    "order-date" : "Date de commande",
+
+    "search-placeholder" : "ID/Prénom/Nom",
+
+    "id" : "ID",
+    "main-pass" : "Passager principal",
+    "pass-nr" : "Nombre de passagers",
+    "phone" : "Numéro de téléphone",
+    "total-price" : "Prix total",
+    "about" : "À propos de la réservation",
+    "pass-order-number" : "Passager n°"
+}
 }

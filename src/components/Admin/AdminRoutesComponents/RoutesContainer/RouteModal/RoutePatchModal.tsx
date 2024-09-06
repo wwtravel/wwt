@@ -115,12 +115,17 @@ const RoutePatchModal:React.FC<RoutePatchModalProps> = ({ isOpen, setIsOpen, mod
           </div>
           <button className='xl:h-[3.5rem] h-[4rem] bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] flex items-center justify-center px-[1.5rem] gap-[0.5rem]'>
             <img src="/icons/route-card-icons/icon-checkmark.svg" alt="check" className='xl:size-[1.125rem] size-[1.5rem]' />
-            <p className='text-light-white xl:text-[1.125rem] text-[1.5rem] font-bold'>{ modalGoal === "update" ? t('update') : t('add') }</p>
+            <p className='text-light-white xl:text-[1.125rem] text-[1.5rem] font-bold'>{ modalGoal === "update" ? t('update') : t('add-btn') }</p>
           </button>
         </div>
 
         {
-          direction && <RouteModalInfo direction={direction} travel={travel} />
+          direction ? <RouteModalInfo direction={direction} travel={travel} />
+          : (
+            <div className='w-full h-[20rem] grid place-content-center px-[3rem]'>
+                <p className='mb-[2rem] text-gray/75 text-[1rem]'>{ t('fill-in-data') }</p>
+            </div>
+          )
         }
       </div>
     </ModalWindow>

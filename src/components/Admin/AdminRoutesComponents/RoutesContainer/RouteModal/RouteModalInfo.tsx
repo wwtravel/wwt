@@ -64,11 +64,11 @@ const RouteModalInfo:React.FC<RouteModalInfoProps> = ({ travel, direction }) => 
       }
 
   return (
-    <motion.div 
+    <div 
         className='w-full overflow-hidden'
-        initial={{ height: 0 }}
-        animate={{ height: "auto"}}
-        transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
+        // initial={{ height: 0 }}
+        // animate={{ height: "auto"}}
+        // transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
     >
         <div className="mt-[2rem] pt-[2rem] border-t border-gray/25 flex xl:flex-row flex-col-reverse items-start justify-between">
             <div className="flex md:flex-row flex-col-reverse xl:gap-[3rem] gap-[2rem] max-xl:justify-between xl:flex-1 max-xl:w-full">
@@ -166,7 +166,7 @@ const RouteModalInfo:React.FC<RouteModalInfoProps> = ({ travel, direction }) => 
             </div>
 
         </div>
-    </motion.div>
+    </div>
   )
 }
 
