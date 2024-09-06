@@ -13,7 +13,7 @@ const Header = () => {
   const locale = useLocale()
 
   return (
-    <div className="relative lg:h-[calc(100dvh-14.25rem)] max-lg:pb-[2.667rem] bg-[url('/images/header_bg.webp')] bg-center bg-cover lg:px-[12rem] px-[1rem] lg:pt-[30vh] pt-[13.75rem]">
+    <div className="relative lg:h-[calc(100dvh-14.25rem)] max-lg:pb-[2.667rem] fbg-[url('/images/header_bg.webp')] bg-center bg-cover lg:px-[12rem] px-[1rem] lg:pt-[30vh] pt-[13.75rem]">
         <h1 className='md:text-[6rem] text-[2.70rem] font-bold font-montserrat text-white uppercase'><span className='text-red'>{t('ticketsWord1')}</span> { t('ticketsWord2') }</h1>
         <div className='md:text-[2rem] text-[1.35rem] font-bold text-white uppercase flex md:gap-[1rem] gap-[0.5rem]  items-center'>
           <h3 className={`${ locale === 'ru' && 'max-sm:hidden' }`}>{t('country1')}</h3>
