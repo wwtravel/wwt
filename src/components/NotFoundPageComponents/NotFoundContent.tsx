@@ -1,9 +1,32 @@
+'use client'
+
 import { useTranslations } from 'next-intl'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import RedButton from '../SharedComponents/RedButton'
+import { Link, useRouter } from '@/navigation'
 
 const NotFoundContent = () => {
     
     const t = useTranslations("NotFoundPage")
+
+    const router = useRouter()
+
+    const [timer, setTimer] = useState(10)
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+          setTimer(prev => {
+            if (prev === 1) {
+              clearInterval(intervalId);
+              router.push('/');
+              return prev;
+            }
+            return prev - 1;
+          });
+        }, 1000);
+        
+        return () => clearInterval(intervalId);
+      }, [router]);
 
   return (
     <div className='w-full pt-[14rem] px-[1rem]'>
@@ -16,7 +39,14 @@ const NotFoundContent = () => {
         </div>
 
         <p className='mt-[3.5rem] font-montserrat font-bold text-[3.25rem] text-center text-dark-gray'>{ t('title') }</p>
-        <p>{ t('desc') }</p>
+        <p className='text-dark-gray font-open-sans font-[400] text-[1.125rem] text-center'>{ t('desc') }</p>
+        <p className='text-dark-gray font-open-sans font-[400] text-[1.125rem] text-center'>{ t('msg') }... 00:00:{timer.toString().padStart(2, '0')}</p>
+
+        <div className='flex justify-center mt-[2rem]'>
+            <Link href="/">
+                <RedButton text={ t('back-to-website') }/>
+            </Link>
+        </div>
       </div>
       </div>
     </div>
