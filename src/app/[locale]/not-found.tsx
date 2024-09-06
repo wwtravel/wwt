@@ -1,9 +1,13 @@
-import React from 'react'
 
-const notFound = () => {
+import { NavBar, NotFoundContent } from "@/components"
+
+
+export default function NotFound({ params: { locale } }: { params: { locale: "ro" | "ru" | "en" | "fr" } }) {
+
   return (
-    <div>not found</div>
+    <div className="">
+      <NavBar />
+      <NotFoundContent />
+    </div>
   )
 }
-
-export default notFound

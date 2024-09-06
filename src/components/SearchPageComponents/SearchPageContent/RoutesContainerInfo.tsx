@@ -1,10 +1,14 @@
 'use client'
 
+import { roundCurrency } from "@/components/HomePageComponents/Destinations/DestinationPrice";
 import ItineraryMap from "@/components/SharedComponents/ItineraryMap";
 import { Coordinate } from "@/constants/coordinates";
+import { useCurrencyRates } from "@/hooks/useCurrencyRates";
+import { useCurrencyStore } from "@/hooks/useCurrencyStore";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { useStore } from "zustand";
 
 interface RouteStop {
     city: string;
@@ -47,6 +51,10 @@ interface RoutesContainerInfoProps{
 }
 
 const RoutesContainerInfo:React.FC<RoutesContainerInfoProps> = ({ openRoutesIndexes, routeIndex, stops, price, freePlaces, hoursInterval, amenities }) => {
+
+    const currency = useStore(useCurrencyStore, (state) => state.currency)
+
+    const { rates, loading: CurrencyLoading, error } = useCurrencyRates();
 
   const prices_t = useTranslations("Services")
   const t = useTranslations("RouteSearchPage")
@@ -125,8 +133,8 @@ const RoutesContainerInfo:React.FC<RoutesContainerInfoProps> = ({ openRoutesInde
                                 <p className="font-bold lg:text-[1rem] text-[1.333rem]">{ prices_t('passenger1Title') }</p>
                             </div>
                             <p className="font-bold lg:text-[1.5rem] text-[2rem]">
-                                { price.adult }
-                                <span className="lg:text-[1rem] text-[1.333rem] uppercase">eur</span>
+                                { (rates && !CurrencyLoading && currency) ? roundCurrency(price.adult * rates[currency], currency) : price.adult  }
+                                <span className="lg:text-[1rem] text-[1.333rem] uppercase">{ (rates && !CurrencyLoading && currency) ? currency : "EUR" }</span>
                             </p>
                         </div>
                         <div className="flex justify-between items-center font-open-sans text-dark-gray">
@@ -135,8 +143,8 @@ const RoutesContainerInfo:React.FC<RoutesContainerInfoProps> = ({ openRoutesInde
                                 <p className="font-bold lg:text-[1rem] text-[1.333rem]">{ prices_t('passenger2Title') } <span className="font-[400]">- { prices_t('passenger2info') }</span></p>
                             </div>
                             <p className="font-bold lg:text-[1.5rem] text-[2rem]">
-                                { price.child }
-                                <span className="lg:text-[1rem] text-[1.333rem] uppercase">eur</span>
+                                { (rates && !CurrencyLoading && currency) ? roundCurrency(price.child * rates[currency], currency) : price.child  }
+                                <span className="lg:text-[1rem] text-[1.333rem] uppercase">{ (rates && !CurrencyLoading && currency) ? currency : "EUR" }</span>
                             </p>
                         </div>
                         <div className="flex justify-between items-center font-open-sans text-dark-gray">
@@ -145,8 +153,8 @@ const RoutesContainerInfo:React.FC<RoutesContainerInfoProps> = ({ openRoutesInde
                                 <p className="font-bold lg:text-[1rem] text-[1.333rem]">{ prices_t('passenger3Title') } <span className="font-[400]">- { prices_t('passenger3info') }</span></p>
                             </div>
                             <p className="font-bold lg:text-[1.5rem] text-[2rem]">
-                                { price.student }
-                                <span className="lg:text-[1rem] text-[1.333rem] uppercase">eur</span>
+                                { (rates && !CurrencyLoading && currency) ? roundCurrency(price.student * rates[currency], currency) : price.student  }
+                                <span className="lg:text-[1rem] text-[1.333rem] uppercase">{ (rates && !CurrencyLoading && currency) ? currency : "EUR" }</span>
                             </p>
                         </div>
                         <div className="flex justify-between items-center font-open-sans text-dark-gray">

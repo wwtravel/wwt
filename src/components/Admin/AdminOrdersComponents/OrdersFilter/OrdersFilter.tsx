@@ -35,7 +35,7 @@ const OrdersFilter:React.FC<OrdersFilterProps> = ({ outputContition, setOutputCo
             <input type="text" value={searchCondition} onChange={(e) => setSearchCondition(e.target.value)} maxLength={50} placeholder={t('search-placeholder')} className='outline-none border bg-light-white border-gray/25 rounded-[0.5rem] w-full xl:h-[3.5rem] h-[4rem] xl:text-[1rem] text-[1.333rem] font-open-sans text-dark-gray font-[400] px-[1.5rem]' />
 
             <p className='xl:text-[1.125rem] text-[1.5rem] text-dark-gray font-[400] mb-[0.5rem] mt-[1.5rem]'>{ t('order-date') }:</p>
-            <OrdersDatePicker />
+            <OrdersDatePicker dateCondition={dateCondition} setDateCondition={setDateCondition}/>
 
             <p className='xl:text-[1.125rem] text-[1.5rem] text-dark-gray font-[400] mb-[0.5rem] mt-[1.5rem]'>{ admin_prices_t('display-by-route') }:</p>
 

@@ -10,6 +10,10 @@ import PassengersDataContainer from './PassengersDataContainer';
 import { useSession } from 'next-auth/react';
 import SignInQuestionBox from './SignInQuestionBox';
 import AutoFillFields from './AutoFillFields';
+import { useStore } from 'zustand';
+import { useCurrencyStore } from '@/hooks/useCurrencyStore';
+import { useCurrencyRates } from '@/hooks/useCurrencyRates';
+import { roundCurrency } from '@/components/HomePageComponents/Destinations/DestinationPrice';
 
 export interface Passenger{
   firstname: string;
@@ -38,6 +42,10 @@ interface CheckoutProps{
 }
 
 const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDepartureRoute, seletcedArrivalRoute, setCheckoutSuccess }) => {
+
+  const currency = useStore(useCurrencyStore, (state) => state.currency)
+
+  const { rates, loading, error } = useCurrencyRates();
   
   const { data } = useSession()
 
@@ -110,7 +118,7 @@ const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDeparture
                 seletcedArrivalRoute && <RouteDetails setSelectedRoutes={setSelectedRoutes} route={seletcedArrivalRoute} routeType='return'/>
               }
               <div className='md:h-[3.5rem] h-[4.667rem] w-full bg-red grid place-content-center md:rounded-[0.5rem] rounded-[0.667rem] max-md:mt-[0.333rem]'>
-                <p className='font-bold text-light-white md:text-[1.125rem] text-[1.5rem] font-open-sans'>{ t('total-price') }: {tourCost + returnCost}EUR</p>
+                <p className='font-bold text-light-white md:text-[1.125rem] text-[1.5rem] font-open-sans'>{ t('total-price') }: { (rates && !loading && currency) ? ((tourCost + returnCost) * rates[currency]).toFixed(2) : tourCost + returnCost }{ (rates && !loading && currency) ? currency : "EUR" }</p>
               </div>
             </div>
           </div>

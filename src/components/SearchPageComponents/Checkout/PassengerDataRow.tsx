@@ -124,7 +124,7 @@ const PassengerDataRow:React.FC<PassengerDataRowProps> = ({ passenger, index, se
                     ) 
                 }
             </div>
-            <div className="mt-[0.5rem] grid lg:grid-cols-3 grid-cols-1 md:gap-[1rem] gap-[0.667rem]">
+            <div className="mt-[0.5rem] grid lg:grid-cols-[1fr,1fr,1.1fr] grid-cols-1 md:gap-[1rem] gap-[0.667rem]">
                 <div className="relative">
                     <input 
                     id={`checkoutLastName${index}`} 

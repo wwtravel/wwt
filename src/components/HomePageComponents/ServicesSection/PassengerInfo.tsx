@@ -9,8 +9,16 @@ import ItineraryMap from '../../SharedComponents/ItineraryMap'
 import RedButton from '@/components/SharedComponents/RedButton'
 
 import { Coordinate, passengerCountriesCoordinates } from '@/constants/coordinates'
+import { useStore } from 'zustand'
+import { useCurrencyStore } from '@/hooks/useCurrencyStore'
+import { useCurrencyRates } from '@/hooks/useCurrencyRates'
+import { roundCurrency } from '../Destinations/DestinationPrice'
 
 const PassengerInfo = () => {
+
+  const currency = useStore(useCurrencyStore, (state) => state.currency)
+
+  const { rates, loading, error } = useCurrencyRates();
 
   const [activeCountry, setActiveCountry] = useState<"france" | "austria" | "germany" | "switzerland">("switzerland")
 
@@ -65,7 +73,7 @@ const PassengerInfo = () => {
                         <img src="/icons/passenger-info-icons/icon-adult.svg" alt="info-icon" draggable={false} className='md:size-[4rem] size-[2.667rem] md:mr-[1.5rem] mr-[0.667rem]' />
                         <p className='whitespace-nowrap  font-bold md:text-[1.5rem] text-[1.333rem] text-dark-gray font-open-sans leading-[0.7] mr-[0.5rem]'>{ t('passenger1Title') }</p>
                     </div>
-                    <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7] '>{ passengersInfoData[activeCountry].adultFee }<span className='uppercase xs:text-[1.5rem] text-[1.125rem] '>eur</span></p>
+                    <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7] '>{ (rates && currency && !loading) ? roundCurrency(passengersInfoData[activeCountry].adultFee * rates[currency], currency) : passengersInfoData[activeCountry].adultFee }<span className='uppercase xs:text-[1.5rem] text-[1.125rem] '>{(rates && currency && !loading) ? currency : "EUR"}</span></p>
                 </div>
 
                 <div className='flex items-end w-full mt-[1.5rem] justify-between'>
@@ -73,7 +81,7 @@ const PassengerInfo = () => {
                         <img src="/icons/passenger-info-icons/icon-child.svg" alt="info-icon" draggable={false} className='md:size-[4rem] size-[2.667rem] md:mr-[1.5rem] mr-[0.667rem]' />
                         <p className='whitespace-nowrap font-bold md:text-[1.5rem] text-[1.333rem] text-dark-gray font-open-sans leading-[0.7] mr-[0.5rem]'>{ t('passenger2Title') } <span className='font-[400]'>- { t('passenger2info') }</span></p>
                     </div>
-                    <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7] '>{ passengersInfoData[activeCountry].childFee }<span className='uppercase xs:text-[1.5rem] text-[1.125rem] '>eur</span></p>
+                    <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7] '>{ (rates && currency && !loading) ? roundCurrency(passengersInfoData[activeCountry].childFee * rates[currency], currency) : passengersInfoData[activeCountry].childFee }<span className='uppercase xs:text-[1.5rem] text-[1.125rem] '>{(rates && currency && !loading) ? currency : "EUR"}</span></p>
                 </div>
 
                 <div className='flex items-end w-full mt-[1.5rem] justify-between'>
@@ -81,7 +89,7 @@ const PassengerInfo = () => {
                         <img src="/icons/passenger-info-icons/icon-student.svg" alt="info-icon" draggable={false} className='md:size-[4rem] size-[2.667rem] md:mr-[1.5rem] mr-[0.667rem]' />
                         <p className='whitespace-nowrap  font-bold md:text-[1.5rem] text-[1.333rem] text-dark-gray font-open-sans leading-[0.7] mr-[0.5rem]'>{ t('passenger3Title') } <span className='font-[400]'>- { t('passenger3info') }</span></p>
                     </div>
-                    <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7]'>{ passengersInfoData[activeCountry].studentFee }<span className='uppercase xs:text-[1.5rem] text-[1.125rem] '>eur</span></p>
+                    <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7]'>{ (rates && currency && !loading) ? roundCurrency(passengersInfoData[activeCountry].studentFee * rates[currency], currency) : passengersInfoData[activeCountry].studentFee }<span className='uppercase xs:text-[1.5rem] text-[1.125rem] '>{(rates && currency && !loading) ? currency : "EUR"}</span></p>
                 </div>
 
                 <div className='flex items-end w-full mt-[1.5rem] justify-between'>

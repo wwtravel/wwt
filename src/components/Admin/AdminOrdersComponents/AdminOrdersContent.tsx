@@ -17,7 +17,6 @@ const AdminOrdersContent = () => {
     return dateString
 }
 
-
   return (
     <div className='pt-[9.5rem] flex xl:gap-[4rem] gap-[2rem] justify-center mb-[4rem]'>
       <OrdersFilter dateCondition={dateCondition} setDateCondition={setDateCondition} searchCondition={searchCondition} setSearchCondition={setSearchCondition} outputContition={outputContition} setOutputCondition={setOutputCondition}/>

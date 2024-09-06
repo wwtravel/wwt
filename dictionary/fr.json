@@ -90,7 +90,7 @@
     "passenger4Title": "Bagage",
 
     "passenger2info": "jusqu'à 10 ans",
-    "passenger3info": "carte d'étudiant",
+    "passenger3info": "carte étudiant",
     "passenger4info": "jusqu'à 50kg",
     "free": "Gratuit",
     "bookBtnText": "Réserver un billet",
@@ -105,7 +105,21 @@
     "selectBox1Placeholder": "Envoyer le colis de",
     "selectBox2Placeholder": "Envoyer le colis à",
     "selectBoxNothingFound": "Aucun résultat trouvé",
-    "selectBoxSearchPlaceholder": "Recherche..."
+    "selectBoxSearchPlaceholder": "Recherche...",
+
+    "first-name-last-name-req-err-title": "Nom complet requis",
+    "first-name-last-name-req-err-desc": "Veuillez entrer votre nom complet pour continuer.",
+    
+    "phone-req-title": "Numéro de téléphone requis",
+    "phone-req-desc": "Veuillez entrer un numéro de téléphone valide pour continuer.",
+    
+    "to-city-req-title": "Destination requise",
+    "to-city-req-desc": "Veuillez entrer la ville de destination pour continuer.",
+
+    "to-city-err-title": "Destination incorrecte",
+    "to-city-err-desc": "Veuillez sélectionner une ville de la liste pour continuer.",
+
+    "close" : "Fermer"
   },
   "Features" : {
     "lowOpacityTitle": "AVANTAGES",
@@ -563,5 +577,11 @@
     "total-price" : "Prix total",
     "about" : "À propos de la réservation",
     "pass-order-number" : "Passager n°"
-}
+  },
+  "NotFoundPage": {
+    "title": "PAGE NON TROUVÉE",
+    "desc": "La page que vous recherchez n'existe pas, a été renommée ou a été supprimée.",
+    "msg": "Rentrons chez vous.",
+    "back-to-website": "Retourner au site"
+  }
 }

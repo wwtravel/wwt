@@ -105,7 +105,21 @@
     "selectBox1Placeholder": "Отправить посылку из",
     "selectBox2Placeholder": "Отправить посылку в",
     "selectBoxNothingFound": "Результатов не найдено",
-    "selectBoxSearchPlaceholder": "Поиск..."
+    "selectBoxSearchPlaceholder": "Поиск...",
+
+    "first-name-last-name-req-err-title": "Требуется полное имя",
+    "first-name-last-name-req-err-desc": "Пожалуйста, введите ваше полное имя, чтобы продолжить.",
+    
+    "phone-req-title": "Требуется номер телефона",
+    "phone-req-desc": "Пожалуйста, введите действующий номер телефона, чтобы продолжить.",
+    
+    "to-city-req-title": "Требуется город назначения",
+    "to-city-req-desc": "Пожалуйста, введите город назначения, чтобы продолжить.",
+
+    "to-city-err-title": "Неправильный город",
+    "to-city-err-desc": "Пожалуйста, выберите город из списка, чтобы продолжить.",
+
+    "close" : "Закрыть"
   },
   "Features" : {
     "lowOpacityTitle": "ПЛЮСЫ",
@@ -563,5 +577,11 @@
     "total-price" : "Общая стоимость",
     "about" : "О бронировании",
     "pass-order-number" : "Пассажир №"
-}
+  },
+  "NotFoundPage": {
+    "title": "СТРАНИЦА НЕ НАЙДЕНА",
+    "desc": "Страница, которую вы ищете, не существует, была переименована или удалена.",
+    "msg": "Давайте вернемся на главную.",
+    "back-to-website": "Вернуться на сайт"
+  }
 }

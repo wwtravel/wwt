@@ -105,7 +105,21 @@
     "selectBox1Placeholder" : "Trimit colet din",
     "selectBox2Placeholder" : "Trimit colet spre",
     "selectBoxNothingFound" : "Nici un rezultat găsit",
-    "selectBoxSearchPlaceholder" : "Caută..."
+    "selectBoxSearchPlaceholder" : "Caută...",
+
+    "first-name-last-name-req-err-title" : "Nume complet necesar",
+    "first-name-last-name-req-err-desc" : "Te rugăm să introduci numele complet pentru a continua.",
+
+    "phone-req-title" : "Număr de telefon necesar",
+    "phone-req-desc" : "Te rugăm să un număr de telefon valid pentru a continua.",
+
+    "to-city-req-title" : "Destinație necesară",
+    "to-city-req-desc" : "Te rugăm să introduci orașul destinație pentru a continua.",
+
+    "to-city-err-title": "Destinație greșită",
+    "to-city-err-desc": "Te rugăm să alegi un oraș din listă pentru a continua.",
+
+    "close" : "Închide"
   },
   "Features" : {
     "lowOpacityTitle" : "BENEFICII",
@@ -582,8 +596,12 @@
     "total-price" : "Preț total",
     "about" : "Despre rezervare",
     "pass-order-number" : "Pasager nr."
-
-
+  },
+  "NotFoundPage" : {
+    "title" : "PAGINA NU A FOST GĂSITĂ",
+    "desc" : "Pagina pe care o cauți nu există, a fost redenumită sau a fost eliminată",
+    "msg" : "Hai să te întaorcem acasă",
+    "back-to-website" : "Întoarce-te pe site"
   }
   
 }

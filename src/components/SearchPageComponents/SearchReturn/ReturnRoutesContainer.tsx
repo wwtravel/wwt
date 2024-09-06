@@ -9,6 +9,10 @@ import RoutesContainerInfo from '../SearchPageContent/RoutesContainerInfo';
 import UnderlinedText from '../SearchPageContent/UnderlinedText';
 import RedButton from '@/components/SharedComponents/RedButton';
 import MobileReturnRoutesContainer from './MobileReturnRoutesContainer';
+import { useStore } from 'zustand';
+import { useCurrencyStore } from '@/hooks/useCurrencyStore';
+import { useCurrencyRates } from '@/hooks/useCurrencyRates';
+import { roundCurrency } from '@/components/HomePageComponents/Destinations/DestinationPrice';
 
 interface ReturnRoutesContainerProps{
     setSelectedRoutes: React.Dispatch<React.SetStateAction<SelectedRoutes>>;
@@ -18,6 +22,10 @@ interface ReturnRoutesContainerProps{
 }
 
 const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelectedRoutes, seletcedRoute, routes, loading }) => {
+
+    const currency = useStore(useCurrencyStore, (state) => state.currency)
+
+    const { rates, loading: CurrencyLoading, error } = useCurrencyRates();
 
     const searchParams = useSearchParams()
     
@@ -233,7 +241,7 @@ const ReturnRoutesContainer:React.FC<ReturnRoutesContainerProps> = ({ setSelecte
 
                             <div className='flex justify-between flex-1'>
                                 <div className='flex flex-col gap-[0.25rem] justify-center mr-[1.5rem]'>
-                                    <p className='font-open-sans font-bold text-[1.5rem] text-dark-gray uppercase text-center'>{ route.price.adult }<span className='text-[1rem]'>eur</span></p>
+                                    <p className='font-open-sans font-bold text-[1.5rem] text-dark-gray uppercase text-center'>{ (rates && !CurrencyLoading && currency) ? roundCurrency(route.price.adult * rates[currency], currency) : route.price.adult  }<span className='text-[1rem]'>{ (rates && !CurrencyLoading && currency) ? currency : "EUR" }</span></p>
                                     <p className='text-[0.875rem] font-bold font-open-sans text-red text-center line-clamp-1 text-nowrap'>* { t('payment-info') }</p>
                                 </div>
 

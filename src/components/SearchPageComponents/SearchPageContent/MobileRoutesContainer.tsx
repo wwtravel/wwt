@@ -9,6 +9,10 @@ import { useState } from "react"
 import RoutesContainerInfo from "./RoutesContainerInfo"
 import { SelectedRoutes } from "@/app/[locale]/route-search/PageContent"
 import { toast } from "sonner"
+import { useStore } from "zustand"
+import { useCurrencyStore } from "@/hooks/useCurrencyStore"
+import { useCurrencyRates } from "@/hooks/useCurrencyRates"
+import { roundCurrency } from "@/components/HomePageComponents/Destinations/DestinationPrice"
 
 interface MobileRoutesContainerProps{
     routes: TravelResponse;
@@ -16,6 +20,10 @@ interface MobileRoutesContainerProps{
 }
 
 const MobileRoutesContainer: React.FC<MobileRoutesContainerProps> = ({ routes, setSelectedRoutes }) => {
+
+    const currency = useStore(useCurrencyStore, (state) => state.currency)
+
+    const { rates, loading: CurrencyLoading, error } = useCurrencyRates();
 
     const locale = useLocale()
     const searchParams = useSearchParams()
@@ -167,7 +175,7 @@ const MobileRoutesContainer: React.FC<MobileRoutesContainerProps> = ({ routes, s
 
                         <div className="flex gap-[2rem] md:flex-row flex-col mt-[1rem]">
                             <div className='flex flex-col gap-[0.333rem] justify-center'>
-                                <p className='font-open-sans font-bold text-[2rem] text-dark-gray uppercase text-center'>{ route.price.adult }<span className='text-[1.333rem]'>eur</span></p>
+                                <p className='font-open-sans font-bold text-[2rem] text-dark-gray uppercase text-center'>{ (rates && !CurrencyLoading && currency) ? roundCurrency(route.price.adult * rates[currency], currency) : route.price.adult  }<span className='text-[1.333rem]'>{ (rates && !CurrencyLoading && currency) ? currency : "EUR" }</span></p>
                                 <p className='text-[1.167rem] font-bold font-open-sans text-red text-center line-clamp-1 text-nowrap'>* { t('payment-info') }</p>
                             </div>
 

@@ -16,9 +16,27 @@ import {
 
 import { fr, ro, enUS, ru } from "date-fns/locale"
 
-const OrdersDatePicker = () => {
+interface FilterDatePickerProps{
+    setDateCondition: React.Dispatch<React.SetStateAction<string>>;
+    dateCondition: string;
+  }
+
+const OrdersDatePicker: React.FC<FilterDatePickerProps> = ({ setDateCondition, dateCondition }) => {
 
     const [date, setDate] = React.useState<Date | undefined>()
+
+    React.useEffect(() => {
+        if(dateCondition === '') setDate(undefined)
+      }, [dateCondition])
+  
+      React.useEffect(() => {
+        if(date) {
+          const formattedDate = format(date, "yyyy-MM-dd")
+          setDateCondition(formattedDate)
+        } else {
+          setDateCondition('')
+        }
+      }, [date])
 
     const [openCal, setOpenCal] = React.useState(false)
 

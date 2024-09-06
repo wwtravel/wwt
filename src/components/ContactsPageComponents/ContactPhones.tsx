@@ -28,7 +28,7 @@ const ContactPhones = () => {
               <p>WhatsApp</p>
             </button>
           </a>
-          <a href="viber://chat/?number=%2B37360262525" target='_blank'>
+          <a href="viber://chat/?number=%2B37360262525">
             <button className='px-[1.5rem] h-[3.5rem] flex items-center gap-[0.375rem] bg-[#6841A4] hover:bg-[#543585] transition-colors duration-300 rounded-[0.5rem] text-[1.125rem] text-light-white font-bold'>
               <img src="/icons/contacts-page-icons/icon-viber.svg" alt="whatsapp" draggable={false} className='size-[1.5rem]' />
               <p>Viber</p>

@@ -9,6 +9,10 @@ import { SelectedRoutes } from '@/app/[locale]/route-search/PageContent'
 import UnderlinedText from '../SearchPageContent/UnderlinedText'
 import { useEffect } from 'react'
 import { scrollToSection } from '@/utils/otherFunctions'
+import { useStore } from 'zustand'
+import { useCurrencyStore } from '@/hooks/useCurrencyStore'
+import { useCurrencyRates } from '@/hooks/useCurrencyRates'
+import { roundCurrency } from '@/components/HomePageComponents/Destinations/DestinationPrice'
 
 interface SearchReturnHeaderProps{
   seletcedRoute : Travel;
@@ -16,6 +20,10 @@ interface SearchReturnHeaderProps{
 }
 
 const SearchReturnHeader:React.FC<SearchReturnHeaderProps> = ({ seletcedRoute, setSelectedRoutes }) => {
+
+  const currency = useStore(useCurrencyStore, (state) => state.currency)
+
+  const { rates, loading, error } = useCurrencyRates();
 
   const locale = useLocale()
 
@@ -135,7 +143,7 @@ const extractDate = ( textDate: string ) => {
 
                         <div className='flex justify-end gap-[3rem] flex-1'>
                             <div className='flex flex-col gap-[0.25rem] justify-center mr-[1.5rem]'>
-                                <p className='font-open-sans font-bold text-[1.5rem] text-dark-gray uppercase text-center'>{ seletcedRoute.price.adult }<span className='text-[1rem]'>eur</span></p>
+                                <p className='font-open-sans font-bold text-[1.5rem] text-dark-gray uppercase text-center'>{ (rates && !loading && currency) ? roundCurrency(seletcedRoute.price.adult * rates[currency], currency) : seletcedRoute.price.adult }<span className='text-[1rem]'>{ (rates && !loading && currency) ? currency : "EUR" }</span></p>
                                 <p className='text-[0.875rem] font-bold font-open-sans text-red text-center line-clamp-1 text-nowrap'>* { t('payment-info') }</p>
                             </div>
 

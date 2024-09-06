@@ -246,6 +246,44 @@ const RouteSearch = () => {
     }
   }, [arrivalDate]);
 
+  useEffect(() => {
+    if (pathname === '/route-search') {
+      const currentParams = new URLSearchParams(searchParams.toString());
+  
+      if (departureDate !== '') {
+        currentParams.set("depdate", departureDate);
+      }
+  
+      router.replace(`${pathname}?${currentParams.toString()}`, {scroll: false});
+    }
+  }, [departureDate]);
+
+  useEffect(() => {
+    if (pathname === '/route-search') {
+      const currentParams = new URLSearchParams(searchParams.toString());
+  
+      if (departureCity !== '') {
+        currentParams.set("dep", departureCity);
+        currentParams.set("arr", arrivalCity);
+      }
+  
+      router.replace(`${pathname}?${currentParams.toString()}`, {scroll: false});
+    }
+  }, [departureCity]);
+
+  useEffect(() => {
+    if (pathname === '/route-search') {
+      const currentParams = new URLSearchParams(searchParams.toString());
+  
+      if (arrivalCity !== '') {
+        currentParams.set("arr", arrivalCity);
+        currentParams.set("dep", departureCity);
+      }
+  
+      router.replace(`${pathname}?${currentParams.toString()}`, {scroll: false});
+    }
+  }, [arrivalCity]);
+
   return (
     <div className='absolute flex flex-col justify-center bottom-0 left-[50%] -translate-x-[50%] w-max h-[9.5rem] bg-light-white shadow-custom rounded-[1rem] translate-y-[50%] px-[4rem]'>
 

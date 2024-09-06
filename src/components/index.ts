@@ -32,6 +32,9 @@ import { default as AdminRoutesContent } from './Admin/AdminRoutesComponents/Adm
 import { default as AdminPricesContent } from './Admin/AdminPricesComponents/AdminPricesContent'
 import { default as AdminOrdersContent } from './Admin/AdminOrdersComponents/AdminOrdersContent'
 
+//Not Found Page
+import { default as NotFoundContent } from './NotFoundPageComponents/NotFoundContent'
+
 export {
     NavBar,
     Footer,
@@ -59,5 +62,7 @@ export {
     AdminNav,
     AdminRoutesContent,
     AdminPricesContent,
-    AdminOrdersContent
+    AdminOrdersContent,
+
+    NotFoundContent
 }

@@ -19,6 +19,8 @@ import DestinationPrice from "./DestinationPrice"
 import Autoplay from "embla-carousel-autoplay"
 
 import CarouselDots from "./CarouselDots"
+import { useStore } from "zustand"
+import { useCurrencyStore } from "@/hooks/useCurrencyStore"
 
 const DestinationsCarousel = () => {
 

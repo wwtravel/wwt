@@ -89,7 +89,7 @@
     "passenger3Title": "Student",
     "passenger4Title": "Luggage",
 
-    "passenger2info": "up to 10 years old",
+    "passenger2info": "up to 10 years",
     "passenger3info": "student card",
     "passenger4info": "up to 50kg",
     "free": "Free",
@@ -105,7 +105,21 @@
     "selectBox1Placeholder": "Send parcel from",
     "selectBox2Placeholder": "Send parcel to",
     "selectBoxNothingFound": "No results found",
-    "selectBoxSearchPlaceholder": "Search..."
+    "selectBoxSearchPlaceholder": "Search...",
+
+    "first-name-last-name-req-err-title": "Full Name Required",
+    "first-name-last-name-req-err-desc": "Please enter your full name to continue.",
+    
+    "phone-req-title": "Phone Number Required",
+    "phone-req-desc": "Please enter a valid phone number to continue.",
+    
+    "to-city-req-title": "Destination Required",
+    "to-city-req-desc": "Please enter the destination city to continue.",
+
+    "to-city-err-title": "Incorrect Destination",
+    "to-city-err-desc": "Please select a city from the list to continue.",
+
+    "close" :"Close"
   },
   "Features" : {
     "lowOpacityTitle": "BENEFITS",
@@ -567,5 +581,11 @@
     "total-price" : "Total Price",
     "about" : "About Reservation",
     "pass-order-number" : "Passenger No."
-}
+  },
+  "NotFoundPage": {
+    "title": "PAGE NOT FOUND",
+    "desc": "The page you are looking for does not exist, has been renamed, or has been removed.",
+    "msg": "Let's get you back home.",
+    "back-to-website": "Return to the website"
+  }
 }
