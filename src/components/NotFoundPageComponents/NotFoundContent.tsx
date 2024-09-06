@@ -16,7 +16,7 @@ const NotFoundContent = () => {
         </div>
 
         <p className='mt-[3.5rem] font-montserrat font-bold text-[3.25rem] text-center text-dark-gray'>{ t('title') }</p>
-        <p>{ t('') }</p>
+        <p>{ t('desc') }</p>
       </div>
       </div>
     </div>
