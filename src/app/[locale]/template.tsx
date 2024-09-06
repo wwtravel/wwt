@@ -21,6 +21,7 @@ const template = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     setShowChat(false)
     setIsLoading(true)
+    
     setTimeout(() => {
         setIsLoading(false)
     }, 1500)
