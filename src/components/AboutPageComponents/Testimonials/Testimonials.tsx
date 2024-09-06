@@ -7,12 +7,12 @@ import dynamic from 'next/dynamic';
 // Dynamically import ItineraryMap
 const TestimonialsCarousel = dynamic(() => import('./TestimonialsCarousel'), {
   ssr: false,  // Disable server-side rendering for this component
-  loading: () => <p>Loading map...</p>  // Optional: Loading placeholder while the map is being fetched
+  loading: () => <p>Loading carousel...</p>  // Optional: Loading placeholder while the map is being fetched
 });
 
 const MobileTestimonialsCarousel = dynamic(() => import('./MobileTestimonialsCarousel'), {
   ssr: false,  // Disable server-side rendering for this component
-  loading: () => <p>Loading map...</p>  // Optional: Loading placeholder while the map is being fetched
+  loading: () => <p>Loading carousel...</p>  // Optional: Loading placeholder while the map is being fetched
 });
 
 const Testimonials = () => {
