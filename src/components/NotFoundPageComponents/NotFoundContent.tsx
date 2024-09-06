@@ -38,7 +38,7 @@ const NotFoundContent = () => {
             <p className='font-montserrat text-dark-gray font-bold md:text-[20rem] text-[10rem] leading-[0.7]'>4</p>
         </div>
 
-        <p className='md:mt-[3.5rem] mt-[2rem] font-montserrat font-bold md:text-[3.25rem] text-[2rem] text-center text-dark-gray'>{ t('title') }</p>
+        <p className='md:mt-[3.5rem] mt-[2rem] font-montserrat font-bold md:text-[3.25rem] text-[2rem] text-center text-dark-gray'>{ t('title') }</p> 
         <p className='text-dark-gray font-open-sans font-[400] text-[1.125rem] text-center mt-[1.5rem]'>{ t('desc') }</p>
         <p className='text-dark-gray font-open-sans font-[400] text-[1.125rem] text-center mt-[1.5rem]'>{ t('msg') }... 00:00:{timer.toString().padStart(2, '0')}</p>
 
