@@ -3,8 +3,18 @@
 
 import { useLocale, useTranslations } from 'next-intl'
 import RedButton from '../../SharedComponents/RedButton'
-import RouteSearch from '@/components/SharedComponents/RouteSearch'
-import MobileRouteSearch from '@/components/SharedComponents/MobileRouteSearch'
+
+import dynamic from 'next/dynamic';
+
+const RouteSearch = dynamic(() => import('@/components/SharedComponents/RouteSearch'), {
+  loading: () => <p>Loading search...</p>,  // Optional: Loading placeholder
+  ssr: false  // Disable server-side rendering if the search is purely client-side
+});
+
+const MobileRouteSearch = dynamic(() => import('@/components/SharedComponents/MobileRouteSearch'), {
+  loading: () => <p>Loading mobile search...</p>,  // Optional: Loading placeholder
+  ssr: false  // Disable server-side rendering if the search is purely client-side
+});
 
 const Header = () => {
 
