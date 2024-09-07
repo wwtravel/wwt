@@ -16,7 +16,7 @@ const Header = () => {
   })
 
   return (
-    <div className="relative lg:h-[24.75rem] max-lg:pb-[2.667rem] bg-[url('/images/header_bg.png')] bg-center bg-cover lg:px-[12rem] px-[1rem] lg:pt-[30vh] pt-[13.75rem]">
+    <div className="relative lg:h-[24.75rem] max-lg:pb-[2.667rem] bg-[url('/images/header_bg.webp')] bg-center bg-cover lg:px-[12rem] px-[1rem] lg:pt-[30vh] pt-[13.75rem]">
 
         <div id='scroll' className='absolute left-0 lg:bottom-[6.25rem] bottom-[4rem]'/>
 

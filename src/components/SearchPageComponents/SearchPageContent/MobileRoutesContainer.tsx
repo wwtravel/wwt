@@ -137,7 +137,7 @@ const MobileRoutesContainer: React.FC<MobileRoutesContainerProps> = ({ routes, s
         {
             routes.map(( route, index ) => (
                 <div className="lg:hidden px-[1.333rem] max-md:max-w-[29.5rem] max-md:mx-auto py-[2rem] bg-light-white border border-gray/25 rounded-[1.333rem] hover:border-red transition-colors duration-300" key={index}>
-                    <div className="flex md:flex-row flex-col justify-between max-md:gap-[0.333rem]">
+                    <div className="flex md:flex-row flex-col justify-between max-md:gap-[0.333rem]" onClick={() => toggleRoute(index)}>
                         <div className="flex gap-[0.667rem]">
                             <div className='flex flex-col items-center h-full pt-[2.55rem]'>
                                 <img src="/icons/route-card-icons/icon-start-point.svg" alt="start" draggable={false} className='size-[1.5rem]' />
@@ -187,7 +187,7 @@ const MobileRoutesContainer: React.FC<MobileRoutesContainerProps> = ({ routes, s
                                     </p>
                                 </button>
 
-                                <div className='flex gap-[0.333rem] items-center cursor-pointer' onClick={() => toggleRoute(index)}>
+                                <div className='flex gap-[0.333rem] items-center cursor-pointer'>
                                     <img src="/icons/route-card-icons/icon-info.svg" alt="info" draggable={false} className='size-[1.333rem]' />
                                     <UnderlinedText text={ t('info-route') }/>
                                 </div>

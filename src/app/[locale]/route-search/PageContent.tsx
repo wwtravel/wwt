@@ -31,43 +31,42 @@ const PageContent:React.FC<PageContentProps> = ({ routes, loading }) => {
   return (
     <div>
         <NavBar />
-
-        {
-          checkoutSuccess 
-          ? <CheckoutSuccess />
-          : (
-            <>
-              {
-                  !selectedRoutes.departureRoute && !selectedRoutes.returnRoute && (
-                      <>
-                          <SearchPageHeader />
-                          <SearchPageContent loading={loading} routes={routes.tour} setSelectedRoutes={setSelectedRoutes}/>
-                      </>
-                  )
-              }
-              {
-                  selectedRoutes.departureRoute && selectedRoutes.shouldReturn && !selectedRoutes.returnRoute && (
-                      <>
-                          <SearchReturnHeader seletcedRoute={selectedRoutes.departureRoute} setSelectedRoutes={setSelectedRoutes}/>
-                          <SearchReturnContent loading={loading} routes={routes.return} seletcedRoute={selectedRoutes.departureRoute} setSelectedRoutes={setSelectedRoutes}/>
-                      </>
-                  )
-              }
-              {
-                  (selectedRoutes.departureRoute && !selectedRoutes.shouldReturn) || 
-                  (selectedRoutes.departureRoute && selectedRoutes.shouldReturn && selectedRoutes.returnRoute) ? (
-                    <Checkout 
-                      setSelectedRoutes={setSelectedRoutes} 
-                      seletcedDepartureRoute={selectedRoutes.departureRoute} 
-                      seletcedArrivalRoute={selectedRoutes.returnRoute} 
-                      shouldReturn={ selectedRoutes.shouldReturn }
-                      setCheckoutSuccess={setCheckoutSuccess}
-                    />
-                  ) : null
-              }
-            </>
-          )
-        }
+          {
+            checkoutSuccess 
+            ? <CheckoutSuccess />
+            : (
+              <>
+                {
+                    !selectedRoutes.departureRoute && !selectedRoutes.returnRoute && (
+                        <>
+                            <SearchPageHeader />
+                            <SearchPageContent loading={loading} routes={routes.tour} setSelectedRoutes={setSelectedRoutes}/>
+                        </>
+                    )
+                }
+                {
+                    selectedRoutes.departureRoute && selectedRoutes.shouldReturn && !selectedRoutes.returnRoute && (
+                        <>
+                            <SearchReturnHeader seletcedRoute={selectedRoutes.departureRoute} setSelectedRoutes={setSelectedRoutes}/>
+                            <SearchReturnContent loading={loading} routes={routes.return} seletcedRoute={selectedRoutes.departureRoute} setSelectedRoutes={setSelectedRoutes}/>
+                        </>
+                    )
+                }
+                {
+                    (selectedRoutes.departureRoute && !selectedRoutes.shouldReturn) || 
+                    (selectedRoutes.departureRoute && selectedRoutes.shouldReturn && selectedRoutes.returnRoute) ? (
+                      <Checkout 
+                        setSelectedRoutes={setSelectedRoutes} 
+                        seletcedDepartureRoute={selectedRoutes.departureRoute} 
+                        seletcedArrivalRoute={selectedRoutes.returnRoute} 
+                        shouldReturn={ selectedRoutes.shouldReturn }
+                        setCheckoutSuccess={setCheckoutSuccess}
+                      />
+                    ) : null
+                }
+              </>
+            )
+          }
         <Footer />
     </div>
   )

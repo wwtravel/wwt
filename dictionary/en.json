@@ -511,7 +511,7 @@
     "no-of-reservations-desc": "No. of reservations desc.",
     "newest": "Earliest",
     "latest": "Latest",
-    "delete": "Delete",
+    "delete": "Reset",
     "filter": "Filter",
     "routes": "Routes",
     "add-new-route": "Add new route",
@@ -533,7 +533,7 @@
   "AdminPrices" : {
     "filter-by" : "Filter by",
     "sort-by": "Sort by",
-    "delete": "Delete",
+    "delete": "Reset",
     "filter": "Filter",
     "default": "Default",
 
@@ -566,7 +566,7 @@
   },
   "AdminOrders" : {
     "filter-by" : "Filter by",
-    "delete" : "Delete",
+    "delete" : "Reset",
     "filter" : "Filter",
     "default" : "Default",
     "search-by" : "Search by",

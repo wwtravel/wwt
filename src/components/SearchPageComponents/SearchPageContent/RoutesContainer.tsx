@@ -222,7 +222,7 @@ useEffect(() => {
         {
             adjustedRoutes.map((route, index) => (
                 <div className='w-full max-lg:hidden bg-light-white border border-gray/25 hover:border-red transition-colors duration-300 shadow-custom rounded-[1rem] px-[4rem] py-[2rem]' key={index}>
-                    <div className='h-[5.5rem] flex justify-between items-center'>
+                    <div className='h-[5.5rem] flex justify-between items-center' onClick={() => toggleRoute(index)}>
                         <div className='h-full flex flex-col justify-between'>
                             <div className='flex items-center font-open-sans font-[400] text-[1rem] text-dark-gray line-clamp-1 text-nowrap'>
                                 <img src="/icons/route-card-icons/icon-calendar.svg" alt="calendar" draggable={false} className='size-[1rem] mr-[0.5rem]' />
@@ -279,7 +279,7 @@ useEffect(() => {
                                         <RedButton text={t('book')} iconURL='/icons/route-card-icons/icon-checkmark.svg'/>
                                     </div>
 
-                                    <div className='flex gap-[0.25rem] items-center cursor-pointer' onClick={() => toggleRoute(index)}>
+                                    <div className='flex gap-[0.25rem] items-center cursor-pointer'>
                                         <img src="/icons/route-card-icons/icon-info.svg" alt="info" draggable={false} className='size-[1rem]' />
                                         <UnderlinedText text={ t('info-route') }/>
                                     </div>
