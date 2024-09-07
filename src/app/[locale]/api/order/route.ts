@@ -178,17 +178,12 @@ export async function GET () {
     let orders = null;
     try {
         orders = await prisma.order.findMany({
-            select: {
-                order_date: true,
-                contact_details: true,
-                passengers: true,
-                public_id: true,
-                travel_id: true,
+            include: {
                 travel: {
                     select: {
                         route_id: true
                     }
-                },
+                }
             }
         });
     } catch (e) {
