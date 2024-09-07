@@ -4,9 +4,7 @@ import Loader from "@/components/SharedComponents/Loader"
 import '@/styles/loader.css'
 import { AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
-import { RemoveScrollBar } from "react-remove-scroll-bar"
 import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
-import {zeroRightClassName,fullWidthClassName, noScrollbarsClassName} from 'react-remove-scroll-bar';
 import { usePathname } from "@/navigation"
 
 

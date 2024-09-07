@@ -9,7 +9,7 @@ import LangPicker from './LangPicker';
 import CurrencyPicker from './CurrencyPicker';
 import MobileNav from './MobileNav';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { useSession } from 'next-auth/react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -18,22 +18,18 @@ import dynamic from 'next/dynamic';
 
 const LogInModal = dynamic(() => import('./LogInModal/LogInModal'), {
   ssr: false,
-  loading: () => <p>Loading...</p>  // Optional: loading state for better UX
 });
 
 const UserModal = dynamic(() => import('./UserModal/UserModal'), {
   ssr: false,
-  loading: () => <p>Loading...</p>  // Optional: loading state for better UX
 });
 
 const AnimatedDesktopNav = dynamic(() => import('./AnimatedDesktopNav'), {
   ssr: false,
-  loading: () => <p>Loading...</p>  // Optional: loading state for better UX
 });
 
 const AnimatedMobileNav = dynamic(() => import('./AnimatedMobileNav'), {
   ssr: false,
-  loading: () => <p>Loading...</p>  // Optional: loading state for better UX
 });
 
 

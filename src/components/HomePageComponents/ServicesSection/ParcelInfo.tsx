@@ -7,8 +7,7 @@ import ParcelInfoPrice from "./ParcelInfoPrice"
 import dynamic from 'next/dynamic';
 
 const ItineraryMap = dynamic(() => import('../../SharedComponents/ItineraryMap'), {
-  ssr: false,
-  loading: () => <p>Loading map...</p>
+  ssr: false
 });
 
 const ParcelInfo = () => {

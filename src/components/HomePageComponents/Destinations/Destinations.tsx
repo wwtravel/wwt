@@ -7,13 +7,11 @@ import SectionTitle from '@/components/SharedComponents/SectionTitle'
 import dynamic from 'next/dynamic'
 
 const DestinationsCarousel = dynamic(() => import('./DestinationsCarousel'), {
-  loading: () => <p>Loading carousel...</p>,  // Optional: Loading placeholder
-  ssr: false  // Disable server-side rendering if the carousel is purely client-side
+  ssr: false
 })
 
 const MobileDestinationsCarousel = dynamic(() => import('./MobileDestinationsCarousel'), {
-  loading: () => <p>Loading mobile carousel...</p>,  // Optional: Loading placeholder
-  ssr: false  // Disable server-side rendering if the carousel is purely client-side
+  ssr: false
 })
 
 const Destinations = () => {

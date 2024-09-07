@@ -2,7 +2,7 @@
 
 import { Link } from '@/navigation';
 
-import {useSearchParams, useSelectedLayoutSegment} from 'next/navigation';
+import {useSearchParams} from 'next/navigation';
 
 import { useLocale } from 'next-intl';
 import { useState } from 'react';

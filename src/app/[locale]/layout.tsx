@@ -6,12 +6,9 @@ import '@/styles/animations.css'
 
 import { Open_Sans, Montserrat } from 'next/font/google'
 
-import { NavBar, Footer } from "@/components";
-
 import Providers from '@/components/Providers';
 
 import { Toaster } from "@/components/ui/sonner"
-import Script from 'next/script';
 
 
 const openSans = Open_Sans({

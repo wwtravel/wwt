@@ -2,7 +2,6 @@
 
 
 import { useLocale, useTranslations } from 'next-intl'
-import RedButton from '../../SharedComponents/RedButton'
 import RouteSearch from '@/components/SharedComponents/RouteSearch'
 import MobileRouteSearch from '@/components/SharedComponents/MobileRouteSearch'
 
