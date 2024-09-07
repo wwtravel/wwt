@@ -39,9 +39,10 @@ interface CheckoutProps{
   seletcedArrivalRoute : Travel | null;
   setSelectedRoutes: React.Dispatch<React.SetStateAction<SelectedRoutes>>
   setCheckoutSuccess: React.Dispatch<React.SetStateAction<boolean>>
+  shouldReturn : boolean;
 }
 
-const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDepartureRoute, seletcedArrivalRoute, setCheckoutSuccess }) => {
+const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDepartureRoute, seletcedArrivalRoute, setCheckoutSuccess, shouldReturn }) => {
 
   const currency = useStore(useCurrencyStore, (state) => state.currency)
 
@@ -105,7 +106,7 @@ const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDeparture
   return (
     <div className='md:pt-[13.125rem] pt-[15rem] px-[1rem]'>
         <h1 className='text-center font-montserrat font-bold md:text-[2.5rem] text-[2rem] uppercase'>
-            { checkoutContent === 'tour' ? t('title-tour') : t('title-tour') }
+            { checkoutContent === 'tour' ? t('title-tour') : t('title-retour') }
         </h1>
         <div className='h-[4px] w-[6rem] mx-auto mt-[1.5rem] bg-red'/>
 
@@ -118,7 +119,7 @@ const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDeparture
                 seletcedArrivalRoute && <RouteDetails setSelectedRoutes={setSelectedRoutes} route={seletcedArrivalRoute} routeType='return'/>
               }
               <div className='md:h-[3.5rem] h-[4.667rem] w-full bg-red grid place-content-center md:rounded-[0.5rem] rounded-[0.667rem] max-md:mt-[0.333rem]'>
-                <p className='font-bold text-light-white md:text-[1.125rem] text-[1.5rem] font-open-sans'>{ t('total-price') }: { (rates && !loading && currency) ? ((tourCost + returnCost) * rates[currency]).toFixed(2) : tourCost + returnCost }{ (rates && !loading && currency) ? currency : "EUR" }</p>
+                <p className='font-bold text-light-white md:text-[1.125rem] text-[1.5rem] font-open-sans'>{ t('total-price') }: { (rates && !loading && currency) ? ((tourCost + returnCost) * rates[currency]).toFixed(0) : tourCost + returnCost }{ (rates && !loading && currency) ? currency : "EUR" }</p>
               </div>
             </div>
           </div>
@@ -172,6 +173,7 @@ const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDeparture
               seletcedArrivalRoute={seletcedArrivalRoute}
               seletcedDepartureRoute={seletcedDepartureRoute}
               setCheckoutSuccess={setCheckoutSuccess}
+              shouldReturn={shouldReturn}
             />
           </div>
         </div>

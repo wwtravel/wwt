@@ -63,9 +63,10 @@ interface PassengerDataContainerProps{
     seletcedDepartureRoute : Travel;
     seletcedArrivalRoute : Travel | null;
     setCheckoutSuccess: React.Dispatch<React.SetStateAction<boolean>>
+    shouldReturn : boolean;
 }
 
-const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices, route, setCost, passengers, setPassengers, updatePassenger, setCheckoutContent, checkoutContent, passengersFullObj, user, seletcedArrivalRoute, seletcedDepartureRoute, setCheckoutSuccess }) => {
+const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices, route, setCost, passengers, setPassengers, updatePassenger, setCheckoutContent, checkoutContent, passengersFullObj, user, seletcedArrivalRoute, seletcedDepartureRoute, setCheckoutSuccess, shouldReturn }) => {
 
     const t = useTranslations("RouteSearchPage_Checkout")
     const locale = useLocale()
@@ -318,14 +319,14 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
 
         <div className="w-full mt-[2rem]">
             {
-                checkoutContent === 'return' && <p className="font-open-sans md:text-[1.125rem] text-[1.5rem] font-bold text-dark-gray">{ t('contact-details') }</p>
+                (checkoutContent === 'return' || checkoutContent === 'tour' && !shouldReturn) && <p className="font-open-sans md:text-[1.125rem] text-[1.5rem] font-bold text-dark-gray">{ t('contact-details') }</p>
             }
             <div className={`w-full mt-[0.5rem] grid lg:grid-cols-3 grid-cols-1 md:gap-[1rem] gap-[0.667rem]`}>
 
                 {/* phone */}
                     <div className="relative">
                         {
-                            checkoutContent === 'return' && (
+                            (checkoutContent === 'return' || checkoutContent === 'tour' && !shouldReturn) && (
                                 <>
                                     <input 
                                     id="checkoutPhone" 
@@ -355,7 +356,7 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
                 {/* email */}
                     <div className="relative">
                         {
-                            checkoutContent === 'return' && (
+                            (checkoutContent === 'return' || checkoutContent === 'tour' && !shouldReturn) && (
                                 <>
                                     <input 
                                     id="checkoutEmail" 
@@ -384,17 +385,17 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
 
                 {/* Finish btn */}
                 {
-                    <div className="relative lg:h-[3.5rem] h-[4.667rem] w-full bg-red hover:bg-dark-red transition-colors duration-300  md:rounded-[0.5rem] rounded-[0.667rem] cursor-pointer grid place-content-center" onClick={checkoutContent === 'return' ? handleClickFinish : handleClickContinue}>
+                    <div className="relative lg:h-[3.5rem] h-[4.667rem] w-full bg-red hover:bg-dark-red transition-colors duration-300  md:rounded-[0.5rem] rounded-[0.667rem] cursor-pointer grid place-content-center" onClick={(checkoutContent === 'return' || checkoutContent === 'tour' && !shouldReturn) ? handleClickFinish : handleClickContinue}>
                         {
                             loading 
                             ? <div><PulseLoader 
                                 size={5}
                                 color="#FCFEFF"
                               /></div>
-                            : <p className="text-light-white md:text-[1.125rem] text-[1.5rem] font-bold font-open-sans">{ checkoutContent === 'return' ? t('finish') : t('continue') }</p>
+                            : <p className="text-light-white md:text-[1.125rem] text-[1.5rem] font-bold font-open-sans">{ (checkoutContent === 'return' || checkoutContent === 'tour' && !shouldReturn) ? t('finish') : t('continue') }</p>
                         }
                         {
-                            checkoutContent === 'return' && <p className="text-center absolute bottom-0 left-0 right-0 md:translate-y-[1.5rem] translate-y-[2rem] text-red md:text-[0.875rem] text-[1.167rem] font-bold font-open-sans">* { t('payment-info') }</p>
+                            (checkoutContent === 'return' || checkoutContent === 'tour' && !shouldReturn) && <p className="text-center absolute bottom-0 left-0 right-0 md:translate-y-[1.5rem] translate-y-[2rem] text-red md:text-[0.875rem] text-[1.167rem] font-bold font-open-sans">* { t('payment-info') }</p>
                         }
                     </div>
                 }

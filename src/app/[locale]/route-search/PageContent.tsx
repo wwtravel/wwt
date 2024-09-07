@@ -60,6 +60,7 @@ const PageContent:React.FC<PageContentProps> = ({ routes, loading }) => {
                       setSelectedRoutes={setSelectedRoutes} 
                       seletcedDepartureRoute={selectedRoutes.departureRoute} 
                       seletcedArrivalRoute={selectedRoutes.returnRoute} 
+                      shouldReturn={ selectedRoutes.shouldReturn }
                       setCheckoutSuccess={setCheckoutSuccess}
                     />
                   ) : null
