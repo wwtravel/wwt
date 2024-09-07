@@ -82,6 +82,7 @@ export async function GET () {
     try {
         orders = await prisma.order.findMany({
             select: {
+                order_date: true,
                 contact_details: true,
                 passengers: true,
                 id: true,
@@ -90,7 +91,7 @@ export async function GET () {
                     select: {
                         route_id: true
                     }
-                }
+                },
             }
         });
     } catch (e) {
