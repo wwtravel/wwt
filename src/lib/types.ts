@@ -51,15 +51,19 @@ export interface OrderConfirmationProps {
     passangers: Passanger[],
     contactDetails: {
         name: string,
-        phoneNumber: string
+        phone_number: string
     },
     lang: string,
 
 }
 
-interface Passanger {
-    name: string,
-    price: string
+export interface Passanger {
+    firstname: string,
+    lastname: string,
+    price: {
+        currency: string,
+        value: number
+    }
 }
 
 export const PostPriceSchema = z.object({
@@ -125,6 +129,16 @@ const PostTravelSchema = z.object({
 
 export const PostTravelsSchema = z.array(PostTravelSchema);
 
+const stop = z.object({
+    city: z.string(),
+    label: z.object({
+        en: z.string(),
+        ro: z.string(),
+        fr: z.string(),
+        ru: z.string(),
+    })
+})
+
 export const OrderSchema = z.object({
     travel_id: z.string(),
     passengers: z.array(
@@ -145,16 +159,22 @@ export const OrderSchema = z.object({
                 }).max(50, {
                     message: "Lastname must be at least at most 100 characters"
                 }),
-            price: z.number()
+            price: z.object({
+                currency: z.enum(["MDL", "CHF", "EUR"]),
+                value: z.number()
+            })
         })
     ),
     user_id: z.string().optional(),
     contact_details: z.object({
-        phone_number: z.string().min(7).max(15),
+        phone_number: z.string().regex(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{3,6}$/g),
         email: z.string().trim().min(1).max(50).regex(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g),
-        notes: z.string().optional()
     }),
-    lang: z.enum(["fr", "en", "ro", "ru"])
+    lang: z.enum(["fr", "en", "ro", "ru"]),
+    departure_place: stop,
+    arrival_place: stop,
+    arrival_date: z.string().datetime(),
+    departure_date: z.string().datetime()
 })
 
 export const ResetPasswordSchema = z.object({

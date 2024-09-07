@@ -100,26 +100,46 @@ type PriceSheet {
 
 model Order {
   id String @id @default(auto()) @map("_id") @db.ObjectId
+  public_id String @unique
   travel_id String @db.ObjectId
   passengers Passanger[]
   user_id String? @db.ObjectId
   contact_details ContactDetails
   order_date DateTime @default(now())
+  departure_place OrderStop
+  arrival_place OrderStop
+  arrival_date DateTime
+  departure_date DateTime
 
   travel Travel @relation(fields: [travel_id], references: [id])
   user User? @relation(fields: [user_id], references: [id])
 }
 
+type OrderStop {
+  city String
+  label Label
+}
+
 type Passanger {
   firstname String
   lastname String
-  price Int
+  price OrderPrice
+}
+
+enum CurrencyTitle {
+  MDL
+  CHF
+  EUR
+}
+
+type OrderPrice {
+  currency CurrencyTitle
+  value Int
 }
 
 type ContactDetails {
   phone_number String
   email String
-  notes String?
 }
 
 // Reset password token model

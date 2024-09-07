@@ -78,6 +78,8 @@ export async function GET () {
     try {
         travels = await prisma.travel.findMany({
             select: {
+                id: true,
+                route_id: true,
                 departure: true,
                 reserved_seats: true,
                 orders: {
