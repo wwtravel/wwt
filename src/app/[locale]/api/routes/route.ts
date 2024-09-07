@@ -1,9 +1,9 @@
-import { handlePrismaError } from "@/lib/bd-utils";
+import { checkIfAdmin, handlePrismaError } from "@/lib/bd-utils";
 import { prisma } from "@/utils/prisma";
 
 export async function GET () {
-    // const response = await checkIfAdmin();
-    // if (response !== null) return response;
+    const response = await checkIfAdmin();
+    if (response !== null) return response;
     let travels = null;
 
     try {

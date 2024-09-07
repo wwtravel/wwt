@@ -504,7 +504,21 @@
 
     "fill-in-data" : "Enter the data in the boxes for more details.",
 
-    "price-not-found-error": "No available route found for editing."
+    "price-not-found-error": "No available route found for editing.",
+
+    "direction-req-title": "Direction required",
+    "direction-req-desc": "Select the route direction to continue",
+
+    "date-req-title": "Date required",
+    "date-req-desc": "Select a departure date to continue",
+
+    "hour-req-title": "Time required",
+    "hour-req-desc": "Enter a valid time in the HH:MM format",
+
+    "general-err-title": "Unexpected error",
+    "general-err-desc": "An unexpected error occurred. The route addition or update has failed.",
+
+    "close" : "Close"
   },
   "AdminPrices" : {
     "filter-by" : "Filter by",

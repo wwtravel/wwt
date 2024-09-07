@@ -26,9 +26,10 @@ interface RouteModalSelectProps{
     setDirection: React.Dispatch<React.SetStateAction<CoordinatePair | null>>;
     tourCoord: CoordinatePair;
     returnCoord: CoordinatePair;
+    err: boolean;
 }
 
-const RouteModalSelect:React.FC<RouteModalSelectProps> = ({ direction, setDirection, tourCoord, returnCoord }) => {
+const RouteModalSelect:React.FC<RouteModalSelectProps> = ({ direction, setDirection, tourCoord, returnCoord, err }) => {
 
   const t = useTranslations("AdminRoutes")
 
@@ -37,7 +38,7 @@ const RouteModalSelect:React.FC<RouteModalSelectProps> = ({ direction, setDirect
         if(value === 'tour') setDirection(tourCoord)
             else setDirection(returnCoord)
     }}>
-      <SelectTrigger className={`relative font-open-sans xl:text-[1rem] text-[1.333rem] w-full xl:h-[3.5rem] h-[4rem] bg-light-white  md:rounded-[0.5rem] rounded-[0.667rem] border-gray/25 px-[1.5rem] py-0`}>
+      <SelectTrigger className={`${err && 'animate-input-error'} relative font-open-sans xl:text-[1rem] text-[1.333rem] w-full xl:h-[3.5rem] h-[4rem] bg-light-white  md:rounded-[0.5rem] rounded-[0.667rem] border-gray/25 px-[1.5rem] py-0`}>
         <SelectValue placeholder={ t('choose-route') } className="ring-0 text-[1rem]  font-open-sans font-[400] text-gray/25"/>
       </SelectTrigger>
 

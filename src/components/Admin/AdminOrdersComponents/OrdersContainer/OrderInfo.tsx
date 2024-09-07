@@ -18,6 +18,7 @@ const OrderInfo:React.FC<OrderInfoProps> = ({ order }) => {
         animate={{ height: "auto" }}
         exit={{ height: 0 }}
         transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
+        className="overflow-y-hidden"
     >
         <div className="mt-[2rem] pt-[2rem] border-t border-gray/25 flex flex-row items-start justify-between">
             <div className="flex-1 flex flex-col gap-[0.25rem]">

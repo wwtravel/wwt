@@ -517,7 +517,21 @@
 
     "fill-in-data" : "Introduceți datele în casete pentru mai multe detalii.",
 
-    "price-not-found-error": "Nu a fost găsită nici o rută disponibilă pentru editare."
+    "price-not-found-error": "Nu a fost găsită nici o rută disponibilă pentru editare.",
+
+    "direction-req-title" : "Direcție necesară",
+    "direction-req-desc" : "Alegeți direcția rutei pentru a continua",
+
+    "date-req-title" : "Dată necesară",
+    "date-req-desc" : "Alegeți o dată de plecare pentru a continua",
+    
+    "hour-req-title" : "Oră necesară",
+    "hour-req-desc" : "Introduceți o ora validă în formatul HH:MM",
+
+    "general-err-title" : "Eroare neprevăzută",
+    "general-err-desc" : "A apărut o eroare neprevăzută. Adăugarea sau actualizarea rutei a esuat.",
+
+    "close" : "Închide"
   },
   "AdminPrices" : {
     "filter-by" : "Filtrează după",
