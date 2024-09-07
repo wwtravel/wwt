@@ -49,7 +49,10 @@ const Footer = () => {
             </div>
 
             <div className='w-full h-[1px] bg-light-white mt-[1.5rem]'/>
-            <p className='text-center font-open-sans text-[1rem] font-[300] text-light-white mt-[1rem] pb-[1rem] cursor-pointer'>{ t('copyright') }</p>
+            <div className='flex justify-center items-center gap-[0.375rem]'>
+                <p className='text-center font-open-sans text-[1rem] font-[300] text-light-white mt-[1rem] pb-[1rem] cursor-pointer'>Copyright ©World Wide Travel all rights reserved. Powered by Studio Modvis</p>
+                <img src="/icons/icon-modvis.svg" alt="modvis" draggable={false} className='size-[0.625rem]' />
+            </div>
         </div>
     </div>
   )

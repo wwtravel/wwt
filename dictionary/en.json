@@ -42,33 +42,9 @@
     "title": "Popular Destinations",
     
     "cardDeparture": "Next departure on",
-    "features": "Amenities",
+    "features": "Comodities",
 
-    "card1title": "Chișinău - Vienna",
-    "card2title": "Chișinău - Chambery",
-    "card3title": "Chișinău - Zurich",
-    "card4title": "Chișinău - Vienna",
-    "card5title": "Chișinău - Chambery",
-    "card6title": "Chișinău - Zurich",
-    "card7title": "Chișinău - Vienna",
-    "card8title": "Chișinău - Chambery",
-    "card9title": "Chișinău - Zurich",
-    "card10title": "Chișinău - Vienna",
-    "card11title": "Chișinău - Chambery",
-    "card12title": "Chișinău - Zurich",
-
-    "card1StartPoint": "Starting point - North Station",
-    "card2StartPoint": "Starting point - South Station",
-    "card3StartPoint": "Starting point - North Station",
-    "card4StartPoint": "Starting point - North Station",
-    "card5StartPoint": "Starting point - South Station",
-    "card6StartPoint": "Starting point - North Station",
-    "card7StartPoint": "Starting point - North Station",
-    "card8StartPoint": "Starting point - South Station",
-    "card9StartPoint": "Starting point - North Station",
-    "card10StartPoint": "Starting point - North Station",
-    "card11StartPoint": "Starting point - South Station",
-    "card12StartPoint": "Starting point - North Station",
+    "cardStartPoint": "Starting point",
 
     "cardButtonText": "Book Ticket"
   },
@@ -580,7 +556,8 @@
     "phone" : "Phone Number",
     "total-price" : "Total Price",
     "about" : "About Reservation",
-    "pass-order-number" : "Passenger No."
+    "pass-order-number" : "Passenger No.",
+    "order-not-found-error": "No order was found"
   },
   "NotFoundPage": {
     "title": "PAGE NOT FOUND",

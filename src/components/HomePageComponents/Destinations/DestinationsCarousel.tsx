@@ -12,20 +12,30 @@ import {
   CarouselPrevious,
   CarouselApi
 } from "@/components/ui/carousel"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import RedButton from "@/components/SharedComponents/RedButton"
 import DestinationPrice from "./DestinationPrice"
 
 import Autoplay from "embla-carousel-autoplay"
 
 import CarouselDots from "./CarouselDots"
-import { useStore } from "zustand"
-import { useCurrencyStore } from "@/hooks/useCurrencyStore"
 
 const DestinationsCarousel = () => {
 
   const [api, setApi] = useState<CarouselApi>()
   const [activeSlide, setActiveSlide] = useState(0)
+
+  const locale = useLocale()
+
+  const getLocale = (value: string) => {
+    switch(value){
+      case 'ro' : return 'ro';
+      case 'ru' : return 'ru';
+      case 'en' : return 'en';
+      case 'fr' : return 'fr';
+      default : return 'en';
+    }
+  }
  
   useEffect(() => {
     if (!api) {
@@ -62,9 +72,9 @@ const DestinationsCarousel = () => {
                             <DestinationPrice price={item.price}/>
                             <img className="h-[16rem]" src={item.imageURL} alt="carouse-image" draggable={false} />
                             <div className="mt-[2rem] px-[1.5rem] pb-[1.5rem]">
-                                <h3 className="text-[1.5rem] text-dark-gray font-montserrat font-bold">{ t(item.title) }</h3>
+                                <h3 className="text-[1.5rem] text-dark-gray font-montserrat font-bold">{ item.title[getLocale(locale)] }</h3>
                                 <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem] mt-[1rem]">{ t(item.departureText) } <span className="font-bold">20.03.2024</span></p>
-                                <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem]">{ t(item.startPoint) }</p>
+                                <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem]">{ t('cardStartPoint') } - { item.startPoint[getLocale(locale)] }</p>
                                 <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem]">{ t(item.features) }:</p>
                                 <div className="flex gap-[1rem] mb-[1rem]">
                                     <img className="size-[1.5rem]" src={`/icons/destinations-icons/${item.wifi ? 'icon-wifi.svg' : 'icon-wifi-disabled.svg'}`} alt="feaureIcon" draggable={false} />
@@ -92,9 +102,9 @@ const DestinationsCarousel = () => {
                               <DestinationPrice price={item.price}/>
                               <img className="h-[16rem]" src={item.imageURL} alt="carouse-image" draggable={false} />
                               <div className="mt-[2rem] px-[1.5rem] pb-[1.5rem]">
-                                  <h3 className="text-[1.5rem] text-dark-gray font-montserrat font-bold">{ t(item.title) }</h3>
+                                  <h3 className="text-[1.5rem] text-dark-gray font-montserrat font-bold">{ item.title[getLocale(locale)] }</h3>
                                   <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem] mt-[1rem]">{ t(item.departureText) } <span className="font-bold">20.03.2024</span></p>
-                                  <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem]">{ t(item.startPoint) }</p>
+                                  <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem]">{ t('cardStartPoint') } - { item.startPoint[getLocale(locale)]  }</p>
                                   <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem]">{ t(item.features) }:</p>
                                   <div className="flex gap-[1rem] mb-[1rem]">
                                     <img className="size-[1.5rem]" src={`/icons/destinations-icons/${item.wifi ? 'icon-wifi.svg' : 'icon-wifi-disabled.svg'}`} alt="feaureIcon" draggable={false} />
@@ -122,9 +132,9 @@ const DestinationsCarousel = () => {
                               <DestinationPrice price={item.price}/>
                               <img className="h-[16rem]" src={item.imageURL} alt="carouse-image" draggable={false} />
                               <div className="mt-[2rem] px-[1.5rem] pb-[1.5rem]">
-                                  <h3 className="text-[1.5rem] text-dark-gray font-montserrat font-bold">{ t(item.title) }</h3>
+                                  <h3 className="text-[1.5rem] text-dark-gray font-montserrat font-bold">{ item.title[getLocale(locale)] }</h3>
                                   <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem] mt-[1rem]">{ t(item.departureText) } <span className="font-bold">20.03.2024</span></p>
-                                  <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem]">{ t(item.startPoint) }</p>
+                                  <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem]">{ t('cardStartPoint') } - { item.startPoint[getLocale(locale)]  }</p>
                                   <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem]">{ t(item.features) }:</p>
                                   <div className="flex gap-[1rem] mb-[1rem]">
                                     <img className="size-[1.5rem]" src={`/icons/destinations-icons/${item.wifi ? 'icon-wifi.svg' : 'icon-wifi-disabled.svg'}`} alt="feaureIcon" draggable={false} />

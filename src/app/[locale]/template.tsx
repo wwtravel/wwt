@@ -12,13 +12,13 @@ const template = ({ children }: { children: React.ReactNode }) => {
 
   const pathname = usePathname()
 
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [showPage, setShowPage] = useState(false)
   const [showChat, setShowChat] = useState(false)
 
   useEffect(() => {
     setShowChat(false)
-    setIsLoading(true)
+    //setIsLoading(true)
     
     setTimeout(() => {
         setIsLoading(false)

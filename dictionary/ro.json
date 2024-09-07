@@ -44,31 +44,7 @@
     "cardDeparture" : "Următoarea plecare pe",
     "features" : "Comodități",
 
-    "card1title" : "Chișinău - Viena",
-    "card2title" : "Chișinău - Chambery",
-    "card3title" : "Chișinău - Zurich",
-    "card4title" : "Chișinău - Viena",
-    "card5title" : "Chișinău - Chambery",
-    "card6title" : "Chișinău - Zurich",
-    "card7title" : "Chișinău - Viena",
-    "card8title" : "Chișinău - Chambery",
-    "card9title" : "Chișinău - Zurich",
-    "card10title" : "Chișinău - Viena",
-    "card11title" : "Chișinău - Chambery",
-    "card12title" : "Chișinău - Zurich",
-
-    "card1StartPoint" : "Punctul de start - Gara de Nord",
-    "card2StartPoint" : "Punctul de start - Gara de Sud",
-    "card3StartPoint" : "Punctul de start - Gara de Nord",
-    "card4StartPoint" : "Punctul de start - Gara de Nord",
-    "card5StartPoint" : "Punctul de start - Gara de Sud",
-    "card6StartPoint" : "Punctul de start - Gara de Nord",
-    "card7StartPoint" : "Punctul de start - Gara de Nord",
-    "card8StartPoint" : "Punctul de start - Gara de Sud",
-    "card9StartPoint" : "Punctul de start - Gara de Nord",
-    "card10StartPoint" : "Punctul de start - Gara de Nord",
-    "card11StartPoint" : "Punctul de start - Gara de Sud",
-    "card12StartPoint" : "Punctul de start - Gara de Nord",
+    "cardStartPoint" : "Punctul de start",
 
     "cardButtonText" : "Rezervă Bilet"
   },
@@ -152,7 +128,7 @@
     "parcelDetails" : "Detalii Colete",
     "newsLetter" : "News Letter",
     "send" : "Trimite",
-    "copyright" : "Copyright ©World Wide Travel all rights reserved."
+    "copyright" : "Copyright ©World Wide Travel all rights reserved. "
   },
   "AboutHeader" : {
     "aboutWord1" : "despre",
@@ -595,7 +571,8 @@
     "phone" : "Număr de telefon",
     "total-price" : "Preț total",
     "about" : "Despre rezervare",
-    "pass-order-number" : "Pasager nr."
+    "pass-order-number" : "Pasager nr.",
+    "order-not-found-error": "Nu a fost găsit nici o comandă"
   },
   "NotFoundPage" : {
     "title" : "PAGINA NU A FOST GĂSITĂ",
