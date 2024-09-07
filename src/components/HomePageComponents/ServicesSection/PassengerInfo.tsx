@@ -5,7 +5,6 @@ import CountryTab from './CountryTab'
 import { useTranslations } from 'next-intl'
 
 import { passengersInfoData } from '@/constants/passengersInfoData'
-import ItineraryMap from '../../SharedComponents/ItineraryMap'
 import RedButton from '@/components/SharedComponents/RedButton'
 
 import { Coordinate, passengerCountriesCoordinates } from '@/constants/coordinates'
@@ -13,6 +12,13 @@ import { useStore } from 'zustand'
 import { useCurrencyStore } from '@/hooks/useCurrencyStore'
 import { useCurrencyRates } from '@/hooks/useCurrencyRates'
 import { roundCurrency } from '../Destinations/DestinationPrice'
+
+import dynamic from 'next/dynamic';
+
+const ItineraryMap = dynamic(() => import('../../SharedComponents/ItineraryMap'), {
+  ssr: false,
+  loading: () => <p>Loading map...</p>
+});
 
 const PassengerInfo = () => {
 

@@ -1,7 +1,19 @@
 import SectionTitle from '@/components/SharedComponents/SectionTitle'
 import { useTranslations } from 'next-intl'
-import TestimonialsCarousel from './TestimonialsCarousel'
-import MobileTestimonialsCarousel from './MobileTestimonialsCarousel'
+
+import dynamic from 'next/dynamic';
+
+
+// Dynamically import ItineraryMap
+const TestimonialsCarousel = dynamic(() => import('./TestimonialsCarousel'), {
+  ssr: false,  // Disable server-side rendering for this component
+  loading: () => <p>Loading carousel...</p>  // Optional: Loading placeholder while the map is being fetched
+});
+
+const MobileTestimonialsCarousel = dynamic(() => import('./MobileTestimonialsCarousel'), {
+  ssr: false,  // Disable server-side rendering for this component
+  loading: () => <p>Loading carousel...</p>  // Optional: Loading placeholder while the map is being fetched
+});
 
 const Testimonials = () => {
 

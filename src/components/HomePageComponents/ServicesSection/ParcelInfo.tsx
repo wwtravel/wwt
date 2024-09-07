@@ -1,10 +1,15 @@
 import { useTranslations } from "next-intl"
 import ParcelForm from "./ParcelForm"
 
-import ItineraryMap from "@/components/SharedComponents/ItineraryMap"
 import { parcelCoordinates } from "@/constants/coordinates"
 import ParcelInfoPrice from "./ParcelInfoPrice"
 
+import dynamic from 'next/dynamic';
+
+const ItineraryMap = dynamic(() => import('../../SharedComponents/ItineraryMap'), {
+  ssr: false,
+  loading: () => <p>Loading map...</p>
+});
 
 const ParcelInfo = () => {
 

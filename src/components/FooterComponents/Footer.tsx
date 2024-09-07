@@ -7,7 +7,7 @@ const Footer = () => {
   const t = useTranslations("Footer")
 
   return (
-    <div className='bg-[url(/images/footer-bg.png)] bg-cover bg-center bg-no-repeat rounded-t-[1rem] mt-[8rem] overflow-hidden'>
+    <div className='bg-[url(/images/footer-bg.webp)] bg-cover bg-center bg-no-repeat rounded-t-[1rem] mt-[8rem] overflow-hidden'>
         <div className='w-full h-full bg-red/95 xl:px-[12rem] px-[1rem] pt-[4rem]'>
             <div className='flex lg:justify-between lg:flex-row flex-col max-lg:gap-[2rem]'>
                 <div>
