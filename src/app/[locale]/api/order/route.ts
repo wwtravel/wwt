@@ -67,37 +67,6 @@ export async function POST (request: Request) {
     return Response.json({ msg: "Order succesfully created!" }, {status: 201});
 }
 
-// export async function PATCH (request: Request) {
-//     const result = UserSchema.safeParse(await request.json());
-
-//     if (!result.success) {
-//         let errorMessage = "";
-
-//         result.error.issues.forEach((issue) => {
-//             errorMessage = errorMessage + issue.path[0] + ": " + issue.message + ", ";
-//         });
-
-
-//         return Response.json({ msg: errorMessage }, {status: 400})
-//     }
-
-//     try {
-//         await prisma.user.update({
-//             where: {
-//               email: result.data.email,
-//             },
-//             data: result.data,
-//           })
-//     } catch (e) {
-//         if (e instanceof Prisma.PrismaClientKnownRequestError) {
-//             return handlePrismaError(e);
-//         }
-//     }
-    
-
-//     return Response.json({ msg: "User updated successfully!"}, {status: 201});
-// }
-
 export async function GET () {
     const session = await auth();
 
@@ -109,23 +78,28 @@ export async function GET () {
         return Response.json({ msg: "Email not found in session!"}, {status: 400});
     }
 
-    let user = null;
+    let orders = null;
     try {
-        user = await prisma.user.findUnique({
-            where: {
-              email: session.user?.email,
-            },
+        orders = await prisma.order.findMany({
             select: {
-             orders: true
+                contact_details: true,
+                passengers: true,
+                id: true,
+                travel_id: true,
+                travel: {
+                    select: {
+                        route_id: true
+                    }
+                }
             }
-          })
+        });
     } catch (e) {
         if (e) {
             return handlePrismaError(e);
         }
     }
 
-    if (!user) return Response.json({ msg: "User not found!"}, {status: 400});
+    if (!orders) return Response.json({ msg: "Orders not found!"}, {status: 400});
 
-    return Response.json({ msg: "User found successfully!", user: user}, {status: 201});
+    return Response.json(orders, {status: 201});
 }

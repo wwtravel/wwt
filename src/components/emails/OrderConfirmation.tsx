@@ -47,12 +47,16 @@ export default function WelcomeEmail() {
                     <DateCard/>
                     <DateCard/>
                     <Section className='bg-white px-6 py-4 border border-[#DADBDD] rounded-lg max-w-[36rem]'>
-                        <div className='flex justify-between mb-2'>
-                            <Text className='text-red font-bold text-sm m-0 text-center'>DETALII PASAGERI</Text>
-                            <Text className='text-red font-bold text-sm m-0 text-center'>PREȚ</Text>
-                        </div>
-                        <PassangerCard/>
-                        <PassangerCard/>
+                        <table className='mb-2 w-full'>
+                            <tbody>
+                                <tr>
+                                    <th><Text className='text-red font-bold text-sm m-0 text-left'>DETALII PASAGERI</Text></th>
+                                    <th><Text className='text-red font-bold text-sm m-0 text-right'>PREȚ</Text></th>
+                                </tr>
+                                <PassangerCard/>
+                                <PassangerCard/>
+                            </tbody>
+                        </table>
                         <Hr className='my-2'></Hr>
                         <Text className='font-sans text-black text-center text-base m-0 mr-2 inline-block'>Persoana de contact:</Text>
                         <Text className='font-sans text-black text-center text-base m-0 inline-block font-bold'>Cătălin Țurcanu +37368550009</Text>
@@ -60,7 +64,6 @@ export default function WelcomeEmail() {
                 </Section>
                 <Section className='bg-red h-4 mt-6'></Section>
             </Section>
-           
         </Tailwind>
         
     </Html>
@@ -79,12 +82,16 @@ const DateCard = () => {
 
 const PassangerCard = () => {
     return (
-        <div className='mb-2 w-full flex justify-between'>
-            <div className='gap-2 flex'>
-                <Text className='font-sans text-black text-center text-base m-0'>1.</Text>
-                <Text className='font-sans text-black text-center text-base m-0 font-bold'>CĂTĂLIN ȚURCANU</Text>
-            </div>
-            <Text className='font-sans text-black text-center text-base m-0 font-bold'>320 MDL</Text>
-        </div>
+        <tr>
+            <td className='text-left'>
+                <div className='flex'>
+                        <Text className='font-sans text-black text-center text-base m-0 mr-2'>1.</Text>
+                        <Text className='font-sans text-black text-center text-base m-0 font-bold'>CĂTĂLIN ȚURCANU</Text>
+                </div>
+            </td>
+            <td className='text-right'>
+                <Text className='font-sans text-black text-base m-0 font-bold'>320 MDL</Text>
+            </td>
+        </tr>
     )
 }
