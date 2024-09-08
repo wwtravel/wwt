@@ -115,6 +115,11 @@ export const PatchPriceSchema = z.object({
     })
 });
 
+export const PatchLuggageSchema = z.object({
+    id: z.string(),
+    price: z.number()
+});
+
 export const PatchTravelSchema = z.object({
     id: z.string(),
     departure: z.string().datetime().optional(),
@@ -131,12 +136,17 @@ export const PostTravelsSchema = z.array(PostTravelSchema);
 
 const stop = z.object({
     city: z.string(),
+    country: z.string(),
     label: z.object({
         en: z.string(),
         ro: z.string(),
         fr: z.string(),
         ru: z.string(),
     })
+})
+
+export const DeleteTravelSchema = z.object({
+    id: z.string()
 })
 
 export const OrderSchema = z.object({

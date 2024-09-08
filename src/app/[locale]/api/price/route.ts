@@ -71,8 +71,8 @@ export async function PATCH (request: Request) {
 
 
 export async function GET () {
-    const response = await checkIfAdmin();
-    if (response !== null) return response;
+    // const response = await checkIfAdmin();
+    // if (response !== null) return response;
     let prices = null;
 
     try {
@@ -85,5 +85,17 @@ export async function GET () {
 
     if (!prices) Response.json({ msg: "Query failed!"}, {status: 500});
 
-    return Response.json(prices, {status: 200});
+    let luggagePrice = null;
+
+    try {
+        luggagePrice = await prisma.luggagePrice.findFirst();
+    } catch (e) {
+        if (e) {
+            return handlePrismaError(e);
+        }
+    }
+
+    if (!luggagePrice) Response.json({ msg: "Query failed!"}, {status: 500});
+
+    return Response.json({travelPrices: prices, luggagePrice: luggagePrice}, {status: 200});
 }                                       

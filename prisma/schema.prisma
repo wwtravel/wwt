@@ -96,6 +96,13 @@ type PriceSheet {
   child Int
 }
 
+// LuggagePrice model
+
+model LuggagePrice {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    price Int
+}
+
 // Order model
 
 model Order {
@@ -117,6 +124,7 @@ model Order {
 
 type OrderStop {
   city String
+  country String
   label Label
 }
 
