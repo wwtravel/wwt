@@ -13,9 +13,10 @@ interface OrdersFilterProps{
     dateCondition: string;
     setDateCondition: React.Dispatch<React.SetStateAction<string>>;
     handleClick: () => void;
+    handleReset: () => void;
 }
 
-const OrdersFilter:React.FC<OrdersFilterProps> = ({ outputContition, setOutputCondition, searchCondition, setSearchCondition, dateCondition, setDateCondition, handleClick }) => {
+const OrdersFilter:React.FC<OrdersFilterProps> = ({ outputContition, setOutputCondition, searchCondition, setSearchCondition, dateCondition, setDateCondition, handleClick, handleReset }) => {
 
     const admin_prices_t = useTranslations("AdminPrices")
     const t = useTranslations("AdminOrders")
@@ -77,7 +78,7 @@ const OrdersFilter:React.FC<OrdersFilterProps> = ({ outputContition, setOutputCo
 
             <div className='flex justify-between items-center mt-[3rem]'>
                 <div 
-                    //onClick={handleReset}
+                    onClick={handleReset}
                 >
                     <UnderlinedText text={ admin_prices_t('delete') }/>
                 </div>

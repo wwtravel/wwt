@@ -16,6 +16,7 @@ interface ContactDetails {
 }
 
 interface Place{
+  country: string;
   city: string;
   label : {
     ro: string;
@@ -67,7 +68,7 @@ const AdminOrdersContent = () => {
       const response = await fetch('/api/order');
       if (!response.ok) {
           setLoading(false)
-          throw new Error('Failed to fetch prices');
+          throw new Error('Failed to fetch orders');
       }
       const data = await response.json();
       console.log(data)
@@ -128,7 +129,10 @@ const AdminOrdersContent = () => {
     // if(outputContition === "md-sw") tempOrders = filterByCities(tempOrders, "moldova", "switzerland")
 
     //id/name/surname
-    if(searchCondition !== '') tempOrders = filterBySearch(tempOrders, searchCondition)
+    if(searchCondition !== '') {
+      console.log(filterBySearch(tempOrders, searchCondition))
+      tempOrders = filterBySearch(tempOrders, searchCondition)
+    }
 
     setAlteredOrders(tempOrders)
   }
@@ -139,7 +143,7 @@ const AdminOrdersContent = () => {
     
     if(alteredOrders){
       alteredOrders.map(order => {
-        dates.push(order.order_date)
+        dates.push(extractDate(order.order_date))
       })
     }
 
@@ -148,7 +152,7 @@ const AdminOrdersContent = () => {
     });
 
     const orderGroups: Order_Date_obj[] = uniqueSortedDates.map(date => {
-      const ordersForDate = orders.filter(order => order.order_date === date);
+      const ordersForDate = alteredOrders.filter(order => extractDate(order.order_date) === date);
       return {
         date: date,
         orders: ordersForDate
@@ -158,11 +162,20 @@ const AdminOrdersContent = () => {
     setGroupedOrders(orderGroups);
   }, [alteredOrders])
 
+  const handleReset = () => {
+    setDateCondition('')
+    setSearchCondition('')
+    setOutputCondition('all')
+
+
+    setAlteredOrders(orders)
+  }
+
 
 
   return (
     <div className='pt-[9.5rem] flex xl:gap-[4rem] gap-[2rem] justify-center mb-[4rem]'>
-      <OrdersFilter handleClick={handleClick} dateCondition={dateCondition} setDateCondition={setDateCondition} searchCondition={searchCondition} setSearchCondition={setSearchCondition} outputContition={outputContition} setOutputCondition={setOutputCondition}/>
+      <OrdersFilter handleReset={handleReset} handleClick={handleClick} dateCondition={dateCondition} setDateCondition={setDateCondition} searchCondition={searchCondition} setSearchCondition={setSearchCondition} outputContition={outputContition} setOutputCondition={setOutputCondition}/>
       <OrdersContainer groupedOrders={groupedOrders} loading={loading}/>
     </div>
   )

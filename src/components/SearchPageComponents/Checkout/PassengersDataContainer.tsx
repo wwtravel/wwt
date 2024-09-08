@@ -10,11 +10,16 @@ import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { OrderSchema } from "@/lib/types";
 import PulseLoader from "react-spinners/PulseLoader";
+import { useStore } from "zustand";
+import { useCurrencyStore } from "@/hooks/useCurrencyStore";
 
 export interface Passenger{
     firstname: string;
     lastname: string;
-    price: number;
+    price: {
+        currency : string;
+        value : number;
+    }
 }
 
 interface ContactDetails{
@@ -34,6 +39,28 @@ interface BaseOrderData {
 interface OrderDetails{
     travel_id: string;
     passengers: Passenger[];
+    departure_date : string;
+    arrival_date : string;
+    departure_place : {
+        country: string;
+        city: string;
+        label : {
+            en : string;
+            ro : string;
+            ru : string;
+            fr : string;
+        }
+    },
+    arrival_place : {
+        country : string;
+        city: string;
+        label : {
+            en : string;
+            ro : string;
+            ru : string;
+            fr : string;
+        }
+    }
 }
 
 
@@ -71,6 +98,9 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
     const t = useTranslations("RouteSearchPage_Checkout")
     const locale = useLocale()
 
+    const currency = useStore(useCurrencyStore, (state) => state.currency)
+
+
     const [validationTrigger, setValidationTrigger] = useState(false)
 
     const [phoneFocus, setPhoneFocus] = useState(false)
@@ -86,7 +116,7 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
         setTimeout(() => setValidationTrigger(false), 300)
         
         passengers.map(passenger => {
-            if(passenger.firstname === '' || passenger.lastname === '' || passenger.price === 0) isPassengerDataValidated = false
+            if(passenger.firstname === '' || passenger.lastname === '' || passenger.price.value === 0) isPassengerDataValidated = false
         })
         
         if(!isPassengerDataValidated) return;
@@ -117,7 +147,7 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
     useEffect(() => {
         setCost(0)
         passengers.map(passenger => {
-            setCost(prev => prev + passenger.price)
+            setCost(prev => prev + passenger.price.value)
         })
     }, [passengers])
     
@@ -135,15 +165,59 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
 
     if(user) baseOrderData.user_id = user.id;
 
-    const orderTourDetails : OrderDetails = {
+    const orderTourDetails: OrderDetails = {
         travel_id: seletcedDepartureRoute.id,
-        passengers: passengersFullObj.tourPassengers
+        passengers: passengersFullObj.tourPassengers,
+        departure_date: seletcedDepartureRoute.departure,
+        arrival_date: seletcedDepartureRoute.arrival,
+        departure_place: {
+            country: seletcedDepartureRoute.route.stops[0].country, // Ensure country is set
+            city: seletcedDepartureRoute.route.stops[0].city,
+            label: {
+                ro: seletcedDepartureRoute.route.stops[0].label.ro,
+                en: seletcedDepartureRoute.route.stops[0].label.en,
+                ru: seletcedDepartureRoute.route.stops[0].label.ru,
+                fr: seletcedDepartureRoute.route.stops[0].label.fr
+            }
+        },
+        arrival_place: {
+            country: seletcedDepartureRoute.route.stops[seletcedDepartureRoute.route.stops.length - 1].country, // Ensure country is set
+            city: seletcedDepartureRoute.route.stops[seletcedDepartureRoute.route.stops.length - 1].city,
+            label: {
+                ro: seletcedDepartureRoute.route.stops[seletcedDepartureRoute.route.stops.length - 1].label.ro,
+                en: seletcedDepartureRoute.route.stops[seletcedDepartureRoute.route.stops.length - 1].label.en,
+                ru: seletcedDepartureRoute.route.stops[seletcedDepartureRoute.route.stops.length - 1].label.ru,
+                fr: seletcedDepartureRoute.route.stops[seletcedDepartureRoute.route.stops.length - 1].label.fr
+            }
+        }
     };
     
-    const orderReturnDetails : OrderDetails | null = seletcedArrivalRoute 
+    const orderReturnDetails: OrderDetails | null = seletcedArrivalRoute 
     ? {
         travel_id: seletcedArrivalRoute.id,
-        passengers: passengersFullObj.returnPassengers
+        passengers: passengersFullObj.returnPassengers,
+        departure_date: seletcedArrivalRoute.departure,
+        arrival_date: seletcedArrivalRoute.arrival,
+        departure_place: {
+            country: seletcedArrivalRoute.route.stops[0].country, // Ensure country is set
+            city: seletcedArrivalRoute.route.stops[0].city,
+            label: {
+                ro: seletcedArrivalRoute.route.stops[0].label.ro,
+                en: seletcedArrivalRoute.route.stops[0].label.en,
+                ru: seletcedArrivalRoute.route.stops[0].label.ru,
+                fr: seletcedArrivalRoute.route.stops[0].label.fr
+            }
+        },
+        arrival_place: {
+            country: seletcedArrivalRoute.route.stops[seletcedArrivalRoute.route.stops.length - 1].country, // Ensure country is set
+            city: seletcedArrivalRoute.route.stops[seletcedArrivalRoute.route.stops.length - 1].city,
+            label: {
+                ro: seletcedArrivalRoute.route.stops[seletcedArrivalRoute.route.stops.length - 1].label.ro,
+                en: seletcedArrivalRoute.route.stops[seletcedArrivalRoute.route.stops.length - 1].label.en,
+                ru: seletcedArrivalRoute.route.stops[seletcedArrivalRoute.route.stops.length - 1].label.ru,
+                fr: seletcedArrivalRoute.route.stops[seletcedArrivalRoute.route.stops.length - 1].label.fr
+            }
+        }
     }
     : null
 
@@ -159,6 +233,28 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
                     ...baseOrderData,
                     travel_id: orderDetails.travel_id,
                     passengers: orderDetails.passengers,
+                    departure_date: orderDetails.departure_date,
+                    arrival_date: orderDetails.arrival_date,
+                    departure_place: {
+                        country: orderDetails.departure_place.country,
+                        city: orderDetails.departure_place.city,
+                        label: {
+                            ro: orderDetails.departure_place.label.ro,
+                            en: orderDetails.departure_place.label.en,
+                            ru: orderDetails.departure_place.label.ru,
+                            fr: orderDetails.departure_place.label.fr
+                        }
+                    },
+                    arrival_place: {
+                        country: orderDetails.arrival_place.country,
+                        city: orderDetails.arrival_place.city,
+                        label: {
+                            ro: orderDetails.arrival_place.label.ro,
+                            en: orderDetails.arrival_place.label.en,
+                            ru: orderDetails.arrival_place.label.ru,
+                            fr: orderDetails.arrival_place.label.fr
+                        }
+                    },
                     ...(baseOrderData.user_id && { user_id: baseOrderData.user_id })
                 };
 
@@ -198,6 +294,8 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
     
             const orderDataTour = createOrderData(orderTourDetails);
             const orderDataReturn = orderReturnDetails ? createOrderData(orderTourDetails) : null;
+
+            console.log("dsdsdsg", orderDataReturn)
     
             const responseTour = await fetch('/api/order', {
                 method: 'POST',
@@ -244,7 +342,7 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
         setPhoneErr(false)
 
         passengers.map(passenger => {
-            if(passenger.firstname === '' || passenger.lastname === '' || passenger.price === 0) isPassengerDataValidated = false
+            if(passenger.firstname === '' || passenger.lastname === '' || passenger.price.value === 0) isPassengerDataValidated = false
         })
 
         if(!isPassengerDataValidated) return;
@@ -307,7 +405,7 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
                 passengers.length < maxLength && (
                     <div className="flex items-center justify-center mt-[1.5rem]">
                         <div className="flex items-center gap-[0.25rem]" onClick={() => {
-                            setPassengers(prev => [...passengers, { firstname: '', lastname: '', price: 0 }])
+                            setPassengers(prev => [...passengers, { firstname: '', lastname: '', price: { currency: currency, value: 0 } }])
                         }}>
                             <img src="/icons/route-card-icons/icon-add.svg" alt="add" draggable={false} className="size-[1.125rem]" />
                             <UnderlinedText text={t('add-passenger')}/>

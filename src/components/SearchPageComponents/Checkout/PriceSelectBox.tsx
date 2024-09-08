@@ -38,7 +38,13 @@ const PriceSelectBox:React.FC<PriceSelectBoxProps> = ({ prices, setPassenger, pa
         updatedPrice = prices.child;
     }
 
-    setPassenger({ ...passenger, price: updatedPrice });
+    setPassenger({
+      ...passenger,
+      price: {
+        ...passenger.price,
+        value: updatedPrice
+      },
+    });
   };
 
   const getPriceType = (price: number): string => {
@@ -49,7 +55,7 @@ const PriceSelectBox:React.FC<PriceSelectBoxProps> = ({ prices, setPassenger, pa
   };
 
   return (
-    <Select open={isOpen} onOpenChange={setIsOpen} onValueChange={handleSelectChange} value={getPriceType(passenger.price)}>
+    <Select open={isOpen} onOpenChange={setIsOpen} onValueChange={handleSelectChange} value={getPriceType(passenger.price.value)}>
       <SelectTrigger className={`${ selectBoxErr && 'animate-input-error' } relative font-open-sans text-[1rem] w-full lg:h-[3.5rem] h-[4.667rem] bg-light-white  md:rounded-[0.5rem] rounded-[0.667rem] border-gray/25 px-[1.5rem] py-0`}>
       <div className="pt-[1rem]">
         <SelectValue className="ring-0 text-[1rem] text-dark-gray font-open-sans font-[400]"/>
@@ -59,8 +65,8 @@ const PriceSelectBox:React.FC<PriceSelectBoxProps> = ({ prices, setPassenger, pa
             className="origin-top-left cursor-text absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
             initial={{ scale: 1, y: '-50%' }}
             animate={{
-                scale: isOpen || passenger.price !== 0 ? 0.7 : 1,
-                y: isOpen || passenger.price !== 0 ? '-80%' : '-50%'
+                scale: isOpen || passenger.price.value !== 0 ? 0.7 : 1,
+                y: isOpen || passenger.price.value !== 0 ? '-80%' : '-50%'
             }}
             transition={{ type: 'tween', ease: 'easeInOut', duration: 0.2 }}
         >

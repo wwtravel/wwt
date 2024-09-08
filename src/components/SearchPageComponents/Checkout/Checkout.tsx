@@ -18,7 +18,10 @@ import { roundCurrency } from '@/components/HomePageComponents/Destinations/Dest
 export interface Passenger{
   firstname: string;
   lastname: string;
-  price: number;
+  price: {
+    currency: string;
+    value: number;
+  }
 }
 
 interface ContactDetails{
@@ -75,7 +78,10 @@ const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDeparture
     {
         firstname: '',
         lastname: '',
-        price: 0
+        price: {
+          currency: currency,
+          value: 0
+        }
     }
   ])
 
@@ -83,9 +89,35 @@ const Checkout:React.FC<CheckoutProps> = ({ setSelectedRoutes, seletcedDeparture
     {
         firstname: '',
         lastname: '',
-        price: 0
+        price: {
+          currency: currency,
+          value: 0
+        }
     }
   ])
+
+  useEffect(() => {
+    setTourPassengers((prevPassengers) =>
+      prevPassengers.map((passenger) => ({
+        ...passenger,
+        price: {
+          ...passenger.price,
+          currency: currency
+        }
+      }))
+    );
+    setReturnPassengers((prevPassengers) =>
+      prevPassengers.map((passenger) => ({
+        ...passenger,
+        price: {
+          ...passenger.price,
+          currency: currency
+        }
+      }))
+    );
+  }, [currency]);
+
+  console.log(tourPassengers, returnPassengers)
 
   const updateTourPassenger = (index: number, updatedPassenger: Passenger) => {
     setTourPassengers(prevPassengers => 

@@ -93,7 +93,7 @@ const PassengerDataRow:React.FC<PassengerDataRowProps> = ({ passenger, index, se
               })
               return;
         }
-        if(passenger.price === 0){
+        if(passenger.price.value === 0){
             setPriceErr(true)
             toast( t('price-req-title'), {
                 description: t('price-req-desc'),
