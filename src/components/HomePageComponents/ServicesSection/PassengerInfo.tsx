@@ -105,7 +105,7 @@ const PassengerInfo = () => {
                     <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7]'>{ passengersInfoData[activeCountry].luggageFee === 0 ? t('free') : passengersInfoData[activeCountry].luggageFee }</p>
                 </div>
 
-                <div className='mt-[3rem]'>
+                <div className='mt-[3rem]' onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
                     <RedButton text={ t('bookBtnText') }/>
                 </div>
                 

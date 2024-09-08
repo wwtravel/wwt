@@ -20,8 +20,8 @@ const Features = () => {
                 src="/images/features-image.png"
                 alt='features'
                 draggable={false}
-                width={6000}
-                height={4000}
+                width={1500}
+                height={1000}
                 className='rounded-[1rem] h-full object-cover object-right'
 
             />
