@@ -10,10 +10,8 @@ export default createMiddleware({
 
 export const config = {
   matcher: [
-    '/',
-
-    '/(ro|ru|en|fr)/:path*',
-
-    '/((?!_next|_vercel|.*\\..*).*)'
+    '/', // The root path
+    '/(ro|ru|en|fr)/:path*', // Locale-prefixed paths
+    '/((?!api|_next|_vercel|.*\\..*).*)',
   ]
 };
