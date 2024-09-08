@@ -2,7 +2,7 @@ import { OrderSchema, ResetPasswordSchema } from "@/lib/types";
 import { prisma } from "@/utils/prisma"
 import { render } from "@react-email/components";
 import nodemailer from 'nodemailer';
-import { handlePrismaError } from "@/lib/bd-utils";
+import { checkAvailableSeats, handlePrismaError } from "@/lib/bd-utils";
 import { auth } from "@/lib/auth";
 import OrderConfirmation from "@/components/emails/OrderConfirmation";
 import crypto from "crypto";
@@ -106,6 +106,10 @@ export async function POST (request: Request) {
         return Response.json({ msg: errorMessage }, {status: 400})
     }
 
+    let seatCheck = await checkAvailableSeats({travel_id: result.data.travel_id});
+
+    if (seatCheck instanceof Response) return seatCheck;
+
     let currency = await getCurrency({currencyTitle: result.data.passengers[0].price.currency});
 
     if (currency instanceof Response) return currency; 
@@ -167,13 +171,13 @@ export async function POST (request: Request) {
 export async function GET () {
     const session = await auth();
 
-    if (!session) {
-        return Response.json({ msg: "You must be logged in!"}, {status: 401});
-    }
+    // if (!session) {
+    //     return Response.json({ msg: "You must be logged in!"}, {status: 401});
+    // }
 
-    if (!session.user?.email) {
-        return Response.json({ msg: "Email not found in session!"}, {status: 400});
-    }
+    // if (!session.user?.email) {
+    //     return Response.json({ msg: "Email not found in session!"}, {status: 400});
+    // }
 
     let orders = null;
     try {

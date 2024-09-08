@@ -183,7 +183,7 @@ const findTravel = async (data: FindTravelInterface) => {
         const freePlaces = travel.route.bus.nr_of_seats - travel.orders.length - travel.reserved_seats;
         
         Object.assign(travelRes, {price: price.price_sheet, free_places: freePlaces, arrival: new Date(new Date(travel.departure).getTime() + 60 * 60 * (travel.route.stops[arrIndex].hours - travel.route.stops[depIndex].hours) * 1000)});
-        if (depIndex < arrIndex) filteredTravels.push(travelRes);
+        if (depIndex < arrIndex && freePlaces > 0) filteredTravels.push(travelRes);
     });
 
     return filteredTravels;

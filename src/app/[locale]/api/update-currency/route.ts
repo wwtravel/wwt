@@ -15,10 +15,6 @@ export async function GET () {
     if (!currencies) return Response.json({msg: "Currencies not found!"}, {status: 400});
 
     for (const currency of currencies) {
-        const acceptableUpdateDate = new Date(currency.last_update).getTime() + 60 * 60 * 23 * 1000;
-        const currentDate = new Date().getTime();
-        if (currentDate < acceptableUpdateDate) break;
-
         const ratesRes = await fetch('https://open.er-api.com/v6/latest/EUR');
         const ratesResJson = await ratesRes.json();
 
@@ -28,7 +24,8 @@ export async function GET () {
                     title: currency.title
                 },
                 data: {
-                    value: Number(ratesResJson.rates[currency.title].toFixed(2))
+                    value: Number(ratesResJson.rates[currency.title].toFixed(2)),
+                    last_update: new Date()
                 }
             });
         } catch (e) {

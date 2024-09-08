@@ -140,7 +140,7 @@ export async function GET () {
 
         const freePlaces = travel.route.bus.nr_of_seats - travel.orders.length - travel.reserved_seats;
         
-        Object.assign(travelRes, {free_places: freePlaces, arrival: new Date(new Date(travel.departure).getTime() + 60 * 60 * (travel.route.stops[0].hours - travel.route.stops[travel.route.stops.length - 1].hours) * 1000)});
+        Object.assign(travelRes, {free_places: freePlaces, arrival: new Date(new Date(travel.departure).getTime() + 60 * 60 * (travel.route.stops[travel.route.stops.length - 1].hours) * 1000)});
         filteredTravels.push(travelRes);
     };
 
