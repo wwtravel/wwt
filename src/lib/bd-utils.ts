@@ -50,3 +50,41 @@ export const checkIfAdmin = async () => {
     
     return null;
 }
+
+export const checkAvailableSeats = async ({travel_id}: {travel_id: string}) => {
+    let travel = null;
+
+    try {
+        travel = await prisma.travel.findUnique({
+            where: {
+                id: travel_id
+            },
+            include: {
+                orders: {
+                    select: {
+                        id: true
+                    }
+                },
+                route: {
+                    select: {
+                        bus: {
+                            select: {
+                                nr_of_seats: true
+                            }
+                        }
+                    }
+                }
+            },
+        })
+    } catch (e) {
+        if (e) {
+            return handlePrismaError(e);
+        }
+    }
+
+    if (!travel) return Response.json({ msg: "Travel not found!"}, {status: 400});
+
+    if (travel.route.bus.nr_of_seats - travel.reserved_seats - travel.orders.length <= 0) return Response.json({ msg: "No seats available for this route!"}, {status: 400});
+
+    return true;
+}

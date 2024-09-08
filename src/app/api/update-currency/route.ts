@@ -1,7 +1,13 @@
 import { handlePrismaError } from "@/lib/bd-utils";
 import { prisma } from "@/utils/prisma";
 
-export async function GET () {
+export async function GET (request: Request) {
+    const authHeader = request.headers.get('authorization');
+    if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+        return new Response('Unauthorized', {
+        status: 401,
+        });
+    }
 
     let currencies = null;
     try {
@@ -15,10 +21,6 @@ export async function GET () {
     if (!currencies) return Response.json({msg: "Currencies not found!"}, {status: 400});
 
     for (const currency of currencies) {
-        const acceptableUpdateDate = new Date(currency.last_update).getTime() + 60 * 60 * 23 * 1000;
-        const currentDate = new Date().getTime();
-        if (currentDate < acceptableUpdateDate) break;
-
         const ratesRes = await fetch('https://open.er-api.com/v6/latest/EUR');
         const ratesResJson = await ratesRes.json();
 
@@ -28,7 +30,8 @@ export async function GET () {
                     title: currency.title
                 },
                 data: {
-                    value: Number(ratesResJson.rates[currency.title].toFixed(2))
+                    value: Number(ratesResJson.rates[currency.title].toFixed(2)),
+                    last_update: new Date()
                 }
             });
         } catch (e) {
