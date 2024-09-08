@@ -1,7 +1,13 @@
 import { handlePrismaError } from "@/lib/bd-utils";
 import { prisma } from "@/utils/prisma";
 
-export async function GET () {
+export async function GET (request: Request) {
+    const authHeader = request.headers.get('authorization');
+    if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+        return new Response('Unauthorized', {
+        status: 401,
+        });
+    }
 
     let currencies = null;
     try {
