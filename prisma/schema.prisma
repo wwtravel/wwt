@@ -189,3 +189,23 @@ model Currency {
   value Float
   last_update DateTime @default(now())
 }
+
+// ReminderEmail model
+
+model ReminderEmail {
+  id String @id @map("_id")
+  passengers Passanger[]
+  contact_details ReminderEmailContactDetails
+  send_date DateTime
+  contact_email String
+  departure_date String
+  arrival_date String
+  departure_place String
+  arrival_place String
+  lang Lang
+}
+
+type ReminderEmailContactDetails {
+  name String
+  phone_number String
+}

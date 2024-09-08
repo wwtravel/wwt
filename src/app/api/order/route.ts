@@ -92,6 +92,10 @@ const getCurrency = async ({currencyTitle}: {currencyTitle: string}) => {
     return currency;
 }
 
+const saveReminderEmail = async () => {
+
+}
+
 export async function POST (request: Request) {
     const result = OrderSchema.safeParse(await request.json());
 
@@ -101,7 +105,6 @@ export async function POST (request: Request) {
         result.error.issues.forEach((issue) => {
             errorMessage = errorMessage + issue.path[0] + ": " + issue.message + ", ";
         });
-
 
         return Response.json({ msg: errorMessage }, {status: 400})
     }
@@ -142,7 +145,7 @@ export async function POST (request: Request) {
 
     if (!order) return Response.json({ msg: "Order could not be created!"}, {status: 400});
 
-    const emailHtml = render(OrderConfirmation({details : {
+    const emailDetails = {
         id: order.public_id,
         departureDate: convertDate({date: new Date(result.data.departure_date), lang: result.data.lang}),
         arrivalDate: convertDate({date: new Date(result.data.arrival_date), lang: result.data.lang}),
@@ -154,7 +157,9 @@ export async function POST (request: Request) {
         },
         passangers: result.data.passengers,
         lang: result.data.lang
-    }}))
+    }
+
+    const emailHtml = render(OrderConfirmation({details: emailDetails}));
 
     const data = {
         to: result.data.contact_details.email, 
@@ -164,6 +169,30 @@ export async function POST (request: Request) {
 
     const transporter = nodemailer.createTransport(mailConfig);
     await transporter.sendMail(data);
+
+    const sendDate = new Date(result.data.departure_date);
+    sendDate.setDate(sendDate.getDate() - 1);
+
+    try {
+        await prisma.reminderEmail.create({
+            data: {
+               id: emailDetails.id,
+               passengers: emailDetails.passangers,
+               contact_details: emailDetails.contactDetails,
+               contact_email: result.data.contact_details.email,
+               departure_date: emailDetails.departureDate,
+               arrival_date: emailDetails.arrivalDate,
+               departure_place: emailDetails.departureAdress,
+               arrival_place: emailDetails.arrivalAdress,
+               lang: emailDetails.lang,
+               send_date: sendDate
+            }
+        })
+    } catch (e) {
+        if (e) {
+            return handlePrismaError(e);
+        }
+    }
 
     return Response.json({ msg: "Order succesfully created!" }, {status: 201});
 }
