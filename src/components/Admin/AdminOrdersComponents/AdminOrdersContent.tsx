@@ -15,10 +15,23 @@ interface ContactDetails {
   phone_number: string;
 }
 
+interface Place{
+  city: string;
+  label : {
+    ro: string;
+    en: string;
+    ru: string;
+    fr: string;
+  }
+}
+
 interface Passenger {
   firstname: string;
   lastname: string;
-  price: number;
+  price: {
+    value: number;
+    currency: string;
+  }
 }
 
 interface Travel {
@@ -28,10 +41,17 @@ interface Travel {
 
 export interface Order {
   id: string;
+  public_id: string;
   order_date: string;
   contact_details: ContactDetails;
   passengers: Passenger[];
   travel: Travel;
+  travel_id: string;
+  arrival_place: Place;
+  departure_place: Place;
+  arrival_date: string;
+  departure_date: string;
+  user_id: string | null;
 }
 
 const AdminOrdersContent = () => {
@@ -50,6 +70,7 @@ const AdminOrdersContent = () => {
           throw new Error('Failed to fetch prices');
       }
       const data = await response.json();
+      console.log(data)
       setOrders(data)
       setAlteredOrders(data)
       setLoading(false)
@@ -64,7 +85,7 @@ const AdminOrdersContent = () => {
   }, [])
 
   const [searchCondition, setSearchCondition] = useState<string>("")
-  const [outputContition, setOutputCondition] = useState<"all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr" | "parcels">("all")
+  const [outputContition, setOutputCondition] = useState<"all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr">("all")
   const [dateCondition, setDateCondition] = useState<string>("")
 
   const extractDate = ( textDate: string ) => {
@@ -74,11 +95,50 @@ const AdminOrdersContent = () => {
     return dateString
   }
 
+  const filterByDate = (orders: Order[], date: string): Order[] => {
+    return orders.filter(order => extractDate(order.order_date) === date);
+  };
+
+  const filterBySearch = (orders: Order[], input: string): Order[] => {
+  return orders.filter(order => 
+    order.public_id === input || 
+    order.passengers.some(passenger => 
+      passenger.firstname === input || passenger.lastname === input
+    )
+  );
+};
+
+  // const filterByCities = (orders: Order[], fromCity: string, toCity: string): Order[] => {
+  //   return orders.filter(order => order. === fromCity && price.to === toCity);
+  // };
+
+  const handleClick = () => {
+    let tempOrders = [...orders]
+
+    //date
+    if(dateCondition !== '') tempOrders = filterByDate(tempOrders, dateCondition)
+
+    //output
+    // if(outputContition === "au-gr") tempOrders = filterByCities(tempOrders, "austria", "germany")
+    // if(outputContition === "au-fr") tempOrders = filterByCities(tempOrders, "austria", "france")
+    // if(outputContition === "gr-fr") tempOrders = filterByCities(tempOrders, "germany", "france")
+    // if(outputContition === "md-au") tempOrders = filterByCities(tempOrders, "moldova", "austria")
+    // if(outputContition === "md-fr") tempOrders = filterByCities(tempOrders, "moldova", "france")
+    // if(outputContition === "md-gr") tempOrders = filterByCities(tempOrders, "moldova", "germany")
+    // if(outputContition === "md-sw") tempOrders = filterByCities(tempOrders, "moldova", "switzerland")
+
+    //id/name/surname
+    if(searchCondition !== '') tempOrders = filterBySearch(tempOrders, searchCondition)
+
+    setAlteredOrders(tempOrders)
+  }
+
+
   useEffect(() => {
     const dates : string[] = []
     
-    if(orders){
-      orders.map(order => {
+    if(alteredOrders){
+      alteredOrders.map(order => {
         dates.push(order.order_date)
       })
     }
@@ -96,13 +156,13 @@ const AdminOrdersContent = () => {
     });
   
     setGroupedOrders(orderGroups);
-  }, [orders])
+  }, [alteredOrders])
 
 
 
   return (
     <div className='pt-[9.5rem] flex xl:gap-[4rem] gap-[2rem] justify-center mb-[4rem]'>
-      <OrdersFilter dateCondition={dateCondition} setDateCondition={setDateCondition} searchCondition={searchCondition} setSearchCondition={setSearchCondition} outputContition={outputContition} setOutputCondition={setOutputCondition}/>
+      <OrdersFilter handleClick={handleClick} dateCondition={dateCondition} setDateCondition={setDateCondition} searchCondition={searchCondition} setSearchCondition={setSearchCondition} outputContition={outputContition} setOutputCondition={setOutputCondition}/>
       <OrdersContainer groupedOrders={groupedOrders} loading={loading}/>
     </div>
   )

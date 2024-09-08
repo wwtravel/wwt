@@ -500,7 +500,21 @@
     "departure-hour": "Heure de départ",
     "price-not-found-error": "Aucun itinéraire disponible trouvé pour modification.",
 
-    "fill-in-data" : "Saisissez les données dans les cases pour plus de détails."
+    "fill-in-data" : "Saisissez les données dans les cases pour plus de détails.",
+
+    "direction-req-title": "Direction requise",
+    "direction-req-desc": "Choisissez la direction de l'itinéraire pour continuer",
+
+    "date-req-title": "Date requise",
+    "date-req-desc": "Sélectionnez une date de départ pour continuer",
+
+    "hour-req-title": "Heure requise",
+    "hour-req-desc": "Entrez une heure valide au format HH:MM",
+
+    "general-err-title": "Erreur inattendue",
+    "general-err-desc": "Une erreur inattendue s'est produite. L'ajout ou la mise à jour de l'itinéraire a échoué.",
+
+    "close" : "Fermer"
   },
   "AdminPrices" : {
     "filter-by" : "Filtrer par",

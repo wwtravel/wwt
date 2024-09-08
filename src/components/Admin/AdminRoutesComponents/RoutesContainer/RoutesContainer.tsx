@@ -11,11 +11,12 @@ import RoutePatchModal from './RouteModal/RoutePatchModal';
 interface RoutesContainerProps{
   loading: boolean;
   travels: TravelArray;
+  fetchTravels: () => Promise<void>
 }
 
-const RoutesContainer: React.FC<RoutesContainerProps> = ({ loading, travels }) => {
+const RoutesContainer: React.FC<RoutesContainerProps> = ({ loading, travels, fetchTravels }) => {
 
-  const t= useTranslations("AdminRoutes")
+  const t = useTranslations("AdminRoutes")
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -28,7 +29,7 @@ const RoutesContainer: React.FC<RoutesContainerProps> = ({ loading, travels }) =
           <UnderlinedText text={ t('add') }/>
         </div>
 
-        <RoutePatchModal travel={null} modalGoal="add" isOpen={isOpen} setIsOpen={setIsOpen}/>
+        <RoutePatchModal reservedSeats={0} fetchTravels={fetchTravels} travel={null} modalGoal="add" isOpen={isOpen} setIsOpen={setIsOpen}/>
       </div>
 
         {
@@ -62,7 +63,7 @@ const RoutesContainer: React.FC<RoutesContainerProps> = ({ loading, travels }) =
                   <div className='flex flex-col gap-[1rem]'>
                     {
                       travels.map((travel, index) => (
-                        <TravelCard key={index} travel={travel}/>
+                        <TravelCard fetchTravels={fetchTravels} key={index} travel={travel}/>
                       ))
                     }
                   </div>

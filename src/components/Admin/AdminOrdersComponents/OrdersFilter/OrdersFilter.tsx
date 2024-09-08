@@ -6,20 +6,21 @@ import React from 'react'
 import OrdersDatePicker from './OrdersDatePicker';
 
 interface OrdersFilterProps{
-    setOutputCondition: React.Dispatch<React.SetStateAction<"all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr" | "parcels">>
-    outputContition: "all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr" | "parcels";
+    setOutputCondition: React.Dispatch<React.SetStateAction<"all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr">>
+    outputContition: "all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr";
     searchCondition: string;
     setSearchCondition: React.Dispatch<React.SetStateAction<string>>;
     dateCondition: string;
     setDateCondition: React.Dispatch<React.SetStateAction<string>>;
+    handleClick: () => void;
 }
 
-const OrdersFilter:React.FC<OrdersFilterProps> = ({ outputContition, setOutputCondition, searchCondition, setSearchCondition, dateCondition, setDateCondition }) => {
+const OrdersFilter:React.FC<OrdersFilterProps> = ({ outputContition, setOutputCondition, searchCondition, setSearchCondition, dateCondition, setDateCondition, handleClick }) => {
 
     const admin_prices_t = useTranslations("AdminPrices")
     const t = useTranslations("AdminOrders")
 
-    const handleCheck = (e: CheckedState, value: "all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr" | "parcels") => {
+    const handleCheck = (e: CheckedState, value: "all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr") => {
         if (e) {
             setOutputCondition(value)
         }
@@ -72,10 +73,6 @@ const OrdersFilter:React.FC<OrdersFilterProps> = ({ outputContition, setOutputCo
                     <Checkbox id='gr-fr' checked={ outputContition === 'gr-fr' }  onCheckedChange={(e) => handleCheck(e, "gr-fr")}/>
                     <label className='text-gray xl:text-[1rem] text-[1.333rem] font-[400]' htmlFor="gr-fr">{ admin_prices_t('gr-fr') }</label>
                 </div>
-                <div className='flex items-center gap-[0.5rem] select-none'>
-                    <Checkbox id='parcels' checked={ outputContition === 'parcels' }  onCheckedChange={(e) => handleCheck(e, "parcels")}/>
-                    <label className='text-gray xl:text-[1rem] text-[1.333rem] font-[400]' htmlFor="parcels">{ admin_prices_t('parcels') }</label>
-                </div>
             </div>
 
             <div className='flex justify-between items-center mt-[3rem]'>
@@ -86,7 +83,7 @@ const OrdersFilter:React.FC<OrdersFilterProps> = ({ outputContition, setOutputCo
                 </div>
 
                 <button className='bg-red hover:bg-dark-red transition-colors duration-300 grid place-content-center rounded-[0.5rem] xl:h-[2.5rem] h-[3rem] px-[1.5rem]' 
-                    //onClick={handleClick}
+                    onClick={handleClick}
                 >
                     <p className='text-light-white xl:text-[1rem] text-[1.333rem] font-bold'>{ admin_prices_t('filter') }</p>
                 </button>

@@ -35,12 +35,14 @@ interface Stop {
 }
 
 export interface Travel {
+  id: string;
   arrival: string;
   departure: string;
   free_places: number;
   reserved_seats: number;
   orders: Order[];
   route: Route;
+  route_id: string;
 }
 
 export type TravelArray = Travel[];
@@ -110,6 +112,9 @@ const AdminRoutesContent = () => {
   };
 
   const handleClick = () => {
+
+    fetchTravels()
+
     let tempTravels = [...travels]
 
     //date
@@ -148,7 +153,7 @@ const AdminRoutesContent = () => {
           handleClick={handleClick}
           handleReset={handleReset}
         />
-        <RoutesContainer loading={loading} travels={alteredTravels}/>
+        <RoutesContainer fetchTravels={fetchTravels} loading={loading} travels={alteredTravels}/>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Travel } from '../AdminRoutesContent'
 import { useLocale, useTranslations } from 'next-intl';
 import UnderlinedText from '@/components/SearchPageComponents/SearchPageContent/UnderlinedText';
@@ -6,9 +6,10 @@ import RoutePatchModal from './RouteModal/RoutePatchModal';
 
 interface TravelCardProps{
     travel : Travel;
+    fetchTravels: () => Promise<void>
 }
 
-const TravelCard:React.FC<TravelCardProps> = ({ travel }) => {
+const TravelCard:React.FC<TravelCardProps> = ({ travel, fetchTravels }) => {
 
     const locale = useLocale()
 
@@ -85,6 +86,10 @@ const TravelCard:React.FC<TravelCardProps> = ({ travel }) => {
         if(operation === 'increase' && reservedSeats < 50) setReservedSeats(prev => prev + 1)
     }
 
+    useEffect(() => {
+        patchTravel()
+    }, [reservedSeats])
+
     const [isOpen, setIsOpen] = useState(false)
 
 
@@ -92,21 +97,19 @@ const TravelCard:React.FC<TravelCardProps> = ({ travel }) => {
 
     const patchTravel = async () => {
         const travelData = {
-            id: 'your-travel-id',           // The ID of the travel to be updated
-            departure: '2024-03-20T12:00:00Z', // Updated departure time in ISO format
-            route_id: 'your-route-id',      // The updated route ID
-            reserved_seats: 5               // The updated number of reserved seats
+            id: travel.id,
+            departure: travel.departure,
+            route_id: travel.route_id,
+            reserved_seats: reservedSeats
         };
     
         try {
-            const response = await fetch('/api/travel', {  // Assuming the API route is /api/travel
+            const response = await fetch('/api/travel', {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    
-                }),
+                body: JSON.stringify(travelData),
             });
     
             if (!response.ok) {
@@ -227,10 +230,12 @@ const TravelCard:React.FC<TravelCardProps> = ({ travel }) => {
         </div>
 
         <RoutePatchModal 
+            fetchTravels={fetchTravels}
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             modalGoal='update'
             travel={travel}
+            reservedSeats={reservedSeats}
         />
     </>
   )

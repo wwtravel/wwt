@@ -19,9 +19,10 @@ import { fr, ro, enUS, ru } from "date-fns/locale"
 interface RouteModalDatePickerProps{
   routeDate: string;
   setRouteDate: React.Dispatch<React.SetStateAction<string>>;
+  err : boolean;
 }
 
-const RouteModalDatePicker:React.FC<RouteModalDatePickerProps> = ({ routeDate, setRouteDate }) => {
+const RouteModalDatePicker:React.FC<RouteModalDatePickerProps> = ({ routeDate, setRouteDate, err }) => {
 
     const t = useTranslations("AdminRoutes")
 
@@ -62,7 +63,7 @@ const RouteModalDatePicker:React.FC<RouteModalDatePickerProps> = ({ routeDate, s
         <Button
           variant={"outline"}
           className={cn(
-            "px-[1.5rem] pb-0 relative xl:text-[1rem] text-[1.333rem] bg-light-white min-w-full xl:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal",
+            `${err && 'animate-input-error'} px-[1.5rem] pb-0 relative xl:text-[1rem] text-[1.333rem] bg-light-white min-w-full xl:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal`,
             !date && "text-muted-foreground"
           )}
         >
