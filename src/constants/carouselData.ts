@@ -2,6 +2,7 @@
 export const carouselData = {
     slide1: [
         {
+            city: 'bern',
             imageURL : "/images/carousel-images/bern.png",
             price : 150, // in EUR
             title : {
@@ -26,6 +27,7 @@ export const carouselData = {
             multimedia: false
         },
         {
+            city: 'geneva',
             imageURL : "/images/carousel-images/geneva.png",
             price : 150, // in EUR
             title : {
@@ -50,6 +52,7 @@ export const carouselData = {
             multimedia: false
         },
         {
+            city: 'zurich',
             imageURL : "/images/carousel-images/zurich.png",
             price : 150, // in EUR
             title : {
@@ -76,6 +79,7 @@ export const carouselData = {
     ],
     slide2: [
         {
+            city: 'lausanne',
             imageURL : "/images/carousel-images/lausanne.png",
             price : 150, // in EUR
             title : {
@@ -100,6 +104,7 @@ export const carouselData = {
             multimedia: false
         },
         {
+            city: "st_gallen",
             imageURL : "/images/carousel-images/gallen.png",
             price : 150, // in EUR
             title : {
@@ -124,6 +129,7 @@ export const carouselData = {
             multimedia: false
         },
         {
+            city: "schaffhausen",
             imageURL : "/images/carousel-images/schaffhausen.png",
             price : 150, // in EUR
             title : {
@@ -150,6 +156,7 @@ export const carouselData = {
     ],
     slide3: [
         {
+            city: "lucerna",
             imageURL : "/images/carousel-images/lucerne.png",
             price : 150, // in EUR
             title : {
@@ -174,6 +181,7 @@ export const carouselData = {
             multimedia: false
         },
         {
+            city: "montreux",
             imageURL : "/images/carousel-images/montreux.png",
             price : 150, // in EUR
             title : {
@@ -198,6 +206,7 @@ export const carouselData = {
             multimedia: false
         },
         {
+            city: "martigny",
             imageURL : "/images/carousel-images/martigny.png",
             price : 150, // in EUR
             title : {
@@ -228,6 +237,7 @@ export const carouselData = {
 
 export const carouselDataMobile = [
     {
+        city: 'bern',
         imageURL : "/images/carousel-images/bern.png",
         price : 150, // in EUR
         title : {
@@ -252,6 +262,7 @@ export const carouselDataMobile = [
         multimedia: false
     },
     {
+        city : "geneva",
         imageURL : "/images/carousel-images/geneva.png",
         price : 150, // in EUR
         title : {
@@ -276,6 +287,7 @@ export const carouselDataMobile = [
         multimedia: false
     },
     {
+        city: "zurich",
         imageURL : "/images/carousel-images/zurich.png",
         price : 150, // in EUR
         title : {
@@ -300,6 +312,7 @@ export const carouselDataMobile = [
         multimedia: false
     },
     {
+        city: "lausanne",
         imageURL : "/images/carousel-images/lausanne.png",
         price : 150, // in EUR
         title : {

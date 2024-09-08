@@ -304,7 +304,7 @@
     "date-err-desc": "The date must be in the format day, month, year and be a valid date.",
     
     "phone-err-title": "Invalid Phone Number",
-    "phone-err-desc": "The phone number must be between 7 and 15 characters and be a valid number.",
+    "phone-err-desc": "The phone number must be in international format, starting with +, followed by the country code and the rest of the number.",
 
     "update-success-title": "Update Successful",
     "update-success-desc": "Account details have been successfully updated.",
@@ -414,14 +414,26 @@
     "firstname-req-title": "First Name Required",
     "firstname-req-desc": "Please enter your first name to continue.",
 
-    "firstname-err-title" : "First Name Error",
-    "firstname-err-desc" : "The first name must be at least 1 character and no more than 50 characters.",
+    "firstname-err-title": "First Name Error",
+    "firstname-err-desc": "First name must be at least 1 character and at most 50 characters long.",
 
-    "lastname-err-title" : "Last Name Error",
-    "lastname-err-desc" : "The last name must be at least 1 character and no more than 50 characters.",
+    "lastname-err-title": "Last Name Error",
+    "lastname-err-desc": "Last name must be at least 1 character and at most 50 characters long.",
 
     "price-req-title": "Ticket Price Required",
-    "price-req-desc": "Please select a ticket price based on the passenger type: child, adult, student.",
+    "price-req-desc": "Please select a price for your ticket, depending on passenger type: child, adult, student.",
+
+    "phone-req-title": "Phone Number Required",
+    "phone-req-desc": "Please enter your phone number to continue.",
+
+    "phone-err-title": "Invalid Phone Number",
+    "phone-err-desc": "The phone number must be in international format, starting with +, followed by the country code and the rest of the number.",
+
+    "email-req-title": "Email Address Required",
+    "email-req-desc": "Please enter your email address to continue.",
+
+    "email-err-title": "Invalid Email",
+    "email-err-desc": "The email must be at least 1 character and at most 50 characters long and be a valid email address.",
 
     "close": "Close"
   },
@@ -539,6 +551,12 @@
     "parcels": "Parcels & Luggage",
     "price-desc": "Price: high - low",
     "price-asc": "Price: low - high",
+
+    "parcels-bold": "Parcels",
+    "one-kg": "each 1kg",
+    "luggage": "Luggage",
+    "fifty-kg": "up to 50kg",
+    "free": "Free",
 
     "md": "Moldova",
     "au": "Austria",

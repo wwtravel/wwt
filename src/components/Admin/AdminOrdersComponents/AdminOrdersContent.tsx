@@ -109,9 +109,9 @@ const AdminOrdersContent = () => {
   );
 };
 
-  // const filterByCities = (orders: Order[], fromCity: string, toCity: string): Order[] => {
-  //   return orders.filter(order => order. === fromCity && price.to === toCity);
-  // };
+  const filterByCountries = (orders: Order[], fromCountry: string, toCountry: string): Order[] => {
+    return orders.filter(order => order.departure_place.country === fromCountry && order.arrival_place.country === toCountry);
+  };
 
   const handleClick = () => {
     let tempOrders = [...orders]
@@ -120,13 +120,13 @@ const AdminOrdersContent = () => {
     if(dateCondition !== '') tempOrders = filterByDate(tempOrders, dateCondition)
 
     //output
-    // if(outputContition === "au-gr") tempOrders = filterByCities(tempOrders, "austria", "germany")
-    // if(outputContition === "au-fr") tempOrders = filterByCities(tempOrders, "austria", "france")
-    // if(outputContition === "gr-fr") tempOrders = filterByCities(tempOrders, "germany", "france")
-    // if(outputContition === "md-au") tempOrders = filterByCities(tempOrders, "moldova", "austria")
-    // if(outputContition === "md-fr") tempOrders = filterByCities(tempOrders, "moldova", "france")
-    // if(outputContition === "md-gr") tempOrders = filterByCities(tempOrders, "moldova", "germany")
-    // if(outputContition === "md-sw") tempOrders = filterByCities(tempOrders, "moldova", "switzerland")
+    if(outputContition === "au-gr") tempOrders = filterByCountries(tempOrders, "austria", "germany")
+    if(outputContition === "au-fr") tempOrders = filterByCountries(tempOrders, "austria", "france")
+    if(outputContition === "gr-fr") tempOrders = filterByCountries(tempOrders, "germany", "france")
+    if(outputContition === "md-au") tempOrders = filterByCountries(tempOrders, "moldova", "austria")
+    if(outputContition === "md-fr") tempOrders = filterByCountries(tempOrders, "moldova", "france")
+    if(outputContition === "md-gr") tempOrders = filterByCountries(tempOrders, "moldova", "germany")
+    if(outputContition === "md-sw") tempOrders = filterByCountries(tempOrders, "moldova", "switzerland")
 
     //id/name/surname
     if(searchCondition !== '') {

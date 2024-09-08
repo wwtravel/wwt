@@ -199,7 +199,7 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
         departure_date: seletcedArrivalRoute.departure,
         arrival_date: seletcedArrivalRoute.arrival,
         departure_place: {
-            country: seletcedArrivalRoute.route.stops[0].country, // Ensure country is set
+            country: seletcedArrivalRoute.route.stops[0].country,
             city: seletcedArrivalRoute.route.stops[0].city,
             label: {
                 ro: seletcedArrivalRoute.route.stops[0].label.ro,
@@ -209,7 +209,7 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
             }
         },
         arrival_place: {
-            country: seletcedArrivalRoute.route.stops[seletcedArrivalRoute.route.stops.length - 1].country, // Ensure country is set
+            country: seletcedArrivalRoute.route.stops[seletcedArrivalRoute.route.stops.length - 1].country,
             city: seletcedArrivalRoute.route.stops[seletcedArrivalRoute.route.stops.length - 1].city,
             label: {
                 ro: seletcedArrivalRoute.route.stops[seletcedArrivalRoute.route.stops.length - 1].label.ro,
@@ -293,9 +293,7 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
             };
     
             const orderDataTour = createOrderData(orderTourDetails);
-            const orderDataReturn = orderReturnDetails ? createOrderData(orderTourDetails) : null;
-
-            console.log("dsdsdsg", orderDataReturn)
+            const orderDataReturn = orderReturnDetails ? createOrderData(orderReturnDetails) : null;
     
             const responseTour = await fetch('/api/order', {
                 method: 'POST',

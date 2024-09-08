@@ -30,7 +30,7 @@ const NotFoundContent = () => {
 
   return (
     <div className='w-full h-screen px-[1rem] pt-[4rem] flex justify-center items-center'>
-      <div className='max-w-[84.25rem] w-full mx-auto h-[40.875rem] bg-[url(/images/dotted-map-bg.png)] bg-cover bg-center flex justify-center border'>
+      <div className='max-w-[84.25rem] w-full mx-auto h-[40.875rem] bg-[url(/images/dotted-map-bg.png)] bg-cover bg-center flex justify-center'>
         <div className='mt-[3.5rem]'>
           <div className='flex gap-[0.5rem] items-center h-fit justify-center'>
               <p className='font-montserrat text-dark-gray font-bold md:text-[20rem] text-[10rem] leading-[0.7]'>4</p>

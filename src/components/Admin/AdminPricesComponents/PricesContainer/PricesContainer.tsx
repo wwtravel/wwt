@@ -4,16 +4,19 @@ import { useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
 import PulseLoader from 'react-spinners/PulseLoader';
 import PriceCard from './PriceCard';
-import { PricesArray } from '../AdminPricesContent';
+import { LuggagePrice, PricesArray } from '../AdminPricesContent';
+import LuggagePriceCard from './LuggagePriceCard';
 
 interface PricesContainerProps{
   prices : PricesArray;
   loading: boolean;
-  fetchPrices(): Promise<void>
+  fetchPrices(): Promise<void>;
+  luggagePrice : LuggagePrice | undefined;
+  showLuggage: boolean
 }
 
 
-const PricesContainer:React.FC<PricesContainerProps> = ({ prices, loading, fetchPrices }) => {
+const PricesContainer:React.FC<PricesContainerProps> = ({ prices, loading, fetchPrices, luggagePrice, showLuggage }) => {
 
   const t = useTranslations("AdminPrices")
 
@@ -39,7 +42,7 @@ const PricesContainer:React.FC<PricesContainerProps> = ({ prices, loading, fetch
           : (
             <>
               {
-                prices.length === 0
+                prices.length === 0 && !showLuggage
                 ? (
                   <div className='py-[2rem] px-[1.5rem] rounded-[1rem] w-full flex items-center justify-center bg-red/20 border border-gray/25 shadow-custom'>
                       <div className='flex lg:gap-[0.25rem] gap-[0.333rem] text-left'>
@@ -54,6 +57,11 @@ const PricesContainer:React.FC<PricesContainerProps> = ({ prices, loading, fetch
                       prices.map((price, index) => (
                         <PriceCard fetchPrices={fetchPrices} key={index} price={price}/>
                       ))
+                    }
+                    {
+                      luggagePrice && showLuggage && (
+                        <LuggagePriceCard price={luggagePrice} fetchPrices={fetchPrices}/>
+                      )
                     }
                   </div>
                 )

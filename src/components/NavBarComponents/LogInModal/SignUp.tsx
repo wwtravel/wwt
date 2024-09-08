@@ -142,6 +142,7 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent, setSentEmail
           err.errors.forEach(error => {
             const field = error.path[0];
             if(field === 'lastname') {
+              setLastNameErr(true)
               toast( t('lastname-err-title'), {
                 description: t('lastname-err-desc'),
                 action: {
@@ -151,6 +152,7 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent, setSentEmail
               })
             }
             if(field === 'firstname') {
+              setFirstNameErr(true)
               toast( t('firstname-err-title'), {
                 description: t('firstname-err-desc'),
                 action: {
@@ -160,6 +162,7 @@ const SignUp:React.FC<SignUpProps> = ({ setIsOpen, setModalContent, setSentEmail
               })
             }
             if(field === 'email') {
+              setEmailErr(true)
               toast( t('email-err-title'), {
                 description: t('email-err-desc'),
                 action: {

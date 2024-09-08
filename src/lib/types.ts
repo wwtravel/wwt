@@ -26,7 +26,7 @@ export const PatchUserSchema = z.object({
     lastname: z.string().trim().min(1).max(50),
     email: z.string().trim().min(1).max(50).regex(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g),
     dob: z.string().date().optional(),
-    phone_number: z.string().min(7).max(15).optional(),
+    phone_number: z.string().regex(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{3,6}$/g).optional()
 });
 
 export interface WelcomeEmailProps {

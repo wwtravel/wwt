@@ -64,6 +64,11 @@ const AccSettings:React.FC<AccSettingsProps> = ({ setIsOpen }) => {
     }));
   }, [dob])
 
+  const [lastNameErr, setLastNameErr] = useState(false)
+  const [firstNameErr, setFirstNameErr] = useState(false)
+  const [dobErr, setDobErr] = useState(false)
+  const [phoneErr, setPhoneErr] = useState(false)
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -81,6 +86,10 @@ const AccSettings:React.FC<AccSettingsProps> = ({ setIsOpen }) => {
     const handleClick = async () => {
       setLoading(true);
       try {
+        setDobErr(false)
+        setFirstNameErr(false)
+        setLastNameErr(false)
+        setPhoneErr(false)
 
         const updatedData = Object.fromEntries(
           Object.entries({
@@ -146,6 +155,7 @@ const AccSettings:React.FC<AccSettingsProps> = ({ setIsOpen }) => {
           err.errors.forEach(error => {
             const field = error.path[0];
             if(field === 'lastname'){
+              setLastNameErr(true)
               toast( t('lastname-err-title'), {
                 description: t('lastname-err-desc'),
                 action: {
@@ -155,6 +165,7 @@ const AccSettings:React.FC<AccSettingsProps> = ({ setIsOpen }) => {
               })
             }
             if(field === 'firstname'){
+              setFirstNameErr(true)
               toast( t('firstname-err-title'), {
                 description: t('firstname-err-desc'),
                 action: {
@@ -164,6 +175,7 @@ const AccSettings:React.FC<AccSettingsProps> = ({ setIsOpen }) => {
               })
             }
             if(field === 'phone_number'){
+              setPhoneErr(true)
               toast( t('phone-err-title'), {
                 description: t('phone-err-desc'),
                 action: {
@@ -173,6 +185,7 @@ const AccSettings:React.FC<AccSettingsProps> = ({ setIsOpen }) => {
               })
             }
             if(field === 'dob'){
+              setDobErr(true)
               toast( t('date-err-title'), {
                 description: t('date-err-desc'),
                 action: {
@@ -195,11 +208,11 @@ const AccSettings:React.FC<AccSettingsProps> = ({ setIsOpen }) => {
         <div className='bg-red h-[2px] w-[3rem] mt-[1rem] mx-auto'/>
 
         <div className="mt-[2rem] grid md:grid-cols-2 grid-cols-1 gap-[1rem]">
-          <TextInput readOnly={false} onChange={handleChange} value={ formData.lastname } id="UserModalLastName" label={ t('lastName') } name="lastname"/>
-          <TextInput readOnly={false} onChange={handleChange} value={ formData.firstname } id="UserModalFirstName" label={ t('firstName') } name="firstname"/>
-          <TextInput readOnly={true} onChange={handleChange} value={ formData.email } id="UserModalEmail" label={ t('email') } name="email"/>
-          <TextInput readOnly={false} onChange={handleChange} value={ formData.phone } id="UserModalPhone" label={ t('phone') } name="phone"/>
-          <DobDatePicker placeholder={ t('dob') } setDob={setDob} dob={dob}/>
+          <TextInput err={lastNameErr} readOnly={false} onChange={handleChange} value={ formData.lastname } id="UserModalLastName" label={ t('lastName') } name="lastname"/>
+          <TextInput err={firstNameErr} readOnly={false} onChange={handleChange} value={ formData.firstname } id="UserModalFirstName" label={ t('firstName') } name="firstname"/>
+          <TextInput err={false} readOnly={true} onChange={handleChange} value={ formData.email } id="UserModalEmail" label={ t('email') } name="email"/>
+          <TextInput err={phoneErr} readOnly={false} onChange={handleChange} value={ formData.phone } id="UserModalPhone" label={ t('phone') } name="phone"/>
+          <DobDatePicker err={dobErr} placeholder={ t('dob') } setDob={setDob} dob={dob}/>
         </div>
 
         <div className="mt-[2rem] flex sm:flex-row flex-col-reverse max-sm:gap-[1rem] justify-between items-center">

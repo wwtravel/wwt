@@ -301,7 +301,7 @@
     "date-err-desc": "La date doit être au format jour, mois, année et être une date valide.",
     
     "phone-err-title": "Numéro de téléphone invalide",
-    "phone-err-desc": "Le numéro de téléphone doit comporter entre 7 et 15 caractères et être un numéro valide.",
+    "phone-err-desc": "Le numéro de téléphone doit être au format international, en commençant par +, suivi de l'indicatif du pays et du reste du numéro.",
 
     "update-success-title": "Mise à jour réussie",
     "update-success-desc": "Les détails du compte ont été mis à jour avec succès.",
@@ -411,14 +411,26 @@
     "firstname-req-title": "Prénom requis",
     "firstname-req-desc": "Veuillez entrer votre prénom pour continuer.",
 
-    "firstname-err-title" : "Erreur de prénom",
-    "firstname-err-desc" : "Le prénom doit comporter au moins 1 caractère et ne pas dépasser 50 caractères.",
+    "firstname-err-title": "Erreur prénom",
+    "firstname-err-desc": "Le prénom doit comporter au moins 1 caractère et au maximum 50 caractères.",
 
-    "lastname-err-title" : "Erreur de nom de famille",
-    "lastname-err-desc" : "Le nom de famille doit comporter au moins 1 caractère et ne pas dépasser 50 caractères.",
+    "lastname-err-title": "Erreur nom de famille",
+    "lastname-err-desc": "Le nom de famille doit comporter au moins 1 caractère et au maximum 50 caractères.",
 
     "price-req-title": "Prix du billet requis",
-    "price-req-desc": "Veuillez choisir un prix pour le billet en fonction du type de passager : enfant, adulte, étudiant.",
+    "price-req-desc": "Veuillez sélectionner un prix pour votre billet, en fonction du type de passager : enfant, adulte, étudiant.",
+
+    "phone-req-title": "Numéro de téléphone requis",
+    "phone-req-desc": "Veuillez entrer votre numéro de téléphone pour continuer.",
+
+    "phone-err-title": "Numéro de téléphone invalide",
+    "phone-err-desc": "Le numéro de téléphone doit être au format international, en commençant par +, suivi de l'indicatif du pays et du reste du numéro.",
+
+    "email-req-title": "Adresse e-mail requise",
+    "email-req-desc": "Veuillez entrer votre adresse e-mail pour continuer.",
+
+    "email-err-title": "E-mail invalide",
+    "email-err-desc": "L'e-mail doit comporter au moins 1 caractère et au maximum 50 caractères, et doit être une adresse e-mail valide.",
 
     "close": "Fermer"
   },
@@ -535,6 +547,12 @@
     "parcels": "Colis & Bagages",
     "price-desc": "Prix : élevé - faible",
     "price-asc": "Prix : faible - élevé",
+
+    "parcels-bold": "Colis",
+    "one-kg": "chaque 1kg",
+    "luggage": "Bagage",
+    "fifty-kg": "jusqu'à 50kg",
+    "free": "Gratuit",
 
     "md": "Moldavie",
     "au": "Autriche",

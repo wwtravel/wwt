@@ -304,7 +304,7 @@
     "date-err-desc": "Data trebuie să fie în formatul zi, lună, an și să fie o dată validă.",
     
     "phone-err-title": "Număr de telefon nevalid",
-    "phone-err-desc": "Numărul de telefon trebuie să aibă între 7 și 15 caractere și să fie un număr valid.",
+    "phone-err-desc": "Numărul de telefon trebuie să fie în format internațional, începând cu +, urmat de codul de țară și restul numărului.",
 
     "update-success-title": "Actualizare reușită",
     "update-success-desc": "Detaliile contului au fost actualizate cu succes.",
@@ -428,7 +428,7 @@
     "phone-req-desc": "Te rugăm să introduci numărul tău de telefon pentru a continua.",
 
     "phone-err-title": "Număr de telefon nevalid",
-    "phone-err-desc": "Numărul de telefon trebuie să aibă între 7 și 15 caractere și să fie un număr valid.",
+    "phone-err-desc": "Numărul de telefon trebuie să fie în format internațional, începând cu +, urmat de codul de țară și restul numărului.",
 
     "email-req-title": "Adresă de email necesară",
     "email-req-desc": "Te rugăm să introduci adresa ta de e-mail pentru a continua.",
@@ -553,6 +553,12 @@
     "parcels" : "Colete & Bagaje",
     "price-desc" : "Preț: mare - mic",
     "price-asc" : "Preț: mic - mare",
+
+    "parcels-bold" : "Colete",
+    "one-kg" : "fiecare 1kg",
+    "luggage" : "Bagaj",
+    "fifty-kg" : "până la 50kg",
+    "free" : "Gratuit",
 
     "md" : "Moldova",
     "au" : "Austria",
