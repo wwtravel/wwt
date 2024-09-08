@@ -1,5 +1,5 @@
 
-import { Contacts, Footer, NavBar } from '@/components'
+import { Contacts, Footer, NavBar, FAQ } from '@/components'
 import { Metadata } from 'next';
 
 import { getTranslations } from 'next-intl/server';
@@ -18,6 +18,7 @@ const page = () => {
     <div>
       <NavBar />
         <Contacts />
+        <FAQ />
       <Footer />
     </div>
   )

@@ -192,6 +192,31 @@
     "city-country" : "Chișinău, Republica Moldova",
     "email" : "E-Mail"
   },
+  "Contacts_FAQ" : {
+    "lowOpacityTitle" : "FAQ",
+    "title" : "ÎNTREBĂRI FRECVENTE",
+
+    "question1" : "Care este punctul de plecare și ce orașe sunt incluse în traseul vostru?",
+    "answer1" : "Punctul de plecare pentru toate cursele noastre este Chișinău, la adresa Tighina 2/2. Ruta principală este Chișinău-Elveția, cu opriri în orașe importante din Austria, Franța și Germania. În funcție de disponibilitatea și preferințele clienților, oferim și posibilitatea de a vă lăsa în anumite localități de pe traseu. Recomandăm să ne contactați pentru detalii suplimentare referitoare la orarele și punctele intermediare de oprire.",
+
+    "question2" : "Cum pot rezerva un loc pentru o călătorie sau un serviciu de expediere colet?",
+    "answer2" : "Rezervarea unui loc pentru o călătorie sau programarea unui serviciu de expediere colet se poate face fie telefonic, fie vizitând site-ul nostru. Pe site, trebuie să completați un formular de rezervare simplu, cu detaliile călătoriei sau expediției. După completarea formularului, veți primi o confirmare prin email sau telefon, iar plata se efectuează la momentul plecării sau la predarea coletului, exclusiv în numerar.",
+
+    "question3" : "Ce facilități oferiți pe durata călătoriei?",
+    "answer3" : "Pe durata călătoriei, ne asigurăm că toți pasagerii călătoresc în confort și siguranță. Oferim scaune confortabile, spațiu pentru bagaje, aer condiționat și acces la Wi-Fi, acolo unde este posibil. De asemenea, facem pauze regulate în locuri selectate pentru odihnă și mese. Pentru călătorii pe distanțe lungi, recomandăm să ne întrebați în avans despre eventuale alte facilități sau cerințe speciale pe care le putem îndeplini.",
+
+    "question4" : "Cum sunt calculate prețurile pentru transportul coletelor?",
+    "answer4" : "Prețul pentru expedierea coletelor este calculat în funcție de greutatea totală a coletului. La fiecare kilogram suplimentar se aplică o taxă adițională, conform grilei de prețuri afișate pe site în secțiunea „Servicii”. Vă rugăm să consultați această secțiune pentru detalii specifice sau să ne contactați pentru informații personalizate în cazul unui transport special sau voluminos.",
+
+    "question5" : "Ce date personale colectați și cum sunt acestea protejate?",
+    "answer5" : "Când vă creați un cont pe site-ul nostru, colectăm doar informațiile necesare pentru a vă oferi servicii de transport și expediere în condiții optime (cum ar fi numele, adresa de email și numărul de telefon). Asigurăm securitatea datelor dvs. prin măsuri tehnice și administrative avansate, conform legislației naționale și europene. Datele personale nu sunt folosite în alte scopuri decât cele necesare pentru a procesa rezervările și comenzile dvs., și nu vor fi niciodată vândute sau distribuite către terți.",
+
+    "question6" : "Ce ar trebui să știu înainte de a trimite un colet internațional?",
+    "answer6" : "Atunci când trimiteți un colet internațional prin intermediul nostru, este important să vă asigurați că respectați reglementările vamale ale țărilor de tranzit și destinație. Unele produse pot fi restricționate sau interzise pentru expediere, precum anumite alimente, lichide sau articole periculoase. De asemenea, asigurați-vă că ambalajul este robust și adecvat pentru transportul pe distanțe lungi. În cazul unor cerințe speciale sau transporturi de valoare, vă rugăm să ne contactați în avans pentru a discuta detalii suplimentare.",
+
+    "question7" : "Ce se întâmplă dacă pierd rezervarea sau nu pot ajunge la timp?",
+    "answer7" : "În cazul în care nu puteți ajunge la ora stabilită pentru plecare, vă rugăm să ne anunțați cât mai curând posibil. În funcție de disponibilitate, vom încerca să vă reprogramăm pe o cursă ulterioară, fără costuri suplimentare. Cu toate acestea, în situația în care nu anunțați anularea sau reprogramarea în timp util, este posibil să pierdeți rezervarea."
+  },
   "LogInModal" : {
     "greetings" : "BUN VENIT ÎNAPOI",
     "message" : "Suntem încântați că ai revenit. Introdu adresa de email și parola",

@@ -191,6 +191,31 @@
     "city-country": "Chișinău, République de Moldavie",
     "email": "E-Mail"
   },
+  "Contacts_FAQ": {
+    "lowOpacityTitle": "FAQ",
+    "title": "QUESTIONS FRÉQUEMMENT POSÉES",
+
+    "question1": "Quel est le point de départ et quelles villes sont incluses dans votre itinéraire?",
+    "answer1": "Le point de départ de tous nos trajets est Chișinău, situé à Tighina 2/2. L'itinéraire principal est Chișinău-Suisse, avec des arrêts dans les grandes villes d'Autriche, de France et d'Allemagne. Selon la disponibilité et les préférences des clients, nous offrons également la possibilité de vous déposer dans certaines localités sur le trajet. Nous vous recommandons de nous contacter pour des détails supplémentaires sur les horaires et les points d'arrêt intermédiaires.",
+
+    "question2": "Comment puis-je réserver une place pour un voyage ou un service d'expédition de colis?",
+    "answer2": "Vous pouvez réserver une place pour un voyage ou planifier un service d'expédition de colis soit par téléphone, soit en visitant notre site web. Sur le site, vous devez remplir un formulaire de réservation simple avec les détails de votre voyage ou expédition. Après avoir rempli le formulaire, vous recevrez une confirmation par email ou téléphone, et le paiement se fait au moment du départ ou de la remise du colis, exclusivement en espèces.",
+
+    "question3": "Quelles sont les commodités offertes pendant le voyage?",
+    "answer3": "Pendant le voyage, nous veillons à ce que tous les passagers voyagent dans le confort et en toute sécurité. Nous offrons des sièges confortables, de l'espace pour les bagages, la climatisation et un accès au Wi-Fi lorsque c'est possible. Nous faisons également des arrêts réguliers dans des lieux sélectionnés pour le repos et les repas. Pour les longs trajets, nous vous recommandons de nous demander à l'avance concernant d'éventuelles autres commodités ou exigences spéciales que nous pourrions satisfaire.",
+
+    "question4": "Comment sont calculés les prix pour l'envoi de colis?",
+    "answer4": "Le prix pour l'expédition des colis est calculé en fonction du poids total du colis. Un supplément est appliqué pour chaque kilogramme supplémentaire, conformément à la grille tarifaire affichée sur le site dans la section 'Services'. Veuillez consulter cette section pour des détails spécifiques ou nous contacter pour des informations personnalisées en cas de transport spécial ou volumineux.",
+
+    "question5": "Quelles données personnelles collectez-vous et comment sont-elles protégées?",
+    "answer5": "Lorsque vous créez un compte sur notre site, nous ne collectons que les informations nécessaires pour vous offrir des services de transport et d'expédition optimaux (tels que le nom, l'adresse email et le numéro de téléphone). Nous garantissons la sécurité de vos données grâce à des mesures techniques et administratives avancées, conformément à la législation nationale et européenne. Les données personnelles ne sont utilisées que pour traiter vos réservations et commandes, et elles ne seront jamais vendues ou partagées avec des tiers.",
+
+    "question6": "Que dois-je savoir avant d'envoyer un colis international?",
+    "answer6": "Lorsque vous envoyez un colis international par notre service, il est important de vous assurer que vous respectez les réglementations douanières des pays de transit et de destination. Certains produits peuvent être restreints ou interdits à l'expédition, comme certains aliments, liquides ou articles dangereux. Assurez-vous également que l'emballage est solide et adapté au transport sur de longues distances. Pour des exigences spéciales ou des envois de valeur, veuillez nous contacter à l'avance pour discuter des détails supplémentaires.",
+
+    "question7": "Que se passe-t-il si je manque ma réservation ou si je ne peux pas arriver à temps?",
+    "answer7": "Si vous ne pouvez pas arriver à l'heure prévue pour le départ, veuillez nous en informer dès que possible. En fonction de la disponibilité, nous essaierons de vous reprogrammer sur un trajet ultérieur sans frais supplémentaires. Cependant, si vous ne nous informez pas en temps utile de l'annulation ou du report, vous risquez de perdre la réservation."
+  },
   "LogInModal": {
     "greetings": "BON RETOUR",
     "message": "Nous sommes ravis de vous revoir. Veuillez entrer votre adresse e-mail et votre mot de passe",

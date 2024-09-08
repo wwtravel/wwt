@@ -191,6 +191,31 @@
     "city-country": "Chișinău, Republic of Moldova",
     "email": "E-Mail"
   },
+  "Contacts_FAQ": {
+    "lowOpacityTitle": "FAQ",
+    "title": "FREQUENTLY ASKED QUESTIONS",
+
+    "question1": "What is the departure point and which cities are included in your route?",
+    "answer1": "The departure point for all our routes is Chișinău, located at Tighina 2/2. The main route is Chișinău-Switzerland, with stops in major cities in Austria, France, and Germany. Depending on client availability and preferences, we also offer the possibility to drop you off in certain locations along the route. We recommend contacting us for additional details about schedules and intermediate stop points.",
+
+    "question2": "How can I book a seat for a trip or a parcel delivery service?",
+    "answer2": "You can book a seat for a trip or schedule a parcel delivery service either by phone or by visiting our website. On the site, you need to fill out a simple booking form with the details of your trip or shipment. After completing the form, you will receive confirmation via email or phone, and payment is made at the time of departure or parcel delivery, exclusively in cash.",
+
+    "question3": "What amenities do you offer during the trip?",
+    "answer3": "During the trip, we ensure that all passengers travel in comfort and safety. We offer comfortable seats, luggage space, air conditioning, and Wi-Fi access where available. We also make regular stops at selected places for rest and meals. For long-distance trips, we recommend asking in advance about any additional amenities or special requirements we may fulfill.",
+
+    "question4": "How are parcel delivery prices calculated?",
+    "answer4": "The price for parcel delivery is calculated based on the total weight of the parcel. An additional charge is applied for each extra kilogram, according to the price list displayed on the website in the 'Services' section. Please consult this section for specific details or contact us for personalized information regarding special or large shipments.",
+
+    "question5": "What personal data do you collect and how is it protected?",
+    "answer5": "When you create an account on our website, we only collect the necessary information to provide you with optimal transport and shipping services (such as your name, email address, and phone number). We ensure the security of your data through advanced technical and administrative measures, in accordance with national and European legislation. Personal data is not used for purposes other than processing your bookings and orders, and it will never be sold or shared with third parties.",
+
+    "question6": "What should I know before sending an international parcel?",
+    "answer6": "When sending an international parcel through our service, it is important to ensure that you comply with the customs regulations of the transit and destination countries. Some products may be restricted or prohibited from shipping, such as certain foods, liquids, or hazardous items. Also, make sure that the packaging is sturdy and suitable for long-distance transport. If you have special requirements or valuable shipments, please contact us in advance to discuss further details.",
+
+    "question7": "What happens if I miss my reservation or cannot arrive on time?",
+    "answer7": "If you cannot arrive at the scheduled departure time, please notify us as soon as possible. Depending on availability, we will try to reschedule you for a later trip at no additional cost. However, if you fail to notify us in time about the cancellation or rescheduling, you may lose the reservation."
+  },
   "LogInModal": {
     "greetings": "WELCOME BACK",
     "message": "We're excited to have you back. Please enter your email address and password",

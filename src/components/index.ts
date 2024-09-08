@@ -15,6 +15,7 @@ import { default as Testimonials } from './AboutPageComponents/Testimonials/Test
 
 //Contacts Page
 import { default as Contacts } from './ContactsPageComponents/Contacts'
+import { default as FAQ } from './ContactsPageComponents/FAQ/FAQ'
 
 //Route Search Page
 import { default as SearchPageHeader } from './SearchPageComponents/SearchPageHeader'
@@ -50,6 +51,7 @@ export {
     Testimonials,
 
     Contacts,
+    FAQ,
 
     SearchPageHeader,
     SearchPageContent,
