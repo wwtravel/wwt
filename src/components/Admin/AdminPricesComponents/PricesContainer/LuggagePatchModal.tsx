@@ -48,7 +48,6 @@ const LuggagePatchModal:React.FC<PricePatchModalProps> = ({ isOpen, setIsOpen, l
                 throw new Error(data.msg);
             }
 
-            //console.log('Price updated successfully:', data.msg);
             setLoading(false)
             fetchPrices()
             return data;

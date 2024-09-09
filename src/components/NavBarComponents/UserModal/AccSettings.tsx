@@ -34,7 +34,6 @@ const AccSettings:React.FC<AccSettingsProps> = ({ setIsOpen }) => {
 
   const { data, update } = useSession()
   const user = data?.user
-  //console.log(user)
 
   const [formData, setFormData] = useState({
     firstname: '',

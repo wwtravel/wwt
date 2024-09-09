@@ -40,7 +40,6 @@ const AdminPricesContent = () => {
             throw new Error('Failed to fetch prices');
         }
         const data = await response.json();
-        console.log(data)
         setLuggagePrice(data.luggagePrice)
         setPrices(data.travelPrices)
         setAlteredPrices(data.travelPrices)

@@ -77,7 +77,6 @@ const PricePatchModal:React.FC<PricePatchModalProps> = ({ isOpen, setIsOpen, pri
                 throw new Error(data.msg);
             }
 
-            //console.log('Price updated successfully:', data.msg);
             setLoading(false)
             fetchPrices()
             return data;

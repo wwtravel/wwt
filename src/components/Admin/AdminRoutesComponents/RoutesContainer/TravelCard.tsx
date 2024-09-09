@@ -117,7 +117,6 @@ const TravelCard:React.FC<TravelCardProps> = ({ travel, fetchTravels }) => {
                 console.error('Error updating travel:', errorResponse.msg);
             } else {
                 const successResponse = await response.json();
-                console.log('Travel updated successfully:', successResponse.msg);
             }
         } catch (error) {
             console.error('Failed to update travel:', error);
