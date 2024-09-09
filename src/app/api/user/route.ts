@@ -128,12 +128,20 @@ export async function GET () {
                 phone_number: true,
                 orders: {
                     select: {
+                        passengers: {
+                            select: {
+                                price: true
+                            }
+                        },
+                        departure_place: true,
+                        arrival_place: true,
+                        departure_date: true,
                         public_id: true,
                         travel: {
                             select: {
                                 route: {
                                     select: {
-                                        name: true
+                                        name: true,
                                     }
                                 }
                             }

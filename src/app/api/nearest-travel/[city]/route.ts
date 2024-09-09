@@ -7,6 +7,9 @@ export async function GET (request: Request, {params}: {params: {city: string}})
     try {
         travels = await prisma.travel.findMany({
             where: {
+                departure: {
+                    gte: new Date()
+                },
                 AND: [
                     {
                         route: {
