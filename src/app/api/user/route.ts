@@ -14,7 +14,7 @@ const mailConfig = {
     port: 587,
     secure: false,
     auth: {
-        user: "studiomodvis@gmail.com",
+        user: process.env.EMAIL_ADDRESS,
         pass: process.env.EMAIL_PASSWORD
     }
 }; 
@@ -135,7 +135,7 @@ export async function GET () {
                         },
                         departure_place: true,
                         arrival_place: true,
-                        departure_date: true,
+                        order_date: true,
                         public_id: true,
                         travel: {
                             select: {

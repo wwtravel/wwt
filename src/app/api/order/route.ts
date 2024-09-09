@@ -13,7 +13,7 @@ const mailConfig = {
     port: 587,
     secure: false,
     auth: {
-        user: "studiomodvis@gmail.com",
+        user: process.env.EMAIL_ADDRESS,
         pass: process.env.EMAIL_PASSWORD
     }
 };
@@ -90,10 +90,6 @@ const getCurrency = async ({currencyTitle}: {currencyTitle: string}) => {
     if (!currency) return Response.json({ msg: "Currency not found!"}, {status: 400});
 
     return currency;
-}
-
-const saveReminderEmail = async () => {
-
 }
 
 export async function POST (request: Request) {
