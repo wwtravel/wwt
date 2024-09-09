@@ -112,23 +112,28 @@ const AdminRoutesContent = () => {
 
   const handleClick = () => {
 
-    let tempTravels = [...travels]
+    fetchTravels()
 
-    //date
-    if(dateCondition !== '') tempTravels = filterByDate(tempTravels, dateCondition)
-
-    //output
-    if(outputContition === "tour") tempTravels = filterByCountry(tempTravels, "moldova")
-    if(outputContition === "retour") tempTravels = filterByCountry(tempTravels, "switzerland")
-
-    // sorting
-    if(sortContition === 'resAsc') tempTravels = sortReservedSeatsAsc(tempTravels)
-    if(sortContition === 'resDesc') tempTravels = sortReservedSeatsDesc(tempTravels)
-    if(sortContition === 'newest') tempTravels = sortDepartureDateAsc(tempTravels)
-    if(sortContition === 'oldest') tempTravels = sortDepartureDateDesc(tempTravels)
-
-    setAlteredTravels(tempTravels)
   }
+
+  useEffect(() => {
+    let tempTravels = [...travels]
+  
+      //date
+      if(dateCondition !== '') tempTravels = filterByDate(tempTravels, dateCondition)
+  
+      //output
+      if(outputContition === "tour") tempTravels = filterByCountry(tempTravels, "moldova")
+      if(outputContition === "retour") tempTravels = filterByCountry(tempTravels, "switzerland")
+  
+      // sorting
+      if(sortContition === 'resAsc') tempTravels = sortReservedSeatsAsc(tempTravels)
+      if(sortContition === 'resDesc') tempTravels = sortReservedSeatsDesc(tempTravels)
+      if(sortContition === 'newest') tempTravels = sortDepartureDateAsc(tempTravels)
+      if(sortContition === 'oldest') tempTravels = sortDepartureDateDesc(tempTravels)
+  
+      setAlteredTravels(tempTravels)
+  }, [travels])
 
   const handleReset = () => {
     setDateCondition('')

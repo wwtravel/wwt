@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TravelArray } from '../AdminRoutesContent';
 import PulseLoader from 'react-spinners/PulseLoader';
 import TravelCard from './TravelCard';
@@ -19,6 +19,21 @@ const RoutesContainer: React.FC<RoutesContainerProps> = ({ loading, travels, fet
   const t = useTranslations("AdminRoutes")
 
   const [isOpen, setIsOpen] = useState(false)
+
+  const [reservedSeatsMap, setReservedSeatsMap] = useState<{[key: string]: number}>({})
+
+  useEffect(() => {
+    // Initialize reservedSeatsMap when travels change
+    const newMap = travels.reduce((acc, travel) => {
+      acc[travel.id] = travel.reserved_seats;
+      return acc;
+    }, {} as {[key: string]: number});
+    setReservedSeatsMap(newMap);
+  }, [travels]);
+
+  const updateReservedSeats = (travelId: string, newValue: number) => {
+    setReservedSeatsMap(prev => ({...prev, [travelId]: newValue}));
+  };
 
   return (
     <div className='max-w-[66rem] w-full'>
@@ -63,7 +78,13 @@ const RoutesContainer: React.FC<RoutesContainerProps> = ({ loading, travels, fet
                   <div className='flex flex-col gap-[1rem]'>
                     {
                       travels.map((travel, index) => (
-                        <TravelCard fetchTravels={fetchTravels} key={index} travel={travel}/>
+                        <TravelCard
+                          key={travel.id}
+                          travel={travel}
+                          fetchTravels={fetchTravels}
+                          reservedSeats={reservedSeatsMap[travel.id] || travel.reserved_seats}
+                          updateReservedSeats={(newValue) => updateReservedSeats(travel.id, newValue)}
+                        />
                       ))
                     }
                   </div>
