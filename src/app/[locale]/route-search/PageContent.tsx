@@ -2,9 +2,11 @@
 
 import { SearchPageHeader, SearchPageContent, NavBar, Footer, SearchReturnHeader, SearchReturnContent, Checkout } from '@/components'
 import { Travel } from '@/types/routeType'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { TravelResponseFull } from './FetchContainer';
 import CheckoutSuccess from '@/components/SearchPageComponents/CheckoutSuccess/CheckoutSuccess';
+import { AnimatePresence } from 'framer-motion';
+import Loader from '@/components/SharedComponents/Loader';
 
 export interface SelectedRoutes{
     departureRoute : Travel | null;
@@ -19,6 +21,8 @@ interface PageContentProps{
 
 const PageContent:React.FC<PageContentProps> = ({ routes, loading }) => {
 
+  const [showLoader, setShowLoader] = useState(false)
+
 
   const [selectedRoutes, setSelectedRoutes] = useState<SelectedRoutes>({
     departureRoute: null,
@@ -28,9 +32,23 @@ const PageContent:React.FC<PageContentProps> = ({ routes, loading }) => {
 
   const [checkoutSuccess, setCheckoutSuccess] = useState(false)
 
+  useEffect(() => {
+    setShowLoader(true)
+    
+    setTimeout(() => {
+      setShowLoader(false)
+    }, 1000)
+  }, [selectedRoutes, checkoutSuccess])
+
+
   return (
     <div>
         <NavBar />
+        <AnimatePresence>
+            {
+                showLoader && <Loader />
+            }
+        </AnimatePresence>
           {
             checkoutSuccess 
             ? <CheckoutSuccess />

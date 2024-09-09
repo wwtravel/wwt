@@ -5,24 +5,41 @@ import React, { useEffect, useState } from 'react'
 import PulseLoader from 'react-spinners/PulseLoader';
 import OrdersTable from './OrdersTable';
 
-interface ContactDetails {
-  email: string;
-  phone_number: string;
-  notes: string | null;
+interface Place {
+  city: string;
+  country: string;
+  label: {
+    en: string;
+    fr: string;
+    ro: string;
+    ru: string;
+  };
 }
 
 interface Passenger {
-  firstname: string;
-  lastname: string;
-  price: number;
+  price: {
+    currency: string;
+    value: number;
+  }
+}
+
+interface Travel {
+  route: {
+    name: string;
+  };
 }
 
 export interface Order {
-  id: string;
-  contact_details: ContactDetails;
+  arrival_place: Place;
+  departure_place: Place;
+  departure_date: string;
   passengers: Passenger[];
-  travel_id: string;
-  user_id: string;
+  public_id: string;
+  travel: Travel;
+}
+
+interface OrdersResponse {
+  orders: Order[];
 }
 
 
@@ -63,9 +80,9 @@ const Orders:React.FC<OrdersProps> = ({ setIsOpen }) => {
       }
     }
 
-    // useEffect(() => {
-    //   fetchOrder();
-    // }, [])
+    useEffect(() => {
+      fetchOrder();
+    }, [])
 
 
   return (
