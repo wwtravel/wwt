@@ -15,7 +15,7 @@ const mailConfig = {
     port: 587,
     secure: false,
     auth: {
-        user: "studiomodvis@gmail.com",
+        user: process.env.EMAIL_ADDRESS,
         pass: process.env.EMAIL_PASSWORD
     }
 }; 
