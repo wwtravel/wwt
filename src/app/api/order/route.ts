@@ -1,4 +1,4 @@
-import { OrderSchema, ResetPasswordSchema } from "@/lib/types";
+import { DeleteTravelSchema, OrderSchema, ResetPasswordSchema } from "@/lib/types";
 import { prisma } from "@/utils/prisma"
 import { render } from "@react-email/components";
 import nodemailer from 'nodemailer';
@@ -227,4 +227,32 @@ export async function GET () {
     if (!orders) return Response.json({ msg: "Orders not found!"}, {status: 400});
 
     return Response.json(orders, {status: 201});
+}
+
+export async function DELETE (request: Request) {
+    const result = DeleteTravelSchema.safeParse(await request.json());
+
+    if (!result.success) {
+        let errorMessage = "";
+
+        result.error.issues.forEach((issue) => {
+            errorMessage = errorMessage + issue.path[0] + ": " + issue.message + ", ";
+        });
+
+        return Response.json({ msg: errorMessage }, {status: 400})
+    }
+
+    try {
+        await prisma.order.delete({
+            where: {
+                id: result.data.id
+            }
+          });
+    } catch (e) {
+        if (e) {
+            return handlePrismaError(e);
+        }
+    }
+
+    return Response.json({ msg: "Order deleted successfully!"}, {status: 201});
 }
