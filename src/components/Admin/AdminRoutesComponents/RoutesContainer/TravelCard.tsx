@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Travel } from '../AdminRoutesContent'
+import { Travel, TravelArray } from '../AdminRoutesContent'
 import { useLocale, useTranslations } from 'next-intl';
 import UnderlinedText from '@/components/SearchPageComponents/SearchPageContent/UnderlinedText';
 import RoutePatchModal from './RouteModal/RoutePatchModal';
@@ -7,11 +7,12 @@ import RoutePatchModal from './RouteModal/RoutePatchModal';
 interface TravelCardProps{
     travel : Travel;
     fetchTravels: () => Promise<void>;
-    reservedSeats: number;
-    updateReservedSeats: (newValue: number) => void;
+    // reservedSeats: number;
+    // updateReservedSeats: (newValue: number) => void;
+    setAlteredTravels: React.Dispatch<React.SetStateAction<TravelArray>>
 }
 
-const TravelCard:React.FC<TravelCardProps> = ({ travel, fetchTravels, reservedSeats, updateReservedSeats }) => {
+const TravelCard:React.FC<TravelCardProps> = ({ travel, fetchTravels, setAlteredTravels }) => {
 
     const locale = useLocale()
 
@@ -84,15 +85,30 @@ const TravelCard:React.FC<TravelCardProps> = ({ travel, fetchTravels, reservedSe
     const [refetchedReservedSeats, setRefetchedReservedSeats] = useState(travel.reserved_seats)
 
     const handleReservedClick = (operation: string) => {
-        let newValue = reservedSeats;
-        if (operation === 'decrease' && newValue > 0) {
-          newValue--;
-        } else if (operation === 'increase' && newValue < travel.free_places) {
-          newValue++;
-        }
-        updateReservedSeats(newValue);
-        patchTravel(newValue);
-      }
+        setAlteredTravels(prevTravels => {
+          const index = prevTravels.findIndex(t => t.id === travel.id);
+          if (index === -1) return prevTravels;
+    
+          const updatedTravel = { ...travel };
+          if (operation === 'decrease' && updatedTravel.reserved_seats > 0) {
+            updatedTravel.reserved_seats--;
+          } else if (operation === 'increase' && updatedTravel.reserved_seats < updatedTravel.free_places) {
+            updatedTravel.reserved_seats++;
+          }
+    
+          const updatedTravels = [
+            ...prevTravels.slice(0, index),
+            updatedTravel,
+            ...prevTravels.slice(index + 1),
+          ];
+    
+          return updatedTravels;
+        });
+      };
+
+      useEffect(() => {
+        patchTravel(travel.reserved_seats)
+      })
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -170,7 +186,7 @@ const TravelCard:React.FC<TravelCardProps> = ({ travel, fetchTravels, reservedSe
 
                 </div>
 
-                <div className='max-w-[39rem] w-full flex h-full xl:ml-[1.5rem] justify-between'>
+                <div className='max-w-[37rem] w-full flex h-full xl:ml-[1.5rem] justify-between'>
                     <div className='flex'>
                         <div className='flex flex-col items-center mr-[0.5rem] py-[0.25rem] max-xl:hidden'>
                             <img src="/icons/route-card-icons/icon-start-point.svg" alt="start" draggable={false} className='size-[1rem]' />
@@ -192,7 +208,7 @@ const TravelCard:React.FC<TravelCardProps> = ({ travel, fetchTravels, reservedSe
                         <div className='flex flex-col gap-[0.25rem] justify-center mr-[1.5rem]'>
                             <div className='flex items-center gap-[0.5rem] justify-center'>
                                 <img src="/icons/route-card-icons/icon-passenger.svg" alt="passenger" draggable={false} className='xl:size-[1rem] size-[1.333rem]' />
-                                <p className='font-open-sans font-bold xl:text-[1rem] text-[1.333rem] text-dark-gray'>{ (travel.free_places + refetchedReservedSeats) - reservedSeats }</p>
+                                <p className='font-open-sans font-bold xl:text-[1rem] text-[1.333rem] text-dark-gray'>{ (travel.free_places + refetchedReservedSeats) - travel.reserved_seats }</p>
                             </div>
                             <p className='xl:text-[1rem] text-[1.333rem] font-[400] font-open-sans text-gray/75 line-clamp-1 text-nowrap'>{ route_t('free-spaces') }</p>
                         </div>
@@ -200,18 +216,18 @@ const TravelCard:React.FC<TravelCardProps> = ({ travel, fetchTravels, reservedSe
                         <div className='flex flex-col gap-[0.25rem] justify-center mr-[1.5rem] select-none'>
                             <div className='flex items-center w-full justify-between'>
                                 <svg onClick={() => handleReservedClick('decrease')} className='xl:size-[1.125rem] size-[1.5rem] cursor-pointer hover:scale-110 transition-transform duration-300' width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9 1.125C4.6575 1.125 1.125 4.6575 1.125 9C1.125 13.3425 4.6575 16.875 9 16.875C13.3425 16.875 16.875 13.3425 16.875 9C16.875 4.6575 13.3425 1.125 9 1.125ZM9 15.75C5.27794 15.75 2.25 12.7221 2.25 9C2.25 5.27794 5.27794 2.25 9 2.25C12.7221 2.25 15.75 5.27794 15.75 9C15.75 12.7221 12.7221 15.75 9 15.75Z" className={`cursor-pointer transition-colors duration-300 ${reservedSeats <= 0 ? 'fill-gray/75' : 'fill-red'}`}/>
-                                    <path d="M11.25 8.4375C7.96954 8.4375 10.0305 8.4375 6.75 8.4375C6.60082 8.4375 6.45774 8.49676 6.35225 8.60225C6.24676 8.70774 6.1875 8.85082 6.1875 9C6.1875 9.14918 6.24676 9.29226 6.35225 9.39775C6.45774 9.50324 6.60082 9.5625 6.75 9.5625C10.0305 9.5625 7.96954 9.5625 11.25 9.5625C11.3992 9.5625 11.5423 9.50324 11.6477 9.39775C11.7532 9.29226 11.8125 9.14918 11.8125 9C11.8125 8.85082 11.7532 8.70774 11.6477 8.60225C11.5423 8.49676 11.3992 8.4375 11.25 8.4375Z" className={`cursor-pointer transition-colors duration-300 ${reservedSeats <= 0 ? 'fill-gray/75' : 'fill-red'}`}/>
+                                    <path d="M9 1.125C4.6575 1.125 1.125 4.6575 1.125 9C1.125 13.3425 4.6575 16.875 9 16.875C13.3425 16.875 16.875 13.3425 16.875 9C16.875 4.6575 13.3425 1.125 9 1.125ZM9 15.75C5.27794 15.75 2.25 12.7221 2.25 9C2.25 5.27794 5.27794 2.25 9 2.25C12.7221 2.25 15.75 5.27794 15.75 9C15.75 12.7221 12.7221 15.75 9 15.75Z" className={`cursor-pointer transition-colors duration-300 ${travel.reserved_seats <= 0 ? 'fill-gray/75' : 'fill-red'}`}/>
+                                    <path d="M11.25 8.4375C7.96954 8.4375 10.0305 8.4375 6.75 8.4375C6.60082 8.4375 6.45774 8.49676 6.35225 8.60225C6.24676 8.70774 6.1875 8.85082 6.1875 9C6.1875 9.14918 6.24676 9.29226 6.35225 9.39775C6.45774 9.50324 6.60082 9.5625 6.75 9.5625C10.0305 9.5625 7.96954 9.5625 11.25 9.5625C11.3992 9.5625 11.5423 9.50324 11.6477 9.39775C11.7532 9.29226 11.8125 9.14918 11.8125 9C11.8125 8.85082 11.7532 8.70774 11.6477 8.60225C11.5423 8.49676 11.3992 8.4375 11.25 8.4375Z" className={`cursor-pointer transition-colors duration-300 ${travel.reserved_seats <= 0 ? 'fill-gray/75' : 'fill-red'}`}/>
                                 </svg>
 
                                 <div className='flex items-center gap-[0.5rem] justify-center'>
                                     <img src="/icons/route-card-icons/icon-passenger.svg" alt="passenger" draggable={false} className='xl:size-[1rem] size-[1.333rem]' />
-                                    <p className='font-open-sans font-bold xl:text-[1rem] text-[1.333rem] text-dark-gray'>{ reservedSeats }</p>
+                                    <p className='font-open-sans font-bold xl:text-[1rem] text-[1.333rem] text-dark-gray'>{ travel.reserved_seats }</p>
                                 </div>
 
                                 <svg onClick={() => handleReservedClick('increase')} className='xl:size-[1.125rem] size-[1.5rem] cursor-pointer hover:scale-110 transition-transform duration-300' width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9 1.125C4.6575 1.125 1.125 4.6575 1.125 9C1.125 13.3425 4.6575 16.875 9 16.875C13.3425 16.875 16.875 13.3425 16.875 9C16.875 4.6575 13.3425 1.125 9 1.125ZM9 15.75C5.27794 15.75 2.25 12.7221 2.25 9C2.25 5.27794 5.27794 2.25 9 2.25C12.7221 2.25 15.75 5.27794 15.75 9C15.75 12.7221 12.7221 15.75 9 15.75Z" className={` cursor-pointer transition-colors duration-300 ${reservedSeats >= travel.free_places ? 'fill-gray/75' : 'fill-red'}`}/>
-                                    <path d="M11.25 8.4375H9.5625V6.75C9.5625 6.60082 9.50324 6.45774 9.39775 6.35225C9.29226 6.24676 9.14918 6.1875 9 6.1875C8.85082 6.1875 8.70774 6.24676 8.60225 6.35225C8.49676 6.45774 8.4375 6.60082 8.4375 6.75V8.4375H6.75C6.60082 8.4375 6.45774 8.49676 6.35225 8.60225C6.24676 8.70774 6.1875 8.85082 6.1875 9C6.1875 9.14918 6.24676 9.29226 6.35225 9.39775C6.45774 9.50324 6.60082 9.5625 6.75 9.5625H8.4375V11.25C8.4375 11.3992 8.49676 11.5423 8.60225 11.6477C8.70774 11.7532 8.85082 11.8125 9 11.8125C9.14918 11.8125 9.29226 11.7532 9.39775 11.6477C9.50324 11.5423 9.5625 11.3992 9.5625 11.25V9.5625H11.25C11.3992 9.5625 11.5423 9.50324 11.6477 9.39775C11.7532 9.29226 11.8125 9.14918 11.8125 9C11.8125 8.85082 11.7532 8.70774 11.6477 8.60225C11.5423 8.49676 11.3992 8.4375 11.25 8.4375Z" className={`${reservedSeats >= travel.free_places ? 'fill-gray/75' : 'fill-red'} cursor-pointer transition-colors duration-300`}/>
+                                    <path d="M9 1.125C4.6575 1.125 1.125 4.6575 1.125 9C1.125 13.3425 4.6575 16.875 9 16.875C13.3425 16.875 16.875 13.3425 16.875 9C16.875 4.6575 13.3425 1.125 9 1.125ZM9 15.75C5.27794 15.75 2.25 12.7221 2.25 9C2.25 5.27794 5.27794 2.25 9 2.25C12.7221 2.25 15.75 5.27794 15.75 9C15.75 12.7221 12.7221 15.75 9 15.75Z" className={` cursor-pointer transition-colors duration-300 ${travel.reserved_seats >= travel.free_places ? 'fill-gray/75' : 'fill-red'}`}/>
+                                    <path d="M11.25 8.4375H9.5625V6.75C9.5625 6.60082 9.50324 6.45774 9.39775 6.35225C9.29226 6.24676 9.14918 6.1875 9 6.1875C8.85082 6.1875 8.70774 6.24676 8.60225 6.35225C8.49676 6.45774 8.4375 6.60082 8.4375 6.75V8.4375H6.75C6.60082 8.4375 6.45774 8.49676 6.35225 8.60225C6.24676 8.70774 6.1875 8.85082 6.1875 9C6.1875 9.14918 6.24676 9.29226 6.35225 9.39775C6.45774 9.50324 6.60082 9.5625 6.75 9.5625H8.4375V11.25C8.4375 11.3992 8.49676 11.5423 8.60225 11.6477C8.70774 11.7532 8.85082 11.8125 9 11.8125C9.14918 11.8125 9.29226 11.7532 9.39775 11.6477C9.50324 11.5423 9.5625 11.3992 9.5625 11.25V9.5625H11.25C11.3992 9.5625 11.5423 9.50324 11.6477 9.39775C11.7532 9.29226 11.8125 9.14918 11.8125 9C11.8125 8.85082 11.7532 8.70774 11.6477 8.60225C11.5423 8.49676 11.3992 8.4375 11.25 8.4375Z" className={`${travel.reserved_seats >= travel.free_places ? 'fill-gray/75' : 'fill-red'} cursor-pointer transition-colors duration-300`}/>
                                 </svg>
                             </div>
                             <p className='xl:text-[1rem] text-[1.333rem] font-[400] font-open-sans text-gray/75 line-clamp-1 text-nowrap'>{ t('reserved-places') }</p>
@@ -239,7 +255,7 @@ const TravelCard:React.FC<TravelCardProps> = ({ travel, fetchTravels, reservedSe
             setIsOpen={setIsOpen}
             modalGoal='update'
             travel={travel}
-            reservedSeats={reservedSeats}
+            reservedSeats={travel.reserved_seats}
         />
     </>
   )

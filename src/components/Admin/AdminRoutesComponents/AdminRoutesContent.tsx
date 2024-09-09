@@ -155,7 +155,7 @@ const AdminRoutesContent = () => {
           handleClick={handleClick}
           handleReset={handleReset}
         />
-        <RoutesContainer fetchTravels={fetchTravels} loading={loading} travels={alteredTravels}/>
+        <RoutesContainer setAlteredTravels={setAlteredTravels} fetchTravels={fetchTravels} loading={loading} travels={alteredTravels}/>
     </div>
   )
 }
