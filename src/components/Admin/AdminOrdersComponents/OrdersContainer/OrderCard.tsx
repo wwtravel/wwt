@@ -9,9 +9,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 interface OrderCardProps {
     order : Order;
+    fetchTravels: () => Promise<void>;
 }
 
-const OrderCard:React.FC<OrderCardProps> = ({ order }) => {
+const OrderCard:React.FC<OrderCardProps> = ({ order, fetchTravels }) => {
 
     const t = useTranslations("AdminOrders")
 
@@ -20,7 +21,7 @@ const OrderCard:React.FC<OrderCardProps> = ({ order }) => {
 
   return (
     <div className='px-[4rem] py-[2rem] bg-light-white border border-gray/25 shadow-custom rounded-[1rem]'>
-        <div className='grid xl:grid-cols-[1.5fr,3fr] max-xl:gap-[2rem]'>
+        <div className='grid xl:grid-cols-[1.5fr,3fr] max-xl:gap-[2rem]' onClick={() => setIsOpen(prev => !prev)}>
             <div className='flex xl:justify-between gap-[2rem] justify-center'>
                 <div className='flex flex-col items-center font-open-sans gap-[0.25rem] relative' onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                     <p className='font-bold xl:text-[1rem] text-[1.333rem] text-dark-gray cursor-help'>{ order.public_id}</p>
@@ -48,13 +49,13 @@ const OrderCard:React.FC<OrderCardProps> = ({ order }) => {
                     <p className='font-bold xl:text-[1rem] text-[1.333rem] text-dark-gray cursor-help'>{ order.passengers.reduce((acc, person) => acc + person.price.value, 0)}{ order.passengers[0].price.currency }</p>
                     <p className='font-[400] xl:text-[1rem] text-[1.333rem] text-gray/75'>{ t("total-price") }</p>
                 </div>
-                <div className='flex items-center font-open-sans gap-[0.25rem] justify-center max-xl:hidden' onClick={() => setIsOpen(prev => !prev)}>
+                <div className='flex items-center font-open-sans gap-[0.25rem] justify-center max-xl:hidden'>
                     <img src="/icons/route-card-icons/icon-info.svg" alt="info" draggable={false} className='lg:size-[1rem] size-[1.333rem]' />
                     <UnderlinedText text={ t('about') }/>
                 </div>
             </div>
 
-            <div className='flex items-center font-open-sans gap-[0.25rem] justify-center xl:hidden' onClick={() => setIsOpen(prev => !prev)}>
+            <div className='flex items-center font-open-sans gap-[0.25rem] justify-center xl:hidden'>
                 <img src="/icons/route-card-icons/icon-info.svg" alt="info" draggable={false} className='lg:size-[1rem] size-[1.333rem]' />
                 <UnderlinedText text={ t('about') }/>
             </div>
@@ -62,7 +63,7 @@ const OrderCard:React.FC<OrderCardProps> = ({ order }) => {
 
         <AnimatePresence>
             {
-                isOpen && <OrderInfo order={order}/>
+                isOpen && <OrderInfo fetchTravels={fetchTravels} order={order}/>
             }
         </AnimatePresence>
     </div>

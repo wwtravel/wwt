@@ -526,6 +526,9 @@
     "routes": "Маршруты",
     "add-new-route": "Добавить новый маршрут",
 
+    "delete-route" : "Удалить маршрут",
+
+
     "reserved-places": "Забронированные места",
     "patch-route": "Изменить маршрут",
     "update": "Обновить",
@@ -600,6 +603,8 @@
     "default" : "По умолчанию",
     "search-by" : "Поиск по",
     "order-date" : "Дата заказа",
+
+    "delete-order": "Удалить заказ",
 
     "search-placeholder" : "ID/Имя/Фамилия",
 

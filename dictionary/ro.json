@@ -530,6 +530,8 @@
     "delete" : "Șterge",
     "filter" : "Filtrează",
 
+    "delete-route" : "Șterge ruta",
+
     "routes" : "Rutele",
     "add-new-route" : "Adaugă o rută nouă",
     "reserved-places" : "Locuri rezervate",
@@ -609,6 +611,8 @@
     "default" : "Implicit",
     "search-by" : "Caută după",
     "order-date" : "Data comenzii",
+
+    "delete-order": "Șterge comanda",
 
     "search-placeholder" : "ID/Nume/Prenume",
 

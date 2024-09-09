@@ -62,7 +62,7 @@ const AdminRoutesContent = () => {
           throw new Error('Failed to fetch prices');
       }
       const data = await response.json();
-      setTravels(data)
+      setTravels(data.reverse())
       setAlteredTravels(data)
       setLoading(false)
   } catch (error) {

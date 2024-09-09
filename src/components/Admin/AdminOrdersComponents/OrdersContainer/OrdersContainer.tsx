@@ -7,9 +7,10 @@ import OrderCard from './OrderCard';
 interface OrdersContainerProps{
   loading: boolean;
   groupedOrders: Order_Date_obj[] | undefined;
+  fetchTravels: () => Promise<void>;
 }
 
-const OrdersContainer:React.FC<OrdersContainerProps> = ({ loading, groupedOrders }) => {
+const OrdersContainer:React.FC<OrdersContainerProps> = ({ loading, groupedOrders, fetchTravels }) => {
 
   const t = useTranslations("AdminOrders")
   const date_t = useTranslations("RouteSearchPage_Date")
@@ -94,7 +95,7 @@ const parseDate = (dateString : string) => {
                           <div className='flex flex-col gap-[1rem]'>
                             {
                               orderGroup.orders.map((order, index) => (
-                                <OrderCard key={index} order={order}/>
+                                <OrderCard fetchTravels={fetchTravels} key={index} order={order}/>
                               ))
                             }
                           </div>

@@ -9,6 +9,7 @@ import { Travel } from '../../AdminRoutesContent';
 import RouteModalInfo from './RouteModalInfo';
 import { toast } from 'sonner';
 import PulseLoader from 'react-spinners/PulseLoader';
+import { TimePicker } from './TimePicker/time-picker-demo';
 
 export interface CoordinatePair{
   start: {
@@ -173,7 +174,7 @@ const RoutePatchModal:React.FC<RoutePatchModalProps> = ({ isOpen, setIsOpen, mod
   }, [direction])
   
   const [routeDate, setRouteDate] = useState(travel ? extractDate(travel.departure) : '')
-  const [hour, setHour] = useState(travel ? extractHour(travel.departure) : '')
+  const [hour, setHour] = useState('00:00')
 
   useEffect(() => {
     if(isOpen === false){
@@ -260,6 +261,17 @@ const RoutePatchModal:React.FC<RoutePatchModalProps> = ({ isOpen, setIsOpen, mod
     }
   }
 
+  const [date, setDate] = useState<Date | undefined>(travel ? new Date(travel.departure) : undefined)
+
+  useEffect(() => {
+    if (date) {
+      const newHour = extractHour(date.toISOString());
+      setHour(newHour);
+    } else {
+      setHour('00:00')
+    }
+  }, [date]);
+
   return (
     <ModalWindow isOpen={isOpen} setIsOpen={setIsOpen} maxWidth={70}>
       <div className='pt-[4rem] px-[3rem] pb-[2rem] relative'>
@@ -267,10 +279,7 @@ const RoutePatchModal:React.FC<RoutePatchModalProps> = ({ isOpen, setIsOpen, mod
         <div className='grid xl:grid-cols-4 grid-cols-2 gap-[1rem]'>
           <RouteModalSelect err={directionErr} direction={direction} setDirection={setDirection} tourCoord={tourCoordinatePair} returnCoord={returnCoordinatePair}/>
           <RouteModalDatePicker err={dateErr} routeDate={routeDate} setRouteDate={setRouteDate}/>
-          <div className='relative'>
-            <img src="/icons/admin-icons/icon-clock-dark.svg" alt="clock" draggable={false} className='xl:size-[1rem] size-[1.333rem] absolute right-[1.5rem]  top-[50%] -translate-y-[50%]' />
-            <input type="text" maxLength={5} value={hour} onChange={(e) => setHour(e.target.value)} placeholder={t('departure-hour') } className={`${hourErr && 'animate-input-error'} font-open-sans xl:text-[1rem] text-[1.333rem] xl:h-[3.5rem] h-[4rem] border pl-[1.5rem] outline-none border-gray/25 rounded-[0.5rem] bg-light-white w-full`}/>
-          </div>
+          <TimePicker err={hourErr} date={date} setDate={setDate}/>
           <button className='xl:h-[3.5rem] h-[4rem] bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] flex items-center justify-center px-[1.5rem] gap-[0.5rem]' onClick={handleClick}>
               {
                 loading ? (
@@ -293,7 +302,7 @@ const RoutePatchModal:React.FC<RoutePatchModalProps> = ({ isOpen, setIsOpen, mod
         </div>
 
         {
-          direction ? <RouteModalInfo direction={direction} travel={travel} />
+          direction ? <RouteModalInfo fetchTravels={fetchTravels} direction={direction} travel={travel} />
           : (
             <div className='w-full h-[20rem] grid place-content-center px-[3rem]'>
                 <p className='mb-[2rem] text-gray/75 text-[1rem]'>{ t('fill-in-data') }</p>
