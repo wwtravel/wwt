@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl"
 const FAQAcordion = () => {
     const t = useTranslations("Contacts_FAQ")
   return (
-    <Accordion type="single" collapsible className="bg-light-white px-[2.5rem] pb-[2.5rem] pt-[1rem]-gray/25 rounded-[1rem] shadow-custom">
+    <Accordion type="single" collapsible className="bg-light-white px-[2.5rem] py-[1.5rem] border border-gray/25 rounded-[1rem] shadow-custom">
         <AccordionItem value="item-1">
             <AccordionTrigger><div className="flex gap-[1rem] items-center hover:translate-x-[1rem] transition-transform duration-300 h-full py-4 pr-[3rem]"><div className="min-w-[1.5rem] min-h-[1.5rem] rounded-full bg-red grid place-content-center"><p className="text-light-white text-[1rem] font-open-sans font-bold">1</p></div>  { t('question1') }</div></AccordionTrigger>
             <AccordionContent>
@@ -52,7 +52,7 @@ const FAQAcordion = () => {
             </AccordionContent>
         </AccordionItem>
 
-        <AccordionItem value="item-7">
+        <AccordionItem value="item-7" className="border-none">
             <AccordionTrigger><div className="flex gap-[1rem] items-center hover:translate-x-[1rem] transition-transform duration-300 h-full py-4 pr-[3rem]"><div className="min-w-[1.5rem] min-h-[1.5rem] rounded-full bg-red grid place-content-center"><p className="text-light-white text-[1rem] font-open-sans font-bold">7</p></div>{ t('question7') }</div></AccordionTrigger>
             <AccordionContent>
                 {t('answer7')}
