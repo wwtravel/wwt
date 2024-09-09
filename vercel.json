@@ -7,6 +7,10 @@
       {
         "path": "/api/update-currency",
         "schedule": "0 5 * * *"
+      },
+      {
+        "path": "/api/send-reminder-email",
+        "schedule": "0 5 * * *"
       }
     ]
 }

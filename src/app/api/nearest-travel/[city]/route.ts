@@ -51,6 +51,7 @@ export async function GET (request: Request, {params}: {params: {city: string}})
 
     if (!travels || travels.length === 0) return Response.json({ msg: "Travel not found!"}, {status: 400});
 
+
     const filteredTravels = new Array();
 
     travels.forEach(travel => {

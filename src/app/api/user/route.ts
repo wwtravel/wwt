@@ -103,7 +103,7 @@ export async function PATCH (request: Request) {
     return Response.json({ msg: "User updated successfully!"}, {status: 201});
 }
 
-export async function GET () {
+export async function  GET () {
     const session = await auth();
 
     if (!session) {
