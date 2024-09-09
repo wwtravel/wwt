@@ -306,6 +306,9 @@
     "tab_1_text": "Réservations",
     "tab_2_text": "PARAMÈTRES",
     "signOut": "Déconnexion",
+
+    "search-country": "Поиск страны...",
+    "no-country-found": "Страна не найдена.",
     
     "accDet": "DÉTAILS DU COMPTE",
     "lastName": "Nom",

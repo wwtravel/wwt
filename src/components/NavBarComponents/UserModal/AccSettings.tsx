@@ -18,6 +18,7 @@ import PulseLoader from "react-spinners/PulseLoader"
 
 import { PatchUserSchema } from "@/lib/types"
 import { z } from "zod"
+import { PhoneInput } from "@/components/SharedComponents/phone-input"
 
 interface AccSettingsProps{
   setIsOpen : React.Dispatch<React.SetStateAction<boolean>>
@@ -200,6 +201,8 @@ const AccSettings:React.FC<AccSettingsProps> = ({ setIsOpen }) => {
       }
     }
 
+    console.log(formData.phone)
+
   return (
     <div className='p-[3rem] relative'>
         <img src="/icons/icon-close.svg" alt="close" draggable={false} className='absolute right-[1rem] top-[1rem] size-[2rem] cursor-pointer' onClick={() => setIsOpen(false)}/>
@@ -210,7 +213,19 @@ const AccSettings:React.FC<AccSettingsProps> = ({ setIsOpen }) => {
           <TextInput err={lastNameErr} readOnly={false} onChange={handleChange} value={ formData.lastname } id="UserModalLastName" label={ t('lastName') } name="lastname"/>
           <TextInput err={firstNameErr} readOnly={false} onChange={handleChange} value={ formData.firstname } id="UserModalFirstName" label={ t('firstName') } name="firstname"/>
           <TextInput err={false} readOnly={true} onChange={handleChange} value={ formData.email } id="UserModalEmail" label={ t('email') } name="email"/>
-          <TextInput err={phoneErr} readOnly={false} onChange={handleChange} value={ formData.phone } id="UserModalPhone" label={ t('phone') } name="phone"/>
+          {/* <TextInput err={phoneErr} readOnly={false} onChange={handleChange} value={ formData.phone } id="UserModalPhone" label={ t('phone') } name="phone"/> */}
+          <PhoneInput 
+            placeholder={t('phone')} 
+            maxLength={15} 
+            className={`${phoneErr && 'animate-input-error'} lg:h-[3.5rem] h-[4rem] rounded-[0.5rem]`}
+            value={formData.phone}
+            onChange={(value) => {
+              setFormData({
+                ...formData,
+                phone : value === undefined ? '' : value
+              });
+            }}
+          />
           <DobDatePicker err={dobErr} placeholder={ t('dob') } setDob={setDob} dob={dob}/>
         </div>
 

@@ -312,6 +312,9 @@
     "tab_1_text" : "COMENZI & Rezervări",
     "tab_2_text" : "SETĂRI CONT",
     "signOut" : "Ieșire din cont",
+
+    "search-country": "Căutare țară...",
+    "no-country-found": "Nici o țară găsită.",
     
     "accDet" : "DETALIILE CONTULUI",
     "lastName" : "Nume",

@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { Option } from '@/components/SharedComponents/ComboBox';
 import { toast } from 'sonner';
 import { createWhatsAppLink } from '@/constants/messages';
+import { PhoneInput } from '@/components/SharedComponents/phone-input';
 
 const ParcelForm = () => {
 
@@ -144,7 +145,7 @@ const ParcelForm = () => {
             onChange={handleChange} 
             onFocus={() => setNameInputFocused(true)}
             onBlur={() => setNameInputFocused(false)} 
-            id='nameInput' required className={`${ nameInputErr && 'animate-input-error' } w-full sm:h-[3.5rem] h-[4.667rem] sm:text-[1rem] text-[1.333rem] border border-gray/25 rounded-[0.5rem] outline-none pl-[1.5rem] bg-light-white placeholder:text-gray/75 lg:pt-[1rem] pt-[1.5rem]`} 
+            id='nameInput' required className={`${ nameInputErr && 'animate-input-error' } w-full lg:h-[3.5rem] h-[4.667rem] lg:text-[1rem] text-[1.333rem] border border-gray/25 rounded-[0.5rem] outline-none pl-[1.5rem] bg-light-white placeholder:text-gray/75 pt-[1rem]`} 
             type="text" maxLength={50}
           />
 
@@ -162,34 +163,22 @@ const ParcelForm = () => {
             </motion.label>
         </div>
 
-        <div className='relative' >
-          <input
-            name="phoneInput"
+        <PhoneInput 
+            placeholder={t('phoneInputPlaceholder')} 
+            maxLength={15} 
+            className={`${phoneErr && 'animate-input-error'} lg:h-[3.5rem] h-[4.667rem] rounded-[0.5rem]`}
             value={formData.phoneInput}
-            onChange={handleChange} 
-            onFocus={() => setPhoneInputFocused(true)}
-            onBlur={() => setPhoneInputFocused(false)} 
-            id='phoneInput' required className={`${ phoneErr && 'animate-input-error' } w-full sm:h-[3.5rem] h-[4.667rem] sm:text-[1rem] text-[1.333rem] border border-gray/25 rounded-[0.5rem] outline-none pl-[1.5rem] bg-light-white placeholder:text-gray/75 lg:pt-[1rem] pt-[1.5rem]`} 
-            type="text" maxLength={20}
+            onChange={(value) => {
+              setFormData({
+                ...formData,
+                phoneInput : value === undefined ? '' : value
+              });
+            }}
           />
-
-            <motion.label
-              htmlFor='phoneInput'
-              className={` origin-top-left absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]`}
-              initial={{ scale: 1, y: '-50%' }}
-              animate={{
-                scale: phoneInputFocused || formData.phoneInput !== '' ? 0.7 : 1,
-                y: phoneInputFocused || formData.phoneInput !== '' ? '-80%' : '-50%'
-              }}
-              transition={{ type: 'tween', ease: 'easeInOut', duration: 0.2 }}
-            >
-              { t('phoneInputPlaceholder') }
-            </motion.label>
-        </div>
 
         <ParcelFormSelect toCityErr={toCityErr} inputValue={formData.toCity} options={cities} placeholder={ t('selectBox2Placeholder') } setInputValue={setToCityValue}/>
 
-        <button className='max-sm:hidden md:h-[3.5rem] h-[3.333rem] bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] px-[1.5rem] flex items-center justify-center md:text-[1.125rem] text-[1rem] font-bold text-white' onClick={handleClick}>
+        <button className='max-sm:hidden lg:h-[3.5rem] h-[4.667rem] bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] px-[1.5rem] flex items-center justify-center md:text-[1.125rem] text-[1rem] font-bold text-white' onClick={handleClick}>
           <p>
             { t('send') }
           </p>

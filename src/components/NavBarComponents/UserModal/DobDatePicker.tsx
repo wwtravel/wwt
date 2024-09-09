@@ -60,7 +60,7 @@ const DobDatePicker: React.FC<DatePickerProps> = ({ placeholder, setDob, dob, er
         <Button
           variant={"outline"}
           className={cn(
-            `${err && 'animate-input-error'} px-[1.5rem] pb-0 pt-[1rem] relative md:text-[1rem] text-[1.333rem] bg-light-white min-w-full lg:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal`,
+            `${err && 'animate-input-error'} px-[1.5rem] pb-0 pt-[1rem] relative md:text-[1rem] text-[1.125rem] bg-light-white min-w-full lg:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] justify-between text-left font-normal`,
             !date && "text-muted-foreground"
           )}
         >

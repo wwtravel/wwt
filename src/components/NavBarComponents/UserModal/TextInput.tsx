@@ -25,7 +25,7 @@ const TextInput: React.FC<TextInputProps> = ({ onChange, value, id, label, name,
             onChange={onChange} 
             onFocus={() => setInputFocused(true)}
             onBlur={() => setInputFocused(false)} 
-            id={id} className={`${err && 'animate-input-error'} w-full md:text-[1rem] text-[1.333rem] lg:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] outline-none pl-[1.5rem] bg-light-white placeholder:text-gray/75 pt-[1rem]`} 
+            id={id} className={`${err && 'animate-input-error'} lg:text-[1rem] w-full md:text-[1rem] text-[1.125rem] lg:h-[3.5rem] h-[4rem] border border-gray/25 rounded-[0.5rem] outline-none pl-[1.5rem] bg-light-white pt-[1rem]`} 
             type="text" maxLength={50}
             name={name}
         />

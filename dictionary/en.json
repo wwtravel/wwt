@@ -310,6 +310,9 @@
     "tab_1_text": "ORDERS & BOOKings",
     "tab_2_text": "ACCOUNT SETTINGS",
     "signOut": "Sign Out",
+
+    "search-country" : "Search country...",
+    "no-country-found" : "No country found.",
     
     "accDet": "ACCOUNT DETAILS",
     "lastName": "Last Name",
