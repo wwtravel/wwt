@@ -88,7 +88,7 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
                 <CommandInput
                   value={inputContent}
                   onValueChange={(value) => handleInputChange(value, value)}
-                  onBlur={() => setIsFocused(false)} 
+                  //onBlur={() => setIsFocused(false)} 
                   className={`${errTrigger && 'animate-input-error'} bg-light-white lg:min-w-[15rem] min-w-full lg:h-[3.5rem] h-[4.667rem] outline-none border border-gray/25 rounded-[0.5rem] lg:text-[1rem] text-[1.333rem] font-[400] text-dark-gray px-[1.5rem] lg:pt-[1rem] pt-[1.5rem]`}
                   ref={ inputRef }
                 />
@@ -136,7 +136,7 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
                 }
                 {
                   options.map((option, index)=> (
-                      <CommandItem key={index} onSelect={() => handleInputChange(option.label[getLocale(locale)], option.value)} className=" hover:bg-gray/10 transition-colors duration-300 lg:text-[1rem] text-[1.333rem] rounded-[0.5rem] p-[0.5rem]">
+                      <CommandItem key={index} onSelect={() => {handleInputChange(option.label[getLocale(locale)], option.value); setIsFocused(false)}} className=" hover:bg-gray/10 transition-colors duration-300 lg:text-[1rem] text-[1.333rem] rounded-[0.5rem] p-[0.5rem]">
                             { option.label[getLocale(locale)] }
                       </CommandItem>
                   ))

@@ -24,7 +24,6 @@ const Features = () => {
                 height={1000}
                 className='rounded-[1rem] h-full object-cover object-right'
                 priority
-                placeholder='blur'
 
             />
 
