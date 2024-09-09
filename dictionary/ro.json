@@ -5,7 +5,8 @@
     "contact" : "Contacte",
     "schedule" : "Orarul Rutelor",
     "route-search" : "Căutare Rută",
-    "pass-reset" : "Resetare Reușită"
+    "pass-reset" : "Resetare Reușită",
+    "admin": "Admin"
   },
   "NavBar": {
     "titleMD": "Telefon Moldova",

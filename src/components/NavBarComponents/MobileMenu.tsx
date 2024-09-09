@@ -61,6 +61,11 @@ const MobileMenu:React.FC<MobileMenuProps> = ({ isOpen, setIsOpen }) => {
                     <Link href="/" className={`${activePage === '' ? ' text-red ' : 'text-dark-gray hover:opacity-75'} transition-opacity duration-300'`} onClick={() => setIsOpen(false)}>{t('navHome')}</Link>
                     <Link href="/about" className={`${activePage === 'about' ? ' text-red ' : 'text-dark-gray hover:opacity-75'} transition-opacity duration-300`} onClick={() => setIsOpen(false)}>{t('navAbout')}</Link>
                     <Link href="/contacts" className={`${activePage === 'contacts' ? ' text-red ' : 'text-dark-gray hover:opacity-75'} transition-opacity duration-300`} onClick={() => setIsOpen(false)}>{t('navContact')}</Link>
+                    {
+                      user && user.role === "ADMIN" && (
+                        <Link href="/admin/admin-routes" className={`font-bold text-[1rem] transition-opacity duration-300 text-dark-gray hover:opacity-75`}>Admin</Link>
+                      )
+                    }
                   </div>
 
                   <div className='bg-red hover:bg-dark-red transition-colors duration-300 rounded-[0.5rem] w-fit px-[4rem] h-[3.333rem] flex justify-center items-center gap-[0.667rem] cursor-pointer mt-[2rem]' onClick={() => setIsOpenModal(true)}>

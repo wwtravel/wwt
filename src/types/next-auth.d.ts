@@ -12,6 +12,7 @@ declare module "next-auth" {
         firstname?: string;
         lastname?: string;
         phone_number?: string;
+        role?: string;
     }
   }
 }
