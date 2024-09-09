@@ -71,7 +71,6 @@ const AdminOrdersContent = () => {
           throw new Error('Failed to fetch orders');
       }
       const data = await response.json();
-      console.log(data)
       setOrders(data)
       setAlteredOrders(data)
       setLoading(false)
@@ -130,7 +129,6 @@ const AdminOrdersContent = () => {
 
     //id/name/surname
     if(searchCondition !== '') {
-      console.log(filterBySearch(tempOrders, searchCondition))
       tempOrders = filterBySearch(tempOrders, searchCondition)
     }
 

@@ -55,7 +55,6 @@ const RoutePatchModal:React.FC<RoutePatchModalProps> = ({ isOpen, setIsOpen, mod
         if (response.ok) {
             setLoading(false)
             setIsOpen(false)
-            console.log('Travel created successfully:', result.msg);
         } else {
             setLoading(false)
             console.error('Error creating travel:', result.msg);
@@ -98,7 +97,6 @@ const RoutePatchModal:React.FC<RoutePatchModalProps> = ({ isOpen, setIsOpen, mod
         } else {
             setLoading(false)
             const successResponse = await response.json();
-            console.log('Travel updated successfully:', successResponse.msg);
         }
     } catch (error) {
         setLoading(false)

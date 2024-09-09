@@ -32,7 +32,7 @@ interface Travel {
 export interface Order {
   arrival_place: Place;
   departure_place: Place;
-  departure_date: string;
+  order_date: string;
   passengers: Passenger[];
   public_id: string;
   travel: Travel;
@@ -71,7 +71,6 @@ const Orders:React.FC<OrdersProps> = ({ setIsOpen }) => {
         }
 
         const data = await response.json();
-        console.log(data)
         setOrders(data.orders)
         setLoading(false)
       } catch (error) {

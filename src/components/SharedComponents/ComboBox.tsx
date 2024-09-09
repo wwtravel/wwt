@@ -74,7 +74,6 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
         default : return 'en'
     }
 }
-
   return (
     <div>
       <Command className="bg-[transparent] overflow-visible">

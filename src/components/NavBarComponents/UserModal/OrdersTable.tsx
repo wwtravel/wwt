@@ -44,7 +44,7 @@ const OrdersTable: React.FC<OrdersTableProps> = ({ orders }) => {
                 <React.Fragment key={index}>
                     <p className='text-dark-gray font-open-sans text-[1rem] font-[400] uppercase text-nowrap text-center'>{ order.public_id }</p>
                     <p className='text-dark-gray font-open-sans text-[1rem] font-[400] text-nowrap text-center'>{ order.departure_place.label[getLocale(locale)] } - { order.arrival_place.label[getLocale(locale)] }</p>
-                    <p className='text-dark-gray font-open-sans text-[1rem] font-[400] text-nowrap text-center'>{  }</p>
+                    <p className='text-dark-gray font-open-sans text-[1rem] font-[400] text-nowrap text-center'>{ extractDate(order.order_date) }</p>
                     <p className='text-dark-gray font-open-sans text-[1rem] font-[400] text-nowrap text-center'>{ order.passengers.length }</p>
                     <p className='text-dark-gray font-open-sans text-[1rem] font-[400] text-nowrap text-center'>{ order.passengers.reduce((sum, passenger) => sum + passenger.price.value, 0) }{order.passengers[0].price.currency}</p>
                 </React.Fragment>
