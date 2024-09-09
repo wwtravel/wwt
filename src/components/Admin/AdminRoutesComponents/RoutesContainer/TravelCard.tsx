@@ -187,7 +187,7 @@ const TravelCard:React.FC<TravelCardProps> = ({ travel, fetchTravels }) => {
                         <div className='flex flex-col gap-[0.25rem] justify-center mr-[1.5rem]'>
                             <div className='flex items-center gap-[0.5rem] justify-center'>
                                 <img src="/icons/route-card-icons/icon-passenger.svg" alt="passenger" draggable={false} className='xl:size-[1rem] size-[1.333rem]' />
-                                <p className='font-open-sans font-bold xl:text-[1rem] text-[1.333rem] text-dark-gray'>{ travel.free_places }</p>
+                                <p className='font-open-sans font-bold xl:text-[1rem] text-[1.333rem] text-dark-gray'>{ travel.free_places - reservedSeats }</p>
                             </div>
                             <p className='xl:text-[1rem] text-[1.333rem] font-[400] font-open-sans text-gray/75 line-clamp-1 text-nowrap'>{ route_t('free-spaces') }</p>
                         </div>

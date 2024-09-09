@@ -112,8 +112,6 @@ const AdminRoutesContent = () => {
 
   const handleClick = () => {
 
-    fetchTravels()
-
     let tempTravels = [...travels]
 
     //date

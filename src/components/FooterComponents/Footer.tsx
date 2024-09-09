@@ -40,10 +40,9 @@ const Footer = () => {
 
                     <div className='flex flex-col md:hidden'>
                         <h3 className='font-bold font-open-sans md:text-[1.5rem] text-[1.333rem] text-light-white mb-[1.5rem] whitespace-nowrap'>{ t('usefulLinks') }</h3>
-                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('home') }</p>
-                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('schedule') }</p>
-                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('about') }</p>
-                        <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('contact') }</p>
+                        <Link href="/"><p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('home') }</p></Link>
+                        <Link href="/about"><p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('about') }</p></Link>
+                        <Link href="/contacts"><p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('contact') }</p></Link>
                     </div>
                 </div>
             </div>
