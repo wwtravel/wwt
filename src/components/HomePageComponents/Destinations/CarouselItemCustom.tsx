@@ -102,7 +102,7 @@ const CarouselItemCustom: React.FC<CarouselItemCustomProps> = ({ item }) => {
     <div className="bg-light-white w-[25rem] rounded-[1rem] overflow-hidden border border-gray/25 relative shadow-custom">
         <DestinationPrice price={item.price}/>
         <div className='relative h-[16rem]'>
-          <Image className="h-[16rem]" quality={100} fill src={item.imageURL} alt="carouse-image" draggable={false} />
+          <Image className="h-[16rem] z-0" quality={100} fill src={item.imageURL} alt="carouse-image" draggable={false} />
         </div>
         <div className="mt-[2rem] px-[1.5rem] pb-[1.5rem]">
             <h3 className="text-[1.5rem] text-dark-gray font-montserrat font-bold">{ item.title[getLocale(locale)] }</h3>

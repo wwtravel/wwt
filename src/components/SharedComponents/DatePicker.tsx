@@ -40,6 +40,7 @@ const DatePicker:React.FC<DatePickerProps> = ({ placeholder, setSearchDate, edge
     if(date) {
       const formattedDate = format(date, "yyyy-MM-dd")
       setSearchDate(formattedDate)
+      setOpenCal(false)
     } else {
       setSearchDate('')
     }

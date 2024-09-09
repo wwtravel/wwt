@@ -37,6 +37,7 @@ const DobDatePicker: React.FC<DatePickerProps> = ({ placeholder, setDob, dob, er
       if(date) {
         const formattedDate = format(date, "yyyy-MM-dd")
         setDob(formattedDate)
+        setOpenCal(false)
       }
     }, [date])
 
