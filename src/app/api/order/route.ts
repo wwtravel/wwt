@@ -213,6 +213,9 @@ export async function GET () {
                         route_id: true
                     }
                 }
+            },
+            orderBy: {
+                order_date: 'asc'
             }
         });
     } catch (e) {
