@@ -3,6 +3,7 @@ import DestinationPrice from './DestinationPrice';
 import RedButton from '@/components/SharedComponents/RedButton';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from '@/navigation';
+import Image from 'next/image';
 
 interface Item{
     city: string;
@@ -100,7 +101,9 @@ const CarouselItemCustom: React.FC<CarouselItemCustomProps> = ({ item }) => {
   return (
     <div className="bg-light-white w-[25rem] rounded-[1rem] overflow-hidden border border-gray/25 relative shadow-custom">
         <DestinationPrice price={item.price}/>
-        <img className="h-[16rem]" src={item.imageURL} alt="carouse-image" draggable={false} />
+        <div className='relative h-[16rem]'>
+          <Image className="h-[16rem]" quality={100} fill src={item.imageURL} alt="carouse-image" draggable={false} />
+        </div>
         <div className="mt-[2rem] px-[1.5rem] pb-[1.5rem]">
             <h3 className="text-[1.5rem] text-dark-gray font-montserrat font-bold">{ item.title[getLocale(locale)] }</h3>
             <p className="text-[1.125rem] text-dark-gray font-open-sans font-[400] mb-[0.5rem] mt-[1rem]">{ t(item.departureText) } <span className="font-bold">{toShowDate}</span></p>

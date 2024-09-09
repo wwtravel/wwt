@@ -41,7 +41,7 @@ const Orders:React.FC<OrdersProps> = ({ setIsOpen }) => {
   async function fetchOrder() {
     setLoading(true)
     try {
-        const response = await fetch('/api/order', {
+        const response = await fetch('/api/user', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const Orders:React.FC<OrdersProps> = ({ setIsOpen }) => {
 
         const data = await response.json();
         console.log(data)
-        setOrders(data.user.orders)
+        setOrders(data.orders)
         setLoading(false)
       } catch (error) {
           setLoading(false)
@@ -63,9 +63,9 @@ const Orders:React.FC<OrdersProps> = ({ setIsOpen }) => {
       }
     }
 
-    useEffect(() => {
-      fetchOrder();
-    }, [])
+    // useEffect(() => {
+    //   fetchOrder();
+    // }, [])
 
 
   return (

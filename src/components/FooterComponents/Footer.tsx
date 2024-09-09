@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import FooterNewsLetter from './FooterNewsLetter'
+import { Link } from '@/navigation'
 
 const Footer = () => {
 
@@ -18,10 +19,9 @@ const Footer = () => {
                 <div className='flex md:flex-row flex-col lg:gap-[3rem] gap-[2rem] max-lg:justify-between leading-[1.5]'>
                     <div className='flex flex-col max-md:hidden'>
                         <h3 className='font-bold font-open-sans text-[1.5rem] text-light-white mb-[1.5rem] whitespace-nowrap'>{ t('usefulLinks') }</h3>
-                        <p className='font-open-sans text-[1rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('home') }</p>
-                        <p className='font-open-sans text-[1rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('schedule') }</p>
-                        <p className='font-open-sans text-[1rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('about') }</p>
-                        <p className='font-open-sans text-[1rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('contact') }</p>
+                        <Link href="/"><p className='font-open-sans text-[1rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('home') }</p></Link>
+                        <Link href="/about"><p className='font-open-sans text-[1rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('about') }</p></Link>
+                        <Link href="/contacts"><p className='font-open-sans text-[1rem] font-[300] text-light-white mb-[1rem] cursor-pointer'>{ t('contact') }</p></Link>
                     </div>
 
                     <div className='flex flex-col'>
@@ -36,7 +36,7 @@ const Footer = () => {
                         <p className='font-open-sans md:text-[1rem] text-[1.167rem] font-[300] text-light-white cursor-pointer'>+373 68 213 292</p>
                     </div>
 
-                    <FooterNewsLetter />
+                    {/* <FooterNewsLetter /> */}
 
                     <div className='flex flex-col md:hidden'>
                         <h3 className='font-bold font-open-sans md:text-[1.5rem] text-[1.333rem] text-light-white mb-[1.5rem] whitespace-nowrap'>{ t('usefulLinks') }</h3>
@@ -49,10 +49,15 @@ const Footer = () => {
             </div>
 
             <div className='w-full h-[1px] bg-light-white mt-[1.5rem]'/>
-            <div className='flex justify-center items-center gap-[0.375rem]'>
-                <p className='text-center font-open-sans text-[1rem] font-[300] text-light-white mt-[1rem] pb-[1rem] cursor-pointer'>Copyright ©World Wide Travel all rights reserved. Powered by Studio Modvis</p>
-                <img src="/icons/icon-modvis.svg" alt="modvis" draggable={false} className='size-[0.625rem]' />
+            
+            <div className='mt-[1rem] pb-[1rem] text-center font-open-sans text-[1rem] font-[300] text-light-white cursor-pointer flex gap-[0.375rem] justify-center'>
+                <p>Copyright ©World Wide Travel all rights reserved. </p>
+                <div className='group transition-opacity duration-300 opacity-75 hover:opacity-100 flex gap-[0.375rem] items-center'>
+                    <span className=''>Powered by Studio Modvis </span>
+                    <img src="/icons/icon-modvis.svg" alt="modvis" draggable={false} className='size-[0.625rem] transition-transform duration-300 group-hover:rotate-[360deg]' />
+                </div>    
             </div>
+
         </div>
     </div>
   )
