@@ -50,9 +50,10 @@ export default async function LocaleLayout({
             
             {children}
 
-            <Toaster />
           </Providers>
         </NextIntlClientProvider>
+        
+        <Toaster duration={3000}/>
       </body>
     </html>
   );
