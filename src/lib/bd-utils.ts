@@ -88,3 +88,40 @@ export const checkAvailableSeats = async ({travel_id}: {travel_id: string}) => {
 
     return true;
 }
+
+export const getOrderPrice = async ({depCountry, arrCountry}: {depCountry: string, arrCountry: string}) => {
+    let price = null;
+
+    try {   
+        price = await prisma.price.findFirst({
+            where: {
+                OR: [
+                    {
+                        from: {
+                            equals: depCountry
+                        },
+                        to: {
+                            equals: arrCountry
+                        }
+                    },
+                    {
+                        to: {
+                            equals: depCountry
+                        },
+                        from: {
+                            equals: arrCountry
+                        }
+                    }
+                ]
+            }
+        })
+    } catch (e) {
+        if (e) {
+            return handlePrismaError(e);
+        }
+    }
+
+    if (!price) return Response.json({ msg: "Price not found!"}, {status: 400});
+
+    return price;
+}

@@ -71,8 +71,6 @@ export async function PATCH (request: Request) {
 
 
 export async function GET () {
-    // const response = await checkIfAdmin();
-    // if (response !== null) return response;
     let prices = null;
 
     try {
