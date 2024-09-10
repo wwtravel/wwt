@@ -11,7 +11,7 @@ export async function generateMetadata({params: {locale}} : {params: {locale: st
     const t = await getTranslations({locale, namespace: 'PageTitles'});
 
     return {
-      title: t('route-search')
+      title: `${t('route-search')} | World Wide Travel`
     };
   }
 

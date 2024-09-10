@@ -67,11 +67,15 @@ function hideWidget() {
             }
         </AnimatePresence>
         { children }
+        {
+          !isLoading && pathname.split('/')[1] !== 'admin' && (
             <TawkMessengerReact
               propertyId="66d5add7ea492f34bc0cbf89" 
               widgetId="1i6pau4mq"
               ref={ref}
             />
+          )
+        }
     </div>
   )
 }

@@ -9,8 +9,9 @@ declare global {
     };
     Tawk_API?: {
       onLoad?: () => void;
-      showWidget?: () => void;
+      showWidget: () => void;
       hideWidget?: () => void;
     };
+    Tawk_LoadStart?: Date;
   }
 }

@@ -8,7 +8,7 @@ export async function generateMetadata({params: {locale}} : {params: {locale: st
     const t = await getTranslations({locale, namespace: 'PageTitles'});
 
     return {
-      title: t('pass-reset')
+      title: `${t('pass-reset')} | World Wide Travel`
     };
   }
 

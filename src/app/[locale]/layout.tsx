@@ -11,6 +11,32 @@ import Providers from '@/components/Providers';
 import { Toaster } from "@/components/ui/sonner"
 
 
+export const metadata = {
+  description: 'Fiecare călătorie este o experiență unică, plină de confort și siguranță, având destinații în Elveția, Austria, Germania și Franța.',
+  openGraph: {
+    type: 'website',
+    url: 'https://www.worldwidetravel.md/ro',
+    title: 'World Wide Travel - Pagina Principală',
+    description: 'Fiecare călătorie este o experiență unică, plină de confort și siguranță, având destinații în Elveția, Austria, Germania și Franța.',
+    images: [
+      {
+        url: '/images/opengraph.png',
+        width: 1200,
+        height: 630,
+        alt: 'World Wide Travel',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    url: 'https://www.worldwidetravel.md/ro',
+    title: 'World Wide Travel - Pagina Principală',
+    description: 'Fiecare călătorie este o experiență unică, plină de confort și siguranță, având destinații în Elveția, Austria, Germania și Franța.',
+    image: '/images/opengraph.png',
+  },
+};
+
+
 const openSans = Open_Sans({
   subsets: ['latin'],
   display: 'swap',
@@ -54,6 +80,7 @@ export default async function LocaleLayout({
         </NextIntlClientProvider>
         
         <Toaster duration={3000}/>
+
       </body>
     </html>
   );
