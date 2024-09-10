@@ -65,6 +65,5 @@ export async function GET (request: Request, {params}: {params: {city: string}})
 
         if (depIndex < arrIndex) filteredTravels.push(travel);
     });
-
     return Response.json({nearestDate: filteredTravels[0].departure}, {status: 200});
 }
