@@ -4,6 +4,7 @@ import RedButton from '@/components/SharedComponents/RedButton';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from '@/navigation';
 import Image from 'next/image';
+import { Price } from '../ServicesSection/PassengerInfo';
 
 interface Item{
     city: string;
@@ -98,9 +99,40 @@ const CarouselItemCustom: React.FC<CarouselItemCustomProps> = ({ item }) => {
     }
   }
 
+  const [prices, setPrices] = useState<Price[]>([])
+  const [countryPrice, setCountryPrice] = useState(0) 
+
+  async function fetchPrices() {
+    try {
+        const response = await fetch('/api/price');
+        if (!response.ok) {
+            throw new Error('Failed to fetch prices');
+        }
+        const data = await response.json();
+        console.log(data)
+        setPrices(data.travelPrices)
+    } catch (error) {
+        console.error('Error:', error);
+    }
+  }
+
+  useEffect(() => {
+    fetchPrices()
+  }, [])
+
+  useEffect(() => {
+    if(prices.length !== 0){
+      prices.map(price => {
+        if(price.from === 'moldova' && price.to === 'switzerland'){
+          setCountryPrice(price.price_sheet.adult)
+        }
+      })
+    }
+  }, [prices])
+
   return (
     <div className="bg-light-white w-[25rem] rounded-[1rem] overflow-hidden border border-gray/25 relative shadow-custom">
-        <DestinationPrice price={item.price}/>
+        <DestinationPrice price={countryPrice}/>
         <div className='relative h-[16rem]'>
           <Image className="h-[16rem] z-0" quality={100} fill src={item.imageURL} alt="carouse-image" draggable={false} />
         </div>

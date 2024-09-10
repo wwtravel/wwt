@@ -19,6 +19,19 @@ const ItineraryMap = dynamic(() => import('../../SharedComponents/ItineraryMap')
   ssr: false
 });
 
+export interface PriceSheet {
+    adult: number;
+    child: number;
+    student: number;
+  }
+  
+  export interface Price {
+    id: string;
+    from: string;
+    to: string;
+    price_sheet: PriceSheet;
+  }
+
 const PassengerInfo = () => {
 
   const currency = useStore(useCurrencyStore, (state) => state.currency)
@@ -63,6 +76,94 @@ const PassengerInfo = () => {
     };
   };
 
+  const [prices, setPrices] = useState<Price[]>([])
+  const [countryPrices, setCountryPrices] = useState({
+    austria : {
+        adult: 0,
+        student : 0,
+        child : 0
+    },
+    switzerland : {
+        adult: 0,
+        student : 0,
+        child : 0
+    },
+    france : {
+        adult: 0,
+        student : 0,
+        child : 0
+    },
+    germany : {
+        adult: 0,
+        student : 0,
+        child : 0
+    }
+  }) 
+
+  async function fetchPrices() {
+    try {
+        const response = await fetch('/api/price');
+        if (!response.ok) {
+            throw new Error('Failed to fetch prices');
+        }
+        const data = await response.json();
+        setPrices(data.travelPrices)
+    } catch (error) {
+        console.error('Error:', error);
+    }
+  }
+
+  useEffect(() => {
+    fetchPrices()
+  }, [])
+
+  useEffect(() => {
+    if(prices.length !== 0){
+        prices.map(price => {
+            if(price.to === 'austria' && price.from === 'moldova'){
+                setCountryPrices(prev => ({
+                    ...prev,
+                    austria : {
+                        adult: price.price_sheet.adult,
+                        student : price.price_sheet.student,
+                        child: price.price_sheet.child
+                    }
+                }))
+            }
+            if(price.to === 'france' && price.from === 'moldova'){
+                setCountryPrices(prev => ({
+                    ...prev,
+                    france : {
+                        adult: price.price_sheet.adult,
+                        student : price.price_sheet.student,
+                        child: price.price_sheet.child
+                    }
+                }))
+            }
+            if(price.to === 'germany' && price.from === 'moldova'){
+                setCountryPrices(prev => ({
+                    ...prev,
+                    germany : {
+                        adult: price.price_sheet.adult,
+                        student : price.price_sheet.student,
+                        child: price.price_sheet.child
+                    }
+                }))
+            }
+            if(price.to === 'switzerland' && price.from === 'moldova'){
+                setCountryPrices(prev => ({
+                    ...prev,
+                    switzerland : {
+                        adult: price.price_sheet.adult,
+                        student : price.price_sheet.student,
+                        child: price.price_sheet.child
+                    }
+                }))
+            }
+        })
+    }
+  }, [prices])
+  
   return (
     <div className='max-w-[81rem] w-full mx-auto rounded-[1rem] bg-light-white border border-[#DADBDD] overflow-hidden mt-[3rem] shadow-custom'>
         <div className='flex'>
@@ -78,7 +179,7 @@ const PassengerInfo = () => {
                         <img src="/icons/passenger-info-icons/icon-adult.svg" alt="info-icon" draggable={false} className='md:size-[4rem] size-[2.667rem] md:mr-[1.5rem] mr-[0.667rem]' />
                         <p className='whitespace-nowrap  font-bold md:text-[1.5rem] text-[1.333rem] text-dark-gray font-open-sans leading-[0.7] mr-[0.5rem]'>{ t('passenger1Title') }</p>
                     </div>
-                    <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7] '>{ (rates && currency && !loading) ? roundCurrency(passengersInfoData[activeCountry].adultFee * rates[currency], currency) : passengersInfoData[activeCountry].adultFee }<span className='uppercase xs:text-[1.5rem] text-[1.125rem] '>{(rates && currency && !loading) ? currency : "EUR"}</span></p>
+                    <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7] '>{ (rates && currency && !loading) ? roundCurrency(countryPrices[activeCountry].adult * rates[currency], currency) : countryPrices[activeCountry].adult }<span className='uppercase xs:text-[1.5rem] text-[1.125rem] '>{(rates && currency && !loading) ? currency : "EUR"}</span></p>
                 </div>
 
                 <div className='flex items-end w-full mt-[1.5rem] justify-between'>
@@ -86,7 +187,7 @@ const PassengerInfo = () => {
                         <img src="/icons/passenger-info-icons/icon-child.svg" alt="info-icon" draggable={false} className='md:size-[4rem] size-[2.667rem] md:mr-[1.5rem] mr-[0.667rem]' />
                         <p className='whitespace-nowrap font-bold md:text-[1.5rem] text-[1.333rem] text-dark-gray font-open-sans leading-[0.7] mr-[0.5rem]'>{ t('passenger2Title') } <span className='font-[400]'>- { t('passenger2info') }</span></p>
                     </div>
-                    <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7] '>{ (rates && currency && !loading) ? roundCurrency(passengersInfoData[activeCountry].childFee * rates[currency], currency) : passengersInfoData[activeCountry].childFee }<span className='uppercase xs:text-[1.5rem] text-[1.125rem] '>{(rates && currency && !loading) ? currency : "EUR"}</span></p>
+                    <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7] '>{ (rates && currency && !loading) ? roundCurrency(countryPrices[activeCountry].child * rates[currency], currency) : countryPrices[activeCountry].child }<span className='uppercase xs:text-[1.5rem] text-[1.125rem] '>{(rates && currency && !loading) ? currency : "EUR"}</span></p>
                 </div>
 
                 <div className='flex items-end w-full mt-[1.5rem] justify-between'>
@@ -94,7 +195,7 @@ const PassengerInfo = () => {
                         <img src="/icons/passenger-info-icons/icon-student.svg" alt="info-icon" draggable={false} className='md:size-[4rem] size-[2.667rem] md:mr-[1.5rem] mr-[0.667rem]' />
                         <p className='whitespace-nowrap  font-bold md:text-[1.5rem] text-[1.333rem] text-dark-gray font-open-sans leading-[0.7] mr-[0.5rem]'>{ t('passenger3Title') } <span className='font-[400]'>- { t('passenger3info') }</span></p>
                     </div>
-                    <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7]'>{ (rates && currency && !loading) ? roundCurrency(passengersInfoData[activeCountry].studentFee * rates[currency], currency) : passengersInfoData[activeCountry].studentFee }<span className='uppercase xs:text-[1.5rem] text-[1.125rem] '>{(rates && currency && !loading) ? currency : "EUR"}</span></p>
+                    <p className='whitespace-nowrap font-bold md:text-[2.5rem] xs:text-[2rem] text-[1.5rem] text-dark-gray font-open-sans leading-[0.7]'>{ (rates && currency && !loading) ? roundCurrency(countryPrices[activeCountry].student * rates[currency], currency) : countryPrices[activeCountry].student }<span className='uppercase xs:text-[1.5rem] text-[1.125rem] '>{(rates && currency && !loading) ? currency : "EUR"}</span></p>
                 </div>
 
                 <div className='flex items-end w-full mt-[1.5rem] justify-between'>
