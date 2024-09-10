@@ -62,7 +62,7 @@ const AdminRoutesContent = () => {
           throw new Error('Failed to fetch prices');
       }
       const data = await response.json();
-      setTravels(data)
+      setTravels(data.reverse())
       setAlteredTravels(data)
       setLoading(false)
   } catch (error) {
@@ -155,7 +155,7 @@ const AdminRoutesContent = () => {
           handleClick={handleClick}
           handleReset={handleReset}
         />
-        <RoutesContainer fetchTravels={fetchTravels} loading={loading} travels={alteredTravels}/>
+        <RoutesContainer setAlteredTravels={setAlteredTravels} fetchTravels={fetchTravels} loading={loading} travels={alteredTravels}/>
     </div>
   )
 }

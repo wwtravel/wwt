@@ -12,6 +12,7 @@ import { OrderSchema } from "@/lib/types";
 import PulseLoader from "react-spinners/PulseLoader";
 import { useStore } from "zustand";
 import { useCurrencyStore } from "@/hooks/useCurrencyStore";
+import { PhoneInput } from "@/components/SharedComponents/phone-input";
 
 export interface Passenger{
     firstname: string;
@@ -424,25 +425,17 @@ const PassengersDataContainer:React.FC<PassengerDataContainerProps> = ({ prices,
                         {
                             (checkoutContent === 'return' || checkoutContent === 'tour' && !shouldReturn) && (
                                 <>
-                                    <input 
-                                    id="checkoutPhone" 
-                                        onFocus={() => setPhoneFocus(true)} onBlur={() => setPhoneFocus(false)} 
-                                        name="phone" value={contactDetails.phone} onChange={handleChange} 
-                                        className={`${phoneErr && 'animate-input-error'} w-full bg-light-white lg:h-[3.5rem] h-[4.667rem] border border-gray/25  md:rounded-[0.5rem] rounded-[0.667rem] outline-none px-[1.5rem] text-dark-gray font-open-sans text-[1rem] font-[400] pt-[1rem]`} required type="text" maxLength={15}
-                                    />
-
-                                    <motion.label
-                                        htmlFor="checkoutPhone" 
-                                        className="origin-top-left cursor-text absolute top-[50%] left-[1.5rem] text-gray/75 lg:text-[1rem] text-[1.333rem] font-[400]"
-                                        initial={{ scale: 1, y: '-50%' }}
-                                        animate={{
-                                            scale: phoneFocus || contactDetails.phone !== '' ? 0.7 : 1,
-                                            y: phoneFocus || contactDetails.phone !== '' ? '-80%' : '-50%'
+                                    <PhoneInput 
+                                        placeholder={t('phone')}
+                                        onFocus={() => setPhoneFocus(true)} 
+                                        onBlur={() => setPhoneFocus(false)} 
+                                        value={contactDetails.phone}
+                                        onChange={(value) => {
+                                            setContactDetails({ ...contactDetails, phone : value === undefined ? '' : value });
                                         }}
-                                        transition={{ type: 'tween', ease: 'easeInOut', duration: 0.2 }}
-                                    >
-                                        { t('phone') }
-                                    </motion.label>
+                                        maxLength={15} 
+                                        className={`${phoneErr && 'animate-input-error'} lg:h-[3.5rem] h-[4.667rem] rounded-[0.5rem] w-full`}
+                                    />
                                 </>
                             ) 
                         }

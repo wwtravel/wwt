@@ -312,6 +312,9 @@
     "tab_1_text" : "COMENZI & Rezervări",
     "tab_2_text" : "SETĂRI CONT",
     "signOut" : "Ieșire din cont",
+
+    "search-country": "Căutare țară...",
+    "no-country-found": "Nici o țară găsită.",
     
     "accDet" : "DETALIILE CONTULUI",
     "lastName" : "Nume",
@@ -530,6 +533,8 @@
     "delete" : "Șterge",
     "filter" : "Filtrează",
 
+    "delete-route" : "Șterge ruta",
+
     "routes" : "Rutele",
     "add-new-route" : "Adaugă o rută nouă",
     "reserved-places" : "Locuri rezervate",
@@ -609,6 +614,8 @@
     "default" : "Implicit",
     "search-by" : "Caută după",
     "order-date" : "Data comenzii",
+
+    "delete-order": "Șterge comanda",
 
     "search-placeholder" : "ID/Nume/Prenume",
 

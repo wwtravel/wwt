@@ -174,7 +174,7 @@ const AdminOrdersContent = () => {
   return (
     <div className='pt-[9.5rem] flex xl:gap-[4rem] gap-[2rem] justify-center mb-[4rem]'>
       <OrdersFilter handleReset={handleReset} handleClick={handleClick} dateCondition={dateCondition} setDateCondition={setDateCondition} searchCondition={searchCondition} setSearchCondition={setSearchCondition} outputContition={outputContition} setOutputCondition={setOutputCondition}/>
-      <OrdersContainer groupedOrders={groupedOrders} loading={loading}/>
+      <OrdersContainer fetchTravels={fetchTravels} groupedOrders={groupedOrders} loading={loading}/>
     </div>
   )
 }

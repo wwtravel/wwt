@@ -57,7 +57,7 @@ const ParcelFormSelect:React.FC<ParcelFormSelectProps> = ({ placeholder, options
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className={`${ toCityErr && 'animate-input-error' } w-full relative pb-0 lg:pt-[1rem] pt-[1.5rem] pl-[1.5rem] sm:h-[3.5rem] h-[4.667rem] justify-between border border-gray/25 rounded-[0.5rem] sm:text-[1rem] text-[1.333rem]`}
+          className={`${ toCityErr && 'animate-input-error' } w-full relative pb-0 pt-[1rem] pl-[1.5rem] lg:h-[3.5rem] h-[4.667rem] justify-between border border-gray/25 rounded-[0.5rem] lg:text-[1rem] text-[1.333rem]`}
         >
           {value && options.find((option) => option.value === value)?.label[getLocale(locale)]}
 
@@ -78,7 +78,7 @@ const ParcelFormSelect:React.FC<ParcelFormSelectProps> = ({ placeholder, options
           <ChevronDown className="ml-2 sm:size-[1rem] size-[1.333rem] shrink-0 text-dark-gray absolute right-[1.5rem] top-[50%] -translate-y-[50%]" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[15rem] bg-light-white border border-gray/25 rounded-[0.5rem] py-[0.5rem]">
+      <PopoverContent className="lg:w-[15rem] md:w-[25rem] w-[18rem] bg-light-white border border-gray/25 rounded-[0.5rem] py-[0.5rem]">
         <Command>
           <CommandInput required placeholder={ t('selectBoxSearchPlaceholder') } className="bg-light-white w-full h-[3.5rem] outline-none sm:text-[1rem] text-[1.333rem] font-[400] text-dark-gray pl-[1rem] border-b border-gray/25 rounded-none mb-[0.5rem] py-[0.5rem]" />
           <CommandEmpty >{ t('selectBoxNothingFound') }</CommandEmpty>

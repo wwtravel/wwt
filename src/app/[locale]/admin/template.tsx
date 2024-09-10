@@ -15,20 +15,22 @@ const template = ({ children } : { children : React.ReactNode }) => {
 
   const router = useRouter()
 
-  const { data } = useSession()
+  const { data, status } = useSession()
   const user = data?.user
 
   useEffect(() => {
-    if(user){
-      if(user.role === "ADMIN"){
-        setShowAdmin(true)
+    if(status !== 'loading'){
+      if (user) {
+        if (user?.role === "ADMIN") {
+          setShowAdmin(true)
+        } else {
+          router.push('/')
+        }
       } else {
         router.push('/')
       }
-    } else {
-      router.push('/')
     }
-  }, [user])
+  }, [user, router, status])
 
 
 

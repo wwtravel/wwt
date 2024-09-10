@@ -310,6 +310,9 @@
     "tab_1_text": "ORDERS & BOOKings",
     "tab_2_text": "ACCOUNT SETTINGS",
     "signOut": "Sign Out",
+
+    "search-country" : "Search country...",
+    "no-country-found" : "No country found.",
     
     "accDet": "ACCOUNT DETAILS",
     "lastName": "Last Name",
@@ -529,6 +532,8 @@
     "routes": "Routes",
     "add-new-route": "Add new route",
 
+    "delete-route" : "Delete route",
+
     "reserved-places": "Reserved places",
     "patch-route": "Modify route",
 
@@ -604,6 +609,8 @@
     "default" : "Default",
     "search-by" : "Search by",
     "order-date" : "Order Date",
+
+    "delete-order": "Delete order",
 
     "search-placeholder" : "ID/First Name/Last Name",
 

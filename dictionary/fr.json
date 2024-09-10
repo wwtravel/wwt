@@ -306,6 +306,9 @@
     "tab_1_text": "Réservations",
     "tab_2_text": "PARAMÈTRES",
     "signOut": "Déconnexion",
+
+    "search-country": "Поиск страны...",
+    "no-country-found": "Страна не найдена.",
     
     "accDet": "DÉTAILS DU COMPTE",
     "lastName": "Nom",
@@ -526,6 +529,9 @@
     "routes": "Les routes",
     "add-new-route": "Ajouter une nouvelle route",
 
+    "delete-route" : "Supprimer l'itinéraire",
+
+
     "reserved-places": "Places réservées",
     "patch-route": "Modifier l'itinéraire",
 
@@ -602,6 +608,8 @@
     "order-date" : "Date de commande",
 
     "search-placeholder" : "ID/Prénom/Nom",
+
+    "delete-order": "Supprimer la commande",
 
     "id" : "ID",
     "main-pass" : "Passager principal",
