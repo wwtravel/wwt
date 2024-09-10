@@ -1,4 +1,4 @@
-import { handlePrismaError } from "@/lib/bd-utils";
+import { getOrderPrice, handlePrismaError } from "@/lib/bd-utils";
 import { SearchSchema } from "@/lib/types";
 import { prisma } from "@/utils/prisma";
 
@@ -116,39 +116,10 @@ const findTravel = async (data: FindTravelInterface) => {
 
     if (!travels || travels.length === 0) return Response.json({ msg: "Travel not found!"}, {status: 400});
 
-    let price = null;
+    let price = await getOrderPrice({depCountry: travels[0].route.stops[0].country, arrCountry: travels[0].route.stops[travels[0].route.stops.length - 1].country});
 
-    try {   
-        price = await prisma.price.findFirst({
-            where: {
-                OR: [
-                    {
-                        from: {
-                            equals: travels[0].route.stops[0].country
-                        },
-                        to: {
-                            equals: travels[0].route.stops[travels[0].route.stops.length - 1].country
-                        }
-                    },
-                    {
-                        to: {
-                            equals: travels[0].route.stops[0].country
-                        },
-                        from: {
-                            equals: travels[0].route.stops[travels[0].route.stops.length - 1].country
-                        }
-                    }
-                ]
-            }
-        })
-    } catch (e) {
-        if (e) {
-            return handlePrismaError(e);
-        }
-    }
-
-    if (!price) return Response.json({ msg: "Price not found!"}, {status: 400});
-
+    if (price instanceof Response) return price;
+    
     let label = null;
 
     try {   
@@ -172,7 +143,6 @@ const findTravel = async (data: FindTravelInterface) => {
     travels.forEach(travel => {
         const depIndex = travel.route.stops.findIndex(route => route.city === data.departure_city);
         const arrIndex = travel.route.stops.findIndex(route => route.city === data.arrival_city);
-
 
         let travelRes = JSON.parse(JSON.stringify(travel));
 
