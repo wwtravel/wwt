@@ -9,6 +9,7 @@ import { Open_Sans, Montserrat } from 'next/font/google'
 import Providers from '@/components/Providers';
 
 import { Toaster } from "@/components/ui/sonner"
+import Head from 'next/head';
 
 
 export const metadata = {
@@ -62,12 +63,42 @@ export default async function LocaleLayout({
  
   return (
     <html lang={locale} className={`${openSans.variable} ${montserrat.variable}`}>
-      <head>
+      <Head>
         <meta name="viewport" content="height=device-height, 
                         width=device-width, initial-scale=1.0, 
                         minimum-scale=1.0, maximum-scale=1.0, 
                         user-scalable=no, target-densitydpi=device-dpi"/>
-      </head>
+        <link
+          rel="preload"
+          href="/images/header_bg.webp"
+          as="image"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          href="/images/footer-bg.webp"
+          as="image"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          href="/images/aboutPage/about-header-bg.webp"
+          as="image"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          href="/images/aboutPage/about-features-bg.png"
+          as="image"
+          type="image/png"
+        />
+        <link
+          rel="preload"
+          href="/images/dotted-map-bg.png"
+          as="image"
+          type="image/png"
+        />
+      </Head>
 
 
       <body className={`bg-[#F1F8FD] `}>
