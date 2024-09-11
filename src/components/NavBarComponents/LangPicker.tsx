@@ -35,12 +35,12 @@ const LangPicker = () => {
 
         {
             isHovered && (
-                <div className='absolute top-[100%] pt-[0.5rem] left-[50%] -translate-x-[50%] flex flex-col items-center shadow-custom'>
-                    <div className='bg-[#FFF] p-[0.25rem] flex flex-col items-center rounded-[0.5rem]'>
-                        <Link href={`${cleanedPathname}${usableSearchParams}`} scroll={false} locale='ro' className='hover:bg-gray/10 w-full text-center leading-[2.5] px-[0.75rem] rounded-[0.5rem] transition-colors duration-300'>Română</Link>
-                        <Link href={`${cleanedPathname}${usableSearchParams}`} scroll={false} locale='ru' className='hover:bg-gray/10 w-full text-center leading-[2.5] px-[0.75rem] rounded-[0.5rem] transition-colors duration-300'>Русский</Link>
-                        <Link href={`${cleanedPathname}${usableSearchParams}`} scroll={false} locale='en' className='hover:bg-gray/10 w-full text-center leading-[2.5] px-[0.75rem] rounded-[0.5rem] transition-colors duration-300'>English</Link>
-                        <Link href={`${cleanedPathname}${usableSearchParams}`} scroll={false} locale='fr' className='hover:bg-gray/10 w-full text-center leading-[2.5] px-[0.75rem] rounded-[0.5rem] transition-colors duration-300'>Français</Link>
+                <div className='absolute bg-light-white rounded-[0.5rem]  top-[100%] pt-[0.5rem] left-[50%] -translate-x-[50%] flex flex-col items-center shadow-custom'>
+                    <div className='p-[0.25rem] flex flex-col items-center'>
+                        <Link shallow href={`${cleanedPathname}${usableSearchParams}`} scroll={false} locale='ro' className='hover:bg-gray/10 w-full text-center leading-[2.5] px-[0.75rem] rounded-[0.5rem] transition-colors duration-300'>Română</Link>
+                        <Link shallow href={`${cleanedPathname}${usableSearchParams}`} scroll={false} locale='ru' className='hover:bg-gray/10 w-full text-center leading-[2.5] px-[0.75rem] rounded-[0.5rem] transition-colors duration-300'>Русский</Link>
+                        <Link shallow href={`${cleanedPathname}${usableSearchParams}`} scroll={false} locale='en' className='hover:bg-gray/10 w-full text-center leading-[2.5] px-[0.75rem] rounded-[0.5rem] transition-colors duration-300'>English</Link>
+                        <Link shallow href={`${cleanedPathname}${usableSearchParams}`} scroll={false} locale='fr' className='hover:bg-gray/10 w-full text-center leading-[2.5] px-[0.75rem] rounded-[0.5rem] transition-colors duration-300'>Français</Link>
                     </div>
                 </div>
             )
