@@ -85,6 +85,7 @@ const ComboBox:React.FC<ComboBoxProps> = ({ placeholder, options, value, onChang
                 onClick={() => {setIsFocused(true); inputRef.current?.focus() }} 
               >
                 <CommandInput
+                  inputMode="text"
                   value={inputContent}
                   onValueChange={(value) => handleInputChange(value, value)}
                   //onBlur={() => setIsFocused(false)} 

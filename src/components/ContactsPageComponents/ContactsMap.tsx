@@ -1,13 +1,11 @@
 import ItineraryMap from "../SharedComponents/ItineraryMap"
 
 import { Coordinate } from "@/constants/coordinates"
-
 const ContactsMap = () => {
-
   const mark: Coordinate[] = [
     {
-      latitude: 47.01138273135551, 
-      longitude: 28.83730111508071,
+      latitude: 47.01074785922845, 
+      longitude: 28.836395966169487,
     }
   ]
 
