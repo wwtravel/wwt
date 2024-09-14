@@ -16,7 +16,6 @@ export async function GET () {
             return handlePrismaError(e);
         }
     }
-    
 
     return Response.json(cities, {status: 200});
 }
