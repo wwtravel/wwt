@@ -4,6 +4,7 @@ import { prisma } from "@/utils/prisma";
 export async function GET () {
     let cities = null;
 
+    
     try {
         cities = await prisma.city.findMany({
             select: {
