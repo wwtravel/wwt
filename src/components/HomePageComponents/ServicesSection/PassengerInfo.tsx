@@ -226,6 +226,7 @@ const PassengerInfo = () => {
                 {
                     activeCountry === 'switzerland' && <ItineraryMap coordinates={passengerCountriesCoordinates.sw} center={[getMidpoint(passengerCountriesCoordinates.sw).latitude, getMidpoint(passengerCountriesCoordinates.sw).longitude]}/>
                 }
+
             </div>
         </div>
     </div>
