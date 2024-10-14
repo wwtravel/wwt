@@ -5,7 +5,8 @@
     "contact" : "Contact",
     "schedule" : "Route Schedule",
     "route-search" : "Route Search",
-    "pass-reset" : "Reset Successful"
+    "pass-reset" : "Reset Successful",
+    "admin": "Admin panel"
   },
   "NavBar": {
     "titleMD": "Phone Moldova",
