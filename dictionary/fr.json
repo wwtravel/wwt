@@ -5,7 +5,8 @@
     "contact" : "Contact",
     "schedule" : "Horaire des Routes",
     "route-search" : "Recherche d'Itinéraire",
-    "pass-reset" : "Réinitialisation Réussie"
+    "pass-reset" : "Réinitialisation Réussie",
+    "admin": "Panneau d'administration"
   },
   "NavBar": {
     "titleMD": "Téléphone Moldavie",

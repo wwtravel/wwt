@@ -2,11 +2,11 @@
 
 import React, { useEffect } from "react";
 import { MapContainer, Marker, TileLayer, Popup, useMap } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import "leaflet-defaulticon-compatibility";
-import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import L from "leaflet";
 import "leaflet-routing-machine";
+import "leaflet/dist/leaflet.css";
+import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
+import "leaflet-defaulticon-compatibility";
 
 interface Coordinate{
   latitude: number;
@@ -26,7 +26,7 @@ interface MapProps {
 const redIcon = new L.Icon({
   iconUrl: "/icons/icon-map-marker.svg",
   iconSize: [16, 20],
-  iconAnchor: [10, 20],
+  iconAnchor: [10, 23],
   popupAnchor: [0, -20],
 });
 
@@ -41,25 +41,64 @@ const MapEvents:React.FC<MapEventsProps> = ({ coordinates }) => {
   })
 
   useEffect(() => {
-    if (map) {
+    if (map && waypoints.length) {
+        // Create a routing service instance
+        const routingService = L.Routing.osrmv1({
+            serviceUrl: 'https://router.project-osrm.org/route/v1', // Example service
+        });
 
-        const plan = L.Routing.plan(waypoints,
-            {
-                addWaypoints: false,
-                draggableWaypoints: false,
-                createMarker(waypointIndex, waypoint, numberOfWaypoints) {
-                    return L.marker(waypoint.latLng, { icon: redIcon });
-                },
+        // Convert waypoints to L.Routing.Waypoint[]
+        const routingWaypoints: L.Routing.Waypoint[] = waypoints.map(latLng =>
+            L.routing.waypoint(latLng)
+        );
+
+        // Get the route using the routing service
+        // @ts-ignore
+        routingService.route(routingWaypoints, (err: Error | null, routes: L.Routing.Route[]) => {
+            if (err) {
+                console.error(err);
+                return;
             }
-        )
 
-        L.Routing.control({
-            plan: plan,
-            containerClassName: 'itinerary',
-            addWaypoints: false
-        }).addTo(map)
+            const route = routes[0]; // Get the first route
+
+            // @ts-ignore
+            const outlinePolyline1 = L.polyline(route.coordinates.map(coord => [coord.lat, coord.lng]), {
+                color: 'rgba(0, 0, 0, 0.06)', // Grey outline color
+                weight: 8, // Slightly larger weight for the outline
+                opacity: 1 // Slight opacity for the outline
+            }).addTo(map);
+
+            // @ts-ignore
+            const outlinePolyline2 = L.polyline(route.coordinates.map(coord => [coord.lat, coord.lng]), {
+                color: '#FAFAF8', // Grey outline color
+                weight: 5, // Slightly larger weight for the outline
+                opacity: 1 // Slight opacity for the outline
+            }).addTo(map);
+
+            // @ts-ignore
+            const polyline = L.polyline(route.coordinates.map(coord => [coord.lat, coord.lng]), {
+                color: '#ED1C24',
+                weight: 2,
+                opacity: 1
+            }).addTo(map);
+
+
+            // Add markers for each waypoint
+            routingWaypoints.forEach(waypoint => {
+                const marker = L.marker(waypoint.latLng, { icon: redIcon }).addTo(map);
+                // Optionally, add a popup for the marker
+                marker.bindPopup(`Waypoint: ${waypoint.latLng.lat}, ${waypoint.latLng.lng}`);
+            });
+
+            // Optionally zoom to the polyline
+            map.fitBounds(polyline.getBounds());
+        });
     }
-  }, [map]);
+}, [map, waypoints]);
+
+
+
 
   return null;
 }
