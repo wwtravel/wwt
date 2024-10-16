@@ -27,8 +27,8 @@ interface RouteBus {
 
 export interface PriceSheet {
     adult: number;
-    child: number;
     student: number;
+    child: number;
 }
 
 export interface Travel {

@@ -7,8 +7,8 @@ import { CheckedState } from '@radix-ui/react-checkbox'
 
 interface PricesFilterProps {
     setSortContition : React.Dispatch<React.SetStateAction<"priceAsc" | "priceDesc" | "none">>
-    setOutputCondition: React.Dispatch<React.SetStateAction<"all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr" | "parcels">>
-    outputContition: "all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr" | "parcels";
+    setOutputCondition: React.Dispatch<React.SetStateAction<"all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr" | "gr-sw" | "au-sw" | "fr-sw" | "parcels">>
+    outputContition: "all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr" | "gr-sw" | "au-sw" | "fr-sw" | "parcels";
     sortContition: "priceAsc" | "priceDesc" | "none";
     handleClick : () => void;
     handleReset : () => void
@@ -18,7 +18,7 @@ const PricesFilter:React.FC<PricesFilterProps> = ({ sortContition, setSortContit
 
     const t = useTranslations("AdminPrices")
 
-    const handleCheck = (e: CheckedState, value: "all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr" | "parcels") => {
+    const handleCheck = (e: CheckedState, value: "all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr" | "gr-sw" | "au-sw" | "fr-sw" | "parcels") => {
         if (e) {
             setOutputCondition(value)
         }
@@ -63,6 +63,18 @@ const PricesFilter:React.FC<PricesFilterProps> = ({ sortContition, setSortContit
                 <div className='flex items-center gap-[0.5rem] select-none'>
                     <Checkbox id='gr-fr' checked={ outputContition === 'gr-fr' }  onCheckedChange={(e) => handleCheck(e, "gr-fr")}/>
                     <label className='text-gray xl:text-[1rem] text-[1.333rem] font-[400]' htmlFor="gr-fr">{ t('gr-fr') }</label>
+                </div>
+                <div className='flex items-center gap-[0.5rem] select-none'>
+                    <Checkbox id='gr-sw' checked={ outputContition === 'gr-sw' }  onCheckedChange={(e) => handleCheck(e, "gr-sw")}/>
+                    <label className='text-gray xl:text-[1rem] text-[1.333rem] font-[400]' htmlFor="gr-sw">{ t('gr-sw') }</label>
+                </div>
+                <div className='flex items-center gap-[0.5rem] select-none'>
+                    <Checkbox id='au-sw' checked={ outputContition === 'au-sw' }  onCheckedChange={(e) => handleCheck(e, "au-sw")}/>
+                    <label className='text-gray xl:text-[1rem] text-[1.333rem] font-[400]' htmlFor="au-sw">{ t('au-sw') }</label>
+                </div>
+                <div className='flex items-center gap-[0.5rem] select-none'>
+                    <Checkbox id='fr-sw' checked={ outputContition === 'fr-sw' }  onCheckedChange={(e) => handleCheck(e, "fr-sw")}/>
+                    <label className='text-gray xl:text-[1rem] text-[1.333rem] font-[400]' htmlFor="fr-sw">{ t('fr-sw') }</label>
                 </div>
                 <div className='flex items-center gap-[0.5rem] select-none'>
                     <Checkbox id='parcels' checked={ outputContition === 'parcels' }  onCheckedChange={(e) => handleCheck(e, "parcels")}/>

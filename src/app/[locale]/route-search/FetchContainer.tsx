@@ -50,6 +50,7 @@ const FetchContainer = () => {
             }
     
             const result = await response.json();
+            console.log(result)
             setRoutes({
                 tour: result.toures,
                 return: result.return_toures

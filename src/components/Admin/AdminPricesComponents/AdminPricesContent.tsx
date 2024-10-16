@@ -103,6 +103,18 @@ const AdminPricesContent = () => {
       tempPrices = filterByCities(tempPrices, "moldova", "switzerland")
       setShowLuggage(false)
     }
+    if(outputContition === "gr-sw") {
+      tempPrices = filterByCities(tempPrices, "germany", "switzerland")
+      setShowLuggage(false)
+    }
+    if(outputContition === "au-sw") {
+      tempPrices = filterByCities(tempPrices, "austria", "switzerland")
+      setShowLuggage(false)
+    }
+    if(outputContition === "fr-sw") {
+      tempPrices = filterByCities(tempPrices, "france", "switzerland")
+      setShowLuggage(false)
+    }
     if(outputContition === "parcels") {
       tempPrices = filterByCities(tempPrices, "parcels", "parcels")
       setShowLuggage(true)
@@ -125,7 +137,7 @@ const AdminPricesContent = () => {
 
 
   const [sortContition, setSortContition] = useState<"priceAsc" | "priceDesc" | "none">("none")
-  const [outputContition, setOutputCondition] = useState<"all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr" | "parcels">("all")
+  const [outputContition, setOutputCondition] = useState<"all" | "md-sw" | "md-gr" | "md-fr" | "md-au" | "au-gr" | "au-fr" | "gr-fr" | "gr-sw" | "au-sw" | "fr-sw" | "parcels">("all")
 
   return (
     <div className='pt-[9.5rem] flex xl:gap-[4rem] gap-[2rem] justify-center mb-[5rem]'>
