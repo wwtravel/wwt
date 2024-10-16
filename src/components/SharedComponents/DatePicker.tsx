@@ -99,6 +99,11 @@ const DatePicker:React.FC<DatePickerProps> = ({ placeholder, setSearchDate, edge
             initialFocus
             locale={calLocale}
             disabled={ edgeDate && calName === 'arrival' ? (date) => date < edgeDate : (date) => date < today}
+            modifiers={{ highlightThursday: (date) => date.getDay() === 4, highlightSaturday: (date) => date.getDay() === 6 }}
+            modifiersStyles={{
+              highlightThursday: { color: '#ED1C24', borderRadius: '0.5rem', fontWeight: 'bold' },
+              highlightSaturday: { color: '#ED1C24', borderRadius: '0.5rem', fontWeight: 'bold' }
+            }}
           />
         </PopoverContent>
     </Popover>

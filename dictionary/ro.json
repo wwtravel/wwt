@@ -522,8 +522,13 @@
     "route-date" : "Data rutei",
     "route-output" : "Afișarea rutelor",
     "all-routes" : "Toate rutele",
-    "tour" : "Moldova ― Elveția",
-    "return" : "Elveția ― Moldova",
+
+    "tour-old" : "Moldova ― Elveția",
+    "return-old" : "Elveția ― Moldova",
+
+    "tour" : "Moldova → Austria → Germania → Franța → Elveția",
+    "return" : "Elveția → Franța → Germania → Austria → Moldova",
+
     "sort-by" : "Sortează după",
     "default" : "Implicit",
     "no-of-reservations-asc" : "Nr. rezervări cresc.",

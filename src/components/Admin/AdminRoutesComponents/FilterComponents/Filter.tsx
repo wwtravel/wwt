@@ -41,12 +41,12 @@ const Filter:React.FC<FIlterProps> = ({ sortContition, setSortContition, outputC
                     <Checkbox id='allRoutes' checked={ outputContition === 'all' } onCheckedChange={(e) => handleCheck(e, "all")}/>
                     <label className='text-gray xl:text-[1rem] text-[1.333rem] font-[400]' htmlFor="allRoutes">{ t('all-routes') }</label>
                 </div>
-                <div className='flex items-center gap-[0.5rem] select-none'>
-                    <Checkbox id='tour' checked={ outputContition === 'tour' } onCheckedChange={(e) => handleCheck(e, "tour")}/>
+                <div className='flex items-start gap-[0.5rem] select-none'>
+                    <Checkbox className='mt-[0.25rem]' id='tour' checked={ outputContition === 'tour' } onCheckedChange={(e) => handleCheck(e, "tour")}/>
                     <label className='text-gray xl:text-[1rem] text-[1.333rem] font-[400]' htmlFor="tour">{ t('tour') }</label>
                 </div>
-                <div className='flex items-center gap-[0.5rem] select-none'>
-                    <Checkbox id='return' checked={ outputContition === 'retour' } onCheckedChange={(e) => handleCheck(e, "retour")}/>
+                <div className='flex items-start gap-[0.5rem] select-none'>
+                    <Checkbox className='mt-[0.25rem]' id='return' checked={ outputContition === 'retour' } onCheckedChange={(e) => handleCheck(e, "retour")}/>
                     <label className='text-gray xl:text-[1rem] text-[1.333rem] font-[400]' htmlFor="return">{ t('return') }</label>
                 </div>
             </div>

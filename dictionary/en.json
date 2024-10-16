@@ -520,8 +520,13 @@
     "route-date": "Route date",
     "route-output": "Route display",
     "all-routes": "All routes",
-    "tour": "Moldova ― Switzerland",
-    "return": "Switzerland ― Moldova",
+    
+
+    "tour-old": "Moldova ― Switzerland",
+    "return-old": "Switzerland ― Moldova",
+    "tour": "Moldova → Austria → Germany → France → Switzerland",
+    "return": "Switzerland → France → Germany → Austria → Moldova",
+
     "sort-by": "Sort by",
     "default": "Default",
     "no-of-reservations-asc": "No. of reservations asc.",

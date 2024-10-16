@@ -517,8 +517,12 @@
     "route-date": "Date de la route",
     "route-output": "Affichage des routes",
     "all-routes": "Toutes les routes",
-    "tour": "Moldavie ― Suisse",
-    "return": "Suisse ― Moldavie",
+    
+    "tour-old": "Moldavie ― Suisse",
+    "return-old": "Suisse ― Moldavie",
+    "tour": "Moldavie → Autriche → Allemagne → France → Suisse",
+    "return": "Suisse → France → Allemagne → Autriche → Moldavie",
+
     "sort-by": "Trier par",
     "default": "Par défaut",
     "no-of-reservations-asc": "Nb de réservations croiss.",
