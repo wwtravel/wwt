@@ -116,7 +116,12 @@ const findTravel = async (data: FindTravelInterface) => {
 
     if (!travels || travels.length === 0) return Response.json({ msg: "Travel not found!"}, {status: 400});
 
-    let price = await getOrderPrice({depCountry: travels[0].route.stops[0].country, arrCountry: travels[0].route.stops[travels[0].route.stops.length - 1].country});
+    const depCountry = travels[0].route.stops.find(route => route.city === data.departure_city)?.country;
+    const arrCountry = travels[0].route.stops.find(route => route.city === data.arrival_city)?.country;
+
+    if (!depCountry || !arrCountry) return Response.json({ msg: "Departure or arrival country not found!"}, {status: 400});
+
+    let price = await getOrderPrice({depCountry: depCountry, arrCountry: arrCountry});
 
     if (price instanceof Response) return price;
     
